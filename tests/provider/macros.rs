@@ -582,7 +582,7 @@ macro_rules! generate_language_model_tool_tests {
         async fn test_generate_stream_with_structs() {
             skip_if_no_api_key!();
 
-            // define tool function body, should return Result<String, String>
+            // define tool function body, should return aisdk::error::Result<String>
             #[allow(unused_variables)]
             let func = ToolExecute::from_sync(|_ctx, inp: Value| {
                 // Ai SDK will pass in a json object with the following structure
@@ -632,6 +632,122 @@ macro_rules! generate_language_model_tool_tests {
                 .await;
 
             assert!(result.is_ok());
+        }
+
+        #[tokio::test]
+        async fn test_subagent_with_generate_text() {
+            skip_if_no_api_key!();
+
+            #[tool]
+            /// given a code, returns the secret code
+            fn get_secret_code(code: String) -> Tool {
+                Ok(format!("{}{}", code, "getrusty".to_string()))
+            }
+
+            #[tool]
+            /// given a location, returns the weather in that location
+            fn get_weather(location: String) -> Tool {
+                Ok(format!("The weather in {} is sunny", location))
+            }
+
+            let subagent = LanguageModelRequest::builder()
+                .model($tool_model)
+                .subagent("subagent", "Find secret across the globe")
+                .system("You are a helpful assistant with access to tools.")
+                .with_tool(get_secret_code())
+                .build();
+
+            let main_agent = LanguageModelRequest::builder()
+                .model($tool_model)
+                .system("You are a helpful assistant with access to tools.")
+                .prompt("What is the secret code for lets")
+                .with_tool(get_weather())
+                .with_tool(subagent)
+                .build()
+                .generate_text()
+                .await;
+            assert!(main_agent.is_ok());
+
+            let text = main_agent.unwrap().text().unwrap();
+            println!("The secret code is: {}", text);
+            assert!(text.contains("letsgetrusty"));
+        }
+
+        #[tokio::test]
+        async fn test_subagent_with_stream_text() {
+            skip_if_no_api_key!();
+
+            #[tool]
+            /// given a code, returns the secret code
+            fn get_secret_code(code: String) -> Tool {
+                Ok(format!("{}{}", code, "getrusty".to_string()))
+            }
+
+            #[tool]
+            /// given a location, returns the weather in that location
+            fn get_weather(location: String) -> Tool {
+                Ok(format!("The weather in {} is sunny", location))
+            }
+
+            let subagent = LanguageModelRequest::builder()
+                .model($tool_model)
+                .subagent("subagent", "Find secret across the globe")
+                .system("You are a helpful assistant with access to tools.")
+                .with_tool(get_secret_code())
+                .build();
+
+            let main_agent = LanguageModelRequest::builder()
+                .model($tool_model)
+                .system("You are a helpful assistant with access to tools.")
+                .prompt("What is the secret code for lets")
+                .with_tool(get_weather())
+                .with_tool(subagent)
+                .build()
+                .stream_text()
+                .await;
+            assert!(main_agent.is_ok());
+
+            let mut response = main_agent.unwrap();
+
+            // stream chunks
+            let mut textbuf = String::new();
+            let mut tool_calls = 0;
+            let mut tool_call_deltas = String::new();
+
+            // consume the stream
+            {
+                let stream = &mut response.stream;
+
+                while let Some(chunk) = stream.next().await {
+                    if let LanguageModelStreamChunkType::TextDelta(text) = &chunk {
+                        textbuf.push_str(&text);
+                    }
+                    if let LanguageModelStreamChunkType::ToolCallStart(_) = &chunk {
+                        tool_calls += 1;
+                    }
+                    if let LanguageModelStreamChunkType::ToolCallDelta { delta, .. } = &chunk {
+                        tool_call_deltas.push_str(&delta);
+                    }
+                }
+            }
+            println!("The secret code is: {}", textbuf);
+
+            // secret code found
+            assert!(textbuf.contains("letsgetrusty"));
+
+            // 2 tool calls must have been made
+            // 1 call: to give a subagent the task
+            // 1 call: the subagent used the tool to find the secret code
+            assert_eq!(tool_calls, 2);
+
+            // the tool call delta must indicate the 2 tool call parameters (prompt and code)
+            // prompt is the task given to subagent
+            assert!(tool_call_deltas.contains("prompt"));
+            assert!(tool_call_deltas.contains("code"));
+
+            //  last text contains the secret code
+            let text = response.text().await;
+            assert!(text.unwrap().contains("letsgetrusty"));
         }
     };
 }

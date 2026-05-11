@@ -19,6 +19,7 @@ Changelog entries are grouped by type, with the following types:
 
 ### Added
 
+- Added support for SubAgents
 - Added support for custom HTTP headers in `LanguageModelRequest`, allowing request header injection and overriding provider default headers. by [@gaki2](https://github.com/gaki2)
 - Added support for custom HTTP headers in `EmbeddingModelRequest`, allowing request header injection and overriding provider default headers.
 - Add grok-4-20-beta as a model in xAI provider.

@@ -504,7 +504,7 @@ mod tests {
             execute: ToolExecute::from_sync(|_ctx: ToolContext, params: serde_json::Value| {
                 let location = params["location"]
                     .as_str()
-                    .ok_or_else(|| "missing location".to_string())?;
+                    .ok_or_else(|| crate::Error::ToolCallError("missing location".to_string()))?;
                 Ok(format!("The weather in {location} is sunny"))
             }),
         }

@@ -126,8 +126,8 @@ impl ToolContext {
     }
 }
 
-/// The output returned by a tool executor before SDK error conversion.
-pub type ToolOutput = std::result::Result<String, String>;
+/// The output returned by a tool executor.
+pub type ToolOutput = Result<String>;
 
 /// A boxed future returned by a tool executor.
 pub type ToolFuture = Pin<Box<dyn Future<Output = ToolOutput> + Send>>;
@@ -152,8 +152,8 @@ impl ToolExecute {
     /// Calls the tool with the given input.
     pub async fn call(&self, context: ToolContext, map: Value) -> Result<String> {
         match &self.inner {
-            ToolExecuteInner::Sync(f) => (f)(context, map).map_err(Error::ToolCallError),
-            ToolExecuteInner::Async(f) => (f)(context, map).await.map_err(Error::ToolCallError),
+            ToolExecuteInner::Sync(f) => (f)(context, map),
+            ToolExecuteInner::Async(f) => (f)(context, map).await,
         }
     }
 
