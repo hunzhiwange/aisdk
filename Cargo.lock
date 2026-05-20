@@ -12,47 +12,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "vibewindow-aisdk"
-version = "0.5.2"
-dependencies = [
- "vibewindow-aisdk-macros",
- "async-trait",
- "axum",
- "cargo-husky",
- "derive_builder",
- "dotenv",
- "fastrand",
- "futures",
- "glob",
- "log",
- "parking_lot",
- "reqwest",
- "reqwest-eventsource",
- "schemars",
- "serde",
- "serde_json",
- "tempfile",
- "tera",
- "thiserror 2.0.17",
- "tokio",
- "uuid",
- "wiremock",
-]
-
-[[package]]
-name = "vibewindow-aisdk-macros"
-version = "0.3.0"
-dependencies = [
- "vibewindow-aisdk",
- "futures",
- "proc-macro2",
- "quote",
- "serde_json",
- "syn",
- "tokio",
-]
-
-[[package]]
 name = "android_system_properties"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2098,6 +2057,47 @@ name = "version_check"
 version = "0.9.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
+
+[[package]]
+name = "vibewindow-aisdk"
+version = "0.5.7"
+dependencies = [
+ "async-trait",
+ "axum",
+ "cargo-husky",
+ "derive_builder",
+ "dotenv",
+ "fastrand",
+ "futures",
+ "glob",
+ "log",
+ "parking_lot",
+ "reqwest",
+ "reqwest-eventsource",
+ "schemars",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "tera",
+ "thiserror 2.0.17",
+ "tokio",
+ "uuid",
+ "vibewindow-aisdk-macros",
+ "wiremock",
+]
+
+[[package]]
+name = "vibewindow-aisdk-macros"
+version = "0.3.0"
+dependencies = [
+ "futures",
+ "proc-macro2",
+ "quote",
+ "serde_json",
+ "syn",
+ "tokio",
+ "vibewindow-aisdk",
+]
 
 [[package]]
 name = "walkdir"
