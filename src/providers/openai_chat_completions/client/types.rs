@@ -227,6 +227,7 @@ pub(crate) struct Usage {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub(crate) struct PromptTokensDetails {
+    #[serde(default)]
     pub cached_tokens: u32,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_tokens: Option<u32>,
@@ -234,6 +235,7 @@ pub(crate) struct PromptTokensDetails {
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub(crate) struct CompletionTokensDetails {
+    #[serde(default)]
     pub reasoning_tokens: u32,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub audio_tokens: Option<u32>,

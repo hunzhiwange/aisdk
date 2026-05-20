@@ -4,6 +4,9 @@
 
 pub(crate) mod types;
 
+#[cfg(test)]
+mod tests;
+
 pub(crate) use types::*;
 
 use crate::core::client::{EmbeddingClient, LanguageModelClient, merge_body, merge_headers};

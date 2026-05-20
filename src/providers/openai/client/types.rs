@@ -200,11 +200,13 @@ pub(crate) struct EmbeddingUsage {
 
 #[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq)]
 pub(crate) struct InputTokenDetails {
+    #[serde(default)]
     pub cached_tokens: u32,
 }
 
 #[derive(Debug, Default, Clone, Serialize, Deserialize, PartialEq)]
 pub(crate) struct OutputTokenDetails {
+    #[serde(default)]
     pub reasoning_tokens: u32,
 }
 

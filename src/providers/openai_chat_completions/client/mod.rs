@@ -2,6 +2,9 @@
 
 pub(crate) mod types;
 
+#[cfg(test)]
+mod tests;
+
 pub(crate) use types::ChatCompletionsOptions;
 
 use crate::core::capabilities::ModelName;
