@@ -6,7 +6,7 @@ export function ChatEmptyState() {
   return (
     <div className="flex flex-col items-center justify-center h-[50vh] text-zinc-500 space-y-4">
       <Bot className="w-12 h-12 opacity-50" />
-      <p className="text-sm">Start a conversation with the AISDK AI Agent</p>
+      <p className="text-sm">Start a conversation with the vibewindow-aisdk AI Agent</p>
     </div>
   );
 }
@@ -62,7 +62,7 @@ export function ChatInputArea({
           value={input}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          placeholder="Ask me anything about aisdk.rs"
+          placeholder="Ask me anything about vibewindow-aisdk.rs"
           className="w-full max-h-50 bg-transparent text-zinc-100 placeholder:text-zinc-500 resize-none outline-none py-4 pl-4 pr-12 overflow-y-auto"
           rows={1}
           disabled={isLoading && !stop}
@@ -92,7 +92,7 @@ export function ChatInputArea({
       </form>
       <div className="text-center mt-2">
         <span className="text-[10px] text-zinc-600 font-mono tracking-wider">
-          aisdk.rs
+          vibewindow-aisdk.rs
         </span>
       </div>
     </div>

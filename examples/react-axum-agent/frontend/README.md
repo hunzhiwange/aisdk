@@ -1,4 +1,4 @@
-# Frontend for AI Agent built with React, Axum and AISDK.rs
+# Frontend for AI Agent built with React, Axum and vibewindow-aisdk.rs
 
 ### Run the frontend
 

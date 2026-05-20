@@ -1,8 +1,8 @@
-# aisdk-macros
+# vibewindow-aisdk-macros
 
-Procedural macros for the [aisdk](https://github.com/hunzhiwange/aisdk) library.
+Procedural macros for the [vibewindow-aisdk](https://github.com/hunzhiwange/aisdk) library.
 
-This crate provides derive macros and other procedural macros used by the aisdk library.
+This crate provides derive macros and other procedural macros used by the vibewindow-aisdk library.
 
 ## Contributing
 

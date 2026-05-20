@@ -12,10 +12,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "aisdk"
+name = "vibewindow-aisdk"
 version = "0.5.2"
 dependencies = [
- "aisdk-macros",
+ "vibewindow-aisdk-macros",
  "async-trait",
  "derive_builder",
  "futures",
@@ -34,7 +34,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "aisdk-macros"
+name = "vibewindow-aisdk-macros"
 version = "0.3.0"
 dependencies = [
  "proc-macro2",
@@ -505,7 +505,7 @@ dependencies = [
 name = "git-summary"
 version = "0.1.0"
 dependencies = [
- "aisdk",
+ "vibewindow-aisdk",
  "dotenv",
  "tokio",
 ]

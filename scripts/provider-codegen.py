@@ -901,7 +901,7 @@ def prepare_all_openai_compatible_providers(
 # ============================================================================
 
 app = typer.Typer(
-    help="AI SDK Provider Code Generator - Generate Rust code for aisdk crate from models.dev",
+    help="AI SDK Provider Code Generator - Generate Rust code for vibewindow-aisdk crate from models.dev",
     no_args_is_help=True,
 )
 
