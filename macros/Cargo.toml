@@ -4,8 +4,8 @@ version = "0.3.0"
 edition = "2024"
 license = "MIT"
 description = "Procedural macros for the aisdk library"
-homepage = "https://github.com/lazy-hq/aisdk"
-repository = "https://github.com/lazy-hq/aisdk"
+homepage = "https://github.com/hunzhiwange/aisdk"
+repository = "https://github.com/hunzhiwange/aisdk"
 readme = "README.md"
 
 [lib]

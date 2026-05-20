@@ -1,10 +1,10 @@
 # AISDK
 
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://aisdk.rs)
-[![Build Status](https://github.com/lazy-hq/aisdk/actions/workflows/ci.yml/badge.svg)](https://github.com/lazy-hq/aisdk/actions/workflows/ci.yml)
+[![Build Status](https://github.com/hunzhiwange/aisdk/actions/workflows/ci.yml/badge.svg)](https://github.com/hunzhiwange/aisdk/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Issues](https://img.shields.io/github/issues/lazy-hq/aisdk)](https://github.com/lazy-hq/aisdk/issues)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/lazy-hq/aisdk/pulls)
+[![Issues](https://img.shields.io/github/issues/lazy-hq/aisdk)](https://github.com/hunzhiwange/aisdk/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/hunzhiwange/aisdk/pulls)
 
 
 An open-source, **provider-agnostic** Rust library for building AI-powered applications, inspired by the Vercel AI SDK. Type-safe, framework-friendly, and ready to connect with **70+ AI providers**.

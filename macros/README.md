@@ -1,6 +1,6 @@
 # aisdk-macros
 
-Procedural macros for the [aisdk](https://github.com/lazy-hq/aisdk) library.
+Procedural macros for the [aisdk](https://github.com/hunzhiwange/aisdk) library.
 
 This crate provides derive macros and other procedural macros used by the aisdk library.
 

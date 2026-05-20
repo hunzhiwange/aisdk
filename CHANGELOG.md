@@ -157,12 +157,12 @@ Changelog entries are grouped by type, with the following types:
 - Rebranded to aisdk
 
 <!-- next-url -->
-[Unreleased]: https://github.com/lazy-hq/aisdk/compare/v0.5.2...HEAD
-[0.5.2]: https://github.com/lazy-hq/aisdk/compare/v0.5.1...v0.5.2
-[0.5.1]: https://github.com/lazy-hq/aisdk/compare/v0.5.0...v0.5.1
-[0.5.0]: https://github.com/lazy-hq/aisdk/compare/v0.4.0...v0.5.0
-[0.4.0]: https://github.com/lazy-hq/aisdk/compare/v0.3.0...v0.4.0
-[0.3.0]: https://github.com/lazy-hq/aisdk/compare/v0.2.1...v0.3.0
-[0.2.1]: https://github.com/lazy-hq/aisdk/compare/v0.2.0...v0.2.1
-[0.2.0]: https://github.com/lazy-hq/aisdk/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/lazy-hq/aisdk/releases/tag/v0.1.0
+[Unreleased]: https://github.com/hunzhiwange/aisdk/compare/v0.5.2...HEAD
+[0.5.2]: https://github.com/hunzhiwange/aisdk/compare/v0.5.1...v0.5.2
+[0.5.1]: https://github.com/hunzhiwange/aisdk/compare/v0.5.0...v0.5.1
+[0.5.0]: https://github.com/hunzhiwange/aisdk/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/hunzhiwange/aisdk/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/hunzhiwange/aisdk/compare/v0.2.1...v0.3.0
+[0.2.1]: https://github.com/hunzhiwange/aisdk/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/hunzhiwange/aisdk/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/hunzhiwange/aisdk/releases/tag/v0.1.0
