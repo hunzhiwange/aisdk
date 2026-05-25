@@ -248,7 +248,9 @@ mod tests {
     use super::*;
     use crate::core::language_model::ReasoningEffort;
     use crate::core::tools::{Tool, ToolExecute};
-    use crate::core::{DynamicModel, LanguageModelRequest, Message};
+    use crate::core::{
+        DynamicModel, LanguageModelRequest, Message, UserImage, UserImageDetail, UserMessage,
+    };
     use futures::StreamExt;
     use schemars::{JsonSchema, schema_for};
     use serde::{Deserialize, Serialize};
@@ -564,6 +566,53 @@ mod tests {
                 "x-trace-id".to_string(),
                 "trace-123".to_string(),
             )]))
+            .build()
+            .generate_text()
+            .await
+            .expect("request should succeed");
+
+        assert_eq!(response.text().as_deref(), Some("ok"));
+    }
+
+    #[tokio::test]
+    async fn test_generate_text_sends_multimodal_user_message() {
+        let server = MockServer::start().await;
+
+        Mock::given(method("POST"))
+            .and(path("/v1/responses"))
+            .and(header("authorization", "Bearer test-key"))
+            .and(body_partial_json(json!({
+                "model": "gpt-4o-mini",
+                "input": [
+                    {
+                        "role": "user",
+                        "type": "message",
+                        "content": [
+                            {
+                                "type": "input_text",
+                                "text": "Describe this image"
+                            },
+                            {
+                                "type": "input_image",
+                                "detail": "high",
+                                "image_url": "https://example.com/cat.png"
+                            }
+                        ]
+                    }
+                ]
+            })))
+            .respond_with(responses_api_response("ok"))
+            .expect(1)
+            .mount(&server)
+            .await;
+
+        let response = LanguageModelRequest::builder()
+            .model(test_model(server.uri()))
+            .messages(vec![Message::User(
+                UserMessage::new("Describe this image").with_image(
+                    UserImage::new("https://example.com/cat.png").detail(UserImageDetail::High),
+                ),
+            )])
             .build()
             .generate_text()
             .await

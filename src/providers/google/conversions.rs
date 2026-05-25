@@ -1,7 +1,7 @@
 //! Conversions between types used by the Google provider and the types used by the core library.
 use crate::core::embedding_model::EmbeddingModelOptions;
 use crate::core::language_model::{LanguageModelOptions, LanguageModelResponseContentType, Usage};
-use crate::core::messages::{Message, TaggedMessage};
+use crate::core::messages::{Message, TaggedMessage, UserContentPart};
 use crate::core::tools::Tool;
 use crate::providers::google::client::types::{
     self, Content, FunctionDeclaration, GenerateContentRequest, Part, Role,
@@ -70,6 +70,9 @@ impl From<LanguageModelOptions> for GenerateContentRequest {
             frequency_penalty: options.frequency_penalty,
             response_logprobs: None,
             logprobs: None,
+            response_modalities: None,
+            image_config: None,
+            seed: options.seed.map(|seed| seed as i32),
         });
 
         Self {
@@ -106,15 +109,44 @@ impl From<TaggedMessage> for Content {
     }
 }
 
+impl From<UserContentPart> for Part {
+    fn from(value: UserContentPart) -> Self {
+        match value {
+            UserContentPart::Text(text) => Part {
+                text: Some(text),
+                ..Default::default()
+            },
+            UserContentPart::Image(image) => {
+                if let Some((mime_type, data)) = image.inline_data() {
+                    Part {
+                        inline_data: Some(types::Blob { mime_type, data }),
+                        ..Default::default()
+                    }
+                } else if let Some(mime_type) = image.resolved_media_type() {
+                    Part {
+                        file_data: Some(types::FileData {
+                            mime_type,
+                            file_uri: image.image_url,
+                        }),
+                        ..Default::default()
+                    }
+                } else {
+                    Part {
+                        text: Some(image.fallback_text()),
+                        ..Default::default()
+                    }
+                }
+            }
+        }
+    }
+}
+
 impl From<Message> for Content {
     fn from(message: Message) -> Self {
         match message {
             Message::User(u) => Content {
                 role: Role::User,
-                parts: vec![Part {
-                    text: Some(u.content),
-                    ..Default::default()
-                }],
+                parts: u.content.into_iter().map(Into::into).collect(),
             },
             Message::Assistant(a) => {
                 let part = match a.content {
@@ -230,6 +262,7 @@ mod tests {
     use crate::core::Message;
     use crate::core::language_model::LanguageModelOptions;
     use crate::core::tools::{Tool, ToolExecute, ToolList};
+    use crate::core::{UserImage, UserMessage};
     use schemars::{JsonSchema, schema_for};
     use serde::{Deserialize, Serialize};
     use serde_json::json;
@@ -345,5 +378,33 @@ mod tests {
         assert_eq!(parameters["type"], json!("object"));
         assert!(parameters["properties"].get("a").is_some());
         assert!(parameters["properties"].get("b").is_some());
+    }
+
+    #[test]
+    fn test_multimodal_user_message_maps_to_google_native_image_parts() {
+        let options = LanguageModelOptions {
+            messages: vec![
+                Message::User(
+                    UserMessage::new("Describe this image")
+                        .with_image(UserImage::new("https://example.com/cat.png")),
+                )
+                .into(),
+            ],
+            ..Default::default()
+        };
+
+        let req: GenerateContentRequest = options.into();
+        let content = &req.contents[0];
+
+        assert_eq!(
+            content.parts[0].text.as_deref(),
+            Some("Describe this image")
+        );
+        let file_data = content.parts[1]
+            .file_data
+            .as_ref()
+            .expect("image URL should map to native fileData");
+        assert_eq!(file_data.mime_type, "image/png");
+        assert_eq!(file_data.file_uri, "https://example.com/cat.png");
     }
 }

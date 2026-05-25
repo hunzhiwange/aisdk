@@ -22,5 +22,17 @@ model_capabilities! {
             display_name: "DeepSeek Reasoner",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        DeepseekV4Flash {
+            model_name: "deepseek-v4-flash",
+            constructor_name: deepseek_v4_flash,
+            display_name: "DeepSeek V4 Flash",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV4Pro {
+            model_name: "deepseek-v4-pro",
+            constructor_name: deepseek_v4_pro,
+            display_name: "DeepSeek V4 Pro",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
     }
 }

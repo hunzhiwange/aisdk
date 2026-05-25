@@ -35,7 +35,10 @@ impl<M: ModelName> LanguageModel for OpenAIChatCompletions<M> {
 
         for choice in response.choices {
             // Handle text content
-            if let Some(text) = choice.message.content
+            if let Some(text) = choice
+                .message
+                .content
+                .and_then(types::ChatMessageContent::into_text)
                 && !text.is_empty()
             {
                 contents.push(LanguageModelResponseContentType::Text(text));

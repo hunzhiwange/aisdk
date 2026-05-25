@@ -327,6 +327,33 @@ pub(crate) fn merge_headers(
     Ok(default_headers)
 }
 
+async fn map_sse_event_result<C: LanguageModelClient + ?Sized>(
+    event_result: std::result::Result<Event, reqwest_eventsource::Error>,
+) -> Result<C::StreamEvent> {
+    match event_result {
+        Err(reqwest_eventsource::Error::InvalidStatusCode(status, response)) => {
+            let details = match response.text().await {
+                Ok(body) if !body.trim().is_empty() => {
+                    format!("HTTP {}: {}", status.as_u16(), body)
+                }
+                Ok(_) => format!("Invalid status code: {}", status),
+                Err(error) => {
+                    format!(
+                        "Invalid status code: {}; failed to read response body: {error}",
+                        status
+                    )
+                }
+            };
+
+            Err(Error::ApiError {
+                status_code: Some(status),
+                details,
+            })
+        }
+        other => C::parse_stream_sse(other),
+    }
+}
+
 #[allow(dead_code)]
 pub(crate) trait LanguageModelClient {
     type Response: DeserializeOwned + std::fmt::Debug + Clone;
@@ -353,6 +380,7 @@ pub(crate) trait LanguageModelClient {
         };
 
         let method = self.method();
+
         let query_params = self.query_params();
         let config = RetryConfig::default();
 
@@ -381,7 +409,7 @@ pub(crate) trait LanguageModelClient {
     ) -> Result<Pin<Box<dyn Stream<Item = Result<Self::StreamEvent>> + Send>>>
     where
         Self::StreamEvent: Send + 'static,
-        Self: Sync,
+        Self: Sync + 'static,
     {
         let client = get_streaming_client();
 
@@ -406,23 +434,26 @@ pub(crate) trait LanguageModelClient {
         // so providers never receive a spurious NotSupported chunk as the first stream item.
         let mapped_stream = events_stream
             .filter(|e| futures::future::ready(!matches!(e, Ok(Event::Open))))
-            .map(|event_result| Self::parse_stream_sse(event_result));
+            .then(|event_result| map_sse_event_result::<Self>(event_result));
 
         // State that indicates if the stream has ended
         let ended = std::sync::Arc::new(std::sync::Mutex::new(false));
 
         // Scan to end or mark the stream as ended
-        let stream = mapped_stream.scan(ended, |ended, res| {
-            let mut ended = ended.lock().unwrap();
+        let stream = mapped_stream.scan(
+            ended,
+            |ended: &mut std::sync::Arc<std::sync::Mutex<bool>>, res: Result<Self::StreamEvent>| {
+                let mut ended = ended.lock().unwrap();
 
-            if *ended {
-                return futures::future::ready(None); // Stop the stream after end event
-            }
+                if *ended {
+                    return futures::future::ready(None); // Stop the stream after end event
+                }
 
-            *ended = res.as_ref().map_or(true, |evt| Self::end_stream(evt)); // Mark the stream as ended on api error or end event
+                *ended = res.as_ref().map_or(true, |evt| Self::end_stream(evt)); // Mark the stream as ended on api error or end event
 
-            futures::future::ready(Some(res)) // Emit the event
-        });
+                futures::future::ready(Some(res)) // Emit the event
+            },
+        );
 
         Ok(Box::pin(stream))
     }

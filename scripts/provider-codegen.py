@@ -17,14 +17,29 @@ Usage:
     uv run --python 3.13 --with typer provider-codegen.py capabilities openai
 """
 
+import json
 import re
 import subprocess
-import requests
+import sys
 from pathlib import Path
+from urllib.request import Request, urlopen
 from typing import Any, Optional, Literal, Annotated
 from dataclasses import dataclass
-import tomlkit
-import typer
+
+try:
+    import requests
+except ImportError:
+    requests = None
+
+try:
+    import tomlkit
+except ImportError:
+    tomlkit = None
+
+try:
+    import typer
+except ImportError:
+    typer = None
 
 # ============================================================================
 # UTILITIES
@@ -44,12 +59,22 @@ def fetch_models_dev_json() -> dict[str, Any]:
         Dictionary containing all provider and model data from models.dev
     """
     log("Fetching models.dev API data...")
-    response = requests.get("https://models.dev/api.json")
-    if response.status_code != 200:
-        raise Exception(f"Failed to fetch models.dev JSON: {response.status_code}")
+    headers = {"User-Agent": "Mozilla/5.0 (compatible; aisdk-provider-codegen/1.0)"}
 
-    log("Successfully fetched models.dev data")
-    return response.json()
+    if requests is not None:
+        response = requests.get(
+            "https://models.dev/api.json",
+            headers=headers,
+            timeout=60,
+        )
+        response.raise_for_status()
+        log("Successfully fetched models.dev data")
+        return response.json()
+
+    request = Request("https://models.dev/api.json", headers=headers)
+    with urlopen(request, timeout=60) as response:
+        log("Successfully fetched models.dev data")
+        return json.load(response)
 
 
 def to_pascal_case(identifier: str) -> str:
@@ -106,13 +131,25 @@ def provider_id_to_snake_case(provider_id: str) -> str:
         # Move digits to end with underscore: "302ai" -> "ai_302"
         provider_id = rest + "_" + digits
 
-    # Replace hyphens with underscores and clean up
-    result = provider_id.replace("-", "_")
+    # Replace any non-identifier separator with underscores and clean up.
+    # This keeps module paths valid for provider IDs like "wafer.ai".
+    result = re.sub(r"[^a-zA-Z0-9_]", "_", provider_id)
 
     # Remove leading/trailing underscores and consecutive underscores
     result = re.sub(r"_+", "_", result).strip("_")
 
     return result
+
+
+def get_provider_struct_name(provider_id: str) -> str:
+    """Return the Rust provider struct name for a models.dev provider ID."""
+    special_cases = {
+        "openai": "OpenAI",
+        "togetherai": "TogetherAI",
+        "xai": "XAI",
+    }
+
+    return special_cases.get(provider_id, to_pascal_case(provider_id))
 
 
 def to_constructor_name(identifier: str) -> str:
@@ -381,7 +418,7 @@ MANUALLY_MANAGED_MODULES = {
 }
 
 
-def update_cargo_toml(provider_ids: list[str], root: Path | None = None):
+def update_cargo_toml(provider_ids: list[str], root: Optional[Path] = None):
     """
     Add feature entries for new providers to Cargo.toml (additive only).
 
@@ -395,6 +432,9 @@ def update_cargo_toml(provider_ids: list[str], root: Path | None = None):
         provider_ids: List of provider identifiers (kebab-case from models.dev)
         root: Optional project root (defaults to auto-detected root)
     """
+    if tomlkit is None:
+        raise RuntimeError("tomlkit is required to update Cargo.toml")
+
     if root is None:
         root = get_project_root()
 
@@ -456,7 +496,7 @@ def get_codegen_provider_dirs(root: Path) -> list[str]:
     return codegen_dirs
 
 
-def update_providers_mod_rs(root: Path | None = None):
+def update_providers_mod_rs(root: Optional[Path] = None):
     """
     Regenerate the codegen block in src/providers/mod.rs.
 
@@ -540,7 +580,7 @@ def get_model_display_name(model_id: str, model_data: dict[str, Any]) -> str:
     return model_data.get("name", model_id)
 
 
-def get_model_constructor_name(model_id: str, folder_prefix: str | None = None) -> str:
+def get_model_constructor_name(model_id: str, folder_prefix: Optional[str] = None) -> str:
     """
     Get the constructor name for a model with optional folder prefix.
 
@@ -561,7 +601,7 @@ def get_model_constructor_name(model_id: str, folder_prefix: str | None = None) 
     return to_constructor_name(model_id)
 
 
-def get_model_type_name(model_id: str, folder_prefix: str | None = None) -> str:
+def get_model_type_name(model_id: str, folder_prefix: Optional[str] = None) -> str:
     """
     Get the type name (PascalCase) for a model with optional folder prefix.
 
@@ -582,7 +622,7 @@ def get_model_type_name(model_id: str, folder_prefix: str | None = None) -> str:
     return to_pascal_case(model_id)
 
 
-def parse_model_id(model_id: str) -> tuple[str, str | None]:
+def parse_model_id(model_id: str) -> tuple[str, Optional[str]]:
     """
     Parse model ID to extract base name and folder prefix if present.
 
@@ -615,15 +655,13 @@ def generate_capabilities_rs(provider_id: str, models: dict[str, Any]) -> str:
     Returns:
         Generated Rust code as string
     """
-    provider_struct_name = to_pascal_case(provider_id)
+    provider_struct_name = get_provider_struct_name(provider_id)
     provider_module = provider_id_to_snake_case(provider_id)
 
     lines = [
         f"//! Capabilities for {provider_module} models.",
         "//!",
-        f"//! This module defines model types and their capabilities for {
-            provider_module
-        } providers.",
+        f"//! This module defines model types and their capabilities for {provider_module} providers.",
         "//! Users can implement additional traits on custom models.",
         "",
         "use crate::core::capabilities::*;",
@@ -636,11 +674,11 @@ def generate_capabilities_rs(provider_id: str, models: dict[str, Any]) -> str:
     ]
 
     # Generate model entries
-    # Skip deprecated models
+    # Skip deprecated models and legacy alias entries exposed as `~provider/model`
     active_models = {
         model_id: model_data
         for model_id, model_data in models.items()
-        if model_data.get("status") != "deprecated"
+        if model_data.get("status") != "deprecated" and not model_id.startswith("~")
     }
 
     # Track seen type names to skip duplicates (e.g., "claude-3-5-haiku" and
@@ -691,7 +729,7 @@ def generate_capabilities_rs(provider_id: str, models: dict[str, Any]) -> str:
 
 def generate_provider_capabilities_content(
     provider_id: str, provider_data: dict[str, Any]
-) -> str | None:
+) -> Optional[str]:
     """
     Generate capabilities.rs content without writing to disk.
 
@@ -712,8 +750,8 @@ def generate_provider_capabilities_content(
 
 
 def prepare_provider_capabilities(
-    provider_id: str, provider_data: dict[str, Any], root: Path | None = None
-) -> PendingWrite | None:
+    provider_id: str, provider_data: dict[str, Any], root: Optional[Path] = None
+) -> Optional[PendingWrite]:
     """
     Prepare capabilities.rs for writing (no I/O).
 
@@ -728,11 +766,33 @@ def prepare_provider_capabilities(
     if root is None:
         root = get_project_root()
 
+    providers_dir = root / "src" / "providers"
+    candidate_dirs = [
+        provider_id,
+        provider_id.replace("-", "_"),
+        provider_id_to_snake_case(provider_id),
+    ]
+    provider_dir_name = next(
+        (
+            dir_name
+            for dir_name in dict.fromkeys(candidate_dirs)
+            if (providers_dir / dir_name / "mod.rs").is_file()
+        ),
+        None,
+    )
+
+    if provider_dir_name is None:
+        return None
+
     content = generate_provider_capabilities_content(provider_id, provider_data)
     if content is None:
         return None
 
-    return create_pending_write(provider_id, content, "capabilities", root)
+    return PendingWrite(
+        path=providers_dir / provider_dir_name / "capabilities.rs",
+        content=content,
+        file="capabilities.rs",
+    )
 
 
 def prepare_all_capabilities(
@@ -794,11 +854,7 @@ def generate_openai_compatible_content(
 
     # Generate the Rust code with proper formatting
     lines = [
-        f"//! This module provides the {
-            provider_struct_name
-        } provider, wrapping OpenAI Chat Completions for {
-            provider_struct_name
-        } requests.",
+        f"//! This module provides the {provider_struct_name} provider, wrapping OpenAI Chat Completions for {provider_struct_name} requests.",
         "",
         "pub mod capabilities;",
         "",
@@ -831,7 +887,7 @@ def prepare_openai_compatible_provider(
     provider_id: str,
     provider_data: dict[str, Any],
     with_capabilities: bool = False,
-    root: Path | None = None,
+    root: Optional[Path] = None,
 ) -> list[PendingWrite]:
     """
     Prepare OpenAI-compatible provider files (no I/O).
@@ -900,9 +956,13 @@ def prepare_all_openai_compatible_providers(
 # CLI COMMANDS
 # ============================================================================
 
-app = typer.Typer(
-    help="AI SDK Provider Code Generator - Generate Rust code for vibewindow-aisdk crate from models.dev",
-    no_args_is_help=True,
+app = (
+    typer.Typer(
+        help="AI SDK Provider Code Generator - Generate Rust code for vibewindow-aisdk crate from models.dev",
+        no_args_is_help=True,
+    )
+    if typer is not None
+    else None
 )
 
 
@@ -922,18 +982,9 @@ def run_cargo_fmt():
         log(f"Warning: Could not run cargo fmt: {e}")
 
 
-@app.command()
-def openai_compatible(
-    provider_id: Annotated[
-        Optional[str],
-        typer.Argument(
-            help="Specific models.dev provider ID to generate (e.g., 'deepseek', 'openrouter')"
-        ),
-    ] = None,
-    with_capabilities: Annotated[
-        bool,
-        typer.Option("--with-capabilities", "-c", help="Also generate capabilities.rs"),
-    ] = False,
+def openai_compatible_command(
+    provider_id: Optional[str] = None,
+    with_capabilities: bool = False,
 ):
     """
     Generate OpenAI-compatible provider code.
@@ -953,7 +1004,7 @@ def openai_compatible(
             # Prepare specific provider
             if provider_id not in all_providers:
                 log(f"Error: Provider '{provider_id}' not found in models.dev")
-                raise typer.Exit(code=1)
+                raise SystemExit(1)
 
             provider_data = all_providers[provider_id]
 
@@ -961,11 +1012,9 @@ def openai_compatible(
             if provider_data.get("npm") != "@ai-sdk/openai-compatible":
                 log(f"Error: Provider '{provider_id}' is not OpenAI-compatible")
                 log(
-                    f"Use 'capabilities {
-                        provider_id
-                    }' instead for non-OpenAI-compatible provider capabilities"
+                    f"Use 'capabilities {provider_id}' instead for non-OpenAI-compatible provider capabilities"
                 )
-                raise typer.Exit(code=1)
+                raise SystemExit(1)
 
             pending_writes = prepare_openai_compatible_provider(
                 provider_id, provider_data, with_capabilities
@@ -999,18 +1048,10 @@ def openai_compatible(
 
     except Exception as e:
         log(f"Error: {e}")
-        raise typer.Exit(code=1)
+        raise SystemExit(1)
 
 
-@app.command()
-def capabilities(
-    provider_id: Annotated[
-        Optional[str],
-        typer.Argument(
-            help="Specific provider ID to generate (e.g., 'openai', 'anthropic')"
-        ),
-    ] = None,
-):
+def capabilities_command(provider_id: Optional[str] = None):
     """
     Generate capabilities.rs for providers.
 
@@ -1028,7 +1069,7 @@ def capabilities(
             # Prepare specific provider capabilities
             if provider_id not in all_providers:
                 log(f"Error: Provider '{provider_id}' not found in models.dev")
-                raise typer.Exit(code=1)
+                raise SystemExit(1)
 
             provider_data = all_providers[provider_id]
             cap_write = prepare_provider_capabilities(provider_id, provider_data)
@@ -1054,12 +1095,72 @@ def capabilities(
 
     except Exception as e:
         log(f"Error: {e}")
-        raise typer.Exit(code=1)
+        raise SystemExit(1)
+
+
+if app is not None:
+
+    @app.command()
+    def openai_compatible(
+        provider_id: Annotated[
+            Optional[str],
+            typer.Argument(
+                help="Specific models.dev provider ID to generate (e.g., 'deepseek', 'openrouter')"
+            ),
+        ] = None,
+        with_capabilities: Annotated[
+            bool,
+            typer.Option("--with-capabilities", "-c", help="Also generate capabilities.rs"),
+        ] = False,
+    ):
+        openai_compatible_command(provider_id, with_capabilities)
+
+
+    @app.command()
+    def capabilities(
+        provider_id: Annotated[
+            Optional[str],
+            typer.Argument(
+                help="Specific provider ID to generate (e.g., 'openai', 'anthropic')"
+            ),
+        ] = None,
+    ):
+        capabilities_command(provider_id)
 
 
 def main():
     """Main entry point."""
-    app()
+    if app is not None:
+        app()
+        return
+
+    args = sys.argv[1:]
+    if not args or args[0] in {"-h", "--help"}:
+        print("Usage: provider-codegen.py <capabilities|openai-compatible> [provider_id] [--with-capabilities|-c]")
+        raise SystemExit(0)
+
+    command = args[0]
+    if command == "capabilities":
+        provider_id = args[1] if len(args) > 1 else None
+        capabilities_command(provider_id)
+        return
+
+    if command == "openai-compatible":
+        provider_id = None
+        with_capabilities = False
+        for arg in args[1:]:
+            if arg in {"--with-capabilities", "-c"}:
+                with_capabilities = True
+            elif provider_id is None:
+                provider_id = arg
+            else:
+                print(f"Unexpected argument: {arg}")
+                raise SystemExit(1)
+        openai_compatible_command(provider_id, with_capabilities)
+        return
+
+    print(f"Unknown command: {command}")
+    raise SystemExit(1)
 
 
 if __name__ == "__main__":

@@ -5,6 +5,149 @@ use crate::core::{
     tools::{ToolCallInfo, ToolResultInfo},
 };
 
+/// The detail level requested when a provider inspects an input image.
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
+pub enum UserImageDetail {
+    /// Let the provider pick the most appropriate detail level.
+    #[default]
+    Auto,
+    /// Prefer a low-detail representation to reduce latency or cost.
+    Low,
+    /// Prefer a high-detail representation for richer visual analysis.
+    High,
+}
+
+/// A user-supplied image referenced by URL.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct UserImage {
+    /// The remote URL that points to the image content.
+    pub image_url: String,
+    /// Optional explicit media type for providers that require it.
+    pub media_type: Option<String>,
+    /// The requested provider-specific detail level.
+    pub detail: UserImageDetail,
+}
+
+impl UserImage {
+    /// Creates a new image input referenced by URL.
+    pub fn new(image_url: impl Into<String>) -> Self {
+        Self {
+            image_url: image_url.into(),
+            media_type: None,
+            detail: UserImageDetail::Auto,
+        }
+    }
+
+    /// Sets the explicit image media type.
+    pub fn media_type(mut self, media_type: impl Into<String>) -> Self {
+        self.media_type = Some(media_type.into());
+        self
+    }
+
+    /// Sets the preferred detail level for the image.
+    pub fn detail(mut self, detail: UserImageDetail) -> Self {
+        self.detail = detail;
+        self
+    }
+
+    pub(crate) fn fallback_text(&self) -> String {
+        format!("[image: {}]", self.image_url)
+    }
+
+    #[allow(dead_code)]
+    pub(crate) fn inline_data(&self) -> Option<(String, String)> {
+        let data_url = self.image_url.strip_prefix("data:")?;
+        let (metadata, data) = data_url.split_once(',')?;
+        let (media_type, encoding) = metadata.split_once(';')?;
+
+        if media_type.is_empty() || !encoding.eq_ignore_ascii_case("base64") || data.is_empty() {
+            return None;
+        }
+
+        Some((
+            self.media_type
+                .clone()
+                .unwrap_or_else(|| media_type.to_string()),
+            data.to_string(),
+        ))
+    }
+
+    #[allow(dead_code)]
+    pub(crate) fn resolved_media_type(&self) -> Option<String> {
+        self.media_type
+            .clone()
+            .or_else(|| self.inline_data().map(|(media_type, _)| media_type))
+            .or_else(|| infer_image_media_type_from_url(&self.image_url).map(str::to_string))
+    }
+}
+
+#[allow(dead_code)]
+fn infer_image_media_type_from_url(url: &str) -> Option<&'static str> {
+    let path = url.split(['?', '#']).next().unwrap_or(url);
+    let extension = path.rsplit('.').next()?.to_ascii_lowercase();
+
+    match extension.as_str() {
+        "jpg" | "jpeg" => Some("image/jpeg"),
+        "png" => Some("image/png"),
+        "gif" => Some("image/gif"),
+        "webp" => Some("image/webp"),
+        "bmp" => Some("image/bmp"),
+        "tif" | "tiff" => Some("image/tiff"),
+        "heic" => Some("image/heic"),
+        "heif" => Some("image/heif"),
+        "avif" => Some("image/avif"),
+        "svg" => Some("image/svg+xml"),
+        _ => None,
+    }
+}
+
+/// A single content part in a user message.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum UserContentPart {
+    /// Plain text content.
+    Text(String),
+    /// An image referenced by URL.
+    Image(UserImage),
+}
+
+impl UserContentPart {
+    /// Creates a text content part.
+    pub fn text(text: impl Into<String>) -> Self {
+        Self::Text(text.into())
+    }
+
+    /// Creates an image content part.
+    pub fn image(image: UserImage) -> Self {
+        Self::Image(image)
+    }
+
+    #[allow(dead_code)]
+    pub(crate) fn fallback_text(&self) -> String {
+        match self {
+            Self::Text(text) => text.clone(),
+            Self::Image(image) => image.fallback_text(),
+        }
+    }
+}
+
+impl From<String> for UserContentPart {
+    fn from(value: String) -> Self {
+        Self::Text(value)
+    }
+}
+
+impl From<&str> for UserContentPart {
+    fn from(value: &str) -> Self {
+        Self::Text(value.to_string())
+    }
+}
+
+impl From<UserImage> for UserContentPart {
+    fn from(value: UserImage) -> Self {
+        Self::Image(value)
+    }
+}
+
 /// The role of a participant in a conversation.
 #[derive(Debug, Clone)]
 pub enum Role {
@@ -107,16 +250,51 @@ impl From<&str> for SystemMessage {
 /// A user message containing input from the human participant.
 #[derive(Debug, Clone)]
 pub struct UserMessage {
-    /// The text content of the user message.
-    pub content: String,
+    /// The content parts of the user message.
+    pub content: Vec<UserContentPart>,
 }
 
 impl UserMessage {
-    /// Creates a new user message with the given content.
+    /// Creates a new user message with a single text part.
     pub fn new(content: impl Into<String>) -> Self {
         Self {
-            content: content.into(),
+            content: vec![UserContentPart::Text(content.into())],
         }
+    }
+
+    /// Creates a new user message from structured content parts.
+    pub fn from_parts(content: impl Into<Vec<UserContentPart>>) -> Self {
+        let mut content = content.into();
+        if content.is_empty() {
+            content.push(UserContentPart::Text(String::new()));
+        }
+        Self { content }
+    }
+
+    /// Appends an additional text part to the user message.
+    pub fn with_text(mut self, content: impl Into<String>) -> Self {
+        self.content.push(UserContentPart::Text(content.into()));
+        self
+    }
+
+    /// Appends an image part to the user message.
+    pub fn with_image(mut self, image: UserImage) -> Self {
+        self.content.push(UserContentPart::Image(image));
+        self
+    }
+
+    /// Appends an image URL part to the user message.
+    pub fn with_image_url(self, image_url: impl Into<String>) -> Self {
+        self.with_image(UserImage::new(image_url))
+    }
+
+    #[allow(dead_code)]
+    pub(crate) fn fallback_text(&self) -> String {
+        self.content
+            .iter()
+            .map(UserContentPart::fallback_text)
+            .collect::<Vec<_>>()
+            .join("\n")
     }
 }
 
@@ -129,6 +307,12 @@ impl From<String> for UserMessage {
 impl From<&str> for UserMessage {
     fn from(value: &str) -> Self {
         Self::new(value)
+    }
+}
+
+impl From<Vec<UserContentPart>> for UserMessage {
+    fn from(value: Vec<UserContentPart>) -> Self {
+        Self::from_parts(value)
     }
 }
 
@@ -241,6 +425,15 @@ impl MessageBuilder<Initial> {
             state: std::marker::PhantomData,
         }
     }
+
+    /// Adds a structured user message and transitions to the conversation state.
+    pub fn user_message(mut self, message: UserMessage) -> MessageBuilder<Conversation> {
+        self.messages.push(Message::User(message));
+        MessageBuilder {
+            messages: self.messages,
+            state: std::marker::PhantomData,
+        }
+    }
 }
 
 impl MessageBuilder<Conversation> {
@@ -255,6 +448,15 @@ impl MessageBuilder<Conversation> {
     /// The builder with the message added.
     pub fn user(mut self, content: impl Into<String>) -> MessageBuilder<Conversation> {
         self.messages.push(Message::User(content.into().into()));
+        MessageBuilder {
+            messages: self.messages,
+            state: std::marker::PhantomData,
+        }
+    }
+
+    /// Adds a structured user message to the conversation.
+    pub fn user_message(mut self, message: UserMessage) -> MessageBuilder<Conversation> {
+        self.messages.push(Message::User(message));
         MessageBuilder {
             messages: self.messages,
             state: std::marker::PhantomData,

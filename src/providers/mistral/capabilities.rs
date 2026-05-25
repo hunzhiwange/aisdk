@@ -13,7 +13,7 @@ model_capabilities! {
         CodestralLatest {
             model_name: "codestral-latest",
             constructor_name: codestral_latest,
-            display_name: "Codestral",
+            display_name: "Codestral (latest)",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Devstral2512 {
@@ -31,7 +31,7 @@ model_capabilities! {
         DevstralMediumLatest {
             model_name: "devstral-medium-latest",
             constructor_name: devstral_medium_latest,
-            display_name: "Devstral 2",
+            display_name: "Devstral 2 (latest)",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DevstralSmall2505 {
@@ -55,7 +55,7 @@ model_capabilities! {
         MagistralMediumLatest {
             model_name: "magistral-medium-latest",
             constructor_name: magistral_medium_latest,
-            display_name: "Magistral Medium",
+            display_name: "Magistral Medium (latest)",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MagistralSmall {
@@ -67,13 +67,13 @@ model_capabilities! {
         Ministral3bLatest {
             model_name: "ministral-3b-latest",
             constructor_name: ministral_3b_latest,
-            display_name: "Ministral 3B",
+            display_name: "Ministral 3B (latest)",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Ministral8bLatest {
             model_name: "ministral-8b-latest",
             constructor_name: ministral_8b_latest,
-            display_name: "Ministral 8B",
+            display_name: "Ministral 8B (latest)",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MistralEmbed {
@@ -97,7 +97,7 @@ model_capabilities! {
         MistralLargeLatest {
             model_name: "mistral-large-latest",
             constructor_name: mistral_large_latest,
-            display_name: "Mistral Large",
+            display_name: "Mistral Large (latest)",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MistralMedium2505 {
@@ -112,11 +112,17 @@ model_capabilities! {
             display_name: "Mistral Medium 3.1",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MistralMedium2604 {
+            model_name: "mistral-medium-2604",
+            constructor_name: mistral_medium_2604,
+            display_name: "Mistral Medium 3.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MistralMediumLatest {
             model_name: "mistral-medium-latest",
             constructor_name: mistral_medium_latest,
-            display_name: "Mistral Medium",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            display_name: "Mistral Medium (latest)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MistralNemo {
             model_name: "mistral-nemo",
@@ -130,11 +136,17 @@ model_capabilities! {
             display_name: "Mistral Small 3.2",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MistralSmall2603 {
+            model_name: "mistral-small-2603",
+            constructor_name: mistral_small_2603,
+            display_name: "Mistral Small 4",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MistralSmallLatest {
             model_name: "mistral-small-latest",
             constructor_name: mistral_small_latest,
-            display_name: "Mistral Small",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            display_name: "Mistral Small (latest)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenMistral7b {
             model_name: "open-mistral-7b",
@@ -163,7 +175,7 @@ model_capabilities! {
         PixtralLargeLatest {
             model_name: "pixtral-large-latest",
             constructor_name: pixtral_large_latest,
-            display_name: "Pixtral Large",
+            display_name: "Pixtral Large (latest)",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

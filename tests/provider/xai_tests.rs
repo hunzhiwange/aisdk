@@ -1,5 +1,5 @@
 //! xAI provider integration tests.
-use aisdk::providers::xai::{Grok3Fast, XAI};
+use aisdk::providers::xai::{Grok43, XAI};
 
 // Include all macro definitions
 include!("macros.rs");
@@ -8,12 +8,12 @@ include!("macros.rs");
 generate_language_model_tests!(
     provider: XAI,
     api_key_var: "XAI_API_KEY",
-    model_struct: Grok3Fast,
-    default_model: XAI::grok_3_fast(),
-    tool_model: XAI::grok_3(),
-    structured_output_model: XAI::grok_3(),
-    reasoning_model: XAI::grok_3_mini(),
-    embedding_model: XAI::grok_3(),
+    model_struct: Grok43,
+    default_model: XAI::grok_4_3(),
+    tool_model: XAI::grok_4_3(),
+    structured_output_model: XAI::grok_4_3(),
+    reasoning_model: XAI::grok_4_3(),
+    embedding_model: XAI::grok_4_3(),
     skip_reasoning: false,
     skip_tool: false,
     skip_structured_output: true,  // xAI doesn't seem to have structured output models

@@ -10,34 +10,34 @@ use crate::providers::vultr::Vultr;
 model_capabilities! {
     provider: Vultr,
     models: {
-        DeepseekR1DistillLlama70b {
-            model_name: "deepseek-r1-distill-llama-70b",
-            constructor_name: deepseek_r1_distill_llama_70b,
-            display_name: "DeepSeek R1 Distill Llama 70B",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        DeepseekV32 {
+            model_name: "DeepSeek-V3.2",
+            constructor_name: deepseek_v3_2,
+            display_name: "DeepSeek V3.2",
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        DeepseekR1DistillQwen32b {
-            model_name: "deepseek-r1-distill-qwen-32b",
-            constructor_name: deepseek_r1_distill_qwen_32b,
-            display_name: "DeepSeek R1 Distill Qwen 32B",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Glm5Fp8 {
+            model_name: "GLM-5-FP8",
+            constructor_name: glm_5_fp8,
+            display_name: "GLM 5 FP8",
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        KimiK25 {
+            model_name: "Kimi-K2.5",
+            constructor_name: kimi_k2_5,
+            display_name: "Kimi K2 Instruct",
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MinimaxM25 {
+            model_name: "MiniMax-M2.5",
+            constructor_name: minimax_m2_5,
+            display_name: "MiniMax M2.5",
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GptOss120b {
             model_name: "gpt-oss-120b",
             constructor_name: gpt_oss_120b,
             display_name: "GPT OSS 120B",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        KimiK2Instruct {
-            model_name: "kimi-k2-instruct",
-            constructor_name: kimi_k2_instruct,
-            display_name: "Kimi K2 Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Qwen25Coder32bInstruct {
-            model_name: "qwen2.5-coder-32b-instruct",
-            constructor_name: qwen2_5_coder_32b_instruct,
-            display_name: "Qwen2.5 Coder 32B Instruct",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

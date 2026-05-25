@@ -3,7 +3,7 @@
 use crate::core::language_model::{
     LanguageModelOptions, LanguageModelResponseContentType, ReasoningEffort, Usage,
 };
-use crate::core::messages::Message;
+use crate::core::messages::{Message, UserContentPart, UserMessage};
 use crate::core::tools::Tool as SdkTool;
 use crate::providers::openai_chat_completions::client::{self, types};
 
@@ -20,7 +20,7 @@ impl From<LanguageModelOptions> for client::ChatCompletionsOptions {
         if let Some(system_prompt) = options.system {
             messages.push(types::ChatMessage {
                 role: types::Role::System,
-                content: Some(system_prompt),
+                content: Some(types::ChatMessageContent::text(system_prompt)),
                 name: None,
                 tool_calls: None,
                 tool_call_id: None,
@@ -132,14 +132,14 @@ impl From<Message> for types::ChatMessage {
         match msg {
             Message::System(s) => types::ChatMessage {
                 role: types::Role::System,
-                content: Some(s.content),
+                content: Some(types::ChatMessageContent::text(s.content)),
                 name: None,
                 tool_calls: None,
                 tool_call_id: None,
             },
             Message::User(u) => types::ChatMessage {
                 role: types::Role::User,
-                content: Some(u.content),
+                content: Some(u.into()),
                 name: None,
                 tool_calls: None,
                 tool_call_id: None,
@@ -147,14 +147,14 @@ impl From<Message> for types::ChatMessage {
             Message::Assistant(a) => match a.content {
                 LanguageModelResponseContentType::Text(text) => types::ChatMessage {
                     role: types::Role::Assistant,
-                    content: Some(text),
+                    content: Some(types::ChatMessageContent::text(text)),
                     name: None,
                     tool_calls: None,
                     tool_call_id: None,
                 },
                 LanguageModelResponseContentType::ToolCall(tool_info) => types::ChatMessage {
                     role: types::Role::Assistant,
-                    content: Some("".to_string()),
+                    content: Some(types::ChatMessageContent::text("")),
                     name: None,
                     tool_calls: Some(vec![types::ToolCall {
                         id: tool_info.tool.id.clone(),
@@ -171,7 +171,9 @@ impl From<Message> for types::ChatMessage {
                     // Include as text with prefix
                     types::ChatMessage {
                         role: types::Role::Assistant,
-                        content: Some(format!("[Reasoning]: {content}")),
+                        content: Some(types::ChatMessageContent::text(format!(
+                            "[Reasoning]: {content}"
+                        ))),
                         name: None,
                         tool_calls: None,
                         tool_call_id: None,
@@ -187,22 +189,47 @@ impl From<Message> for types::ChatMessage {
             },
             Message::Tool(tool_result) => types::ChatMessage {
                 role: types::Role::Tool,
-                content: Some(
+                content: Some(types::ChatMessageContent::text(
                     tool_result
                         .output
                         .unwrap_or_else(|e| serde_json::Value::String(e.to_string()))
                         .to_string(),
-                ),
+                )),
                 name: Some(tool_result.tool.name),
                 tool_calls: None,
                 tool_call_id: Some(tool_result.tool.id),
             },
             Message::Developer(d) => types::ChatMessage {
                 role: types::Role::Developer,
-                content: Some(d),
+                content: Some(types::ChatMessageContent::text(d)),
                 name: None,
                 tool_calls: None,
                 tool_call_id: None,
+            },
+        }
+    }
+}
+
+impl From<UserMessage> for types::ChatMessageContent {
+    fn from(message: UserMessage) -> Self {
+        let parts = message.content;
+
+        if let [UserContentPart::Text(text)] = parts.as_slice() {
+            return types::ChatMessageContent::Text(text.clone());
+        }
+
+        types::ChatMessageContent::Parts(parts.into_iter().map(Into::into).collect())
+    }
+}
+
+impl From<UserContentPart> for types::ChatMessageContentPart {
+    fn from(part: UserContentPart) -> Self {
+        match part {
+            UserContentPart::Text(text) => types::ChatMessageContentPart::Text { text },
+            UserContentPart::Image(image) => types::ChatMessageContentPart::ImageUrl {
+                image_url: types::ChatMessageImageUrl {
+                    url: image.image_url,
+                },
             },
         }
     }
@@ -290,7 +317,12 @@ mod tests {
         let chat_msg: types::ChatMessage = msg.into();
 
         assert_eq!(chat_msg.role, types::Role::System);
-        assert_eq!(chat_msg.content, Some("You are helpful".to_string()));
+        assert_eq!(
+            chat_msg.content,
+            Some(types::ChatMessageContent::Text(
+                "You are helpful".to_string()
+            ))
+        );
         assert!(chat_msg.tool_calls.is_none());
     }
 
@@ -300,7 +332,33 @@ mod tests {
         let chat_msg: types::ChatMessage = msg.into();
 
         assert_eq!(chat_msg.role, types::Role::User);
-        assert_eq!(chat_msg.content, Some("Hello".to_string()));
+        assert_eq!(
+            chat_msg.content,
+            Some(types::ChatMessageContent::Text("Hello".to_string()))
+        );
+    }
+
+    #[test]
+    fn test_message_conversion_multimodal_user() {
+        let msg = Message::User(
+            UserMessage::new("Describe this image").with_image_url("https://example.com/cat.png"),
+        );
+        let chat_msg: types::ChatMessage = msg.into();
+
+        assert_eq!(chat_msg.role, types::Role::User);
+        assert_eq!(
+            chat_msg.content,
+            Some(types::ChatMessageContent::Parts(vec![
+                types::ChatMessageContentPart::Text {
+                    text: "Describe this image".to_string(),
+                },
+                types::ChatMessageContentPart::ImageUrl {
+                    image_url: types::ChatMessageImageUrl {
+                        url: "https://example.com/cat.png".to_string(),
+                    },
+                },
+            ]))
+        );
     }
 
     #[test]
@@ -365,19 +423,52 @@ mod tests {
         assert_eq!(completions_opts.frequency_penalty, Some(0.5));
         assert_eq!(completions_opts.messages.len(), 2);
         assert_eq!(completions_opts.messages[0].role, types::Role::System);
-        assert_eq!(
-            completions_opts.messages[0].content.as_deref(),
-            Some("You are helpful")
-        );
+        assert!(matches!(
+            completions_opts.messages[0].content.as_ref(),
+            Some(types::ChatMessageContent::Text(text)) if text == "You are helpful"
+        ));
         assert_eq!(completions_opts.messages[1].role, types::Role::User);
-        assert_eq!(
-            completions_opts.messages[1].content.as_deref(),
-            Some("Hello")
-        );
+        assert!(matches!(
+            completions_opts.messages[1].content.as_ref(),
+            Some(types::ChatMessageContent::Text(text)) if text == "Hello"
+        ));
         assert!(matches!(
             completions_opts.stop,
             Some(types::StopSequences::Single(sequence)) if sequence == "END"
         ));
+    }
+
+    #[test]
+    fn test_multimodal_user_message_maps_to_openai_compatible_chat_body() {
+        let options = LanguageModelOptions {
+            messages: vec![
+                Message::User(
+                    UserMessage::new("Describe this image")
+                        .with_image_url("https://example.com/cat.png"),
+                )
+                .into(),
+            ],
+            ..Default::default()
+        };
+
+        let completions_opts: client::ChatCompletionsOptions = options.into();
+        let request = serde_json::to_value(&completions_opts).expect("request should serialize");
+
+        assert_eq!(request["messages"][0]["role"], json!("user"));
+        assert_eq!(
+            request["messages"][0]["content"][0],
+            json!({
+                "type": "text",
+                "text": "Describe this image"
+            })
+        );
+        assert_eq!(
+            request["messages"][0]["content"][1],
+            json!({
+                "type": "image_url",
+                "image_url": { "url": "https://example.com/cat.png" }
+            })
+        );
     }
 
     #[test]

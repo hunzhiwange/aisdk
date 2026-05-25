@@ -28,5 +28,11 @@ model_capabilities! {
             display_name: "Step 3.5 Flash",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Step35Flash2603 {
+            model_name: "step-3.5-flash-2603",
+            constructor_name: step_3_5_flash_2603,
+            display_name: "Step 3.5 Flash 2603",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
     }
 }

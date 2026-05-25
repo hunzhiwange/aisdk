@@ -10,17 +10,17 @@ use crate::providers::inception::Inception;
 model_capabilities! {
     provider: Inception,
     models: {
-        Mercury {
-            model_name: "mercury",
-            constructor_name: mercury,
-            display_name: "Mercury",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Mercury2 {
+            model_name: "mercury-2",
+            constructor_name: mercury_2,
+            display_name: "Mercury 2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MercuryCoder {
-            model_name: "mercury-coder",
-            constructor_name: mercury_coder,
-            display_name: "Mercury Coder",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        MercuryEdit2 {
+            model_name: "mercury-edit-2",
+            constructor_name: mercury_edit_2,
+            display_name: "Mercury Edit 2",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport]
         },
     }
 }

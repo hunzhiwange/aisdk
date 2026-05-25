@@ -238,6 +238,66 @@ model_capabilities! {
             display_name: "Qwen3-VL Plus",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Qwen35122bA10b {
+            model_name: "qwen3.5-122b-a10b",
+            constructor_name: qwen3_5_122b_a10b,
+            display_name: "Qwen3.5 122B-A10B",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen3527b {
+            model_name: "qwen3.5-27b",
+            constructor_name: qwen3_5_27b,
+            display_name: "Qwen3.5 27B",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen3535bA3b {
+            model_name: "qwen3.5-35b-a3b",
+            constructor_name: qwen3_5_35b_a3b,
+            display_name: "Qwen3.5 35B-A3B",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen35397bA17b {
+            model_name: "qwen3.5-397b-a17b",
+            constructor_name: qwen3_5_397b_a17b,
+            display_name: "Qwen3.5 397B-A17B",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen35Plus {
+            model_name: "qwen3.5-plus",
+            constructor_name: qwen3_5_plus,
+            display_name: "Qwen3.5 Plus",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen3627b {
+            model_name: "qwen3.6-27b",
+            constructor_name: qwen3_6_27b,
+            display_name: "Qwen3.6 27B",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen3635bA3b {
+            model_name: "qwen3.6-35b-a3b",
+            constructor_name: qwen3_6_35b_a3b,
+            display_name: "Qwen3.6 35B-A3B",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen36MaxPreview {
+            model_name: "qwen3.6-max-preview",
+            constructor_name: qwen3_6_max_preview,
+            display_name: "Qwen3.6 Max Preview",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen36Plus {
+            model_name: "qwen3.6-plus",
+            constructor_name: qwen3_6_plus,
+            display_name: "Qwen3.6 Plus",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen37Max {
+            model_name: "qwen3.7-max",
+            constructor_name: qwen3_7_max,
+            display_name: "Qwen3.7 Max",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         QwqPlus {
             model_name: "qwq-plus",
             constructor_name: qwq_plus,

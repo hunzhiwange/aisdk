@@ -22,6 +22,12 @@ model_capabilities! {
             display_name: "MiniMax-M2.1",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        HfMinimaxaiMinimaxM25 {
+            model_name: "hf:MiniMaxAI/MiniMax-M2.5",
+            constructor_name: hf_minimaxai_minimax_m2_5,
+            display_name: "MiniMax-M2.5",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         HfQwenQwen25Coder32bInstruct {
             model_name: "hf:Qwen/Qwen2.5-Coder-32B-Instruct",
             constructor_name: hf_qwen_qwen2_5_coder_32b_instruct,
@@ -45,6 +51,12 @@ model_capabilities! {
             constructor_name: hf_qwen_qwen3_coder_480b_a35b_instruct,
             display_name: "Qwen 3 Coder 480B",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        HfQwenQwen35397bA17b {
+            model_name: "hf:Qwen/Qwen3.5-397B-A17B",
+            constructor_name: hf_qwen_qwen3_5_397b_a17b,
+            display_name: "Qwen3.5-97B-A17B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         HfDeepseekAiDeepseekR1 {
             model_name: "hf:deepseek-ai/DeepSeek-R1",
@@ -142,11 +154,23 @@ model_capabilities! {
             display_name: "Kimi K2.5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        HfMoonshotaiKimiK26 {
+            model_name: "hf:moonshotai/Kimi-K2.6",
+            constructor_name: hf_moonshotai_kimi_k2_6,
+            display_name: "Kimi K2.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         HfNvidiaKimiK25Nvfp4 {
             model_name: "hf:nvidia/Kimi-K2.5-NVFP4",
             constructor_name: hf_nvidia_kimi_k2_5_nvfp4,
             display_name: "Kimi K2.5 (NVFP4)",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        HfNvidiaNvidiaNemotron3Super120bA12bNvfp4 {
+            model_name: "hf:nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
+            constructor_name: hf_nvidia_nvidia_nemotron_3_super_120b_a12b_nvfp4,
+            display_name: "Nemotron 3 Super 120B",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         HfOpenaiGptOss120b {
             model_name: "hf:openai/gpt-oss-120b",
@@ -165,6 +189,24 @@ model_capabilities! {
             constructor_name: hf_zai_org_glm_4_7,
             display_name: "GLM 4.7",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        HfZaiOrgGlm47Flash {
+            model_name: "hf:zai-org/GLM-4.7-Flash",
+            constructor_name: hf_zai_org_glm_4_7_flash,
+            display_name: "GLM-4.7-Flash",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        HfZaiOrgGlm5 {
+            model_name: "hf:zai-org/GLM-5",
+            constructor_name: hf_zai_org_glm_5,
+            display_name: "GLM-5",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        HfZaiOrgGlm51 {
+            model_name: "hf:zai-org/GLM-5.1",
+            constructor_name: hf_zai_org_glm_5_1,
+            display_name: "GLM 5.1",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

@@ -22,6 +22,12 @@ model_capabilities! {
             display_name: "MiniMaxAI/MiniMax-M2.1",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MinimaxaiMinimaxM25 {
+            model_name: "MiniMaxAI/MiniMax-M2.5",
+            constructor_name: minimaxai_minimax_m2_5,
+            display_name: "MiniMaxAI/MiniMax-M2.5",
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         QwenQwq32b {
             model_name: "Qwen/QwQ-32B",
             constructor_name: qwen_qwq_32b,
@@ -298,6 +304,18 @@ model_capabilities! {
             display_name: "deepseek-ai/DeepSeek-V3.2-Exp",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        DeepseekAiDeepseekV4Flash {
+            model_name: "deepseek-ai/deepseek-v4-flash",
+            constructor_name: deepseek_ai_deepseek_v4_flash,
+            display_name: "DeepSeek V4 Flash",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekAiDeepseekV4Pro {
+            model_name: "deepseek-ai/deepseek-v4-pro",
+            constructor_name: deepseek_ai_deepseek_v4_pro,
+            display_name: "DeepSeek V4 Pro",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         DeepseekAiDeepseekVl2 {
             model_name: "deepseek-ai/deepseek-vl2",
             constructor_name: deepseek_ai_deepseek_vl2,
@@ -350,6 +368,12 @@ model_capabilities! {
             model_name: "moonshotai/Kimi-K2.5",
             constructor_name: moonshotai_kimi_k2_5,
             display_name: "moonshotai/Kimi-K2.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MoonshotaiKimiK26 {
+            model_name: "moonshotai/Kimi-K2.6",
+            constructor_name: moonshotai_kimi_k2_6,
+            display_name: "moonshotai/Kimi-K2.6",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         NexAgiDeepseekV31NexN1 {
@@ -429,6 +453,18 @@ model_capabilities! {
             constructor_name: zai_org_glm_5,
             display_name: "zai-org/GLM-5",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm51 {
+            model_name: "zai-org/GLM-5.1",
+            constructor_name: zai_org_glm_5_1,
+            display_name: "zai-org/GLM-5.1",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm5vTurbo {
+            model_name: "zai-org/GLM-5V-Turbo",
+            constructor_name: zai_org_glm_5v_turbo,
+            display_name: "zai-org/GLM-5V-Turbo",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

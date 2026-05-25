@@ -58,11 +58,35 @@ model_capabilities! {
             display_name: "GLM-4.7-Flash",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Glm47Flashx {
+            model_name: "glm-4.7-flashx",
+            constructor_name: glm_4_7_flashx,
+            display_name: "GLM-4.7-FlashX",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Glm5 {
             model_name: "glm-5",
             constructor_name: glm_5,
             display_name: "GLM-5",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm5Turbo {
+            model_name: "glm-5-turbo",
+            constructor_name: glm_5_turbo,
+            display_name: "GLM-5-Turbo",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm51 {
+            model_name: "glm-5.1",
+            constructor_name: glm_5_1,
+            display_name: "GLM-5.1",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm5vTurbo {
+            model_name: "glm-5v-turbo",
+            constructor_name: glm_5v_turbo,
+            display_name: "GLM-5V-Turbo",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }
 }

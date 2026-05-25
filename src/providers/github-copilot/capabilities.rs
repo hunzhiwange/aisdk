@@ -28,22 +28,22 @@ model_capabilities! {
             display_name: "Claude Opus 4.6",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        ClaudeOpus41 {
-            model_name: "claude-opus-41",
-            constructor_name: claude_opus_41,
-            display_name: "Claude Opus 4.1",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport]
-        },
-        ClaudeSonnet4 {
-            model_name: "claude-sonnet-4",
-            constructor_name: claude_sonnet_4,
-            display_name: "Claude Sonnet 4",
+        ClaudeOpus47 {
+            model_name: "claude-opus-4.7",
+            constructor_name: claude_opus_4_7,
+            display_name: "Claude Opus 4.7",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ClaudeSonnet45 {
             model_name: "claude-sonnet-4.5",
             constructor_name: claude_sonnet_4_5,
             display_name: "Claude Sonnet 4.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ClaudeSonnet46 {
+            model_name: "claude-sonnet-4.6",
+            constructor_name: claude_sonnet_4_6,
+            display_name: "Claude Sonnet 4.6",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gemini25Pro {
@@ -58,10 +58,16 @@ model_capabilities! {
             display_name: "Gemini 3 Flash",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        Gemini3ProPreview {
-            model_name: "gemini-3-pro-preview",
-            constructor_name: gemini_3_pro_preview,
-            display_name: "Gemini 3 Pro Preview",
+        Gemini31ProPreview {
+            model_name: "gemini-3.1-pro-preview",
+            constructor_name: gemini_3_1_pro_preview,
+            display_name: "Gemini 3.1 Pro Preview",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gemini35Flash {
+            model_name: "gemini-3.5-flash",
+            constructor_name: gemini_3_5_flash,
+            display_name: "Gemini 3.5 Flash",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Gpt41 {
@@ -76,40 +82,10 @@ model_capabilities! {
             display_name: "GPT-4o",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Gpt5 {
-            model_name: "gpt-5",
-            constructor_name: gpt_5,
-            display_name: "GPT-5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Gpt5Mini {
             model_name: "gpt-5-mini",
             constructor_name: gpt_5_mini,
             display_name: "GPT-5-mini",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt51 {
-            model_name: "gpt-5.1",
-            constructor_name: gpt_5_1,
-            display_name: "GPT-5.1",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt51Codex {
-            model_name: "gpt-5.1-codex",
-            constructor_name: gpt_5_1_codex,
-            display_name: "GPT-5.1-Codex",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt51CodexMax {
-            model_name: "gpt-5.1-codex-max",
-            constructor_name: gpt_5_1_codex_max,
-            display_name: "GPT-5.1-Codex-max",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt51CodexMini {
-            model_name: "gpt-5.1-codex-mini",
-            constructor_name: gpt_5_1_codex_mini,
-            display_name: "GPT-5.1-Codex-mini",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gpt52 {
@@ -122,6 +98,30 @@ model_capabilities! {
             model_name: "gpt-5.2-codex",
             constructor_name: gpt_5_2_codex,
             display_name: "GPT-5.2-Codex",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt53Codex {
+            model_name: "gpt-5.3-codex",
+            constructor_name: gpt_5_3_codex,
+            display_name: "GPT-5.3-Codex",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt54 {
+            model_name: "gpt-5.4",
+            constructor_name: gpt_5_4,
+            display_name: "GPT-5.4",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt54Mini {
+            model_name: "gpt-5.4-mini",
+            constructor_name: gpt_5_4_mini,
+            display_name: "GPT-5.4 Mini",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt55 {
+            model_name: "gpt-5.5",
+            constructor_name: gpt_5_5,
+            display_name: "GPT-5.5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GrokCodeFast1 {

@@ -352,7 +352,7 @@ mod tests {
     use super::*;
     use crate::core::language_model::ReasoningEffort;
     use crate::core::tools::{Tool, ToolExecute};
-    use crate::core::{DynamicModel, LanguageModelRequest, Message};
+    use crate::core::{DynamicModel, LanguageModelRequest, Message, UserImage, UserMessage};
     use crate::providers::anthropic::ANTHROPIC_API_VERSION;
     use futures::StreamExt;
     use schemars::{JsonSchema, schema_for};
@@ -629,6 +629,54 @@ mod tests {
                 "x-trace-id".to_string(),
                 "trace-123".to_string(),
             )]))
+            .build()
+            .generate_text()
+            .await
+            .expect("request should succeed");
+
+        assert_eq!(response.text().as_deref(), Some("ok"));
+    }
+
+    #[tokio::test]
+    async fn test_generate_text_sends_multimodal_user_message() {
+        let server = MockServer::start().await;
+
+        Mock::given(method("POST"))
+            .and(path("/messages"))
+            .and(header("x-api-key", "test-key"))
+            .and(header("anthropic-version", ANTHROPIC_API_VERSION))
+            .and(body_partial_json(json!({
+                "model": "claude-sonnet-4-0",
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Describe this image"
+                            },
+                            {
+                                "type": "image",
+                                "source": {
+                                    "type": "url",
+                                    "url": "https://example.com/cat.png"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            })))
+            .respond_with(anthropic_message_response("ok"))
+            .expect(1)
+            .mount(&server)
+            .await;
+
+        let response = LanguageModelRequest::builder()
+            .model(test_model(server.uri()))
+            .messages(vec![Message::User(
+                UserMessage::new("Describe this image")
+                    .with_image(UserImage::new("https://example.com/cat.png")),
+            )])
             .build()
             .generate_text()
             .await

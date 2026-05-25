@@ -16,6 +16,18 @@ model_capabilities! {
             display_name: "MiniMax-M2.1",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MinimaxaiMinimaxM25 {
+            model_name: "MiniMaxAI/MiniMax-M2.5",
+            constructor_name: minimaxai_minimax_m2_5,
+            display_name: "MiniMax-M2.5",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MinimaxaiMinimaxM27 {
+            model_name: "MiniMaxAI/MiniMax-M2.7",
+            constructor_name: minimaxai_minimax_m2_7,
+            display_name: "MiniMax-M2.7",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         QwenQwen3235bA22bThinking2507 {
             model_name: "Qwen/Qwen3-235B-A22B-Thinking-2507",
             constructor_name: qwen_qwen3_235b_a22b_thinking_2507,
@@ -26,6 +38,12 @@ model_capabilities! {
             model_name: "Qwen/Qwen3-Coder-480B-A35B-Instruct",
             constructor_name: qwen_qwen3_coder_480b_a35b_instruct,
             display_name: "Qwen3-Coder-480B-A35B-Instruct",
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        QwenQwen3CoderNext {
+            model_name: "Qwen/Qwen3-Coder-Next",
+            constructor_name: qwen_qwen3_coder_next,
+            display_name: "Qwen3-Coder-Next",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenQwen3Embedding4b {
@@ -52,6 +70,12 @@ model_capabilities! {
             display_name: "Qwen3-Next-80B-A3B-Thinking",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        QwenQwen35397bA17b {
+            model_name: "Qwen/Qwen3.5-397B-A17B",
+            constructor_name: qwen_qwen3_5_397b_a17b,
+            display_name: "Qwen3.5-397B-A17B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         XiaomimimoMimoV2Flash {
             model_name: "XiaomiMiMo/MiMo-V2-Flash",
             constructor_name: xiaomimimo_mimo_v2_flash,
@@ -69,6 +93,12 @@ model_capabilities! {
             constructor_name: deepseek_ai_deepseek_v3_2,
             display_name: "DeepSeek-V3.2",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekAiDeepseekV4Pro {
+            model_name: "deepseek-ai/DeepSeek-V4-Pro",
+            constructor_name: deepseek_ai_deepseek_v4_pro,
+            display_name: "DeepSeek V4 Pro",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MoonshotaiKimiK2Instruct {
             model_name: "moonshotai/Kimi-K2-Instruct",
@@ -94,6 +124,12 @@ model_capabilities! {
             display_name: "Kimi-K2.5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        MoonshotaiKimiK26 {
+            model_name: "moonshotai/Kimi-K2.6",
+            constructor_name: moonshotai_kimi_k2_6,
+            display_name: "Kimi-K2.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         ZaiOrgGlm47 {
             model_name: "zai-org/GLM-4.7",
             constructor_name: zai_org_glm_4_7,
@@ -110,6 +146,12 @@ model_capabilities! {
             model_name: "zai-org/GLM-5",
             constructor_name: zai_org_glm_5,
             display_name: "GLM-5",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm51 {
+            model_name: "zai-org/GLM-5.1",
+            constructor_name: zai_org_glm_5_1,
+            display_name: "GLM-5.1",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

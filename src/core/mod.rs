@@ -10,6 +10,7 @@
 pub mod capabilities;
 pub mod client;
 pub mod embedding_model;
+pub mod image_model;
 pub mod language_model;
 pub mod messages;
 pub mod provider;
@@ -29,6 +30,13 @@ pub use embedding_model::EmbeddingModel;
 #[cfg(feature = "embedding-model-request")]
 pub use embedding_model::EmbeddingModelRequest;
 
-pub use messages::{AssistantMessage, Message, Messages, Role, SystemMessage, UserMessage};
+pub use image_model::{ImageModel, ImageModelResponse, ImageModelUsage, ImageModelWarning};
+#[cfg(feature = "image-model-request")]
+pub use image_model::{ImageModelOptions, ImageModelRequest};
+
+pub use messages::{
+    AssistantMessage, Message, Messages, Role, SystemMessage, UserContentPart, UserImage,
+    UserImageDetail, UserMessage,
+};
 pub use provider::Provider;
 pub use tools::{Tool, ToolCallInfo, ToolContext, ToolResultInfo};

@@ -18,10 +18,11 @@ categories = ["api-bindings", "asynchronous"]
 name = "aisdk"
 
 [features]
-default = ["language-model-request", "embedding-model-request"]
-full = ["language-model-request", "embedding-model-request", "prompt", "openai", "openaicompatible", "openaichatcompletions", "anthropic", "groq", "vercel", "google", "openrouter", "deepseek", "amazon-bedrock", "togetherai", "xai", "mistral", "abacus", "aihubmix", "alibaba", "alibaba-cn", "bailing", "baseten", "chutes", "cloudflare-ai-gateway", "cortecs", "firmware", "fireworks-ai", "friendli", "fastrouter", "github-copilot", "github-models", "helicone", "huggingface", "iflowcn", "inception", "inference", "io-net", "llama", "lmstudio", "lucidquery", "moark", "modelscope", "moonshotai", "moonshotai-cn", "morph", "nano-gpt", "nebius", "nova", "novita-ai", "nvidia", "ollama-cloud", "opencode", "ovhcloud", "poe", "privatemode-ai", "requesty", "scaleway", "siliconflow", "siliconflow-cn", "submodel", "synthetic", "upstage", "vultr", "wandb", "xiaomi", "zai", "zai-coding-plan", "zenmux", "zhipuai", "zhipuai-coding-plan", "302ai", "berget", "cloudflare-workers-ai", "jiekou", "kuae-cloud-coding-plan", "stackit", "stepfun"]
+default = ["language-model-request", "embedding-model-request", "image-model-request"]
+full = ["language-model-request", "embedding-model-request", "image-model-request", "prompt", "openai", "openaicompatible", "openaichatcompletions", "anthropic", "groq", "vercel", "google", "openrouter", "deepseek", "amazon-bedrock", "togetherai", "xai", "mistral", "abacus", "aihubmix", "alibaba", "alibaba-cn", "bailing", "baseten", "chutes", "cloudflare-ai-gateway", "cortecs", "firmware", "fireworks-ai", "friendli", "fastrouter", "github-copilot", "github-models", "helicone", "huggingface", "iflowcn", "inception", "inference", "io-net", "llama", "lmstudio", "lucidquery", "moark", "modelscope", "moonshotai", "moonshotai-cn", "morph", "nano-gpt", "nebius", "nova", "novita-ai", "nvidia", "ollama-cloud", "opencode", "ovhcloud", "poe", "privatemode-ai", "requesty", "scaleway", "siliconflow", "siliconflow-cn", "submodel", "synthetic", "upstage", "vultr", "wandb", "xiaomi", "zai", "zai-coding-plan", "zenmux", "zhipuai", "zhipuai-coding-plan", "302ai", "berget", "cloudflare-workers-ai", "jiekou", "kuae-cloud-coding-plan", "stackit", "stepfun"]
 language-model-request = []
 embedding-model-request = []
+image-model-request = []
 test-access = []
 jitter = ["dep:fastrand"]
 prompt = ["tera", "glob"]
@@ -113,12 +114,13 @@ thiserror = "2.0.12"
 derive_builder = "0.20.2"
 futures = "0.3"
 tokio = { version = "1.0", features = ["rt-multi-thread", "macros"] }
-reqwest = { version = "0.12", default-features = false, features = ["json", "stream", "rustls-tls"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "stream", "multipart", "rustls-tls"] }
 reqwest-eventsource = "0.6.0"
 uuid = { version = "1.0", features = ["v4"] }
 axum = { version = ">=0.7, <0.9", optional = true }
 fastrand = { version = "2", optional = true }
 parking_lot = "0.12.5"
+base64 = "0.22.1"
 aisdk-macros = { package = "vibewindow-aisdk-macros", version = "0.3.0", path = "./macros" }
 
 [dev-dependencies]

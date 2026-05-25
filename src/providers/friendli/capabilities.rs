@@ -10,22 +10,10 @@ use crate::providers::friendli::Friendli;
 model_capabilities! {
     provider: Friendli,
     models: {
-        LgaiExaoneExaone40132b {
-            model_name: "LGAI-EXAONE/EXAONE-4.0.1-32B",
-            constructor_name: lgai_exaone_exaone_4_0_1_32b,
-            display_name: "EXAONE 4.0.1 32B",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        LgaiExaoneKExaone236bA23b {
-            model_name: "LGAI-EXAONE/K-EXAONE-236B-A23B",
-            constructor_name: lgai_exaone_k_exaone_236b_a23b,
-            display_name: "K EXAONE 236B A23B",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MinimaxaiMinimaxM21 {
-            model_name: "MiniMaxAI/MiniMax-M2.1",
-            constructor_name: minimaxai_minimax_m2_1,
-            display_name: "MiniMax M2.1",
+        MinimaxaiMinimaxM25 {
+            model_name: "MiniMaxAI/MiniMax-M2.5",
+            constructor_name: minimaxai_minimax_m2_5,
+            display_name: "MiniMax-M2.5",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenQwen3235bA22bInstruct2507 {
@@ -46,16 +34,16 @@ model_capabilities! {
             display_name: "Llama 3.3 70B Instruct",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        ZaiOrgGlm47 {
-            model_name: "zai-org/GLM-4.7",
-            constructor_name: zai_org_glm_4_7,
-            display_name: "GLM 4.7",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         ZaiOrgGlm5 {
             model_name: "zai-org/GLM-5",
             constructor_name: zai_org_glm_5,
-            display_name: "GLM 5",
+            display_name: "GLM-5",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm51 {
+            model_name: "zai-org/GLM-5.1",
+            constructor_name: zai_org_glm_5_1,
+            display_name: "GLM-5.1",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

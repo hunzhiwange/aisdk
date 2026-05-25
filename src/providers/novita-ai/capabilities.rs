@@ -88,6 +88,18 @@ model_capabilities! {
             display_name: "DeepSeek R1 Distill LLama 70B",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
         },
+        DeepseekDeepseekR1DistillQwen14b {
+            model_name: "deepseek/deepseek-r1-distill-qwen-14b",
+            constructor_name: deepseek_deepseek_r1_distill_qwen_14b,
+            display_name: "DeepSeek R1 Distill Qwen 14B",
+            capabilities: [TextInputSupport, TextOutputSupport]
+        },
+        DeepseekDeepseekR1DistillQwen32b {
+            model_name: "deepseek/deepseek-r1-distill-qwen-32b",
+            constructor_name: deepseek_deepseek_r1_distill_qwen_32b,
+            display_name: "DeepSeek R1 Distill Qwen 32B",
+            capabilities: [TextInputSupport, TextOutputSupport]
+        },
         DeepseekDeepseekR1Turbo {
             model_name: "deepseek/deepseek-r1-turbo",
             constructor_name: deepseek_deepseek_r1_turbo,
@@ -130,11 +142,41 @@ model_capabilities! {
             display_name: "Deepseek V3.2 Exp",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        DeepseekDeepseekV4Flash {
+            model_name: "deepseek/deepseek-v4-flash",
+            constructor_name: deepseek_deepseek_v4_flash,
+            display_name: "DeepSeek V4 Flash",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekDeepseekV4Pro {
+            model_name: "deepseek/deepseek-v4-pro",
+            constructor_name: deepseek_deepseek_v4_pro,
+            display_name: "DeepSeek V4 Pro",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GoogleGemma312bIt {
+            model_name: "google/gemma-3-12b-it",
+            constructor_name: google_gemma_3_12b_it,
+            display_name: "Gemma 3 12B",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
+        },
         GoogleGemma327bIt {
             model_name: "google/gemma-3-27b-it",
             constructor_name: google_gemma_3_27b_it,
             display_name: "Gemma 3 27B",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
+        },
+        GoogleGemma426bA4bIt {
+            model_name: "google/gemma-4-26b-a4b-it",
+            constructor_name: google_gemma_4_26b_a4b_it,
+            display_name: "Gemma 4 26B A4B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GoogleGemma431bIt {
+            model_name: "google/gemma-4-31b-it",
+            constructor_name: google_gemma_4_31b_it,
+            display_name: "Gemma 4 31B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GrypheMythomaxL213b {
             model_name: "gryphe/mythomax-l2-13b",
@@ -142,10 +184,16 @@ model_capabilities! {
             display_name: "Mythomax L2 13B",
             capabilities: [TextInputSupport, TextOutputSupport]
         },
-        KwaipilotKatCoder {
-            model_name: "kwaipilot/kat-coder",
-            constructor_name: kwaipilot_kat_coder,
-            display_name: "KAT-Coder-Pro V1(Free)",
+        InclusionaiLing261t {
+            model_name: "inclusionai/ling-2.6-1t",
+            constructor_name: inclusionai_ling_2_6_1t,
+            display_name: "Ling-2.6-1T",
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        InclusionaiLing26Flash {
+            model_name: "inclusionai/ling-2.6-flash",
+            constructor_name: inclusionai_ling_2_6_flash,
+            display_name: "Ling-2.6-flash",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         KwaipilotKatCoderPro {
@@ -170,6 +218,12 @@ model_capabilities! {
             model_name: "meta-llama/llama-3.1-8b-instruct",
             constructor_name: meta_llama_llama_3_1_8b_instruct,
             display_name: "Llama 3.1 8B Instruct",
+            capabilities: [TextInputSupport, TextOutputSupport]
+        },
+        MetaLlamaLlama323bInstruct {
+            model_name: "meta-llama/llama-3.2-3b-instruct",
+            constructor_name: meta_llama_llama_3_2_3b_instruct,
+            display_name: "Llama 3.2 3B Instruct",
             capabilities: [TextInputSupport, TextOutputSupport]
         },
         MetaLlamaLlama3370bInstruct {
@@ -214,6 +268,18 @@ model_capabilities! {
             display_name: "MiniMax M2.5",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MinimaxMinimaxM25Highspeed {
+            model_name: "minimax/minimax-m2.5-highspeed",
+            constructor_name: minimax_minimax_m2_5_highspeed,
+            display_name: "MiniMax M2.5 Highspeed",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MinimaxMinimaxM27 {
+            model_name: "minimax/minimax-m2.7",
+            constructor_name: minimax_minimax_m2_7,
+            display_name: "MiniMax M2.7",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MinimaxaiMinimaxM180k {
             model_name: "minimaxai/minimax-m1-80k",
             constructor_name: minimaxai_minimax_m1_80k,
@@ -248,6 +314,12 @@ model_capabilities! {
             model_name: "moonshotai/kimi-k2.5",
             constructor_name: moonshotai_kimi_k2_5,
             display_name: "Kimi K2.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        MoonshotaiKimiK26 {
+            model_name: "moonshotai/kimi-k2.6",
+            constructor_name: moonshotai_kimi_k2_6,
+            display_name: "Kimi K2.6",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         NousresearchHermes2ProLlama38b {
@@ -418,35 +490,53 @@ model_capabilities! {
             display_name: "qwen/qwen3-vl-8b-instruct",
             capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        QwenQwen35122bA10b {
+            model_name: "qwen/qwen3.5-122b-a10b",
+            constructor_name: qwen_qwen3_5_122b_a10b,
+            display_name: "Qwen3.5-122B-A10B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen3527b {
+            model_name: "qwen/qwen3.5-27b",
+            constructor_name: qwen_qwen3_5_27b,
+            display_name: "Qwen3.5-27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen3535bA3b {
+            model_name: "qwen/qwen3.5-35b-a3b",
+            constructor_name: qwen_qwen3_5_35b_a3b,
+            display_name: "Qwen3.5-35B-A3B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen35397bA17b {
+            model_name: "qwen/qwen3.5-397b-a17b",
+            constructor_name: qwen_qwen3_5_397b_a17b,
+            display_name: "Qwen3.5-397B-A17B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         Sao10kL38bSthenoV32 {
-            model_name: "sao10k/L3-8B-Stheno-v3.2",
+            model_name: "sao10K/L3-8B-stheno-v3.2",
             constructor_name: sao10k_l3_8b_stheno_v3_2,
             display_name: "L3 8B Stheno V3.2",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Sao10kL370bEuryaleV21 {
-            model_name: "sao10k/l3-70b-euryale-v2.1",
+            model_name: "sao10K/l3-70b-euryale-v2.1",
             constructor_name: sao10k_l3_70b_euryale_v2_1,
             display_name: "L3 70B Euryale V2.1	",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Sao10kL38bLunaris {
-            model_name: "sao10k/l3-8b-lunaris",
+            model_name: "sao10K/l3-8b-lunaris",
             constructor_name: sao10k_l3_8b_lunaris,
             display_name: "Sao10k L3 8B Lunaris	",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport]
         },
         Sao10kL3170bEuryaleV22 {
-            model_name: "sao10k/l31-70b-euryale-v2.2",
+            model_name: "sao10K/l31-70b-euryale-v2.2",
             constructor_name: sao10k_l31_70b_euryale_v2_2,
             display_name: "L31 70B Euryale V2.2",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        SkyworkR1v4Lite {
-            model_name: "skywork/r1v4-lite",
-            constructor_name: skywork_r1v4_lite,
-            display_name: "Skywork R1V4-Lite",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
         },
         XiaomimimoMimoV2Flash {
             model_name: "xiaomimimo/mimo-v2-flash",
@@ -506,6 +596,12 @@ model_capabilities! {
             model_name: "zai-org/glm-5",
             constructor_name: zai_org_glm_5,
             display_name: "GLM-5",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm51 {
+            model_name: "zai-org/glm-5.1",
+            constructor_name: zai_org_glm_5_1,
+            display_name: "GLM-5.1",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

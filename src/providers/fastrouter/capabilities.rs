@@ -94,5 +94,11 @@ model_capabilities! {
             display_name: "Grok 4",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        ZAiGlm5 {
+            model_name: "z-ai/glm-5",
+            constructor_name: z_ai_glm_5,
+            display_name: "GLM-5",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
     }
 }

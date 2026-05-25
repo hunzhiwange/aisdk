@@ -4,11 +4,34 @@ use crate::core::embedding_model::EmbeddingModelOptions;
 use crate::core::language_model::{
     LanguageModelOptions, LanguageModelResponseContentType, ReasoningEffort, Usage,
 };
-use crate::core::messages::Message;
+use crate::core::messages::{Message, UserContentPart, UserImageDetail};
 use crate::core::tools::Tool;
 use crate::providers::openai::client::{self, types};
 use schemars::Schema;
 use serde_json::Value;
+
+impl From<UserImageDetail> for types::ImageDetail {
+    fn from(value: UserImageDetail) -> Self {
+        match value {
+            UserImageDetail::Auto => types::ImageDetail::Auto,
+            UserImageDetail::Low => types::ImageDetail::Low,
+            UserImageDetail::High => types::ImageDetail::High,
+        }
+    }
+}
+
+impl From<UserContentPart> for types::ContentType {
+    fn from(value: UserContentPart) -> Self {
+        match value {
+            UserContentPart::Text(text) => types::ContentType::InputText { text },
+            UserContentPart::Image(image) => types::ContentType::InputImage {
+                detail: image.detail.into(),
+                file_id: None,
+                image_url: Some(image.image_url),
+            },
+        }
+    }
+}
 
 impl From<Tool> for types::ToolParams {
     fn from(value: Tool) -> Self {
@@ -141,7 +164,7 @@ impl From<Message> for Option<types::InputItem> {
                 _ => None,
             },
             Message::User(u) => Some(types::InputItem::Item(types::MessageItem::InputMessage {
-                content: vec![types::ContentType::InputText { text: u.content }],
+                content: u.content.into_iter().map(Into::into).collect(),
                 role: types::Role::User,
                 type_: "message".to_string(),
             })),
@@ -223,6 +246,7 @@ mod tests {
         LanguageModelOptions, ReasoningEffort as LMReasoningEffort, Usage,
     };
     use crate::core::tools::{Tool, ToolExecute, ToolList};
+    use crate::core::{UserImage, UserImageDetail, UserMessage};
     use schemars::{JsonSchema, schema_for};
     use serde::{Deserialize, Serialize};
     use serde_json::json;
@@ -317,6 +341,41 @@ mod tests {
         assert_eq!(strict, Some(false));
         assert_eq!(schema["type"], json!("object"));
         assert_eq!(schema["properties"]["answer"]["type"], json!("string"));
+    }
+
+    #[test]
+    fn test_multimodal_user_message_maps_to_openai_body() {
+        let options = LanguageModelOptions {
+            messages: vec![
+                Message::User(UserMessage::new("Describe this image").with_image(
+                    UserImage::new("https://example.com/cat.png").detail(UserImageDetail::High),
+                ))
+                .into(),
+            ],
+            ..Default::default()
+        };
+
+        let req: OpenAILanguageModelOptions = options.into();
+        let input = req.input.expect("input should be present");
+        let Input::InputItemList(items) = input else {
+            panic!("expected input item list")
+        };
+
+        match &items[0] {
+            InputItem::Item(MessageItem::InputMessage { role, content, .. }) => {
+                assert_eq!(role, &Role::User);
+                assert!(matches!(
+                    content.first(),
+                    Some(ContentType::InputText { text }) if text == "Describe this image"
+                ));
+                assert!(matches!(
+                    content.get(1),
+                    Some(ContentType::InputImage { detail: ImageDetail::High, image_url: Some(url), file_id: None })
+                        if url == "https://example.com/cat.png"
+                ));
+            }
+            _ => panic!("expected a multimodal user input message"),
+        }
     }
 
     #[test]

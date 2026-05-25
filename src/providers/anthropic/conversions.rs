@@ -2,11 +2,37 @@ use crate::core::Message;
 use crate::core::language_model::{
     LanguageModelOptions, LanguageModelResponseContentType, ReasoningEffort, Usage,
 };
+use crate::core::messages::UserContentPart;
 use crate::providers::anthropic::client::{
-    AnthropicAssistantMessageParamContent, AnthropicMessageDeltaUsage, AnthropicMessageParam,
-    AnthropicOptions, AnthropicThinking, AnthropicTool, AnthropicUsage,
+    AnthropicAssistantMessageParamContent, AnthropicImageSource, AnthropicMessageDeltaUsage,
+    AnthropicMessageParam, AnthropicOptions, AnthropicThinking, AnthropicTool, AnthropicUsage,
 };
 use crate::providers::anthropic::extensions;
+
+impl From<UserContentPart>
+    for crate::providers::anthropic::client::AnthropicUserMessageContentBlock
+{
+    fn from(value: UserContentPart) -> Self {
+        match value {
+            UserContentPart::Text(text) => {
+                crate::providers::anthropic::client::AnthropicUserMessageContentBlock::Text { text }
+            }
+            UserContentPart::Image(image) => {
+                let source = if let Some((media_type, data)) = image.inline_data() {
+                    AnthropicImageSource::Base64 { media_type, data }
+                } else {
+                    AnthropicImageSource::Url {
+                        url: image.image_url,
+                    }
+                };
+
+                crate::providers::anthropic::client::AnthropicUserMessageContentBlock::Image {
+                    source,
+                }
+            }
+        }
+    }
+}
 
 impl From<LanguageModelOptions> for AnthropicOptions {
     fn from(options: LanguageModelOptions) -> Self {
@@ -40,12 +66,25 @@ impl From<LanguageModelOptions> for AnthropicOptions {
                     }
                 }
                 Message::User(u) => {
-                    messages.push(AnthropicMessageParam::User {
-                        content:
-                            crate::providers::anthropic::client::AnthropicUserMessageContent::Text(
-                                u.content,
-                            ),
-                    });
+                    let blocks: Vec<_> = u.content.into_iter().map(Into::into).collect();
+                    let content = if blocks.len() == 1 {
+                        match blocks.into_iter().next().expect("single block should exist") {
+                            crate::providers::anthropic::client::AnthropicUserMessageContentBlock::Text {
+                                text,
+                            } => {
+                                crate::providers::anthropic::client::AnthropicUserMessageContent::Text(text)
+                            }
+                            block => {
+                                crate::providers::anthropic::client::AnthropicUserMessageContent::Blocks(vec![block])
+                            }
+                        }
+                    } else {
+                        crate::providers::anthropic::client::AnthropicUserMessageContent::Blocks(
+                            blocks,
+                        )
+                    };
+
+                    messages.push(AnthropicMessageParam::User { content });
                 }
                 Message::Assistant(a) => match a.content {
                     LanguageModelResponseContentType::Text(text) => {
@@ -183,6 +222,7 @@ mod tests {
     use crate::core::Message;
     use crate::core::language_model::{LanguageModelOptions, ReasoningEffort};
     use crate::core::tools::{Tool, ToolExecute, ToolList};
+    use crate::core::{UserImage, UserMessage};
     use schemars::{JsonSchema, schema_for};
     use serde::{Deserialize, Serialize};
     use serde_json::json;
@@ -259,6 +299,44 @@ mod tests {
         assert!(tools[0].input_schema["properties"].get("a").is_some());
         assert!(tools[0].input_schema["properties"].get("b").is_some());
         assert!(tools[0].input_schema.get("$schema").is_none());
+    }
+
+    #[test]
+    fn test_multimodal_user_message_maps_to_anthropic_native_image_blocks() {
+        let options = LanguageModelOptions {
+            messages: vec![
+                Message::User(
+                    UserMessage::new("Describe this image")
+                        .with_image(UserImage::new("https://example.com/cat.png")),
+                )
+                .into(),
+            ],
+            ..Default::default()
+        };
+
+        let req: AnthropicOptions = options.into();
+
+        match &req.messages[0] {
+            AnthropicMessageParam::User { content } => match content {
+                crate::providers::anthropic::client::AnthropicUserMessageContent::Blocks(
+                    blocks,
+                ) => {
+                    assert!(matches!(
+                        blocks.first(),
+                        Some(crate::providers::anthropic::client::AnthropicUserMessageContentBlock::Text { text })
+                            if text == "Describe this image"
+                    ));
+                    assert!(matches!(
+                        blocks.get(1),
+                        Some(crate::providers::anthropic::client::AnthropicUserMessageContentBlock::Image {
+                            source: AnthropicImageSource::Url { url }
+                        }) if url == "https://example.com/cat.png"
+                    ));
+                }
+                _ => panic!("expected anthropic content blocks"),
+            },
+            _ => panic!("expected anthropic user message"),
+        }
     }
 
     #[test]

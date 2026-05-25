@@ -52,6 +52,12 @@ model_capabilities! {
             display_name: "Llama-3.3-70B-Instruct",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MistralMedium35128b {
+            model_name: "mistral-medium-3.5-128b",
+            constructor_name: mistral_medium_3_5_128b,
+            display_name: "Mistral Medium 3.5 128B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MistralNemoInstruct2407 {
             model_name: "mistral-nemo-instruct-2407",
             constructor_name: mistral_nemo_instruct_2407,
@@ -81,6 +87,18 @@ model_capabilities! {
             constructor_name: qwen3_coder_30b_a3b_instruct,
             display_name: "Qwen3-Coder 30B-A3B Instruct",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen3Embedding8b {
+            model_name: "qwen3-embedding-8b",
+            constructor_name: qwen3_embedding_8b,
+            display_name: "Qwen3 Embedding 8B",
+            capabilities: [TextInputSupport, TextOutputSupport]
+        },
+        Qwen35397bA17b {
+            model_name: "qwen3.5-397b-a17b",
+            constructor_name: qwen3_5_397b_a17b,
+            display_name: "Qwen3.5 397B A17B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         VoxtralSmall24b2507 {
             model_name: "voxtral-small-24b-2507",

@@ -15,6 +15,8 @@ To learn more about how to use the AI SDK, check out our [Documentation](https:/
 * Agents & Tool Execution
 * Prompt Templating
 * Text Generation & Streaming
+* Multimodal Image Input for OpenAI, Google, and Anthropic
+* Image Generation & Editing with `ImageModelRequest`
 * Structured Output (JSON Schema)
 * Embedding Model Support
 * Compatible with [Vercel AI SDK UI](https://ai-sdk.dev/docs/ai-sdk-ui/overview) (React, Solid, Vue, Svelte, …)
@@ -55,6 +57,112 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .await?;
 
     println!("Response: {:?}", result.text());
+    Ok(())
+}
+```
+
+### Google 看图问答
+
+```bash
+cargo add vibewindow-aisdk --features google
+```
+
+```rust
+use aisdk::core::{LanguageModelRequest, Message, UserMessage};
+use aisdk::providers::Google;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let response = LanguageModelRequest::builder()
+        .model(Google::gemini_2_5_pro())
+        .messages(vec![Message::User(
+            UserMessage::new("Describe the storefront and list any visible text.")
+                .with_image_url("https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg"),
+        )])
+        .build()
+        .generate_text()
+        .await?;
+
+    println!("{}", response.text().unwrap_or_default());
+    Ok(())
+}
+```
+
+### Anthropic 看图问答
+
+```bash
+cargo add vibewindow-aisdk --features anthropic
+```
+
+```rust
+use aisdk::core::{LanguageModelRequest, Message, UserMessage};
+use aisdk::providers::Anthropic;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let response = LanguageModelRequest::builder()
+        .model(Anthropic::claude_sonnet_4_5())
+        .messages(vec![Message::User(
+            UserMessage::new("What objects stand out in this image? Reply with a short bullet list.")
+                .with_image_url("https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg"),
+        )])
+        .build()
+        .generate_text()
+        .await?;
+
+    println!("{}", response.text().unwrap_or_default());
+    Ok(())
+}
+```
+
+### 文生图
+
+```bash
+cargo add vibewindow-aisdk --features openai
+```
+
+```rust
+use aisdk::core::ImageModelRequest;
+use aisdk::providers::OpenAI;
+use serde_json::json;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let response = ImageModelRequest::builder()
+        .model(OpenAI::model_name("gpt-image-1"))
+        .prompt("A bold risograph poster of a red fox crossing a snowy bridge")
+        .size("1024x1024")
+        .body(json!({
+            "quality": "high",
+            "background": "transparent"
+        }))
+        .build()
+        .generate_image()
+        .await?;
+
+    println!("generated {} image(s)", response.images().len());
+    Ok(())
+}
+```
+
+### 图编辑
+
+```rust
+use aisdk::core::{ImageModelRequest, UserImage};
+use aisdk::providers::OpenAI;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let response = ImageModelRequest::builder()
+        .model(OpenAI::model_name("gpt-image-1"))
+        .prompt("Turn this photo into a cinematic travel poster")
+        .file(UserImage::new("https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg"))
+        .size("1024x1024")
+        .build()
+        .generate_image()
+        .await?;
+
+    println!("edited {} image(s)", response.images().len());
     Ok(())
 }
 ```
@@ -113,7 +221,6 @@ The vibewindow-aisdk prompt feature provides, file-based template system for man
 
 ### Roadmap
 
-- [ ] Image Model Request Support
 - [ ] Voice Model Request Support
 - [ ] Observability & OpenTelemetry (OTel) Support
 

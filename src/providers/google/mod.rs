@@ -6,6 +6,8 @@ pub mod client;
 pub mod conversions;
 pub mod embedding_model;
 pub mod extensions;
+/// Google 图片模型实现。
+pub mod image_model;
 pub mod language_model;
 pub mod settings;
 

@@ -1,6 +1,6 @@
-//! Capabilities for amazonbedrock models.
+//! Capabilities for amazon_bedrock models.
 //!
-//! This module defines model types and their capabilities for amazonbedrock providers.
+//! This module defines model types and their capabilities for amazon_bedrock providers.
 //! Users can implement additional traits on custom models.
 
 use crate::core::capabilities::*;
@@ -10,18 +10,6 @@ use crate::providers::amazon_bedrock::AmazonBedrock;
 model_capabilities! {
     provider: AmazonBedrock,
     models: {
-        Ai21Jamba15LargeV10 {
-            model_name: "ai21.jamba-1-5-large-v1:0",
-            constructor_name: ai21_jamba_1_5_large_v1_0,
-            display_name: "Jamba 1.5 Large",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Ai21Jamba15MiniV10 {
-            model_name: "ai21.jamba-1-5-mini-v1:0",
-            constructor_name: ai21_jamba_1_5_mini_v1_0,
-            display_name: "Jamba 1.5 Mini",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         AmazonNova2LiteV10 {
             model_name: "amazon.nova-2-lite-v1:0",
             constructor_name: amazon_nova_2_lite_v1_0,
@@ -40,83 +28,17 @@ model_capabilities! {
             display_name: "Nova Micro",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        AmazonNovaPremierV10 {
-            model_name: "amazon.nova-premier-v1:0",
-            constructor_name: amazon_nova_premier_v1_0,
-            display_name: "Nova Premier",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
         AmazonNovaProV10 {
             model_name: "amazon.nova-pro-v1:0",
             constructor_name: amazon_nova_pro_v1_0,
             display_name: "Nova Pro",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        AmazonTitanTextExpressV1 {
-            model_name: "amazon.titan-text-express-v1",
-            constructor_name: amazon_titan_text_express_v1,
-            display_name: "Titan Text G1 - Express",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AmazonTitanTextExpressV108k {
-            model_name: "amazon.titan-text-express-v1:0:8k",
-            constructor_name: amazon_titan_text_express_v1_0_8k,
-            display_name: "Titan Text G1 - Express",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AnthropicClaude35Haiku20241022V10 {
-            model_name: "anthropic.claude-3-5-haiku-20241022-v1:0",
-            constructor_name: anthropic_claude_3_5_haiku_20241022_v1_0,
-            display_name: "Claude Haiku 3.5",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AnthropicClaude35Sonnet20240620V10 {
-            model_name: "anthropic.claude-3-5-sonnet-20240620-v1:0",
-            constructor_name: anthropic_claude_3_5_sonnet_20240620_v1_0,
-            display_name: "Claude Sonnet 3.5",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AnthropicClaude35Sonnet20241022V20 {
-            model_name: "anthropic.claude-3-5-sonnet-20241022-v2:0",
-            constructor_name: anthropic_claude_3_5_sonnet_20241022_v2_0,
-            display_name: "Claude Sonnet 3.5 v2",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AnthropicClaude37Sonnet20250219V10 {
-            model_name: "anthropic.claude-3-7-sonnet-20250219-v1:0",
-            constructor_name: anthropic_claude_3_7_sonnet_20250219_v1_0,
-            display_name: "Claude Sonnet 3.7",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AnthropicClaude3Haiku20240307V10 {
-            model_name: "anthropic.claude-3-haiku-20240307-v1:0",
-            constructor_name: anthropic_claude_3_haiku_20240307_v1_0,
-            display_name: "Claude Haiku 3",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AnthropicClaude3Opus20240229V10 {
-            model_name: "anthropic.claude-3-opus-20240229-v1:0",
-            constructor_name: anthropic_claude_3_opus_20240229_v1_0,
-            display_name: "Claude Opus 3",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AnthropicClaude3Sonnet20240229V10 {
-            model_name: "anthropic.claude-3-sonnet-20240229-v1:0",
-            constructor_name: anthropic_claude_3_sonnet_20240229_v1_0,
-            display_name: "Claude Sonnet 3",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         AnthropicClaudeHaiku4520251001V10 {
             model_name: "anthropic.claude-haiku-4-5-20251001-v1:0",
             constructor_name: anthropic_claude_haiku_4_5_20251001_v1_0,
             display_name: "Claude Haiku 4.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AnthropicClaudeInstantV1 {
-            model_name: "anthropic.claude-instant-v1",
-            constructor_name: anthropic_claude_instant_v1,
-            display_name: "Claude Instant",
-            capabilities: [TextInputSupport, TextOutputSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AnthropicClaudeOpus4120250805V10 {
             model_name: "anthropic.claude-opus-4-1-20250805-v1:0",
@@ -124,65 +46,59 @@ model_capabilities! {
             display_name: "Claude Opus 4.1",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        AnthropicClaudeOpus420250514V10 {
-            model_name: "anthropic.claude-opus-4-20250514-v1:0",
-            constructor_name: anthropic_claude_opus_4_20250514_v1_0,
-            display_name: "Claude Opus 4",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         AnthropicClaudeOpus4520251101V10 {
             model_name: "anthropic.claude-opus-4-5-20251101-v1:0",
             constructor_name: anthropic_claude_opus_4_5_20251101_v1_0,
             display_name: "Claude Opus 4.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        AnthropicClaudeSonnet420250514V10 {
-            model_name: "anthropic.claude-sonnet-4-20250514-v1:0",
-            constructor_name: anthropic_claude_sonnet_4_20250514_v1_0,
-            display_name: "Claude Sonnet 4",
+        AnthropicClaudeOpus46V1 {
+            model_name: "anthropic.claude-opus-4-6-v1",
+            constructor_name: anthropic_claude_opus_4_6_v1,
+            display_name: "Claude Opus 4.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AnthropicClaudeOpus47 {
+            model_name: "anthropic.claude-opus-4-7",
+            constructor_name: anthropic_claude_opus_4_7,
+            display_name: "Claude Opus 4.7",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AnthropicClaudeSonnet4520250929V10 {
             model_name: "anthropic.claude-sonnet-4-5-20250929-v1:0",
             constructor_name: anthropic_claude_sonnet_4_5_20250929_v1_0,
             display_name: "Claude Sonnet 4.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        AnthropicClaudeV2 {
-            model_name: "anthropic.claude-v2",
-            constructor_name: anthropic_claude_v2,
-            display_name: "Claude 2",
-            capabilities: [TextInputSupport, TextOutputSupport]
+        AnthropicClaudeSonnet46 {
+            model_name: "anthropic.claude-sonnet-4-6",
+            constructor_name: anthropic_claude_sonnet_4_6,
+            display_name: "Claude Sonnet 4.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        AnthropicClaudeV21 {
-            model_name: "anthropic.claude-v2:1",
-            constructor_name: anthropic_claude_v2_1,
-            display_name: "Claude 2.1",
-            capabilities: [TextInputSupport, TextOutputSupport]
+        AuAnthropicClaudeHaiku4520251001V10 {
+            model_name: "au.anthropic.claude-haiku-4-5-20251001-v1:0",
+            constructor_name: au_anthropic_claude_haiku_4_5_20251001_v1_0,
+            display_name: "Claude Haiku 4.5 (AU)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        CohereCommandLightTextV14 {
-            model_name: "cohere.command-light-text-v14",
-            constructor_name: cohere_command_light_text_v14,
-            display_name: "Command Light",
-            capabilities: [TextInputSupport, TextOutputSupport]
+        AuAnthropicClaudeOpus46V1 {
+            model_name: "au.anthropic.claude-opus-4-6-v1",
+            constructor_name: au_anthropic_claude_opus_4_6_v1,
+            display_name: "AU Anthropic Claude Opus 4.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        CohereCommandRPlusV10 {
-            model_name: "cohere.command-r-plus-v1:0",
-            constructor_name: cohere_command_r_plus_v1_0,
-            display_name: "Command R+",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        AuAnthropicClaudeSonnet4520250929V10 {
+            model_name: "au.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            constructor_name: au_anthropic_claude_sonnet_4_5_20250929_v1_0,
+            display_name: "Claude Sonnet 4.5 (AU)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        CohereCommandRV10 {
-            model_name: "cohere.command-r-v1:0",
-            constructor_name: cohere_command_r_v1_0,
-            display_name: "Command R",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        CohereCommandTextV14 {
-            model_name: "cohere.command-text-v14",
-            constructor_name: cohere_command_text_v14,
-            display_name: "Command",
-            capabilities: [TextInputSupport, TextOutputSupport]
+        AuAnthropicClaudeSonnet46 {
+            model_name: "au.anthropic.claude-sonnet-4-6",
+            constructor_name: au_anthropic_claude_sonnet_4_6,
+            display_name: "AU Anthropic Claude Sonnet 4.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekR1V10 {
             model_name: "deepseek.r1-v1:0",
@@ -194,31 +110,121 @@ model_capabilities! {
             model_name: "deepseek.v3-v1:0",
             constructor_name: deepseek_v3_v1_0,
             display_name: "DeepSeek-V3.1",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV32 {
+            model_name: "deepseek.v3.2",
+            constructor_name: deepseek_v3_2,
+            display_name: "DeepSeek-V3.2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        EuAnthropicClaudeHaiku4520251001V10 {
+            model_name: "eu.anthropic.claude-haiku-4-5-20251001-v1:0",
+            constructor_name: eu_anthropic_claude_haiku_4_5_20251001_v1_0,
+            display_name: "Claude Haiku 4.5 (EU)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        EuAnthropicClaudeOpus4520251101V10 {
+            model_name: "eu.anthropic.claude-opus-4-5-20251101-v1:0",
+            constructor_name: eu_anthropic_claude_opus_4_5_20251101_v1_0,
+            display_name: "Claude Opus 4.5 (EU)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        EuAnthropicClaudeOpus46V1 {
+            model_name: "eu.anthropic.claude-opus-4-6-v1",
+            constructor_name: eu_anthropic_claude_opus_4_6_v1,
+            display_name: "Claude Opus 4.6 (EU)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        EuAnthropicClaudeOpus47 {
+            model_name: "eu.anthropic.claude-opus-4-7",
+            constructor_name: eu_anthropic_claude_opus_4_7,
+            display_name: "Claude Opus 4.7 (EU)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        EuAnthropicClaudeSonnet4520250929V10 {
+            model_name: "eu.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            constructor_name: eu_anthropic_claude_sonnet_4_5_20250929_v1_0,
+            display_name: "Claude Sonnet 4.5 (EU)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        EuAnthropicClaudeSonnet46 {
+            model_name: "eu.anthropic.claude-sonnet-4-6",
+            constructor_name: eu_anthropic_claude_sonnet_4_6,
+            display_name: "Claude Sonnet 4.6 (EU)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GlobalAnthropicClaudeHaiku4520251001V10 {
+            model_name: "global.anthropic.claude-haiku-4-5-20251001-v1:0",
+            constructor_name: global_anthropic_claude_haiku_4_5_20251001_v1_0,
+            display_name: "Claude Haiku 4.5 (Global)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GlobalAnthropicClaudeOpus4520251101V10 {
             model_name: "global.anthropic.claude-opus-4-5-20251101-v1:0",
             constructor_name: global_anthropic_claude_opus_4_5_20251101_v1_0,
             display_name: "Claude Opus 4.5 (Global)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GlobalAnthropicClaudeOpus46V1 {
+            model_name: "global.anthropic.claude-opus-4-6-v1",
+            constructor_name: global_anthropic_claude_opus_4_6_v1,
+            display_name: "Claude Opus 4.6 (Global)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GlobalAnthropicClaudeOpus47 {
+            model_name: "global.anthropic.claude-opus-4-7",
+            constructor_name: global_anthropic_claude_opus_4_7,
+            display_name: "Claude Opus 4.7 (Global)",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GlobalAnthropicClaudeSonnet4520250929V10 {
+            model_name: "global.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            constructor_name: global_anthropic_claude_sonnet_4_5_20250929_v1_0,
+            display_name: "Claude Sonnet 4.5 (Global)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GlobalAnthropicClaudeSonnet46 {
+            model_name: "global.anthropic.claude-sonnet-4-6",
+            constructor_name: global_anthropic_claude_sonnet_4_6,
+            display_name: "Claude Sonnet 4.6 (Global)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GoogleGemma312bIt {
             model_name: "google.gemma-3-12b-it",
             constructor_name: google_gemma_3_12b_it,
             display_name: "Google Gemma 3 12B",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
         },
         GoogleGemma327bIt {
             model_name: "google.gemma-3-27b-it",
             constructor_name: google_gemma_3_27b_it,
             display_name: "Google Gemma 3 27B Instruct",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GoogleGemma34bIt {
             model_name: "google.gemma-3-4b-it",
             constructor_name: google_gemma_3_4b_it,
             display_name: "Gemma 3 4B IT",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        JpAnthropicClaudeOpus47 {
+            model_name: "jp.anthropic.claude-opus-4-7",
+            constructor_name: jp_anthropic_claude_opus_4_7,
+            display_name: "Claude Opus 4.7 (JP)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        JpAnthropicClaudeSonnet4520250929V10 {
+            model_name: "jp.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            constructor_name: jp_anthropic_claude_sonnet_4_5_20250929_v1_0,
+            display_name: "Claude Sonnet 4.5 (JP)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        JpAnthropicClaudeSonnet46 {
+            model_name: "jp.anthropic.claude-sonnet-4-6",
+            constructor_name: jp_anthropic_claude_sonnet_4_6,
+            display_name: "Claude Sonnet 4.6 (JP)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MetaLlama3170bInstructV10 {
             model_name: "meta.llama3-1-70b-instruct-v1:0",
@@ -232,47 +238,11 @@ model_capabilities! {
             display_name: "Llama 3.1 8B Instruct",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MetaLlama3211bInstructV10 {
-            model_name: "meta.llama3-2-11b-instruct-v1:0",
-            constructor_name: meta_llama3_2_11b_instruct_v1_0,
-            display_name: "Llama 3.2 11B Instruct",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MetaLlama321bInstructV10 {
-            model_name: "meta.llama3-2-1b-instruct-v1:0",
-            constructor_name: meta_llama3_2_1b_instruct_v1_0,
-            display_name: "Llama 3.2 1B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MetaLlama323bInstructV10 {
-            model_name: "meta.llama3-2-3b-instruct-v1:0",
-            constructor_name: meta_llama3_2_3b_instruct_v1_0,
-            display_name: "Llama 3.2 3B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MetaLlama3290bInstructV10 {
-            model_name: "meta.llama3-2-90b-instruct-v1:0",
-            constructor_name: meta_llama3_2_90b_instruct_v1_0,
-            display_name: "Llama 3.2 90B Instruct",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         MetaLlama3370bInstructV10 {
             model_name: "meta.llama3-3-70b-instruct-v1:0",
             constructor_name: meta_llama3_3_70b_instruct_v1_0,
             display_name: "Llama 3.3 70B Instruct",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MetaLlama370bInstructV10 {
-            model_name: "meta.llama3-70b-instruct-v1:0",
-            constructor_name: meta_llama3_70b_instruct_v1_0,
-            display_name: "Llama 3 70B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        MetaLlama38bInstructV10 {
-            model_name: "meta.llama3-8b-instruct-v1:0",
-            constructor_name: meta_llama3_8b_instruct_v1_0,
-            display_name: "Llama 3 8B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport]
         },
         MetaLlama4Maverick17bInstructV10 {
             model_name: "meta.llama4-maverick-17b-instruct-v1:0",
@@ -292,113 +262,161 @@ model_capabilities! {
             display_name: "MiniMax M2",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MinimaxMinimaxM21 {
+            model_name: "minimax.minimax-m2.1",
+            constructor_name: minimax_minimax_m2_1,
+            display_name: "MiniMax M2.1",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MinimaxMinimaxM25 {
+            model_name: "minimax.minimax-m2.5",
+            constructor_name: minimax_minimax_m2_5,
+            display_name: "MiniMax M2.5",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MistralDevstral2123b {
+            model_name: "mistral.devstral-2-123b",
+            constructor_name: mistral_devstral_2_123b,
+            display_name: "Devstral 2 123B",
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MistralMagistralSmall2509 {
+            model_name: "mistral.magistral-small-2509",
+            constructor_name: mistral_magistral_small_2509,
+            display_name: "Magistral Small 1.2",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MistralMinistral314bInstruct {
             model_name: "mistral.ministral-3-14b-instruct",
             constructor_name: mistral_ministral_3_14b_instruct,
             display_name: "Ministral 14B 3.0",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MistralMinistral33bInstruct {
+            model_name: "mistral.ministral-3-3b-instruct",
+            constructor_name: mistral_ministral_3_3b_instruct,
+            display_name: "Ministral 3 3B",
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MistralMinistral38bInstruct {
             model_name: "mistral.ministral-3-8b-instruct",
             constructor_name: mistral_ministral_3_8b_instruct,
             display_name: "Ministral 3 8B",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MistralMistral7bInstructV02 {
-            model_name: "mistral.mistral-7b-instruct-v0:2",
-            constructor_name: mistral_mistral_7b_instruct_v0_2,
-            display_name: "Mistral-7B-Instruct-v0.3",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MistralMistralLarge2402V10 {
-            model_name: "mistral.mistral-large-2402-v1:0",
-            constructor_name: mistral_mistral_large_2402_v1_0,
-            display_name: "Mistral Large (24.02)",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        MistralMistralLarge3675bInstruct {
+            model_name: "mistral.mistral-large-3-675b-instruct",
+            constructor_name: mistral_mistral_large_3_675b_instruct,
+            display_name: "Mistral Large 3",
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MistralMixtral8x7bInstructV01 {
-            model_name: "mistral.mixtral-8x7b-instruct-v0:1",
-            constructor_name: mistral_mixtral_8x7b_instruct_v0_1,
-            display_name: "Mixtral-8x7B-Instruct-v0.1",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport]
+        MistralPixtralLarge2502V10 {
+            model_name: "mistral.pixtral-large-2502-v1:0",
+            constructor_name: mistral_pixtral_large_2502_v1_0,
+            display_name: "Pixtral Large (25.02)",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MistralVoxtralMini3b2507 {
             model_name: "mistral.voxtral-mini-3b-2507",
             constructor_name: mistral_voxtral_mini_3b_2507,
             display_name: "Voxtral Mini 3B 2507",
-            capabilities: [AudioInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [AudioInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MistralVoxtralSmall24b2507 {
             model_name: "mistral.voxtral-small-24b-2507",
             constructor_name: mistral_voxtral_small_24b_2507,
             display_name: "Voxtral Small 24B 2507",
-            capabilities: [AudioInputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MoonshotKimiK2Thinking {
             model_name: "moonshot.kimi-k2-thinking",
             constructor_name: moonshot_kimi_k2_thinking,
             display_name: "Kimi K2 Thinking",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MoonshotaiKimiK25 {
+            model_name: "moonshotai.kimi-k2.5",
+            constructor_name: moonshotai_kimi_k2_5,
+            display_name: "Kimi K2.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         NvidiaNemotronNano12bV2 {
             model_name: "nvidia.nemotron-nano-12b-v2",
             constructor_name: nvidia_nemotron_nano_12b_v2,
             display_name: "NVIDIA Nemotron Nano 12B v2 VL BF16",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        NvidiaNemotronNano330b {
+            model_name: "nvidia.nemotron-nano-3-30b",
+            constructor_name: nvidia_nemotron_nano_3_30b,
+            display_name: "NVIDIA Nemotron Nano 3 30B",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         NvidiaNemotronNano9bV2 {
             model_name: "nvidia.nemotron-nano-9b-v2",
             constructor_name: nvidia_nemotron_nano_9b_v2,
             display_name: "NVIDIA Nemotron Nano 9B v2",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        NvidiaNemotronSuper3120b {
+            model_name: "nvidia.nemotron-super-3-120b",
+            constructor_name: nvidia_nemotron_super_3_120b,
+            display_name: "NVIDIA Nemotron 3 Super 120B A12B",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGptOss120b10 {
             model_name: "openai.gpt-oss-120b-1:0",
             constructor_name: openai_gpt_oss_120b_1_0,
             display_name: "gpt-oss-120b",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGptOss20b10 {
             model_name: "openai.gpt-oss-20b-1:0",
             constructor_name: openai_gpt_oss_20b_1_0,
             display_name: "gpt-oss-20b",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGptOssSafeguard120b {
             model_name: "openai.gpt-oss-safeguard-120b",
             constructor_name: openai_gpt_oss_safeguard_120b,
             display_name: "GPT OSS Safeguard 120B",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGptOssSafeguard20b {
             model_name: "openai.gpt-oss-safeguard-20b",
             constructor_name: openai_gpt_oss_safeguard_20b,
             display_name: "GPT OSS Safeguard 20B",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenQwen3235bA22b2507V10 {
             model_name: "qwen.qwen3-235b-a22b-2507-v1:0",
             constructor_name: qwen_qwen3_235b_a22b_2507_v1_0,
             display_name: "Qwen3 235B A22B 2507",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenQwen332bV10 {
             model_name: "qwen.qwen3-32b-v1:0",
             constructor_name: qwen_qwen3_32b_v1_0,
             display_name: "Qwen3 32B (dense)",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenQwen3Coder30bA3bV10 {
             model_name: "qwen.qwen3-coder-30b-a3b-v1:0",
             constructor_name: qwen_qwen3_coder_30b_a3b_v1_0,
             display_name: "Qwen3 Coder 30B A3B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenQwen3Coder480bA35bV10 {
             model_name: "qwen.qwen3-coder-480b-a35b-v1:0",
             constructor_name: qwen_qwen3_coder_480b_a35b_v1_0,
             display_name: "Qwen3 Coder 480B A35B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        QwenQwen3CoderNext {
+            model_name: "qwen.qwen3-coder-next",
+            constructor_name: qwen_qwen3_coder_next,
+            display_name: "Qwen3 Coder Next",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenQwen3Next80bA3b {
             model_name: "qwen.qwen3-next-80b-a3b",
@@ -411,6 +429,96 @@ model_capabilities! {
             constructor_name: qwen_qwen3_vl_235b_a22b,
             display_name: "Qwen/Qwen3-VL-235B-A22B-Instruct",
             capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsAnthropicClaudeHaiku4520251001V10 {
+            model_name: "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+            constructor_name: us_anthropic_claude_haiku_4_5_20251001_v1_0,
+            display_name: "Claude Haiku 4.5 (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsAnthropicClaudeOpus4120250805V10 {
+            model_name: "us.anthropic.claude-opus-4-1-20250805-v1:0",
+            constructor_name: us_anthropic_claude_opus_4_1_20250805_v1_0,
+            display_name: "Claude Opus 4.1 (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsAnthropicClaudeOpus4520251101V10 {
+            model_name: "us.anthropic.claude-opus-4-5-20251101-v1:0",
+            constructor_name: us_anthropic_claude_opus_4_5_20251101_v1_0,
+            display_name: "Claude Opus 4.5 (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsAnthropicClaudeOpus46V1 {
+            model_name: "us.anthropic.claude-opus-4-6-v1",
+            constructor_name: us_anthropic_claude_opus_4_6_v1,
+            display_name: "Claude Opus 4.6 (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsAnthropicClaudeOpus47 {
+            model_name: "us.anthropic.claude-opus-4-7",
+            constructor_name: us_anthropic_claude_opus_4_7,
+            display_name: "Claude Opus 4.7 (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsAnthropicClaudeSonnet4520250929V10 {
+            model_name: "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            constructor_name: us_anthropic_claude_sonnet_4_5_20250929_v1_0,
+            display_name: "Claude Sonnet 4.5 (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsAnthropicClaudeSonnet46 {
+            model_name: "us.anthropic.claude-sonnet-4-6",
+            constructor_name: us_anthropic_claude_sonnet_4_6,
+            display_name: "Claude Sonnet 4.6 (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsDeepseekR1V10 {
+            model_name: "us.deepseek.r1-v1:0",
+            constructor_name: us_deepseek_r1_v1_0,
+            display_name: "DeepSeek-R1 (US)",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsMetaLlama4Maverick17bInstructV10 {
+            model_name: "us.meta.llama4-maverick-17b-instruct-v1:0",
+            constructor_name: us_meta_llama4_maverick_17b_instruct_v1_0,
+            display_name: "Llama 4 Maverick 17B Instruct (US)",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsMetaLlama4Scout17bInstructV10 {
+            model_name: "us.meta.llama4-scout-17b-instruct-v1:0",
+            constructor_name: us_meta_llama4_scout_17b_instruct_v1_0,
+            display_name: "Llama 4 Scout 17B Instruct (US)",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        WriterPalmyraX4V10 {
+            model_name: "writer.palmyra-x4-v1:0",
+            constructor_name: writer_palmyra_x4_v1_0,
+            display_name: "Palmyra X4",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        WriterPalmyraX5V10 {
+            model_name: "writer.palmyra-x5-v1:0",
+            constructor_name: writer_palmyra_x5_v1_0,
+            display_name: "Palmyra X5",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiGlm47 {
+            model_name: "zai.glm-4.7",
+            constructor_name: zai_glm_4_7,
+            display_name: "GLM-4.7",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiGlm47Flash {
+            model_name: "zai.glm-4.7-flash",
+            constructor_name: zai_glm_4_7_flash,
+            display_name: "GLM-4.7-Flash",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiGlm5 {
+            model_name: "zai.glm-5",
+            constructor_name: zai_glm_5,
+            display_name: "GLM-5",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

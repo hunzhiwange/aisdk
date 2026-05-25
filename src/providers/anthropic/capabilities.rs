@@ -40,12 +40,6 @@ model_capabilities! {
             display_name: "Claude Sonnet 3.7",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Claude37SonnetLatest {
-            model_name: "claude-3-7-sonnet-latest",
-            constructor_name: claude_3_7_sonnet_latest,
-            display_name: "Claude Sonnet 3.7 (latest)",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Claude3Haiku20240307 {
             model_name: "claude-3-haiku-20240307",
             constructor_name: claude_3_haiku_20240307,
@@ -112,6 +106,18 @@ model_capabilities! {
             display_name: "Claude Opus 4.5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        ClaudeOpus46 {
+            model_name: "claude-opus-4-6",
+            constructor_name: claude_opus_4_6,
+            display_name: "Claude Opus 4.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ClaudeOpus47 {
+            model_name: "claude-opus-4-7",
+            constructor_name: claude_opus_4_7,
+            display_name: "Claude Opus 4.7",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         ClaudeSonnet40 {
             model_name: "claude-sonnet-4-0",
             constructor_name: claude_sonnet_4_0,
@@ -134,6 +140,12 @@ model_capabilities! {
             model_name: "claude-sonnet-4-5-20250929",
             constructor_name: claude_sonnet_4_5_20250929,
             display_name: "Claude Sonnet 4.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ClaudeSonnet46 {
+            model_name: "claude-sonnet-4-6",
+            constructor_name: claude_sonnet_4_6,
+            display_name: "Claude Sonnet 4.6",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

@@ -10,47 +10,11 @@ use crate::providers::zhipuai_coding_plan::ZhipuaiCodingPlan;
 model_capabilities! {
     provider: ZhipuaiCodingPlan,
     models: {
-        Glm45 {
-            model_name: "glm-4.5",
-            constructor_name: glm_4_5,
-            display_name: "GLM-4.5",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Glm45Air {
             model_name: "glm-4.5-air",
             constructor_name: glm_4_5_air,
             display_name: "GLM-4.5-Air",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Glm45Flash {
-            model_name: "glm-4.5-flash",
-            constructor_name: glm_4_5_flash,
-            display_name: "GLM-4.5-Flash",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Glm45v {
-            model_name: "glm-4.5v",
-            constructor_name: glm_4_5v,
-            display_name: "GLM-4.5V",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        Glm46 {
-            model_name: "glm-4.6",
-            constructor_name: glm_4_6,
-            display_name: "GLM-4.6",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Glm46v {
-            model_name: "glm-4.6v",
-            constructor_name: glm_4_6v,
-            display_name: "GLM-4.6V",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        Glm46vFlash {
-            model_name: "glm-4.6v-flash",
-            constructor_name: glm_4_6v_flash,
-            display_name: "GLM-4.6V-Flash",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Glm47 {
             model_name: "glm-4.7",
@@ -58,11 +22,23 @@ model_capabilities! {
             display_name: "GLM-4.7",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Glm5 {
-            model_name: "glm-5",
-            constructor_name: glm_5,
-            display_name: "GLM-5",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Glm5Turbo {
+            model_name: "glm-5-turbo",
+            constructor_name: glm_5_turbo,
+            display_name: "GLM-5-Turbo",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm51 {
+            model_name: "glm-5.1",
+            constructor_name: glm_5_1,
+            display_name: "GLM-5.1",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm5vTurbo {
+            model_name: "glm-5v-turbo",
+            constructor_name: glm_5v_turbo,
+            display_name: "GLM-5V-Turbo",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }
 }

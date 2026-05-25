@@ -10,12 +10,6 @@ use crate::providers::ovhcloud::Ovhcloud;
 model_capabilities! {
     provider: Ovhcloud,
     models: {
-        DeepseekR1DistillLlama70b {
-            model_name: "deepseek-r1-distill-llama-70b",
-            constructor_name: deepseek_r1_distill_llama_70b,
-            display_name: "DeepSeek-R1-Distill-Llama-70B",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         GptOss120b {
             model_name: "gpt-oss-120b",
             constructor_name: gpt_oss_120b,
@@ -58,18 +52,6 @@ model_capabilities! {
             display_name: "Mistral-Small-3.2-24B-Instruct-2506",
             capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Mixtral8x7bInstructV01 {
-            model_name: "mixtral-8x7b-instruct-v0.1",
-            constructor_name: mixtral_8x7b_instruct_v0_1,
-            display_name: "Mixtral-8x7B-Instruct-v0.1",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport]
-        },
-        Qwen25Coder32bInstruct {
-            model_name: "qwen2.5-coder-32b-instruct",
-            constructor_name: qwen2_5_coder_32b_instruct,
-            display_name: "Qwen2.5-Coder-32B-Instruct",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport]
-        },
         Qwen25Vl72bInstruct {
             model_name: "qwen2.5-vl-72b-instruct",
             constructor_name: qwen2_5_vl_72b_instruct,
@@ -87,6 +69,12 @@ model_capabilities! {
             constructor_name: qwen3_coder_30b_a3b_instruct,
             display_name: "Qwen3-Coder-30B-A3B-Instruct",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen359b {
+            model_name: "qwen3.5-9b",
+            constructor_name: qwen3_5_9b,
+            display_name: "Qwen3.5-9B",
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

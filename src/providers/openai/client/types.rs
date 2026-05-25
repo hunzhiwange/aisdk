@@ -418,6 +418,7 @@ pub(crate) enum ContentType {
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+#[serde(rename_all = "snake_case")]
 pub(crate) enum ImageDetail {
     #[default]
     Auto,

@@ -38,19 +38,19 @@ model_capabilities! {
             model_name: "cohere/cohere-command-r-08-2024",
             constructor_name: cohere_cohere_command_r_08_2024,
             display_name: "Cohere Command R 08-2024",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         CohereCohereCommandRPlus {
             model_name: "cohere/cohere-command-r-plus",
             constructor_name: cohere_cohere_command_r_plus,
             display_name: "Cohere Command R+",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         CohereCohereCommandRPlus082024 {
             model_name: "cohere/cohere-command-r-plus-08-2024",
             constructor_name: cohere_cohere_command_r_plus_08_2024,
             display_name: "Cohere Command R+ 08-2024",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Core42Jais30bChat {
             model_name: "core42/jais-30b-chat",

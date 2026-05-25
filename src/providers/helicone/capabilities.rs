@@ -94,12 +94,6 @@ model_capabilities! {
             display_name: "Anthropic: Claude Sonnet 4.5 (20250929)",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        CodexMiniLatest {
-            model_name: "codex-mini-latest",
-            constructor_name: codex_mini_latest,
-            display_name: "OpenAI Codex Mini Latest",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         DeepseekR1DistillLlama70b {
             model_name: "deepseek-r1-distill-llama-70b",
             constructor_name: deepseek_r1_distill_llama_70b,

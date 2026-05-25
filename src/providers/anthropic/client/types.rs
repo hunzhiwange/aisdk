@@ -174,6 +174,12 @@ pub enum AnthropicUserMessageContentBlock {
         /// The text content
         text: String,
     },
+    #[serde(rename = "image")]
+    /// Native image content.
+    Image {
+        /// The image source definition.
+        source: AnthropicImageSource,
+    },
     #[serde(rename = "tool_result")]
     /// Tool result content
     ToolResult {
@@ -181,6 +187,26 @@ pub enum AnthropicUserMessageContentBlock {
         tool_use_id: String,
         /// The content of the tool result
         content: String,
+    },
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(tag = "type")]
+/// Native image sources accepted by Anthropic user message image blocks.
+pub enum AnthropicImageSource {
+    #[serde(rename = "url")]
+    /// A remotely hosted image referenced by URL.
+    Url {
+        /// The remote image URL.
+        url: String,
+    },
+    #[serde(rename = "base64")]
+    /// A base64-encoded image payload.
+    Base64 {
+        /// The image MIME type.
+        media_type: String,
+        /// The base64-encoded image bytes.
+        data: String,
     },
 }
 

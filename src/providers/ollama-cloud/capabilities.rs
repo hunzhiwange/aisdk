@@ -28,6 +28,18 @@ model_capabilities! {
             display_name: "deepseek-v3.2",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        DeepseekV4Flash {
+            model_name: "deepseek-v4-flash",
+            constructor_name: deepseek_v4_flash,
+            display_name: "deepseek-v4-flash",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV4Pro {
+            model_name: "deepseek-v4-pro",
+            constructor_name: deepseek_v4_pro,
+            display_name: "deepseek-v4-pro",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Devstral2123b {
             model_name: "devstral-2:123b",
             constructor_name: devstral_2_123b,
@@ -44,12 +56,6 @@ model_capabilities! {
             model_name: "gemini-3-flash-preview",
             constructor_name: gemini_3_flash_preview,
             display_name: "gemini-3-flash-preview",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gemini3ProPreview {
-            model_name: "gemini-3-pro-preview",
-            constructor_name: gemini_3_pro_preview,
-            display_name: "gemini-3-pro-preview",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gemma312b {
@@ -70,6 +76,12 @@ model_capabilities! {
             display_name: "gemma3:4b",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
         },
+        Gemma431b {
+            model_name: "gemma4:31b",
+            constructor_name: gemma4_31b,
+            display_name: "gemma4:31b",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Glm46 {
             model_name: "glm-4.6",
             constructor_name: glm_4_6,
@@ -86,6 +98,12 @@ model_capabilities! {
             model_name: "glm-5",
             constructor_name: glm_5,
             display_name: "glm-5",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm51 {
+            model_name: "glm-5.1",
+            constructor_name: glm_5_1,
+            display_name: "glm-5.1",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GptOss120b {
@@ -112,6 +130,12 @@ model_capabilities! {
             display_name: "kimi-k2.5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        KimiK26 {
+            model_name: "kimi-k2.6",
+            constructor_name: kimi_k2_6,
+            display_name: "kimi-k2.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         KimiK21t {
             model_name: "kimi-k2:1t",
             constructor_name: kimi_k2_1t,
@@ -134,6 +158,12 @@ model_capabilities! {
             model_name: "minimax-m2.5",
             constructor_name: minimax_m2_5,
             display_name: "minimax-m2.5",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MinimaxM27 {
+            model_name: "minimax-m2.7",
+            constructor_name: minimax_m2_7,
+            display_name: "minimax-m2.7",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Ministral314b {
@@ -166,6 +196,12 @@ model_capabilities! {
             display_name: "nemotron-3-nano:30b",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Nemotron3Super {
+            model_name: "nemotron-3-super",
+            constructor_name: nemotron_3_super,
+            display_name: "nemotron-3-super",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Qwen3CoderNext {
             model_name: "qwen3-coder-next",
             constructor_name: qwen3_coder_next,
@@ -195,6 +231,12 @@ model_capabilities! {
             constructor_name: qwen3_vl_235b_instruct,
             display_name: "qwen3-vl:235b-instruct",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen35397b {
+            model_name: "qwen3.5:397b",
+            constructor_name: qwen3_5_397b,
+            display_name: "qwen3.5:397b",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Rnj18b {
             model_name: "rnj-1:8b",

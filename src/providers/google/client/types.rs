@@ -62,6 +62,7 @@ pub(crate) struct Blob {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub(crate) struct FileData {
     pub(crate) mime_type: String,
     pub(crate) file_uri: String,
@@ -158,6 +159,21 @@ pub(crate) struct GenerationConfig {
     pub(crate) frequency_penalty: Option<f32>,
     pub(crate) response_logprobs: Option<bool>,
     pub(crate) logprobs: Option<i32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub(crate) response_modalities: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub(crate) image_config: Option<ImageConfig>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub(crate) seed: Option<i32>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub(crate) struct ImageConfig {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub(crate) aspect_ratio: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub(crate) image_size: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

@@ -10,29 +10,11 @@ use crate::providers::berget::Berget;
 model_capabilities! {
     provider: Berget,
     models: {
-        BaaiBgeRerankerV2M3 {
-            model_name: "BAAI/bge-reranker-v2-m3",
-            constructor_name: baai_bge_reranker_v2_m3,
-            display_name: "bge-reranker-v2-m3",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        KblabKbWhisperLarge {
-            model_name: "KBLab/kb-whisper-large",
-            constructor_name: kblab_kb_whisper_large,
-            display_name: "KB-Whisper-Large",
-            capabilities: [AudioInputSupport, TextOutputSupport]
-        },
-        IntfloatMultilingualE5Large {
-            model_name: "intfloat/multilingual-e5-large",
-            constructor_name: intfloat_multilingual_e5_large,
-            display_name: "Multilingual-E5-large",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        IntfloatMultilingualE5LargeInstruct {
-            model_name: "intfloat/multilingual-e5-large-instruct",
-            constructor_name: intfloat_multilingual_e5_large_instruct,
-            display_name: "Multilingual-E5-large-instruct",
-            capabilities: [TextInputSupport, TextOutputSupport]
+        GoogleGemma431bIt {
+            model_name: "google/gemma-4-31B-it",
+            constructor_name: google_gemma_4_31b_it,
+            display_name: "Gemma 4 31B Instruct",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         MetaLlamaLlama3370bInstruct {
             model_name: "meta-llama/Llama-3.3-70B-Instruct",
@@ -40,11 +22,23 @@ model_capabilities! {
             display_name: "Llama 3.3 70B Instruct",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MistralaiMistralMedium35128b {
+            model_name: "mistralai/Mistral-Medium-3.5-128B",
+            constructor_name: mistralai_mistral_medium_3_5_128b,
+            display_name: "Mistral Medium 3.5 128B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MistralaiMistralSmall3224bInstruct2506 {
             model_name: "mistralai/Mistral-Small-3.2-24B-Instruct-2506",
             constructor_name: mistralai_mistral_small_3_2_24b_instruct_2506,
             display_name: "Mistral Small 3.2 24B Instruct 2506",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MoonshotaiKimiK26 {
+            model_name: "moonshotai/Kimi-K2.6",
+            constructor_name: moonshotai_kimi_k2_6,
+            display_name: "Kimi K2.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         OpenaiGptOss120b {
             model_name: "openai/gpt-oss-120b",

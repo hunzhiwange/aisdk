@@ -1,5 +1,6 @@
 //! Client implementation for the OpenAI Chat Completions API.
 
+mod stream_chunk;
 pub(crate) mod types;
 
 #[cfg(test)]
@@ -13,6 +14,7 @@ use crate::error::Error;
 use crate::providers::openai_chat_completions::OpenAIChatCompletions;
 use reqwest::header::CONTENT_TYPE;
 use reqwest_eventsource::Event;
+use stream_chunk::parse_stream_chunk_json;
 use types::*;
 
 impl<M: ModelName> LanguageModelClient for OpenAIChatCompletions<M> {
@@ -67,11 +69,7 @@ impl<M: ModelName> LanguageModelClient for OpenAIChatCompletions<M> {
                         return Ok(ChatCompletionsStreamEvent::Done);
                     }
 
-                    let chunk: ChatCompletionsStreamChunk = serde_json::from_str(&msg.data)
-                        .map_err(|e| Error::ApiError {
-                            status_code: None,
-                            details: format!("Invalid JSON in SSE: {e}"),
-                        })?;
+                    let chunk = parse_stream_chunk_json(&msg.data)?;
 
                     Ok(ChatCompletionsStreamEvent::Chunk(chunk))
                 }

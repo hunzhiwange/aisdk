@@ -70,6 +70,12 @@ model_capabilities! {
             display_name: "Claude Opus 4.6 (latest)",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        AnthropicClaudeOpus47 {
+            model_name: "anthropic/claude-opus-4-7",
+            constructor_name: anthropic_claude_opus_4_7,
+            display_name: "Claude Opus 4.7",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         AnthropicClaudeSonnet4 {
             model_name: "anthropic/claude-sonnet-4",
             constructor_name: anthropic_claude_sonnet_4,
@@ -80,6 +86,12 @@ model_capabilities! {
             model_name: "anthropic/claude-sonnet-4-5",
             constructor_name: anthropic_claude_sonnet_4_5,
             display_name: "Claude Sonnet 4.5 (latest)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AnthropicClaudeSonnet46 {
+            model_name: "anthropic/claude-sonnet-4-6",
+            constructor_name: anthropic_claude_sonnet_4_6,
+            display_name: "Claude Sonnet 4.6",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGpt35Turbo {
@@ -129,6 +141,30 @@ model_capabilities! {
             constructor_name: openai_gpt_5_2,
             display_name: "GPT-5.2",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt52Codex {
+            model_name: "openai/gpt-5.2-codex",
+            constructor_name: openai_gpt_5_2_codex,
+            display_name: "GPT-5.2 Codex",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt53Codex {
+            model_name: "openai/gpt-5.3-codex",
+            constructor_name: openai_gpt_5_3_codex,
+            display_name: "GPT-5.3 Codex",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt54 {
+            model_name: "openai/gpt-5.4",
+            constructor_name: openai_gpt_5_4,
+            display_name: "GPT-5.4",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt55 {
+            model_name: "openai/gpt-5.5",
+            constructor_name: openai_gpt_5_5,
+            display_name: "GPT-5.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiO1 {
             model_name: "openai/o1",
@@ -340,11 +376,29 @@ model_capabilities! {
             display_name: "Mistral Small 3.1 24B Instruct",
             capabilities: [TextInputSupport, TextOutputSupport]
         },
+        WorkersAiCfMoonshotaiKimiK25 {
+            model_name: "workers-ai/@cf/moonshotai/kimi-k2.5",
+            constructor_name: workers_ai_cf_moonshotai_kimi_k2_5,
+            display_name: "Kimi K2.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        WorkersAiCfMoonshotaiKimiK26 {
+            model_name: "workers-ai/@cf/moonshotai/kimi-k2.6",
+            constructor_name: workers_ai_cf_moonshotai_kimi_k2_6,
+            display_name: "Kimi K2.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         WorkersAiCfMyshellAiMelotts {
             model_name: "workers-ai/@cf/myshell-ai/melotts",
             constructor_name: workers_ai_cf_myshell_ai_melotts,
             display_name: "MyShell MeloTTS",
             capabilities: [TextInputSupport, TextOutputSupport]
+        },
+        WorkersAiCfNvidiaNemotron3120bA12b {
+            model_name: "workers-ai/@cf/nvidia/nemotron-3-120b-a12b",
+            constructor_name: workers_ai_cf_nvidia_nemotron_3_120b_a12b,
+            display_name: "Nemotron 3 Super 120B",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         WorkersAiCfOpenaiGptOss120b {
             model_name: "workers-ai/@cf/openai/gpt-oss-120b",
@@ -393,6 +447,12 @@ model_capabilities! {
             constructor_name: workers_ai_cf_qwen_qwq_32b,
             display_name: "QwQ 32B",
             capabilities: [TextInputSupport, TextOutputSupport]
+        },
+        WorkersAiCfZaiOrgGlm47Flash {
+            model_name: "workers-ai/@cf/zai-org/glm-4.7-flash",
+            constructor_name: workers_ai_cf_zai_org_glm_4_7_flash,
+            display_name: "GLM-4.7-Flash",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

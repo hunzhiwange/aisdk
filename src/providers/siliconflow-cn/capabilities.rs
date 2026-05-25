@@ -22,10 +22,28 @@ model_capabilities! {
             display_name: "Kwaipilot/KAT-Dev",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        PaddlepaddlePaddleocrVl {
+            model_name: "PaddlePaddle/PaddleOCR-VL",
+            constructor_name: paddlepaddle_paddleocr_vl,
+            display_name: "PaddlePaddle/PaddleOCR-VL",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
+        },
+        PaddlepaddlePaddleocrVl15 {
+            model_name: "PaddlePaddle/PaddleOCR-VL-1.5",
+            constructor_name: paddlepaddle_paddleocr_vl_1_5,
+            display_name: "PaddlePaddle/PaddleOCR-VL-1.5",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
+        },
         ProMinimaxaiMinimaxM21 {
             model_name: "Pro/MiniMaxAI/MiniMax-M2.1",
             constructor_name: pro_minimaxai_minimax_m2_1,
             display_name: "Pro/MiniMaxAI/MiniMax-M2.1",
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ProMinimaxaiMinimaxM25 {
+            model_name: "Pro/MiniMaxAI/MiniMax-M2.5",
+            constructor_name: pro_minimaxai_minimax_m2_5,
+            display_name: "Pro/MiniMaxAI/MiniMax-M2.5",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ProDeepseekAiDeepseekR1 {
@@ -70,6 +88,12 @@ model_capabilities! {
             display_name: "Pro/moonshotai/Kimi-K2.5",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        ProMoonshotaiKimiK26 {
+            model_name: "Pro/moonshotai/Kimi-K2.6",
+            constructor_name: pro_moonshotai_kimi_k2_6,
+            display_name: "Pro/moonshotai/Kimi-K2.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         ProZaiOrgGlm47 {
             model_name: "Pro/zai-org/GLM-4.7",
             constructor_name: pro_zai_org_glm_4_7,
@@ -80,6 +104,12 @@ model_capabilities! {
             model_name: "Pro/zai-org/GLM-5",
             constructor_name: pro_zai_org_glm_5,
             display_name: "Pro/zai-org/GLM-5",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ProZaiOrgGlm51 {
+            model_name: "Pro/zai-org/GLM-5.1",
+            constructor_name: pro_zai_org_glm_5_1,
+            display_name: "Pro/zai-org/GLM-5.1",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenQwq32b {
@@ -268,6 +298,48 @@ model_capabilities! {
             display_name: "Qwen/Qwen3-VL-8B-Thinking",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        QwenQwen35122bA10b {
+            model_name: "Qwen/Qwen3.5-122B-A10B",
+            constructor_name: qwen_qwen3_5_122b_a10b,
+            display_name: "Qwen/Qwen3.5-122B-A10B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen3527b {
+            model_name: "Qwen/Qwen3.5-27B",
+            constructor_name: qwen_qwen3_5_27b,
+            display_name: "Qwen/Qwen3.5-27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen3535bA3b {
+            model_name: "Qwen/Qwen3.5-35B-A3B",
+            constructor_name: qwen_qwen3_5_35b_a3b,
+            display_name: "Qwen/Qwen3.5-35B-A3B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen35397bA17b {
+            model_name: "Qwen/Qwen3.5-397B-A17B",
+            constructor_name: qwen_qwen3_5_397b_a17b,
+            display_name: "Qwen/Qwen3.5-397B-A17B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen354b {
+            model_name: "Qwen/Qwen3.5-4B",
+            constructor_name: qwen_qwen3_5_4b,
+            display_name: "Qwen/Qwen3.5-4B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen359b {
+            model_name: "Qwen/Qwen3.5-9B",
+            constructor_name: qwen_qwen3_5_9b,
+            display_name: "Qwen/Qwen3.5-9B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen3635bA3b {
+            model_name: "Qwen/Qwen3.6-35B-A3B",
+            constructor_name: qwen_qwen3_6_35b_a3b,
+            display_name: "Qwen/Qwen3.6-35B-A3B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         ThudmGlm432b0414 {
             model_name: "THUDM/GLM-4-32B-0414",
             constructor_name: thudm_glm_4_32b_0414,
@@ -303,6 +375,12 @@ model_capabilities! {
             constructor_name: baidu_ernie_4_5_300b_a47b,
             display_name: "baidu/ERNIE-4.5-300B-A47B",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekAiDeepseekOcr {
+            model_name: "deepseek-ai/DeepSeek-OCR",
+            constructor_name: deepseek_ai_deepseek_ocr,
+            display_name: "deepseek-ai/DeepSeek-OCR",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
         },
         DeepseekAiDeepseekR1 {
             model_name: "deepseek-ai/DeepSeek-R1",
