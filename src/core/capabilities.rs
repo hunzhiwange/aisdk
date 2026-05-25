@@ -87,9 +87,9 @@ macro_rules! model_capabilities {
         $(
             #[derive(Debug, Clone)]
             #[doc = concat!(
-                "Represents the **",
+                "Represents the `",
                 $display_name,
-                "** model.\\n\\n",
+                "` model.\\n\\n",
                 "- **Model identifier:** `",
                 $model_name,
                 "`"
@@ -97,9 +97,9 @@ macro_rules! model_capabilities {
             pub struct $model;
 
             #[doc = concat!(
-                "Associates the **",
+                "Associates the `",
                 $display_name,
-                "** model with its canonical API model identifier."
+                "` model with its canonical API model identifier."
             )]
             impl ModelName for $model {
                 /// The underlying API model name.
@@ -123,9 +123,9 @@ macro_rules! model_capabilities {
                 #[doc = concat!(
                     "Creates a new [`",
                     stringify!($provider),
-                    "`] Provider configured to use the **",
+                    "`] Provider configured to use the `",
                     $display_name,
-                    "** model with default settings."
+                    "` model with default settings."
                 )]
                 pub fn $constructor_name() -> Self {
                     Self::default()
