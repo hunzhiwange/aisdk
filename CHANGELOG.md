@@ -17,6 +17,8 @@ Changelog entries are grouped by type, with the following types:
 
 ## [Unreleased] - ReleaseDate
 
+## [0.6.1] - 2026-05-25
+
 ## [0.6.0] - 2026-05-25
 
 ### Added
@@ -159,7 +161,8 @@ Changelog entries are grouped by type, with the following types:
 - Rebranded to aisdk
 
 <!-- next-url -->
-[Unreleased]: https://github.com/hunzhiwange/aisdk/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/hunzhiwange/aisdk/compare/v0.6.1...HEAD
+[0.6.1]: https://github.com/hunzhiwange/aisdk/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/hunzhiwange/aisdk/compare/v0.5.2...v0.6.0
 [0.5.2]: https://github.com/hunzhiwange/aisdk/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/hunzhiwange/aisdk/compare/v0.5.0...v0.5.1
