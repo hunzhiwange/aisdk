@@ -280,6 +280,12 @@ model_capabilities! {
             display_name: "Qwen3.6 35B-A3B",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        Qwen36Flash {
+            model_name: "qwen3.6-flash",
+            constructor_name: qwen3_6_flash,
+            display_name: "Qwen3.6 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         Qwen36MaxPreview {
             model_name: "qwen3.6-max-preview",
             constructor_name: qwen3_6_max_preview,
