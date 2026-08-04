@@ -76,6 +76,12 @@ model_capabilities! {
             display_name: "GLM-5.1",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Glm52 {
+            model_name: "glm-5.2",
+            constructor_name: glm_5_2,
+            display_name: "GLM-5.2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Glm5vTurbo {
             model_name: "glm-5v-turbo",
             constructor_name: glm_5v_turbo,

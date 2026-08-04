@@ -7,7 +7,7 @@ crate::openai_compatible_settings!(
     LucidqueryProviderSettings,
     LucidqueryProviderSettingsBuilder,
     "Lucidquery",
-    "https://lucidquery.com/api/v1",
+    "https://api.lucidquery.com/v1",
     "LUCIDQUERY_API_KEY"
 );
 

@@ -58,6 +58,12 @@ model_capabilities! {
             display_name: "Claude-Opus-4.7",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        AnthropicClaudeOpus48 {
+            model_name: "anthropic/claude-opus-4.8",
+            constructor_name: anthropic_claude_opus_4_8,
+            display_name: "Claude-Opus-4.8",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         AnthropicClaudeSonnet37 {
             model_name: "anthropic/claude-sonnet-3.7",
             constructor_name: anthropic_claude_sonnet_3_7,

@@ -16,42 +16,6 @@ model_capabilities! {
             display_name: "Codestral (latest)",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Devstral2512 {
-            model_name: "devstral-2512",
-            constructor_name: devstral_2512,
-            display_name: "Devstral 2",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        DevstralMedium2507 {
-            model_name: "devstral-medium-2507",
-            constructor_name: devstral_medium_2507,
-            display_name: "Devstral Medium",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        DevstralMediumLatest {
-            model_name: "devstral-medium-latest",
-            constructor_name: devstral_medium_latest,
-            display_name: "Devstral 2 (latest)",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        DevstralSmall2505 {
-            model_name: "devstral-small-2505",
-            constructor_name: devstral_small_2505,
-            display_name: "Devstral Small 2505",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        DevstralSmall2507 {
-            model_name: "devstral-small-2507",
-            constructor_name: devstral_small_2507,
-            display_name: "Devstral Small",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        LabsDevstralSmall2512 {
-            model_name: "labs-devstral-small-2512",
-            constructor_name: labs_devstral_small_2512,
-            display_name: "Devstral Small 2",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         MagistralMediumLatest {
             model_name: "magistral-medium-latest",
             constructor_name: magistral_medium_latest,
@@ -177,6 +141,24 @@ model_capabilities! {
             constructor_name: pixtral_large_latest,
             display_name: "Pixtral Large (latest)",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        VoxtralMiniLatest {
+            model_name: "voxtral-mini-latest",
+            constructor_name: voxtral_mini_latest,
+            display_name: "Voxtral Mini (latest)",
+            capabilities: [AudioInputSupport, TextOutputSupport]
+        },
+        VoxtralMiniTtsLatest {
+            model_name: "voxtral-mini-tts-latest",
+            constructor_name: voxtral_mini_tts_latest,
+            display_name: "Voxtral Mini TTS (latest)",
+            capabilities: [AudioOutputSupport, TextInputSupport]
+        },
+        VoxtralSmallLatest {
+            model_name: "voxtral-small-latest",
+            constructor_name: voxtral_small_latest,
+            display_name: "Voxtral Small (latest)",
+            capabilities: [AudioInputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

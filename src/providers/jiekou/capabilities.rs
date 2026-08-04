@@ -86,19 +86,19 @@ model_capabilities! {
             model_name: "gemini-2.5-flash",
             constructor_name: gemini_2_5_flash,
             display_name: "gemini-2.5-flash",
-            capabilities: [AudioInputSupport, ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Gemini25FlashLite {
             model_name: "gemini-2.5-flash-lite",
             constructor_name: gemini_2_5_flash_lite,
             display_name: "gemini-2.5-flash-lite",
-            capabilities: [AudioInputSupport, ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Gemini25FlashLitePreview0617 {
             model_name: "gemini-2.5-flash-lite-preview-06-17",
             constructor_name: gemini_2_5_flash_lite_preview_06_17,
             display_name: "gemini-2.5-flash-lite-preview-06-17",
-            capabilities: [AudioInputSupport, ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Gemini25FlashLitePreview092025 {
             model_name: "gemini-2.5-flash-lite-preview-09-2025",
@@ -110,19 +110,19 @@ model_capabilities! {
             model_name: "gemini-2.5-flash-preview-05-20",
             constructor_name: gemini_2_5_flash_preview_05_20,
             display_name: "gemini-2.5-flash-preview-05-20",
-            capabilities: [AudioInputSupport, ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Gemini25Pro {
             model_name: "gemini-2.5-pro",
             constructor_name: gemini_2_5_pro,
             display_name: "gemini-2.5-pro",
-            capabilities: [AudioInputSupport, ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Gemini25ProPreview0605 {
             model_name: "gemini-2.5-pro-preview-06-05",
             constructor_name: gemini_2_5_pro_preview_06_05,
             display_name: "gemini-2.5-pro-preview-06-05",
-            capabilities: [AudioInputSupport, ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Gemini3FlashPreview {
             model_name: "gemini-3-flash-preview",

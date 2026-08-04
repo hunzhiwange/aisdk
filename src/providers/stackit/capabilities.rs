@@ -22,6 +22,12 @@ model_capabilities! {
             display_name: "Qwen3-VL Embedding 8B",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
         },
+        QwenQwen3627b {
+            model_name: "Qwen/Qwen3.6-27B",
+            constructor_name: qwen_qwen3_6_27b,
+            display_name: "Qwen3.6 27B",
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         CortecsLlama3370bInstructFp8Dynamic {
             model_name: "cortecs/Llama-3.3-70B-Instruct-FP8-Dynamic",
             constructor_name: cortecs_llama_3_3_70b_instruct_fp8_dynamic,
@@ -40,22 +46,16 @@ model_capabilities! {
             display_name: "E5 Mistral 7B",
             capabilities: [TextInputSupport, TextOutputSupport]
         },
-        NeuralmagicMetaLlama318bInstructFp8 {
-            model_name: "neuralmagic/Meta-Llama-3.1-8B-Instruct-FP8",
-            constructor_name: neuralmagic_meta_llama_3_1_8b_instruct_fp8,
-            display_name: "Llama 3.1 8B",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        NeuralmagicMistralNemoInstruct2407Fp8 {
-            model_name: "neuralmagic/Mistral-Nemo-Instruct-2407-FP8",
-            constructor_name: neuralmagic_mistral_nemo_instruct_2407_fp8,
-            display_name: "Mistral Nemo",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         OpenaiGptOss120b {
             model_name: "openai/gpt-oss-120b",
             constructor_name: openai_gpt_oss_120b,
-            display_name: "GPT-OSS 120B",
+            display_name: "GPT OSS 120B",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGptOss20b {
+            model_name: "openai/gpt-oss-20b",
+            constructor_name: openai_gpt_oss_20b,
+            display_name: "GPT OSS 20B",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

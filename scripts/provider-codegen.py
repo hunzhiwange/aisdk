@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
-"""
-/// script
-/// dependencies = ["typer", "requests", "tomlkit"]
-/// python-version = "3.13"
+# /// script
+# dependencies = ["typer", "requests", "tomlkit"]
+# requires-python = ">=3.13"
+# ///
 
+"""
 AI SDK Provider Code Generator
 
 This single-file executable generates Rust provider and capability code from 
 models.dev API data.
 
 Usage:
-    uv run --python 3.13 --with typer provider-codegen.py openai-compatible
-    uv run --python 3.13 --with typer provider-codegen.py openai-compatible \
+    uv run --python 3.13 provider-codegen.py openai-compatible
+    uv run --python 3.13 provider-codegen.py openai-compatible \
     deepseek --with-capabilities
-    uv run --python 3.13 --with typer provider-codegen.py capabilities
-    uv run --python 3.13 --with typer provider-codegen.py capabilities openai
+    uv run --python 3.13 provider-codegen.py capabilities
+    uv run --python 3.13 provider-codegen.py capabilities openai
 """
 
 import json
@@ -691,6 +692,9 @@ def generate_capabilities_rs(provider_id: str, models: dict[str, Any]) -> str:
 
         # Get model components
         model_type_name = get_model_type_name(base_name, folder_prefix)
+        has_provider_name_collision = model_type_name == provider_struct_name
+        if has_provider_name_collision:
+            model_type_name += "Model"
 
         # Skip duplicate PascalCase type names — these are the same model
         # listed under different naming conventions (e.g., dots vs hyphens)
@@ -703,6 +707,8 @@ def generate_capabilities_rs(provider_id: str, models: dict[str, Any]) -> str:
 
         model_name = model_id  # Use full model ID as the model name
         constructor_name = get_model_constructor_name(base_name, folder_prefix)
+        if has_provider_name_collision:
+            constructor_name += "_model"
         display_name = get_model_display_name(model_id, model_data)
         capabilities = get_model_capabilities(model_data)
 
@@ -750,7 +756,10 @@ def generate_provider_capabilities_content(
 
 
 def prepare_provider_capabilities(
-    provider_id: str, provider_data: dict[str, Any], root: Optional[Path] = None
+    provider_id: str,
+    provider_data: dict[str, Any],
+    root: Optional[Path] = None,
+    require_existing_provider: bool = True,
 ) -> Optional[PendingWrite]:
     """
     Prepare capabilities.rs for writing (no I/O).
@@ -759,6 +768,9 @@ def prepare_provider_capabilities(
         provider_id: Provider identifier (kebab-case)
         provider_data: Provider configuration from API
         root: Optional project root (defaults to auto-detected root)
+        require_existing_provider: Whether to skip providers without an existing
+            module. OpenAI-compatible generation disables this because it creates
+            the module and capabilities file in the same batch.
 
     Returns:
         PendingWrite object or None if no models found
@@ -782,7 +794,9 @@ def prepare_provider_capabilities(
     )
 
     if provider_dir_name is None:
-        return None
+        if require_existing_provider:
+            return None
+        provider_dir_name = provider_id
 
     content = generate_provider_capabilities_content(provider_id, provider_data)
     if content is None:
@@ -914,7 +928,12 @@ def prepare_openai_compatible_provider(
 
     # Optionally prepare capabilities.rs
     if with_capabilities:
-        cap_write = prepare_provider_capabilities(provider_id, provider_data, root)
+        cap_write = prepare_provider_capabilities(
+            provider_id,
+            provider_data,
+            root,
+            require_existing_provider=False,
+        )
         if cap_write:
             pending.append(cap_write)
 

@@ -46,6 +46,12 @@ model_capabilities! {
             display_name: "Claude Opus 4.7",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        ClaudeOpus48 {
+            model_name: "claude-opus4-8",
+            constructor_name: claude_opus4_8,
+            display_name: "Claude Opus 4.8",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         ClaudeSonnet4 {
             model_name: "claude-sonnet-4",
             constructor_name: claude_sonnet_4,
@@ -94,12 +100,6 @@ model_capabilities! {
             display_name: "Devstral 2 2512",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        DevstralSmall2512 {
-            model_name: "devstral-small-2512",
-            constructor_name: devstral_small_2512,
-            display_name: "Devstral Small 2 2512",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Gemini25Pro {
             model_name: "gemini-2.5-pro",
             constructor_name: gemini_2_5_pro,
@@ -136,11 +136,29 @@ model_capabilities! {
             display_name: "GLM 5",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Glm5Turbo {
+            model_name: "glm-5-turbo",
+            constructor_name: glm_5_turbo,
+            display_name: "GLM-5-Turbo",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Glm51 {
             model_name: "glm-5.1",
             constructor_name: glm_5_1,
             display_name: "GLM-5.1",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52 {
+            model_name: "glm-5.2",
+            constructor_name: glm_5_2,
+            display_name: "GLM-5.2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm5vTurbo {
+            model_name: "glm-5v-turbo",
+            constructor_name: glm_5v_turbo,
+            display_name: "GLM-5V-Turbo",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Gpt41 {
             model_name: "gpt-4.1",
@@ -148,17 +166,29 @@ model_capabilities! {
             display_name: "GPT 4.1",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Gpt54 {
+            model_name: "gpt-5.4",
+            constructor_name: gpt_5_4,
+            display_name: "GPT-5.4",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         GptOss120b {
             model_name: "gpt-oss-120b",
             constructor_name: gpt_oss_120b,
             display_name: "GPT Oss 120b",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Hermes470b {
             model_name: "hermes-4-70b",
             constructor_name: hermes_4_70b,
             display_name: "Hermes 4 70B",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Hy3 {
+            model_name: "hy3",
+            constructor_name: hy3,
+            display_name: "Hy3",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Intellect3 {
             model_name: "intellect-3",
@@ -190,6 +220,18 @@ model_capabilities! {
             display_name: "Kimi K2.6",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        KimiK27Code {
+            model_name: "kimi-k2.7-code",
+            constructor_name: kimi_k2_7_code,
+            display_name: "Kimi K2.7 Code",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        KimiK3 {
+            model_name: "kimi-k3",
+            constructor_name: kimi_k3,
+            display_name: "Kimi K3",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Llama31405bInstruct {
             model_name: "llama-3.1-405b-instruct",
             constructor_name: llama_3_1_405b_instruct,
@@ -201,6 +243,12 @@ model_capabilities! {
             constructor_name: llama_3_3_70b_instruct,
             display_name: "Llama 3.3 70B Instruct",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Llama4Maverick {
+            model_name: "llama-4-maverick",
+            constructor_name: llama_4_maverick,
+            display_name: "Llama 4 Maverick 17B Instruct",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MinimaxM2 {
             model_name: "minimax-m2",
@@ -225,6 +273,12 @@ model_capabilities! {
             constructor_name: minimax_m2_7,
             display_name: "MiniMax-m2.7",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MinimaxM3 {
+            model_name: "minimax-m3",
+            constructor_name: minimax_m3,
+            display_name: "MiniMax-M3",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         MistralLarge2512 {
             model_name: "mistral-large-2512",

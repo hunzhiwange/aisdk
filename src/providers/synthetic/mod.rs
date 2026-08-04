@@ -7,7 +7,7 @@ crate::openai_compatible_settings!(
     SyntheticProviderSettings,
     SyntheticProviderSettingsBuilder,
     "Synthetic",
-    "https://api.synthetic.new/v1",
+    "https://api.synthetic.new/openai/v1",
     "SYNTHETIC_API_KEY"
 );
 

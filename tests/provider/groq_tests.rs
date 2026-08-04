@@ -9,7 +9,7 @@ generate_language_model_tests!(
     provider: Groq,
     api_key_var: "GROQ_API_KEY",
     model_struct: Llama318bInstant,
-    default_model: Groq::moonshotai_kimi_k2_instruct_0905(),
+    default_model: Groq::llama_3_1_8b_instant(),
     tool_model: Groq::qwen_qwen3_32b(),
     structured_output_model: Groq::qwen_qwen3_32b(),
     reasoning_model: Groq::openai_gpt_oss_120b(),

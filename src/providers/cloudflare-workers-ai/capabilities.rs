@@ -22,12 +22,6 @@ model_capabilities! {
             display_name: "Deepseek R1 Distill Qwen 32B",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport]
         },
-        CfGoogleGemma312bIt {
-            model_name: "@cf/google/gemma-3-12b-it",
-            constructor_name: cf_google_gemma_3_12b_it,
-            display_name: "Gemma 3 12B It",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
         CfGoogleGemma426bA4bIt {
             model_name: "@cf/google/gemma-4-26b-a4b-it",
             constructor_name: cf_google_gemma_4_26b_a4b_it,
@@ -39,30 +33,6 @@ model_capabilities! {
             constructor_name: cf_ibm_granite_granite_4_0_h_micro,
             display_name: "Granite 4.0 H Micro",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        CfMetaLlama27bChatFp16 {
-            model_name: "@cf/meta/llama-2-7b-chat-fp16",
-            constructor_name: cf_meta_llama_2_7b_chat_fp16,
-            display_name: "Llama 2 7B Chat fp16",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        CfMetaLlama38bInstruct {
-            model_name: "@cf/meta/llama-3-8b-instruct",
-            constructor_name: cf_meta_llama_3_8b_instruct,
-            display_name: "Llama 3 8B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        CfMetaLlama38bInstructAwq {
-            model_name: "@cf/meta/llama-3-8b-instruct-awq",
-            constructor_name: cf_meta_llama_3_8b_instruct_awq,
-            display_name: "Llama 3 8B Instruct Awq",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        CfMetaLlama318bInstructAwq {
-            model_name: "@cf/meta/llama-3.1-8b-instruct-awq",
-            constructor_name: cf_meta_llama_3_1_8b_instruct_awq,
-            display_name: "Llama 3.1 8B Instruct Awq",
-            capabilities: [TextInputSupport, TextOutputSupport]
         },
         CfMetaLlama318bInstructFp8 {
             model_name: "@cf/meta/llama-3.1-8b-instruct-fp8",
@@ -106,28 +76,22 @@ model_capabilities! {
             display_name: "Llama Guard 3 8B",
             capabilities: [TextInputSupport, TextOutputSupport]
         },
-        CfMistralMistral7bInstructV01 {
-            model_name: "@cf/mistral/mistral-7b-instruct-v0.1",
-            constructor_name: cf_mistral_mistral_7b_instruct_v0_1,
-            display_name: "Mistral 7B Instruct V0.1",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
         CfMistralaiMistralSmall3124bInstruct {
             model_name: "@cf/mistralai/mistral-small-3.1-24b-instruct",
             constructor_name: cf_mistralai_mistral_small_3_1_24b_instruct,
             display_name: "Mistral Small 3.1 24B Instruct",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        CfMoonshotaiKimiK25 {
-            model_name: "@cf/moonshotai/kimi-k2.5",
-            constructor_name: cf_moonshotai_kimi_k2_5,
-            display_name: "Kimi K2.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         CfMoonshotaiKimiK26 {
             model_name: "@cf/moonshotai/kimi-k2.6",
             constructor_name: cf_moonshotai_kimi_k2_6,
             display_name: "Kimi K2.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        CfMoonshotaiKimiK27Code {
+            model_name: "@cf/moonshotai/kimi-k2.7-code",
+            constructor_name: cf_moonshotai_kimi_k2_7_code,
+            display_name: "Kimi K2.7 Code",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         CfNvidiaNemotron3120bA12b {
@@ -170,6 +134,12 @@ model_capabilities! {
             model_name: "@cf/zai-org/glm-4.7-flash",
             constructor_name: cf_zai_org_glm_4_7_flash,
             display_name: "GLM-4.7-Flash",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        CfZaiOrgGlm52 {
+            model_name: "@cf/zai-org/glm-5.2",
+            constructor_name: cf_zai_org_glm_5_2,
+            display_name: "Glm 5.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

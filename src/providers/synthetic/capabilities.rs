@@ -10,167 +10,35 @@ use crate::providers::synthetic::Synthetic;
 model_capabilities! {
     provider: Synthetic,
     models: {
-        HfMinimaxaiMinimaxM2 {
-            model_name: "hf:MiniMaxAI/MiniMax-M2",
-            constructor_name: hf_minimaxai_minimax_m2,
-            display_name: "MiniMax-M2",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMinimaxaiMinimaxM21 {
-            model_name: "hf:MiniMaxAI/MiniMax-M2.1",
-            constructor_name: hf_minimaxai_minimax_m2_1,
-            display_name: "MiniMax-M2.1",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMinimaxaiMinimaxM25 {
-            model_name: "hf:MiniMaxAI/MiniMax-M2.5",
-            constructor_name: hf_minimaxai_minimax_m2_5,
-            display_name: "MiniMax-M2.5",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfQwenQwen25Coder32bInstruct {
-            model_name: "hf:Qwen/Qwen2.5-Coder-32B-Instruct",
-            constructor_name: hf_qwen_qwen2_5_coder_32b_instruct,
-            display_name: "Qwen2.5-Coder-32B-Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        HfQwenQwen3235bA22bInstruct2507 {
-            model_name: "hf:Qwen/Qwen3-235B-A22B-Instruct-2507",
-            constructor_name: hf_qwen_qwen3_235b_a22b_instruct_2507,
-            display_name: "Qwen 3 235B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfQwenQwen3235bA22bThinking2507 {
-            model_name: "hf:Qwen/Qwen3-235B-A22B-Thinking-2507",
-            constructor_name: hf_qwen_qwen3_235b_a22b_thinking_2507,
-            display_name: "Qwen3 235B A22B Thinking 2507",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfQwenQwen3Coder480bA35bInstruct {
-            model_name: "hf:Qwen/Qwen3-Coder-480B-A35B-Instruct",
-            constructor_name: hf_qwen_qwen3_coder_480b_a35b_instruct,
-            display_name: "Qwen 3 Coder 480B",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfQwenQwen35397bA17b {
-            model_name: "hf:Qwen/Qwen3.5-397B-A17B",
-            constructor_name: hf_qwen_qwen3_5_397b_a17b,
-            display_name: "Qwen3.5-97B-A17B",
+        HfMinimaxaiMinimaxM3 {
+            model_name: "hf:MiniMaxAI/MiniMax-M3",
+            constructor_name: hf_minimaxai_minimax_m3,
+            display_name: "MiniMax-M3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        HfDeepseekAiDeepseekR1 {
-            model_name: "hf:deepseek-ai/DeepSeek-R1",
-            constructor_name: hf_deepseek_ai_deepseek_r1,
-            display_name: "DeepSeek R1",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfDeepseekAiDeepseekR10528 {
-            model_name: "hf:deepseek-ai/DeepSeek-R1-0528",
-            constructor_name: hf_deepseek_ai_deepseek_r1_0528,
-            display_name: "DeepSeek R1 (0528)",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfDeepseekAiDeepseekV3 {
-            model_name: "hf:deepseek-ai/DeepSeek-V3",
-            constructor_name: hf_deepseek_ai_deepseek_v3,
-            display_name: "DeepSeek V3",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfDeepseekAiDeepseekV30324 {
-            model_name: "hf:deepseek-ai/DeepSeek-V3-0324",
-            constructor_name: hf_deepseek_ai_deepseek_v3_0324,
-            display_name: "DeepSeek V3 (0324)",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfDeepseekAiDeepseekV31 {
-            model_name: "hf:deepseek-ai/DeepSeek-V3.1",
-            constructor_name: hf_deepseek_ai_deepseek_v3_1,
-            display_name: "DeepSeek V3.1",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfDeepseekAiDeepseekV31Terminus {
-            model_name: "hf:deepseek-ai/DeepSeek-V3.1-Terminus",
-            constructor_name: hf_deepseek_ai_deepseek_v3_1_terminus,
-            display_name: "DeepSeek V3.1 Terminus",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfDeepseekAiDeepseekV32 {
-            model_name: "hf:deepseek-ai/DeepSeek-V3.2",
-            constructor_name: hf_deepseek_ai_deepseek_v3_2,
-            display_name: "DeepSeek V3.2",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMetaLlamaLlama31405bInstruct {
-            model_name: "hf:meta-llama/Llama-3.1-405B-Instruct",
-            constructor_name: hf_meta_llama_llama_3_1_405b_instruct,
-            display_name: "Llama-3.1-405B-Instruct",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMetaLlamaLlama3170bInstruct {
-            model_name: "hf:meta-llama/Llama-3.1-70B-Instruct",
-            constructor_name: hf_meta_llama_llama_3_1_70b_instruct,
-            display_name: "Llama-3.1-70B-Instruct",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMetaLlamaLlama318bInstruct {
-            model_name: "hf:meta-llama/Llama-3.1-8B-Instruct",
-            constructor_name: hf_meta_llama_llama_3_1_8b_instruct,
-            display_name: "Llama-3.1-8B-Instruct",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMetaLlamaLlama3370bInstruct {
-            model_name: "hf:meta-llama/Llama-3.3-70B-Instruct",
-            constructor_name: hf_meta_llama_llama_3_3_70b_instruct,
-            display_name: "Llama-3.3-70B-Instruct",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMetaLlamaLlama4Maverick17b128eInstructFp8 {
-            model_name: "hf:meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
-            constructor_name: hf_meta_llama_llama_4_maverick_17b_128e_instruct_fp8,
-            display_name: "Llama-4-Maverick-17B-128E-Instruct-FP8",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMetaLlamaLlama4Scout17b16eInstruct {
-            model_name: "hf:meta-llama/Llama-4-Scout-17B-16E-Instruct",
-            constructor_name: hf_meta_llama_llama_4_scout_17b_16e_instruct,
-            display_name: "Llama-4-Scout-17B-16E-Instruct",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMoonshotaiKimiK2Instruct0905 {
-            model_name: "hf:moonshotai/Kimi-K2-Instruct-0905",
-            constructor_name: hf_moonshotai_kimi_k2_instruct_0905,
-            display_name: "Kimi K2 0905",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMoonshotaiKimiK2Thinking {
-            model_name: "hf:moonshotai/Kimi-K2-Thinking",
-            constructor_name: hf_moonshotai_kimi_k2_thinking,
-            display_name: "Kimi K2 Thinking",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMoonshotaiKimiK25 {
-            model_name: "hf:moonshotai/Kimi-K2.5",
-            constructor_name: hf_moonshotai_kimi_k2_5,
-            display_name: "Kimi K2.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMoonshotaiKimiK26 {
-            model_name: "hf:moonshotai/Kimi-K2.6",
-            constructor_name: hf_moonshotai_kimi_k2_6,
-            display_name: "Kimi K2.6",
+        HfQwenQwen3627b {
+            model_name: "hf:Qwen/Qwen3.6-27B",
+            constructor_name: hf_qwen_qwen3_6_27b,
+            display_name: "Qwen3.6 27B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        HfNvidiaKimiK25Nvfp4 {
-            model_name: "hf:nvidia/Kimi-K2.5-NVFP4",
-            constructor_name: hf_nvidia_kimi_k2_5_nvfp4,
-            display_name: "Kimi K2.5 (NVFP4)",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        HfMoonshotaiKimiK27Code {
+            model_name: "hf:moonshotai/Kimi-K2.7-Code",
+            constructor_name: hf_moonshotai_kimi_k2_7_code,
+            display_name: "Kimi K2.7 Code",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        HfMoonshotaiKimiK3 {
+            model_name: "hf:moonshotai/Kimi-K3",
+            constructor_name: hf_moonshotai_kimi_k3,
+            display_name: "Kimi K3",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         HfNvidiaNvidiaNemotron3Super120bA12bNvfp4 {
             model_name: "hf:nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
             constructor_name: hf_nvidia_nvidia_nemotron_3_super_120b_a12b_nvfp4,
-            display_name: "Nemotron 3 Super 120B",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            display_name: "Nemotron 3 Super 120B A12B",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         HfOpenaiGptOss120b {
             model_name: "hf:openai/gpt-oss-120b",
@@ -178,34 +46,16 @@ model_capabilities! {
             display_name: "GPT OSS 120B",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        HfZaiOrgGlm46 {
-            model_name: "hf:zai-org/GLM-4.6",
-            constructor_name: hf_zai_org_glm_4_6,
-            display_name: "GLM 4.6",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfZaiOrgGlm47 {
-            model_name: "hf:zai-org/GLM-4.7",
-            constructor_name: hf_zai_org_glm_4_7,
-            display_name: "GLM 4.7",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         HfZaiOrgGlm47Flash {
             model_name: "hf:zai-org/GLM-4.7-Flash",
             constructor_name: hf_zai_org_glm_4_7_flash,
             display_name: "GLM-4.7-Flash",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        HfZaiOrgGlm5 {
-            model_name: "hf:zai-org/GLM-5",
-            constructor_name: hf_zai_org_glm_5,
-            display_name: "GLM-5",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfZaiOrgGlm51 {
-            model_name: "hf:zai-org/GLM-5.1",
-            constructor_name: hf_zai_org_glm_5_1,
-            display_name: "GLM 5.1",
+        HfZaiOrgGlm52 {
+            model_name: "hf:zai-org/GLM-5.2",
+            constructor_name: hf_zai_org_glm_5_2,
+            display_name: "GLM-5.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

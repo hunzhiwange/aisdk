@@ -10,17 +10,23 @@ use crate::providers::google::Google;
 model_capabilities! {
     provider: Google,
     models: {
-        Gemini20Flash {
-            model_name: "gemini-2.0-flash",
-            constructor_name: gemini_2_0_flash,
-            display_name: "Gemini 2.0 Flash",
-            capabilities: [AudioInputSupport, ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        DeepResearchMaxPreview042026 {
+            model_name: "deep-research-max-preview-04-2026",
+            constructor_name: deep_research_max_preview_04_2026,
+            display_name: "Deep Research Max Preview (Apr-21-2026)",
+            capabilities: [AudioInputSupport, ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        Gemini20FlashLite {
-            model_name: "gemini-2.0-flash-lite",
-            constructor_name: gemini_2_0_flash_lite,
-            display_name: "Gemini 2.0 Flash-Lite",
-            capabilities: [AudioInputSupport, ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        DeepResearchPreview042026 {
+            model_name: "deep-research-preview-04-2026",
+            constructor_name: deep_research_preview_04_2026,
+            display_name: "Deep Research Preview (Apr-21-2026)",
+            capabilities: [AudioInputSupport, ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Gemini25ComputerUsePreview102025 {
+            model_name: "gemini-2.5-computer-use-preview-10-2025",
+            constructor_name: gemini_2_5_computer_use_preview_10_2025,
+            display_name: "Gemini 2.5 Computer Use Preview 10-2025",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gemini25Flash {
             model_name: "gemini-2.5-flash",
@@ -64,11 +70,23 @@ model_capabilities! {
             display_name: "Gemini 3 Flash Preview",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        Gemini3ProPreview {
-            model_name: "gemini-3-pro-preview",
-            constructor_name: gemini_3_pro_preview,
-            display_name: "Gemini 3 Pro Preview",
-            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        Gemini3ProImage {
+            model_name: "gemini-3-pro-image",
+            constructor_name: gemini_3_pro_image,
+            display_name: "Nano Banana Pro",
+            capabilities: [ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport]
+        },
+        Gemini3ProImagePreview {
+            model_name: "gemini-3-pro-image-preview",
+            constructor_name: gemini_3_pro_image_preview,
+            display_name: "Nano Banana Pro",
+            capabilities: [ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport]
+        },
+        Gemini31FlashImage {
+            model_name: "gemini-3.1-flash-image",
+            constructor_name: gemini_3_1_flash_image,
+            display_name: "Nano Banana 2",
+            capabilities: [ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, VideoInputSupport]
         },
         Gemini31FlashImagePreview {
             model_name: "gemini-3.1-flash-image-preview",
@@ -82,11 +100,23 @@ model_capabilities! {
             display_name: "Gemini 3.1 Flash Lite",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        Gemini31FlashLitePreview {
-            model_name: "gemini-3.1-flash-lite-preview",
-            constructor_name: gemini_3_1_flash_lite_preview,
-            display_name: "Gemini 3.1 Flash Lite Preview",
-            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        Gemini31FlashLiteImage {
+            model_name: "gemini-3.1-flash-lite-image",
+            constructor_name: gemini_3_1_flash_lite_image,
+            display_name: "Nano Banana 2 Lite",
+            capabilities: [ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gemini31FlashLivePreview {
+            model_name: "gemini-3.1-flash-live-preview",
+            constructor_name: gemini_3_1_flash_live_preview,
+            display_name: "Gemini 3.1 Flash Live Preview",
+            capabilities: [AudioInputSupport, AudioOutputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Gemini31FlashTtsPreview {
+            model_name: "gemini-3.1-flash-tts-preview",
+            constructor_name: gemini_3_1_flash_tts_preview,
+            display_name: "Gemini 3.1 Flash TTS Preview",
+            capabilities: [AudioOutputSupport, ReasoningSupport, TextInputSupport]
         },
         Gemini31ProPreview {
             model_name: "gemini-3.1-pro-preview",
@@ -106,11 +136,35 @@ model_capabilities! {
             display_name: "Gemini 3.5 Flash",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        Gemini35FlashLite {
+            model_name: "gemini-3.5-flash-lite",
+            constructor_name: gemini_3_5_flash_lite,
+            display_name: "Gemini 3.5 Flash Lite",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Gemini35LiveTranslatePreview {
+            model_name: "gemini-3.5-live-translate-preview",
+            constructor_name: gemini_3_5_live_translate_preview,
+            display_name: "Gemini 3.5 Live Translate Preview",
+            capabilities: [AudioInputSupport, AudioOutputSupport, TextOutputSupport]
+        },
+        Gemini36Flash {
+            model_name: "gemini-3.6-flash",
+            constructor_name: gemini_3_6_flash,
+            display_name: "Gemini 3.6 Flash",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         GeminiEmbedding001 {
             model_name: "gemini-embedding-001",
             constructor_name: gemini_embedding_001,
             display_name: "Gemini Embedding 001",
             capabilities: [TextInputSupport, TextOutputSupport]
+        },
+        GeminiEmbedding2 {
+            model_name: "gemini-embedding-2",
+            constructor_name: gemini_embedding_2,
+            display_name: "Gemini Embedding 2",
+            capabilities: [AudioInputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport, VideoInputSupport]
         },
         GeminiFlashLatest {
             model_name: "gemini-flash-latest",
@@ -124,6 +178,18 @@ model_capabilities! {
             display_name: "Gemini Flash-Lite Latest",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        GeminiOmniFlashPreview {
+            model_name: "gemini-omni-flash-preview",
+            constructor_name: gemini_omni_flash_preview,
+            display_name: "Gemini Omni Flash Preview",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, VideoInputSupport, VideoOutputSupport]
+        },
+        GeminiRoboticsEr16Preview {
+            model_name: "gemini-robotics-er-1.6-preview",
+            constructor_name: gemini_robotics_er_1_6_preview,
+            display_name: "Gemini Robotics-ER 1.6 Preview",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         Gemma426bA4bIt {
             model_name: "gemma-4-26b-a4b-it",
             constructor_name: gemma_4_26b_a4b_it,
@@ -135,6 +201,36 @@ model_capabilities! {
             constructor_name: gemma_4_31b_it,
             display_name: "Gemma 4 31B IT",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Lyria3ClipPreview {
+            model_name: "lyria-3-clip-preview",
+            constructor_name: lyria_3_clip_preview,
+            display_name: "Lyria 3 Clip Preview",
+            capabilities: [AudioOutputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport]
+        },
+        Lyria3ProPreview {
+            model_name: "lyria-3-pro-preview",
+            constructor_name: lyria_3_pro_preview,
+            display_name: "Lyria 3 Pro Preview",
+            capabilities: [AudioOutputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport]
+        },
+        Veo31FastGeneratePreview {
+            model_name: "veo-3.1-fast-generate-preview",
+            constructor_name: veo_3_1_fast_generate_preview,
+            display_name: "Veo 3.1 fast",
+            capabilities: [ImageInputSupport, TextInputSupport, VideoInputSupport, VideoOutputSupport]
+        },
+        Veo31GeneratePreview {
+            model_name: "veo-3.1-generate-preview",
+            constructor_name: veo_3_1_generate_preview,
+            display_name: "Veo 3.1",
+            capabilities: [ImageInputSupport, TextInputSupport, VideoOutputSupport]
+        },
+        Veo31LiteGeneratePreview {
+            model_name: "veo-3.1-lite-generate-preview",
+            constructor_name: veo_3_1_lite_generate_preview,
+            display_name: "Veo 3.1 lite",
+            capabilities: [ImageInputSupport, TextInputSupport, VideoOutputSupport]
         },
     }
 }

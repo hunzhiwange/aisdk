@@ -10,12 +10,6 @@ use crate::providers::zai_coding_plan::ZaiCodingPlan;
 model_capabilities! {
     provider: ZaiCodingPlan,
     models: {
-        Glm45Air {
-            model_name: "glm-4.5-air",
-            constructor_name: glm_4_5_air,
-            display_name: "GLM-4.5-Air",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Glm47 {
             model_name: "glm-4.7",
             constructor_name: glm_4_7,
@@ -28,17 +22,17 @@ model_capabilities! {
             display_name: "GLM-5-Turbo",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Glm51 {
-            model_name: "glm-5.1",
-            constructor_name: glm_5_1,
-            display_name: "GLM-5.1",
+        Glm52 {
+            model_name: "glm-5.2",
+            constructor_name: glm_5_2,
+            display_name: "GLM-5.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Glm5vTurbo {
-            model_name: "glm-5v-turbo",
-            constructor_name: glm_5v_turbo,
-            display_name: "GLM-5V-Turbo",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        Glm52Highspeed {
+            model_name: "glm-5.2-highspeed",
+            constructor_name: glm_5_2_highspeed,
+            display_name: "GLM-5.2 Highspeed",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

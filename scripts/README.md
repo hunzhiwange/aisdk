@@ -18,8 +18,8 @@ The generator is a single Python executable: `provider-codegen.py`
 #### Standard way (with uv):
 
 ```bash
-uv run --python 3.13 --with typer --with requests provider-codegen.py openai-compatible
-uv run --python 3.13 --with typer --with requests provider-codegen.py capabilities
+uv run --python 3.13 provider-codegen.py openai-compatible
+uv run --python 3.13 provider-codegen.py capabilities
 ```
 
 #### With shell alias (recommended for developers):
@@ -27,7 +27,7 @@ uv run --python 3.13 --with typer --with requests provider-codegen.py capabiliti
 Add this to your `~/.bashrc`, `~/.zshrc`, or equivalent:
 
 ```bash
-alias provider-codegen='uv run --python 3.13 --with typer --with requests ./scripts/provider-codegen.py'
+alias provider-codegen='uv run --python 3.13 ./scripts/provider-codegen.py'
 ```
 
 Then reload your shell:
@@ -162,7 +162,7 @@ To modify the generator:
 
 1. Edit `provider-codegen.py` directly
 2. Test with: `python3 -m py_compile provider-codegen.py`
-3. Test commands with: `uv run --python 3.13 --with typer provider-codegen.py --help`
+3. Test commands with: `uv run --python 3.13 provider-codegen.py --help`
 
 ### Testing
 
@@ -171,7 +171,7 @@ To modify the generator:
 python3 -m py_compile provider-codegen.py
 
 # Help
-uv run --python 3.13 --with typer --with requests provider-codegen.py --help
+uv run --python 3.13 provider-codegen.py --help
 
 # Dry run (preview changes without writing)
 # [Note: dry-run flag available in batch_write_files but not exposed in CLI yet]
@@ -205,7 +205,7 @@ For GitHub Actions or similar workflows, use the standard invocation:
 
 ```yaml
 - name: Generate providers
-  run: uv run --python 3.13 --with typer --with requests ./scripts/provider-codegen.py openai-compatible --with-capabilities
+  run: uv run --python 3.13 ./scripts/provider-codegen.py openai-compatible --with-capabilities
 ```
 
 Or with the alias (if available in your shell):
@@ -213,7 +213,7 @@ Or with the alias (if available in your shell):
 ```yaml
 - name: Generate providers
   run: |
-    alias provider-codegen='uv run --python 3.13 --with typer --with requests ./scripts/provider-codegen.py'
+    alias provider-codegen='uv run --python 3.13 ./scripts/provider-codegen.py'
     provider-codegen openai-compatible --with-capabilities
 ```
 

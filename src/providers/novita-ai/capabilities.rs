@@ -196,6 +196,12 @@ model_capabilities! {
             display_name: "Ling-2.6-flash",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        InclusionaiRing261t {
+            model_name: "inclusionai/ring-2.6-1t",
+            constructor_name: inclusionai_ring_2_6_1t,
+            display_name: "Ring-2.6-1T",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         KwaipilotKatCoderPro {
             model_name: "kwaipilot/kat-coder-pro",
             constructor_name: kwaipilot_kat_coder_pro,
@@ -280,6 +286,12 @@ model_capabilities! {
             display_name: "MiniMax M2.7",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MinimaxMinimaxM27Highspeed {
+            model_name: "minimax/minimax-m2.7-highspeed",
+            constructor_name: minimax_minimax_m2_7_highspeed,
+            display_name: "MiniMax-M2.7-highspeed",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MinimaxaiMinimaxM180k {
             model_name: "minimaxai/minimax-m1-80k",
             constructor_name: minimaxai_minimax_m1_80k,
@@ -302,7 +314,7 @@ model_capabilities! {
             model_name: "moonshotai/kimi-k2-instruct",
             constructor_name: moonshotai_kimi_k2_instruct,
             display_name: "Kimi K2 Instruct",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MoonshotaiKimiK2Thinking {
             model_name: "moonshotai/kimi-k2-thinking",
@@ -320,6 +332,18 @@ model_capabilities! {
             model_name: "moonshotai/kimi-k2.6",
             constructor_name: moonshotai_kimi_k2_6,
             display_name: "Kimi K2.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        MoonshotaiKimiK27Code {
+            model_name: "moonshotai/kimi-k2.7-code",
+            constructor_name: moonshotai_kimi_k2_7_code,
+            display_name: "Kimi K2.7 Code",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        MoonshotaiKimiK3 {
+            model_name: "moonshotai/kimi-k3",
+            constructor_name: moonshotai_kimi_k3,
+            display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         NousresearchHermes2ProLlama38b {
@@ -514,6 +538,12 @@ model_capabilities! {
             display_name: "Qwen3.5-397B-A17B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        QwenQwen37Max {
+            model_name: "qwen/qwen3.7-max",
+            constructor_name: qwen_qwen3_7_max,
+            display_name: "Qwen3.7-Max",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Sao10kL38bSthenoV32 {
             model_name: "sao10K/L3-8B-stheno-v3.2",
             constructor_name: sao10k_l3_8b_stheno_v3_2,
@@ -542,6 +572,18 @@ model_capabilities! {
             model_name: "xiaomimimo/mimo-v2-flash",
             constructor_name: xiaomimimo_mimo_v2_flash,
             display_name: "XiaomiMiMo/MiMo-V2-Flash",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        XiaomimimoMimoV2Pro {
+            model_name: "xiaomimimo/mimo-v2-pro",
+            constructor_name: xiaomimimo_mimo_v2_pro,
+            display_name: "MiMo-V2-Pro",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        XiaomimimoMimoV25Pro {
+            model_name: "xiaomimimo/mimo-v2.5-pro",
+            constructor_name: xiaomimimo_mimo_v2_5_pro,
+            display_name: "MiMo-V2.5-Pro",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ZaiOrgAutoglmPhone9bMultilingual {
@@ -602,6 +644,12 @@ model_capabilities! {
             model_name: "zai-org/glm-5.1",
             constructor_name: zai_org_glm_5_1,
             display_name: "GLM-5.1",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm52 {
+            model_name: "zai-org/glm-5.2",
+            constructor_name: zai_org_glm_5_2,
+            display_name: "GLM-5.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

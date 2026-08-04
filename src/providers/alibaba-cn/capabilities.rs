@@ -112,6 +112,12 @@ model_capabilities! {
             display_name: "GLM-5.1",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Glm52 {
+            model_name: "glm-5.2",
+            constructor_name: glm_5_2,
+            display_name: "GLM-5.2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         KimiK2Thinking {
             model_name: "kimi-k2-thinking",
             constructor_name: kimi_k2_thinking,
@@ -452,6 +458,24 @@ model_capabilities! {
             model_name: "qwen3.6-plus",
             constructor_name: qwen3_6_plus,
             display_name: "Qwen3.6 Plus",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen37Flash {
+            model_name: "qwen3.7-flash",
+            constructor_name: qwen3_7_flash,
+            display_name: "Qwen3.7 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen37Max {
+            model_name: "qwen3.7-max",
+            constructor_name: qwen3_7_max,
+            display_name: "Qwen3.7 Max",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen37Plus {
+            model_name: "qwen3.7-plus",
+            constructor_name: qwen3_7_plus,
+            display_name: "Qwen3.7 Plus",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Qwq32b {

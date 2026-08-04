@@ -22,12 +22,6 @@ model_capabilities! {
             display_name: "gpt-oss-20b",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Llama318bInstruct {
-            model_name: "llama-3.1-8b-instruct",
-            constructor_name: llama_3_1_8b_instruct,
-            display_name: "Llama-3.1-8B-Instruct",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         MetaLlama3370bInstruct {
             model_name: "meta-llama-3_3-70b-instruct",
             constructor_name: meta_llama_3_3_70b_instruct,
@@ -70,11 +64,35 @@ model_capabilities! {
             display_name: "Qwen3-Coder-30B-A3B-Instruct",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Qwen35397bA17b {
+            model_name: "qwen3.5-397b-a17b",
+            constructor_name: qwen3_5_397b_a17b,
+            display_name: "Qwen3.5-397B-A17B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Qwen359b {
             model_name: "qwen3.5-9b",
             constructor_name: qwen3_5_9b,
             display_name: "Qwen3.5-9B",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen3627b {
+            model_name: "qwen3.6-27b",
+            constructor_name: qwen3_6_27b,
+            display_name: "Qwen3.6-27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen3guardGen06b {
+            model_name: "qwen3guard-gen-0.6b",
+            constructor_name: qwen3guard_gen_0_6b,
+            display_name: "Qwen3Guard-Gen-0.6B",
+            capabilities: [TextInputSupport, TextOutputSupport]
+        },
+        Qwen3guardGen8b {
+            model_name: "qwen3guard-gen-8b",
+            constructor_name: qwen3guard_gen_8b,
+            display_name: "Qwen3Guard-Gen-8B",
+            capabilities: [TextInputSupport, TextOutputSupport]
         },
     }
 }

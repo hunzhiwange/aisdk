@@ -433,8 +433,8 @@ model_capabilities! {
         MistralSmall {
             model_name: "mistral-small",
             constructor_name: mistral_small,
-            display_name: "Mistral Small",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
+            display_name: "Mistral Small 3.2",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         O1 {
             model_name: "o1",

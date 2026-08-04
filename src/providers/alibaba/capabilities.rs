@@ -304,6 +304,12 @@ model_capabilities! {
             display_name: "Qwen3.7 Max",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Qwen37Plus {
+            model_name: "qwen3.7-plus",
+            constructor_name: qwen3_7_plus,
+            display_name: "Qwen3.7 Plus",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         QwqPlus {
             model_name: "qwq-plus",
             constructor_name: qwq_plus,

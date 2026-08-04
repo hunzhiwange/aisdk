@@ -7,7 +7,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/hunzhiwange/aisdk/pulls)
 
 
-An open-source, **provider-agnostic** Rust library for building AI-powered applications, inspired by the Vercel AI SDK. Type-safe, framework-friendly, and ready to connect with **70+ AI providers**.
+An open-source, **provider-agnostic** Rust library for building AI-powered applications, inspired by the Vercel AI SDK. Type-safe, framework-friendly, and ready to connect with **150+ AI providers**.
 
 To learn more about how to use the AI SDK, check out our [Documentation](https://vibewindow-aisdk.rs) and [API Reference](https://docs.rs/vibewindow-aisdk/latest).
 
@@ -20,7 +20,7 @@ To learn more about how to use the AI SDK, check out our [Documentation](https:/
 * Structured Output (JSON Schema)
 * Embedding Model Support
 * Compatible with [Vercel AI SDK UI](https://ai-sdk.dev/docs/ai-sdk-ui/overview) (React, Solid, Vue, Svelte, …)
-* Supports 73+ providers, including Anthropic, Google, OpenAI, OpenRouter, xAI
+* Supports 150+ providers, including Anthropic, Google, OpenAI, OpenRouter, xAI
 
 ## Installation
 

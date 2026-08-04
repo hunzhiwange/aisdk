@@ -12,7 +12,7 @@ generate_language_model_tests!(
     default_model: Vercel::openai_gpt_4o_mini(),
     tool_model: Vercel::openai_gpt_4o_mini(),
     structured_output_model: Vercel::openai_gpt_4o_mini(),
-    reasoning_model: Vercel::openai_o1(),
+    reasoning_model: Vercel::openai_o3(),
     embedding_model: Vercel::openai_text_embedding_3_large(),
     skip_reasoning: true,
     skip_tool: false,

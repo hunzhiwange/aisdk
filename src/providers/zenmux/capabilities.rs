@@ -22,6 +22,12 @@ model_capabilities! {
             display_name: "Claude 3.7 Sonnet",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        AnthropicClaudeFable5 {
+            model_name: "anthropic/claude-fable-5",
+            constructor_name: anthropic_claude_fable_5,
+            display_name: "Claude Fable 5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         AnthropicClaudeHaiku45 {
             model_name: "anthropic/claude-haiku-4.5",
             constructor_name: anthropic_claude_haiku_4_5,
@@ -58,6 +64,12 @@ model_capabilities! {
             display_name: "Claude Opus 4.7",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        AnthropicClaudeOpus48 {
+            model_name: "anthropic/claude-opus-4.8",
+            constructor_name: anthropic_claude_opus_4_8,
+            display_name: "Claude Opus 4.8",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         AnthropicClaudeSonnet4 {
             model_name: "anthropic/claude-sonnet-4",
             constructor_name: anthropic_claude_sonnet_4,
@@ -74,6 +86,18 @@ model_capabilities! {
             model_name: "anthropic/claude-sonnet-4.6",
             constructor_name: anthropic_claude_sonnet_4_6,
             display_name: "Claude Sonnet 4.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AnthropicClaudeSonnet5 {
+            model_name: "anthropic/claude-sonnet-5",
+            constructor_name: anthropic_claude_sonnet_5,
+            display_name: "Claude Sonnet 5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AnthropicClaudeSonnet5Free {
+            model_name: "anthropic/claude-sonnet-5-free",
+            constructor_name: anthropic_claude_sonnet_5_free,
+            display_name: "Claude Sonnet 5 (Free)",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         BaiduErnie50ThinkingPreview {
@@ -136,6 +160,12 @@ model_capabilities! {
             display_name: "Gemini 3 Flash Preview",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        GoogleGemini31FlashLite {
+            model_name: "google/gemini-3.1-flash-lite",
+            constructor_name: google_gemini_3_1_flash_lite,
+            display_name: "Gemini 3.1 Flash Lite",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         GoogleGemini31FlashLitePreview {
             model_name: "google/gemini-3.1-flash-lite-preview",
             constructor_name: google_gemini_3_1_flash_lite_preview,
@@ -148,6 +178,12 @@ model_capabilities! {
             display_name: "Gemini 3.1 Pro Preview",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        GoogleGemini35Flash {
+            model_name: "google/gemini-3.5-flash",
+            constructor_name: google_gemini_3_5_flash,
+            display_name: "Gemini 3.5 Flash",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         InclusionaiLing1t {
             model_name: "inclusionai/ling-1t",
             constructor_name: inclusionai_ling_1t,
@@ -159,6 +195,12 @@ model_capabilities! {
             constructor_name: inclusionai_ring_1t,
             display_name: "Ring-1T",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        InclusionaiRing261t {
+            model_name: "inclusionai/ring-2.6-1t",
+            constructor_name: inclusionai_ring_2_6_1t,
+            display_name: "inclusionAI: Ring-2.6-1T",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         KuaishouKatCoderProV2 {
             model_name: "kuaishou/kat-coder-pro-v2",
@@ -202,6 +244,12 @@ model_capabilities! {
             display_name: "MiniMax M2.7 highspeed",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MinimaxMinimaxM3 {
+            model_name: "minimax/minimax-m3",
+            constructor_name: minimax_minimax_m3,
+            display_name: "MiniMax-M3",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         MoonshotaiKimiK20905 {
             model_name: "moonshotai/kimi-k2-0905",
             constructor_name: moonshotai_kimi_k2_0905,
@@ -231,6 +279,30 @@ model_capabilities! {
             constructor_name: moonshotai_kimi_k2_6,
             display_name: "Kimi K2.6",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        MoonshotaiKimiK27Code {
+            model_name: "moonshotai/kimi-k2.7-code",
+            constructor_name: moonshotai_kimi_k2_7_code,
+            display_name: "Kimi K2.7 Code",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        MoonshotaiKimiK27CodeFree {
+            model_name: "moonshotai/kimi-k2.7-code-free",
+            constructor_name: moonshotai_kimi_k2_7_code_free,
+            display_name: "Kimi K2.7 Code (Free)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        MoonshotaiKimiK3 {
+            model_name: "moonshotai/kimi-k3",
+            constructor_name: moonshotai_kimi_k3,
+            display_name: "Kimi K3",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        MoonshotaiKimiK3Free {
+            model_name: "moonshotai/kimi-k3-free",
+            constructor_name: moonshotai_kimi_k3_free,
+            display_name: "Kimi K3 (Free)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         OpenaiGpt5 {
             model_name: "openai/gpt-5",
@@ -328,10 +400,34 @@ model_capabilities! {
             display_name: "GPT-5.5",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        OpenaiGpt55Instant {
+            model_name: "openai/gpt-5.5-instant",
+            constructor_name: openai_gpt_5_5_instant,
+            display_name: "GPT-5.5 Instant",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         OpenaiGpt55Pro {
             model_name: "openai/gpt-5.5-pro",
             constructor_name: openai_gpt_5_5_pro,
             display_name: "GPT-5.5 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt56Luna {
+            model_name: "openai/gpt-5.6-luna",
+            constructor_name: openai_gpt_5_6_luna,
+            display_name: "GPT-5.6 Luna",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt56Sol {
+            model_name: "openai/gpt-5.6-sol",
+            constructor_name: openai_gpt_5_6_sol,
+            display_name: "GPT-5.6 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt56Terra {
+            model_name: "openai/gpt-5.6-terra",
+            constructor_name: openai_gpt_5_6_terra,
+            display_name: "GPT-5.6 Terra",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenQwen3CoderPlus {
@@ -364,6 +460,18 @@ model_capabilities! {
             display_name: "Qwen3.6-Plus",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        QwenQwen37Max {
+            model_name: "qwen/qwen3.7-max",
+            constructor_name: qwen_qwen3_7_max,
+            display_name: "Qwen3.7 Max",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        QwenQwen37Plus {
+            model_name: "qwen/qwen3.7-plus",
+            constructor_name: qwen_qwen3_7_plus,
+            display_name: "Qwen3.7 Plus",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         SapiensAiAgnes15Lite {
             model_name: "sapiens-ai/agnes-1.5-lite",
             constructor_name: sapiens_ai_agnes_1_5_lite,
@@ -388,11 +496,17 @@ model_capabilities! {
             display_name: "Step 3.5 Flash",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        StepfunStep35FlashFree {
-            model_name: "stepfun/step-3.5-flash-free",
-            constructor_name: stepfun_step_3_5_flash_free,
-            display_name: "Step 3.5 Flash (Free)",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        StepfunStep37Flash {
+            model_name: "stepfun/step-3.7-flash",
+            constructor_name: stepfun_step_3_7_flash,
+            display_name: "Step 3.7 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        StepfunStep37FlashFree {
+            model_name: "stepfun/step-3.7-flash-free",
+            constructor_name: stepfun_step_3_7_flash_free,
+            display_name: "Step 3.7 Flash (Free)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         TencentHy3Preview {
             model_name: "tencent/hy3-preview",
@@ -471,6 +585,24 @@ model_capabilities! {
             constructor_name: x_ai_grok_4_2_fast_non_reasoning,
             display_name: "Grok 4.2 Fast Non Reasoning",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        XAiGrok43 {
+            model_name: "x-ai/grok-4.3",
+            constructor_name: x_ai_grok_4_3,
+            display_name: "Grok 4.3",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        XAiGrok45 {
+            model_name: "x-ai/grok-4.5",
+            constructor_name: x_ai_grok_4_5,
+            display_name: "Grok 4.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        XAiGrokBuild01 {
+            model_name: "x-ai/grok-build-0.1",
+            constructor_name: x_ai_grok_build_0_1,
+            display_name: "Grok Build 0.1",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         XAiGrokCodeFast1 {
             model_name: "x-ai/grok-code-fast-1",
@@ -578,6 +710,18 @@ model_capabilities! {
             model_name: "z-ai/glm-5.1",
             constructor_name: z_ai_glm_5_1,
             display_name: "GLM-5.1",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZAiGlm52 {
+            model_name: "z-ai/glm-5.2",
+            constructor_name: z_ai_glm_5_2,
+            display_name: "GLM 5.2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZAiGlm52Free {
+            model_name: "z-ai/glm-5.2-free",
+            constructor_name: z_ai_glm_5_2_free,
+            display_name: "GLM 5.2 (Free)",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ZAiGlm5vTurbo {

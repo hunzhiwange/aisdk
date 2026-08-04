@@ -16,35 +16,23 @@ model_capabilities! {
             display_name: "BGE Multilingual Gemma2",
             capabilities: [TextInputSupport, TextOutputSupport]
         },
-        DeepseekR1DistillLlama70b {
-            model_name: "deepseek-r1-distill-llama-70b",
-            constructor_name: deepseek_r1_distill_llama_70b,
-            display_name: "DeepSeek R1 Distill Llama 70B",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Gemma426bA4bIt {
+            model_name: "gemma-4-26b-a4b-it",
+            constructor_name: gemma_4_26b_a4b_it,
+            display_name: "Gemma 4 26B A4B IT",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Devstral2123bInstruct2512 {
-            model_name: "devstral-2-123b-instruct-2512",
-            constructor_name: devstral_2_123b_instruct_2512,
-            display_name: "Devstral 2 123B Instruct (2512)",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gemma327bIt {
-            model_name: "gemma-3-27b-it",
-            constructor_name: gemma_3_27b_it,
-            display_name: "Gemma-3-27B-IT",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Glm52 {
+            model_name: "glm-5.2",
+            constructor_name: glm_5_2,
+            display_name: "GLM-5.2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GptOss120b {
             model_name: "gpt-oss-120b",
             constructor_name: gpt_oss_120b,
             display_name: "GPT-OSS 120B",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Llama318bInstruct {
-            model_name: "llama-3.1-8b-instruct",
-            constructor_name: llama_3_1_8b_instruct,
-            display_name: "Llama 3.1 8B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Llama3370bInstruct {
             model_name: "llama-3.3-70b-instruct",
@@ -57,12 +45,6 @@ model_capabilities! {
             constructor_name: mistral_medium_3_5_128b,
             display_name: "Mistral Medium 3.5 128B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MistralNemoInstruct2407 {
-            model_name: "mistral-nemo-instruct-2407",
-            constructor_name: mistral_nemo_instruct_2407,
-            display_name: "Mistral Nemo Instruct 2407",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MistralSmall3224bInstruct2506 {
             model_name: "mistral-small-3.2-24b-instruct-2506",
@@ -80,7 +62,7 @@ model_capabilities! {
             model_name: "qwen3-235b-a22b-instruct-2507",
             constructor_name: qwen3_235b_a22b_instruct_2507,
             display_name: "Qwen3 235B A22B Instruct 2507",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Qwen3Coder30bA3bInstruct {
             model_name: "qwen3-coder-30b-a3b-instruct",
@@ -98,13 +80,13 @@ model_capabilities! {
             model_name: "qwen3.5-397b-a17b",
             constructor_name: qwen3_5_397b_a17b,
             display_name: "Qwen3.5 397B A17B",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        VoxtralSmall24b2507 {
-            model_name: "voxtral-small-24b-2507",
-            constructor_name: voxtral_small_24b_2507,
-            display_name: "Voxtral Small 24B 2507",
-            capabilities: [AudioInputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Qwen3635bA3b {
+            model_name: "qwen3.6-35b-a3b",
+            constructor_name: qwen3_6_35b_a3b,
+            display_name: "Qwen3.6 35B A3B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         WhisperLargeV3 {
             model_name: "whisper-large-v3",

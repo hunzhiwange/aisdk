@@ -25,6 +25,8 @@ target
 
 /target
 
+.DS_Store
+
 
 # Envirnoment variables
 .env

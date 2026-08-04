@@ -14,25 +14,31 @@ model_capabilities! {
             model_name: "grok-4.20-0309-non-reasoning",
             constructor_name: grok_4_20_0309_non_reasoning,
             display_name: "Grok 4.20 (Non-Reasoning)",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Grok4200309Reasoning {
             model_name: "grok-4.20-0309-reasoning",
             constructor_name: grok_4_20_0309_reasoning,
             display_name: "Grok 4.20 (Reasoning)",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Grok420MultiAgent0309 {
             model_name: "grok-4.20-multi-agent-0309",
             constructor_name: grok_4_20_multi_agent_0309,
             display_name: "Grok 4.20 Multi-Agent",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
         },
         Grok43 {
             model_name: "grok-4.3",
             constructor_name: grok_4_3,
             display_name: "Grok 4.3",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Grok45 {
+            model_name: "grok-4.5",
+            constructor_name: grok_4_5,
+            display_name: "Grok 4.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GrokBuild01 {
             model_name: "grok-build-0.1",
@@ -56,7 +62,13 @@ model_capabilities! {
             model_name: "grok-imagine-video",
             constructor_name: grok_imagine_video,
             display_name: "Grok Imagine Video",
-            capabilities: [ImageInputSupport, TextInputSupport, VideoOutputSupport]
+            capabilities: [ImageInputSupport, TextInputSupport, VideoInputSupport, VideoOutputSupport]
+        },
+        GrokImagineVideo15 {
+            model_name: "grok-imagine-video-1.5",
+            constructor_name: grok_imagine_video_1_5,
+            display_name: "Grok Imagine Video 1.5",
+            capabilities: [AudioInputSupport, ImageInputSupport, TextInputSupport, VideoOutputSupport]
         },
     }
 }

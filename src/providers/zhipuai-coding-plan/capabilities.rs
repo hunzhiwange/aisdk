@@ -10,11 +10,11 @@ use crate::providers::zhipuai_coding_plan::ZhipuaiCodingPlan;
 model_capabilities! {
     provider: ZhipuaiCodingPlan,
     models: {
-        Glm45Air {
-            model_name: "glm-4.5-air",
-            constructor_name: glm_4_5_air,
-            display_name: "GLM-4.5-Air",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Glm46v {
+            model_name: "glm-4.6v",
+            constructor_name: glm_4_6v,
+            display_name: "GLM-4.6V",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Glm47 {
             model_name: "glm-4.7",
@@ -32,6 +32,18 @@ model_capabilities! {
             model_name: "glm-5.1",
             constructor_name: glm_5_1,
             display_name: "GLM-5.1",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52 {
+            model_name: "glm-5.2",
+            constructor_name: glm_5_2,
+            display_name: "GLM-5.2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52Highspeed {
+            model_name: "glm-5.2-highspeed",
+            constructor_name: glm_5_2_highspeed,
+            display_name: "GLM-5.2 Highspeed",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Glm5vTurbo {
