@@ -31,7 +31,7 @@ openai = []
 anthropic = []
 google = []
 openaichatcompletions = []
-openaicompatible = ["openaichatcompletions"]
+openaicompatible = ["openaichatcompletions", "openai"]
 groq = ["openaichatcompletions"]
 vercel = ["openaichatcompletions"]
 openrouter = ["openaichatcompletions"]
@@ -221,6 +221,10 @@ pre-release-replacements = [
   {file="CHANGELOG.md", search="<!-- next-header -->", replace="<!-- next-header -->\n\n## [Unreleased] - ReleaseDate", exactly=1},
   {file="CHANGELOG.md", search="<!-- next-url -->", replace="<!-- next-url -->\n[Unreleased]: https://github.com/hunzhiwange/aisdk/compare/{{tag_name}}...HEAD", exactly=1},
 ]
+
+[[example]]
+name = "runtime_model_ref"
+required-features = ["openaicompatible", "alibaba-cn"]
 
 [[test]]
 name = "openai_tests"

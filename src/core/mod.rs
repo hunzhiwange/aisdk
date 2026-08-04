@@ -13,6 +13,7 @@ pub mod embedding_model;
 pub mod image_model;
 pub mod language_model;
 pub mod messages;
+pub mod model_ref;
 pub mod provider;
 pub mod tools;
 pub mod utils;
@@ -38,5 +39,6 @@ pub use messages::{
     AssistantMessage, Message, Messages, Role, SystemMessage, UserContentPart, UserImage,
     UserImageDetail, UserMessage,
 };
+pub use model_ref::ModelRef;
 pub use provider::Provider;
 pub use tools::{Tool, ToolCallInfo, ToolContext, ToolResultInfo};

@@ -1,6 +1,20 @@
 //! This module provides the `Provider` trait, which defines the interface for
 //! interacting with different AI providers.
 
+mod generated_registry;
+pub mod registry;
+pub use registry::{
+    ProviderDescriptor, ProviderProtocol, provider_descriptor, provider_descriptors,
+};
+
+#[cfg(feature = "openaicompatible")]
+pub mod resolver;
+#[cfg(feature = "openaicompatible")]
+pub use resolver::{OpenAICompatibleResolveOptions, resolve_openai_compatible_model};
+
+#[cfg(all(test, feature = "openaicompatible"))]
+mod resolver_tests;
+
 #[cfg(feature = "openai")]
 pub mod openai;
 #[cfg(feature = "openai")]

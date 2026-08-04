@@ -89,5 +89,59 @@ class OpenAICompatibleGenerationTests(unittest.TestCase):
         self.assertIn("constructor_name: claudinio_model,", content)
 
 
+class ProviderRegistryGenerationTests(unittest.TestCase):
+    def test_registry_contains_only_openai_compatible_providers(self):
+        providers = {
+            "compatible": {
+                "api": "https://compatible.example/v1",
+                "env": ["COMPATIBLE_API_KEY"],
+                "npm": "@ai-sdk/openai-compatible",
+            },
+            "native-openai": {
+                "api": "https://native.example/v1",
+                "env": ["NATIVE_API_KEY"],
+                "npm": "@ai-sdk/openai",
+            },
+        }
+
+        content = provider_codegen.generate_provider_registry_rs(providers)
+
+        self.assertIn('#[cfg(feature = "compatible")]', content)
+        self.assertIn('id: "compatible"', content)
+        self.assertIn(
+            "protocol: super::registry::ProviderProtocol::OpenAiCompatible",
+            content,
+        )
+        self.assertNotIn("native-openai", content)
+        self.assertNotIn("NATIVE_API_KEY", content)
+
+    def test_registry_preserves_all_env_names_and_sort_order(self):
+        providers = {
+            "z-provider": {
+                "api": "https://z.example/v1",
+                "env": ["Z_PRIMARY_API_KEY", "Z_SECONDARY_API_KEY"],
+                "npm": "@ai-sdk/openai-compatible",
+            },
+            "a-provider": {
+                "api": "https://a.example/v1",
+                "env": ["A_API_KEY"],
+                "npm": "@ai-sdk/openai-compatible",
+            },
+        }
+
+        content = provider_codegen.generate_provider_registry_rs(providers)
+
+        self.assertLess(
+            content.index('id: "a-provider"'),
+            content.index('id: "z-provider"'),
+        )
+        self.assertIn('#[cfg(feature = "a-provider")]', content)
+        self.assertIn('#[cfg(feature = "z-provider")]', content)
+        self.assertIn(
+            'env_names: &["Z_PRIMARY_API_KEY", "Z_SECONDARY_API_KEY"]',
+            content,
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

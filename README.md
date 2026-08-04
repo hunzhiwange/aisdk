@@ -32,6 +32,60 @@ cargo add vibewindow-aisdk
 
 Enable Providers of your choice such as OpenAI, Anthropic, Google, and [more](https://vibewindow-aisdk.rs/docs#model-providers)
 
+### Runtime complete model references
+
+Enable the generic OpenAI-compatible runtime and each known provider that you
+want to resolve:
+
+```bash
+cargo add vibewindow-aisdk --features openaicompatible,alibaba-cn
+```
+
+Pass a complete `provider/model` reference to the runtime resolver. The API key
+can be supplied explicitly and takes precedence over the provider's registered
+environment variables:
+
+```rust
+use aisdk::providers::{
+    OpenAICompatibleResolveOptions, resolve_openai_compatible_model,
+};
+
+fn main() -> aisdk::Result<()> {
+    let model = resolve_openai_compatible_model(
+        "alibaba-cn/qwen3.7-plus-2026-05-26",
+        OpenAICompatibleResolveOptions {
+            api_key: Some("your-api-key".to_owned()),
+            ..Default::default()
+        },
+    )?;
+
+    // `model` can be passed directly to `LanguageModelRequest::builder().model(model)`.
+    Ok(())
+}
+```
+
+For a known, feature-enabled Provider, the SDK uses its generated base URL and
+API key environment-variable metadata. The model portion is passed through
+unchanged even when it is not present in the SDK's static model catalog. The
+SDK does not query the remote model list, verify that the model exists, replace
+model aliases, or fall back to another model.
+
+An unknown Provider is accepted only when `base_url` is supplied explicitly:
+
+```rust
+let model = resolve_openai_compatible_model(
+    "my-provider/org/my-model",
+    OpenAICompatibleResolveOptions {
+        base_url: Some("https://api.example.com/v1".to_owned()),
+        api_key: Some("your-api-key".to_owned()),
+        ..Default::default()
+    },
+)?;
+```
+
+See the complete, non-networked example in
+[`examples/runtime_model_ref.rs`](./examples/runtime_model_ref.rs).
+
 ### Example with OpenAI provider
 
 ```bash

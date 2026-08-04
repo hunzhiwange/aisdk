@@ -17,6 +17,13 @@ Changelog entries are grouped by type, with the following types:
 
 ## [Unreleased] - ReleaseDate
 
+### Added
+
+- Added complete `provider/model` reference parsing and runtime resolution for
+  OpenAI-compatible providers, including generated Provider metadata, dynamic
+  model pass-through, explicit configuration overrides, and support for unknown
+  Providers with an explicit base URL.
+
 ## [0.6.2] - 2026-08-04
 
 ## [0.6.1] - 2026-05-25
