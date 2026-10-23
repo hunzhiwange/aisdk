@@ -28,5 +28,11 @@ model_capabilities! {
             display_name: "Step 3.7 Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        Step5Preview {
+            model_name: "step-5-preview",
+            constructor_name: step_5_preview,
+            display_name: "Step 5 Preview",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
     }
 }

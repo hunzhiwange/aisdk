@@ -365,7 +365,9 @@ macro_rules! openai_compatible_provider {
             }
         }
 
-        // Re-exports Models for convenience
+        // A provider can have no active typed models after catalog deprecations.
+        // Its DynamicModel builder remains usable.
+        #[allow(unused_imports)]
         pub use capabilities::*;
     };
 }

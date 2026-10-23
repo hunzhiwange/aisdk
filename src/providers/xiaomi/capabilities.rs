@@ -10,23 +10,23 @@ use crate::providers::xiaomi::Xiaomi;
 model_capabilities! {
     provider: Xiaomi,
     models: {
-        MimoV25 {
-            model_name: "mimo-v2.5",
-            constructor_name: mimo_v2_5,
-            display_name: "MiMo-V2.5",
-            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        MimoV26Flash {
+            model_name: "mimo-v2.6-flash",
+            constructor_name: mimo_v2_6_flash,
+            display_name: "MiMo-V2.6-Flash",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        MimoV25Pro {
-            model_name: "mimo-v2.5-pro",
-            constructor_name: mimo_v2_5_pro,
-            display_name: "MiMo-V2.5-Pro",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        MimoV26Pro {
+            model_name: "mimo-v2.6-pro",
+            constructor_name: mimo_v2_6_pro,
+            display_name: "MiMo-V2.6-Pro",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        MimoV25ProUltraspeed {
-            model_name: "mimo-v2.5-pro-ultraspeed",
-            constructor_name: mimo_v2_5_pro_ultraspeed,
-            display_name: "MiMo-V2.5-Pro-UltraSpeed",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        MimoV26ProUltraspeed {
+            model_name: "mimo-v2.6-pro-ultraspeed",
+            constructor_name: mimo_v2_6_pro_ultraspeed,
+            display_name: "MiMo-V2.6-Pro-UltraSpeed",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }
 }

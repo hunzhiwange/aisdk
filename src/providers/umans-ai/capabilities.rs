@@ -14,7 +14,7 @@ model_capabilities! {
             model_name: "umans-coder",
             constructor_name: umans_coder,
             display_name: "Umans Coder",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         UmansDeepseekV4Flash0731 {
             model_name: "umans-deepseek-v4-flash-0731",
@@ -22,28 +22,34 @@ model_capabilities! {
             display_name: "DeepSeek V4 Flash",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        UmansDeepseekV41Flash {
+            model_name: "umans-deepseek-v4.1-flash",
+            constructor_name: umans_deepseek_v4_1_flash,
+            display_name: "DeepSeek V4.1 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UmansDeepseekV41Flash1017 {
+            model_name: "umans-deepseek-v4.1-flash-1017",
+            constructor_name: umans_deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         UmansFlash {
             model_name: "umans-flash",
             constructor_name: umans_flash,
             display_name: "Umans Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        UmansGlm51 {
-            model_name: "umans-glm-5.1",
-            constructor_name: umans_glm_5_1,
-            display_name: "GLM 5.1",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        UmansGlm53 {
+            model_name: "umans-glm-5.3",
+            constructor_name: umans_glm_5_3,
+            display_name: "GLM 5.3",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        UmansGlm52 {
-            model_name: "umans-glm-5.2",
-            constructor_name: umans_glm_5_2,
-            display_name: "GLM 5.2",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        UmansKimiK27 {
-            model_name: "umans-kimi-k2.7",
-            constructor_name: umans_kimi_k2_7,
-            display_name: "Kimi K2.7 Code",
+        UmansGlm53Flash {
+            model_name: "umans-glm-5.3-flash",
+            constructor_name: umans_glm_5_3_flash,
+            display_name: "GLM 5.3 Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         UmansKimiK3 {

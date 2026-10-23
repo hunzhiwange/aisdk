@@ -10,16 +10,22 @@ use crate::providers::tinfoil::Tinfoil;
 model_capabilities! {
     provider: Tinfoil,
     models: {
+        DeepseekV41Flash {
+            model_name: "deepseek-v4-1-flash",
+            constructor_name: deepseek_v4_1_flash,
+            display_name: "DeepSeek V4.1 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Gemma431b {
             model_name: "gemma4-31b",
             constructor_name: gemma4_31b,
             display_name: "Gemma 4 31B IT",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Glm52 {
-            model_name: "glm-5-2",
-            constructor_name: glm_5_2,
-            display_name: "GLM-5.2",
+        Glm53 {
+            model_name: "glm-5-3",
+            constructor_name: glm_5_3,
+            display_name: "GLM-5.3",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GptOss120b {
@@ -32,19 +38,19 @@ model_capabilities! {
             model_name: "gpt-oss-safeguard-120b",
             constructor_name: gpt_oss_safeguard_120b,
             display_name: "gpt-oss-safeguard-120b",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        KimiK26 {
-            model_name: "kimi-k2-6",
-            constructor_name: kimi_k2_6,
-            display_name: "Kimi K2.6",
+        KimiK3 {
+            model_name: "kimi-k3",
+            constructor_name: kimi_k3,
+            display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Llama3370b {
             model_name: "llama3-3-70b",
             constructor_name: llama3_3_70b,
             display_name: "Llama-3.3-70B-Instruct",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         NomicEmbedText {
             model_name: "nomic-embed-text",

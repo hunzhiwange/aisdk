@@ -22,5 +22,11 @@ model_capabilities! {
             display_name: "Abliterated Model Large",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        AbliteratedModelLargeV2 {
+            model_name: "abliterated-model-large-v2",
+            constructor_name: abliterated_model_large_v2,
+            display_name: "Abliterated Model Large V2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
     }
 }

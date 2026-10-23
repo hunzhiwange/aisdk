@@ -93,11 +93,31 @@ pub mod abliteration_ai;
 #[cfg(feature = "abliteration-ai")]
 pub use abliteration_ai::AbliterationAi;
 
+#[cfg(feature = "above")]
+pub mod above;
+#[cfg(feature = "above")]
+pub use above::Above;
+
+#[cfg(feature = "agentrouter")]
+pub mod agentrouter;
+#[cfg(feature = "agentrouter")]
+pub use agentrouter::Agentrouter;
+
+#[cfg(feature = "agnes")]
+pub mod agnes;
+#[cfg(feature = "agnes")]
+pub use agnes::Agnes;
+
 #[cfg(feature = "ai-router")]
 #[path = "ai-router/mod.rs"]
 pub mod ai_router;
 #[cfg(feature = "ai-router")]
 pub use ai_router::AiRouter;
+
+#[cfg(feature = "ai21")]
+pub mod ai21;
+#[cfg(feature = "ai21")]
+pub use ai21::Ai21;
 
 #[cfg(feature = "aiand")]
 pub mod aiand;
@@ -108,6 +128,21 @@ pub use aiand::Aiand;
 pub mod aihubmix;
 #[cfg(feature = "aihubmix")]
 pub use aihubmix::Aihubmix;
+
+#[cfg(feature = "aimlapi")]
+pub mod aimlapi;
+#[cfg(feature = "aimlapi")]
+pub use aimlapi::Aimlapi;
+
+#[cfg(feature = "ainetcafe")]
+pub mod ainetcafe;
+#[cfg(feature = "ainetcafe")]
+pub use ainetcafe::Ainetcafe;
+
+#[cfg(feature = "aixy")]
+pub mod aixy;
+#[cfg(feature = "aixy")]
+pub use aixy::Aixy;
 
 #[cfg(feature = "aki-io")]
 #[path = "aki-io/mod.rs"]
@@ -155,10 +190,20 @@ pub mod ambient;
 #[cfg(feature = "ambient")]
 pub use ambient::Ambient;
 
+#[cfg(feature = "amd")]
+pub mod amd;
+#[cfg(feature = "amd")]
+pub use amd::Amd;
+
 #[cfg(feature = "anyapi")]
 pub mod anyapi;
 #[cfg(feature = "anyapi")]
 pub use anyapi::Anyapi;
+
+#[cfg(feature = "arcee")]
+pub mod arcee;
+#[cfg(feature = "arcee")]
+pub use arcee::Arcee;
 
 #[cfg(feature = "atomic-chat")]
 #[path = "atomic-chat/mod.rs"]
@@ -181,6 +226,11 @@ pub mod baseten;
 #[cfg(feature = "baseten")]
 pub use baseten::Baseten;
 
+#[cfg(feature = "bee")]
+pub mod bee;
+#[cfg(feature = "bee")]
+pub use bee::Bee;
+
 #[cfg(feature = "berget")]
 pub mod berget;
 #[cfg(feature = "berget")]
@@ -190,6 +240,16 @@ pub use berget::Berget;
 pub mod blueclaw;
 #[cfg(feature = "blueclaw")]
 pub use blueclaw::Blueclaw;
+
+#[cfg(feature = "bothub")]
+pub mod bothub;
+#[cfg(feature = "bothub")]
+pub use bothub::Bothub;
+
+#[cfg(feature = "boundless")]
+pub mod boundless;
+#[cfg(feature = "boundless")]
+pub use boundless::Boundless;
 
 #[cfg(feature = "chutes")]
 pub mod chutes;
@@ -230,6 +290,16 @@ pub mod cloudflare_workers_ai;
 #[cfg(feature = "cloudflare-workers-ai")]
 pub use cloudflare_workers_ai::CloudflareWorkersAi;
 
+#[cfg(feature = "commandcode")]
+pub mod commandcode;
+#[cfg(feature = "commandcode")]
+pub use commandcode::Commandcode;
+
+#[cfg(feature = "coralbricks")]
+pub mod coralbricks;
+#[cfg(feature = "coralbricks")]
+pub use coralbricks::Coralbricks;
+
 #[cfg(feature = "cortecs")]
 pub mod cortecs;
 #[cfg(feature = "cortecs")]
@@ -244,6 +314,11 @@ pub use crof::Crof;
 pub mod crossmodel;
 #[cfg(feature = "crossmodel")]
 pub use crossmodel::Crossmodel;
+
+#[cfg(feature = "crusoe")]
+pub mod crusoe;
+#[cfg(feature = "crusoe")]
+pub use crusoe::Crusoe;
 
 #[cfg(feature = "daoxe")]
 pub mod daoxe;
@@ -280,10 +355,25 @@ pub mod ebcloud;
 #[cfg(feature = "ebcloud")]
 pub use ebcloud::Ebcloud;
 
+#[cfg(feature = "echo")]
+pub mod echo;
+#[cfg(feature = "echo")]
+pub use echo::Echo;
+
+#[cfg(feature = "edenai")]
+pub mod edenai;
+#[cfg(feature = "edenai")]
+pub use edenai::Edenai;
+
 #[cfg(feature = "empiriolabs")]
 pub mod empiriolabs;
 #[cfg(feature = "empiriolabs")]
 pub use empiriolabs::Empiriolabs;
+
+#[cfg(feature = "engy")]
+pub mod engy;
+#[cfg(feature = "engy")]
+pub use engy::Engy;
 
 #[cfg(feature = "evroc")]
 pub mod evroc;
@@ -384,6 +474,11 @@ pub mod inceptron;
 #[cfg(feature = "inceptron")]
 pub use inceptron::Inceptron;
 
+#[cfg(feature = "inco")]
+pub mod inco;
+#[cfg(feature = "inco")]
+pub use inco::Inco;
+
 #[cfg(feature = "inference")]
 pub mod inference;
 #[cfg(feature = "inference")]
@@ -394,11 +489,26 @@ pub mod inferx;
 #[cfg(feature = "inferx")]
 pub use inferx::Inferx;
 
+#[cfg(feature = "infomaniak")]
+pub mod infomaniak;
+#[cfg(feature = "infomaniak")]
+pub use infomaniak::Infomaniak;
+
 #[cfg(feature = "io-net")]
 #[path = "io-net/mod.rs"]
 pub mod io_net;
 #[cfg(feature = "io-net")]
 pub use io_net::IoNet;
+
+#[cfg(feature = "iteracompute")]
+pub mod iteracompute;
+#[cfg(feature = "iteracompute")]
+pub use iteracompute::Iteracompute;
+
+#[cfg(feature = "jalapeno")]
+pub mod jalapeno;
+#[cfg(feature = "jalapeno")]
+pub use jalapeno::Jalapeno;
 
 #[cfg(feature = "jiekou")]
 pub mod jiekou;
@@ -415,6 +525,28 @@ pub mod kilo;
 #[cfg(feature = "kilo")]
 pub use kilo::Kilo;
 
+#[cfg(feature = "kimi-code-plan-cn")]
+#[path = "kimi-code-plan-cn/mod.rs"]
+pub mod kimi_code_plan_cn;
+#[cfg(feature = "kimi-code-plan-cn")]
+pub use kimi_code_plan_cn::KimiCodePlanCn;
+
+#[cfg(feature = "kimi-code-plan-global")]
+#[path = "kimi-code-plan-global/mod.rs"]
+pub mod kimi_code_plan_global;
+#[cfg(feature = "kimi-code-plan-global")]
+pub use kimi_code_plan_global::KimiCodePlanGlobal;
+
+#[cfg(feature = "klokintegration")]
+pub mod klokintegration;
+#[cfg(feature = "klokintegration")]
+pub use klokintegration::Klokintegration;
+
+#[cfg(feature = "kosmik")]
+pub mod kosmik;
+#[cfg(feature = "kosmik")]
+pub use kosmik::Kosmik;
+
 #[cfg(feature = "kuae-cloud-coding-plan")]
 #[path = "kuae-cloud-coding-plan/mod.rs"]
 pub mod kuae_cloud_coding_plan;
@@ -426,6 +558,11 @@ pub mod lilac;
 #[cfg(feature = "lilac")]
 pub use lilac::Lilac;
 
+#[cfg(feature = "liquid")]
+pub mod liquid;
+#[cfg(feature = "liquid")]
+pub use liquid::Liquid;
+
 #[cfg(feature = "llama")]
 pub mod llama;
 #[cfg(feature = "llama")]
@@ -435,6 +572,17 @@ pub use llama::Llama;
 pub mod llmgateway;
 #[cfg(feature = "llmgateway")]
 pub use llmgateway::Llmgateway;
+
+#[cfg(feature = "llmgateway-providers")]
+#[path = "llmgateway-providers/mod.rs"]
+pub mod llmgateway_providers;
+#[cfg(feature = "llmgateway-providers")]
+pub use llmgateway_providers::LlmgatewayProviders;
+
+#[cfg(feature = "llmtech")]
+pub mod llmtech;
+#[cfg(feature = "llmtech")]
+pub use llmtech::Llmtech;
 
 #[cfg(feature = "llmtr")]
 pub mod llmtr;
@@ -451,6 +599,11 @@ pub mod longcat;
 #[cfg(feature = "longcat")]
 pub use longcat::Longcat;
 
+#[cfg(feature = "lowrouter")]
+pub mod lowrouter;
+#[cfg(feature = "lowrouter")]
+pub use lowrouter::Lowrouter;
+
 #[cfg(feature = "lucidquery")]
 pub mod lucidquery;
 #[cfg(feature = "lucidquery")]
@@ -465,6 +618,11 @@ pub use lynkr::Lynkr;
 pub mod meganova;
 #[cfg(feature = "meganova")]
 pub use meganova::Meganova;
+
+#[cfg(feature = "melious")]
+pub mod melious;
+#[cfg(feature = "melious")]
+pub use melious::Melious;
 
 #[cfg(feature = "mixlayer")]
 pub mod mixlayer;
@@ -513,6 +671,11 @@ pub mod morph;
 #[cfg(feature = "morph")]
 pub use morph::Morph;
 
+#[cfg(feature = "nan")]
+pub mod nan;
+#[cfg(feature = "nan")]
+pub use nan::Nan;
+
 #[cfg(feature = "nano-gpt")]
 #[path = "nano-gpt/mod.rs"]
 pub mod nano_gpt;
@@ -555,6 +718,11 @@ pub mod nvidia;
 #[cfg(feature = "nvidia")]
 pub use nvidia::Nvidia;
 
+#[cfg(feature = "oci")]
+pub mod oci;
+#[cfg(feature = "oci")]
+pub use oci::Oci;
+
 #[cfg(feature = "ofox")]
 pub mod ofox;
 #[cfg(feature = "ofox")]
@@ -577,6 +745,16 @@ pub mod opencode_go;
 #[cfg(feature = "opencode-go")]
 pub use opencode_go::OpencodeGo;
 
+#[cfg(feature = "openreason")]
+pub mod openreason;
+#[cfg(feature = "openreason")]
+pub use openreason::Openreason;
+
+#[cfg(feature = "opper")]
+pub mod opper;
+#[cfg(feature = "opper")]
+pub use opper::Opper;
+
 #[cfg(feature = "orcarouter")]
 pub mod orcarouter;
 #[cfg(feature = "orcarouter")]
@@ -586,6 +764,16 @@ pub use orcarouter::Orcarouter;
 pub mod ovhcloud;
 #[cfg(feature = "ovhcloud")]
 pub use ovhcloud::Ovhcloud;
+
+#[cfg(feature = "pareto")]
+pub mod pareto;
+#[cfg(feature = "pareto")]
+pub use pareto::Pareto;
+
+#[cfg(feature = "pendra")]
+pub mod pendra;
+#[cfg(feature = "pendra")]
+pub use pendra::Pendra;
 
 #[cfg(feature = "pioneer")]
 pub mod pioneer;
@@ -602,6 +790,11 @@ pub mod poolside;
 #[cfg(feature = "poolside")]
 pub use poolside::Poolside;
 
+#[cfg(feature = "prime")]
+pub mod prime;
+#[cfg(feature = "prime")]
+pub use prime::Prime;
+
 #[cfg(feature = "qihang-ai")]
 #[path = "qihang-ai/mod.rs"]
 pub mod qihang_ai;
@@ -613,6 +806,11 @@ pub use qihang_ai::QihangAi;
 pub mod qiniu_ai;
 #[cfg(feature = "qiniu-ai")]
 pub use qiniu_ai::QiniuAi;
+
+#[cfg(feature = "reflection")]
+pub mod reflection;
+#[cfg(feature = "reflection")]
+pub use reflection::Reflection;
 
 #[cfg(feature = "regolo-ai")]
 #[path = "regolo-ai/mod.rs"]
@@ -631,10 +829,20 @@ pub mod routing_run;
 #[cfg(feature = "routing-run")]
 pub use routing_run::RoutingRun;
 
+#[cfg(feature = "runinfra")]
+pub mod runinfra;
+#[cfg(feature = "runinfra")]
+pub use runinfra::Runinfra;
+
 #[cfg(feature = "sakana")]
 pub mod sakana;
 #[cfg(feature = "sakana")]
 pub use sakana::Sakana;
+
+#[cfg(feature = "sambanova")]
+pub mod sambanova;
+#[cfg(feature = "sambanova")]
+pub use sambanova::Sambanova;
 
 #[cfg(feature = "sarvam")]
 pub mod sarvam;
@@ -645,6 +853,23 @@ pub use sarvam::Sarvam;
 pub mod scaleway;
 #[cfg(feature = "scaleway")]
 pub use scaleway::Scaleway;
+
+#[cfg(feature = "scnet-token-plan")]
+#[path = "scnet-token-plan/mod.rs"]
+pub mod scnet_token_plan;
+#[cfg(feature = "scnet-token-plan")]
+pub use scnet_token_plan::ScnetTokenPlan;
+
+#[cfg(feature = "scx-ai")]
+#[path = "scx-ai/mod.rs"]
+pub mod scx_ai;
+#[cfg(feature = "scx-ai")]
+pub use scx_ai::ScxAi;
+
+#[cfg(feature = "sensenova")]
+pub mod sensenova;
+#[cfg(feature = "sensenova")]
+pub use sensenova::Sensenova;
 
 #[cfg(feature = "siliconflow")]
 pub mod siliconflow;
@@ -667,6 +892,11 @@ pub use snowflake_cortex::SnowflakeCortex;
 pub mod stackit;
 #[cfg(feature = "stackit")]
 pub use stackit::Stackit;
+
+#[cfg(feature = "standardcompute")]
+pub mod standardcompute;
+#[cfg(feature = "standardcompute")]
+pub use standardcompute::Standardcompute;
 
 #[cfg(feature = "stepfun")]
 pub mod stepfun;
@@ -700,6 +930,11 @@ pub use submodel::Submodel;
 pub mod synthetic;
 #[cfg(feature = "synthetic")]
 pub use synthetic::Synthetic;
+
+#[cfg(feature = "tempr")]
+pub mod tempr;
+#[cfg(feature = "tempr")]
+pub use tempr::Tempr;
 
 #[cfg(feature = "tencent-coding-plan")]
 #[path = "tencent-coding-plan/mod.rs"]
@@ -735,6 +970,16 @@ pub mod tinfoil;
 #[cfg(feature = "tinfoil")]
 pub use tinfoil::Tinfoil;
 
+#[cfg(feature = "tokengo")]
+pub mod tokengo;
+#[cfg(feature = "tokengo")]
+pub use tokengo::Tokengo;
+
+#[cfg(feature = "tokenrouter")]
+pub mod tokenrouter;
+#[cfg(feature = "tokenrouter")]
+pub use tokenrouter::Tokenrouter;
+
 #[cfg(feature = "trustedrouter")]
 pub mod trustedrouter;
 #[cfg(feature = "trustedrouter")]
@@ -762,6 +1007,27 @@ pub mod upstage;
 #[cfg(feature = "upstage")]
 pub use upstage::Upstage;
 
+#[cfg(feature = "vancine")]
+pub mod vancine;
+#[cfg(feature = "vancine")]
+pub use vancine::Vancine;
+
+#[cfg(feature = "vispark")]
+pub mod vispark;
+#[cfg(feature = "vispark")]
+pub use vispark::Vispark;
+
+#[cfg(feature = "volcengine")]
+pub mod volcengine;
+#[cfg(feature = "volcengine")]
+pub use volcengine::Volcengine;
+
+#[cfg(feature = "volcengine-coding-plan")]
+#[path = "volcengine-coding-plan/mod.rs"]
+pub mod volcengine_coding_plan;
+#[cfg(feature = "volcengine-coding-plan")]
+pub use volcengine_coding_plan::VolcengineCodingPlan;
+
 #[cfg(feature = "vultr")]
 pub mod vultr;
 #[cfg(feature = "vultr")]
@@ -772,6 +1038,11 @@ pub use vultr::Vultr;
 pub mod wafer_ai;
 #[cfg(feature = "wafer.ai")]
 pub use wafer_ai::WaferAi;
+
+#[cfg(feature = "wallaby")]
+pub mod wallaby;
+#[cfg(feature = "wallaby")]
+pub use wallaby::Wallaby;
 
 #[cfg(feature = "wandb")]
 pub mod wandb;
@@ -843,3 +1114,11 @@ pub mod zhipuai_coding_plan;
 #[cfg(feature = "zhipuai-coding-plan")]
 pub use zhipuai_coding_plan::ZhipuaiCodingPlan;
 // [end-codegen]
+
+#[cfg(all(
+    test,
+    feature = "openai",
+    feature = "anthropic",
+    feature = "openaichatcompletions"
+))]
+mod reasoning_tests;

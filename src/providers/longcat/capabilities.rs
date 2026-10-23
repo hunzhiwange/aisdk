@@ -16,5 +16,11 @@ model_capabilities! {
             display_name: "LongCat-2.0",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Longcat25Preview {
+            model_name: "LongCat-2.5-Preview",
+            constructor_name: longcat_2_5_preview,
+            display_name: "LongCat-2.5-Preview",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
     }
 }

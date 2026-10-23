@@ -1,5 +1,5 @@
 //! Deepseek provider integration tests.
-use aisdk::providers::deepseek::{Deepseek, DeepseekChat};
+use aisdk::providers::deepseek::{Deepseek, DeepseekFlash};
 
 // Include all macro definitions
 include!("macros.rs");
@@ -8,12 +8,12 @@ include!("macros.rs");
 generate_language_model_tests!(
     provider: Deepseek,
     api_key_var: "DEEPSEEK_API_KEY",
-    model_struct: DeepseekChat,
-    default_model: Deepseek::deepseek_chat(),
-    tool_model: Deepseek::deepseek_chat(),
-    structured_output_model: Deepseek::deepseek_chat(),
-    reasoning_model: Deepseek::model_name("deepseek-chat".to_string()),
-    embedding_model: Deepseek::deepseek_chat(),
+    model_struct: DeepseekFlash,
+    default_model: Deepseek::deepseek_flash(),
+    tool_model: Deepseek::deepseek_flash(),
+    structured_output_model: Deepseek::deepseek_flash(),
+    reasoning_model: Deepseek::model_name("deepseek-flash".to_string()),
+    embedding_model: Deepseek::deepseek_flash(),
     skip_reasoning: true,
     skip_tool: false,
     skip_structured_output: true,

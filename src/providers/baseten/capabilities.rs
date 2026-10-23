@@ -13,31 +13,37 @@ model_capabilities! {
         DeepseekAiDeepseekV4Flash0731 {
             model_name: "deepseek-ai/DeepSeek-V4-Flash-0731",
             constructor_name: deepseek_ai_deepseek_v4_flash_0731,
-            display_name: "Deepseek V4 Flash 0731",
+            display_name: "DeepSeek V4 Flash 0731",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        DeepseekAiDeepseekV4Pro {
-            model_name: "deepseek-ai/DeepSeek-V4-Pro",
-            constructor_name: deepseek_ai_deepseek_v4_pro,
-            display_name: "Deepseek V4 Pro",
+        DeepseekAiDeepseekV4Pro0813 {
+            model_name: "deepseek-ai/DeepSeek-V4-Pro-0813",
+            constructor_name: deepseek_ai_deepseek_v4_pro_0813,
+            display_name: "DeepSeek V4 Pro 0813",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MoonshotaiKimiK25 {
-            model_name: "moonshotai/Kimi-K2.5",
-            constructor_name: moonshotai_kimi_k2_5,
-            display_name: "Kimi K2.5",
+        DeepseekAiDeepseekV41Flash {
+            model_name: "deepseek-ai/DeepSeek-V4.1-Flash",
+            constructor_name: deepseek_ai_deepseek_v4_1_flash,
+            display_name: "DeepSeek V4.1 Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MoonshotaiKimiK26 {
-            model_name: "moonshotai/Kimi-K2.6",
-            constructor_name: moonshotai_kimi_k2_6,
-            display_name: "Kimi K2.6",
+        DeepseekAiDeepseekV41Flash1017 {
+            model_name: "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+            constructor_name: deepseek_ai_deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MoonshotaiKimiK27Code {
-            model_name: "moonshotai/Kimi-K2.7-Code",
-            constructor_name: moonshotai_kimi_k2_7_code,
-            display_name: "Kimi K2.7 Code",
+        DeepseekAiDeepseekV41Flash1017Fast {
+            model_name: "deepseek-ai/DeepSeek-V4.1-Flash-1017-Fast",
+            constructor_name: deepseek_ai_deepseek_v4_1_flash_1017_fast,
+            display_name: "DeepSeek V4.1 Flash 1017 Fast",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekAiDeepseekV41FlashFast {
+            model_name: "deepseek-ai/DeepSeek-V4.1-Flash-Fast",
+            constructor_name: deepseek_ai_deepseek_v4_1_flash_fast,
+            display_name: "DeepSeek V4.1 Flash Fast",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MoonshotaiKimiK3 {
@@ -52,59 +58,41 @@ model_capabilities! {
             display_name: "Nemotron Ultra",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        NvidiaNemotron120bA12b {
-            model_name: "nvidia/Nemotron-120B-A12B",
-            constructor_name: nvidia_nemotron_120b_a12b,
-            display_name: "Nemotron Super",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         OpenaiGptOss120b {
             model_name: "openai/gpt-oss-120b",
             constructor_name: openai_gpt_oss_120b,
             display_name: "OpenAI GPT 120B",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        ThinkingmachinesInkling {
-            model_name: "thinkingmachines/inkling",
-            constructor_name: thinkingmachines_inkling,
-            display_name: "Inkling",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ThinkingmachinesInklingSmall {
-            model_name: "thinkingmachines/inkling-small",
-            constructor_name: thinkingmachines_inkling_small,
-            display_name: "Inkling Small",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ZaiOrgGlm47 {
-            model_name: "zai-org/GLM-4.7",
-            constructor_name: zai_org_glm_4_7,
-            display_name: "GLM 4.7",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ZaiOrgGlm5 {
-            model_name: "zai-org/GLM-5",
-            constructor_name: zai_org_glm_5,
-            display_name: "GLM 5",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ZaiOrgGlm51 {
-            model_name: "zai-org/GLM-5.1",
-            constructor_name: zai_org_glm_5_1,
-            display_name: "GLM 5.1",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         ZaiOrgGlm52 {
             model_name: "zai-org/GLM-5.2",
             constructor_name: zai_org_glm_5_2,
             display_name: "GLM 5.2",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ZaiOrgGlm52Fast {
             model_name: "zai-org/GLM-5.2-Fast",
             constructor_name: zai_org_glm_5_2_fast,
             display_name: "GLM 5.2 Fast",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm53 {
+            model_name: "zai-org/GLM-5.3",
+            constructor_name: zai_org_glm_5_3,
+            display_name: "GLM 5.3",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm53Fast {
+            model_name: "zai-org/GLM-5.3-Fast",
+            constructor_name: zai_org_glm_5_3_fast,
+            display_name: "GLM 5.3 Fast",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm53Flash {
+            model_name: "zai-org/GLM-5.3-Flash",
+            constructor_name: zai_org_glm_5_3_flash,
+            display_name: "GLM 5.3 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

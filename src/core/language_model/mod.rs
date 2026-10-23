@@ -619,16 +619,40 @@ pub enum StopReason {
     Other(String),
 }
 
-/// Levels of reasoning effort for language models that support it.
-#[derive(Debug, Clone, Copy, Default)]
+/// Exact protocol effort levels. Omit the option to use the server default.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "lowercase")]
 pub enum ReasoningEffort {
-    /// Low reasoning effort.
+    /// Disable reasoning where the model supports it.
+    None,
+    /// Minimal reasoning.
+    Minimal,
+    /// Low reasoning.
     #[default]
     Low,
-    /// Medium reasoning effort.
+    /// Medium reasoning.
     Medium,
-    /// High reasoning effort.
+    /// High reasoning.
     High,
+    /// Extra high reasoning.
+    Xhigh,
+    /// Maximum reasoning.
+    Max,
+}
+
+impl ReasoningEffort {
+    /// The exact wire value, without provider-specific coercion.
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::None => "none",
+            Self::Minimal => "minimal",
+            Self::Low => "low",
+            Self::Medium => "medium",
+            Self::High => "high",
+            Self::Xhigh => "xhigh",
+            Self::Max => "max",
+        }
+    }
 }
 
 #[cfg(test)]

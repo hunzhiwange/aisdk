@@ -7,7 +7,7 @@ crate::openai_compatible_settings!(
     PioneerProviderSettings,
     PioneerProviderSettingsBuilder,
     "Pioneer",
-    "https://api.pioneer.ai/v1",
+    "https://api.fastino.ai/v1",
     "PIONEER_API_KEY"
 );
 

@@ -14,61 +14,43 @@ model_capabilities! {
             model_name: "databricks-claude-haiku-4-5",
             constructor_name: databricks_claude_haiku_4_5,
             display_name: "Claude Haiku 4.5 (latest)",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DatabricksClaudeOpus41 {
             model_name: "databricks-claude-opus-4-1",
             constructor_name: databricks_claude_opus_4_1,
             display_name: "Claude Opus 4.1 (latest)",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DatabricksClaudeOpus45 {
             model_name: "databricks-claude-opus-4-5",
             constructor_name: databricks_claude_opus_4_5,
             display_name: "Claude Opus 4.5 (latest)",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DatabricksClaudeOpus46 {
             model_name: "databricks-claude-opus-4-6",
             constructor_name: databricks_claude_opus_4_6,
             display_name: "Claude Opus 4.6",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DatabricksClaudeOpus47 {
             model_name: "databricks-claude-opus-4-7",
             constructor_name: databricks_claude_opus_4_7,
             display_name: "Claude Opus 4.7",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        DatabricksClaudeSonnet4 {
-            model_name: "databricks-claude-sonnet-4",
-            constructor_name: databricks_claude_sonnet_4,
-            display_name: "Claude Sonnet 4.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DatabricksClaudeSonnet45 {
             model_name: "databricks-claude-sonnet-4-5",
             constructor_name: databricks_claude_sonnet_4_5,
             display_name: "Claude Sonnet 4.5 (latest)",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DatabricksClaudeSonnet46 {
             model_name: "databricks-claude-sonnet-4-6",
             constructor_name: databricks_claude_sonnet_4_6,
             display_name: "Claude Sonnet 4.6",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        DatabricksGemini25Flash {
-            model_name: "databricks-gemini-2-5-flash",
-            constructor_name: databricks_gemini_2_5_flash,
-            display_name: "Gemini 2.5 Flash",
-            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        DatabricksGemini25Pro {
-            model_name: "databricks-gemini-2-5-pro",
-            constructor_name: databricks_gemini_2_5_pro,
-            display_name: "Gemini 2.5 Pro",
-            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DatabricksGemini31FlashLite {
             model_name: "databricks-gemini-3-1-flash-lite",
@@ -79,19 +61,19 @@ model_capabilities! {
         DatabricksGemini31Pro {
             model_name: "databricks-gemini-3-1-pro",
             constructor_name: databricks_gemini_3_1_pro,
-            display_name: "Gemini 3.1 Pro Preview Custom Tools",
+            display_name: "Gemini 3.1 Pro Preview",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        DatabricksGemini35Flash {
+            model_name: "databricks-gemini-3-5-flash",
+            constructor_name: databricks_gemini_3_5_flash,
+            display_name: "Gemini 3.5 Flash",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         DatabricksGemini3Flash {
             model_name: "databricks-gemini-3-flash",
             constructor_name: databricks_gemini_3_flash,
             display_name: "Gemini 3 Flash Preview",
-            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        DatabricksGemini3Pro {
-            model_name: "databricks-gemini-3-pro",
-            constructor_name: databricks_gemini_3_pro,
-            display_name: "Gemini 3 Pro Preview",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         DatabricksGlm52 {
@@ -183,12 +165,6 @@ model_capabilities! {
             constructor_name: databricks_gpt_oss_20b,
             display_name: "GPT OSS 20B",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        DatabricksKimiK27Code {
-            model_name: "databricks-kimi-k2-7-code",
-            constructor_name: databricks_kimi_k2_7_code,
-            display_name: "Kimi K2.7 Code",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }
 }

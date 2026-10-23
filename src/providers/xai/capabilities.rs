@@ -40,6 +40,18 @@ model_capabilities! {
             display_name: "Grok 4.5",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Grok46 {
+            model_name: "grok-4.6",
+            constructor_name: grok_4_6,
+            display_name: "Grok 4.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Grok47 {
+            model_name: "grok-4.7",
+            constructor_name: grok_4_7,
+            display_name: "Grok 4.7",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         GrokBuild01 {
             model_name: "grok-build-0.1",
             constructor_name: grok_build_0_1,
@@ -50,12 +62,6 @@ model_capabilities! {
             model_name: "grok-imagine-image",
             constructor_name: grok_imagine_image,
             display_name: "Grok Imagine Image",
-            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
-        },
-        GrokImagineImageQuality {
-            model_name: "grok-imagine-image-quality",
-            constructor_name: grok_imagine_image_quality,
-            display_name: "Grok Imagine Image Quality",
             capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         GrokImagineVideo {
@@ -69,6 +75,12 @@ model_capabilities! {
             constructor_name: grok_imagine_video_1_5,
             display_name: "Grok Imagine Video 1.5",
             capabilities: [AudioInputSupport, ImageInputSupport, TextInputSupport, VideoOutputSupport]
+        },
+        GrokImagineVideo15Lite {
+            model_name: "grok-imagine-video-1.5-lite",
+            constructor_name: grok_imagine_video_1_5_lite,
+            display_name: "Grok Imagine Video 1.5 Lite",
+            capabilities: [ImageInputSupport, TextInputSupport, VideoOutputSupport]
         },
     }
 }

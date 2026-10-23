@@ -28,5 +28,11 @@ model_capabilities! {
             display_name: "Fugu Ultra",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        SakanaNamazu {
+            model_name: "sakana-namazu",
+            constructor_name: sakana_namazu,
+            display_name: "Sakana Namazu",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
     }
 }

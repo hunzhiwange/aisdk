@@ -16,5 +16,11 @@ model_capabilities! {
             display_name: "Hy3",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Hy4Preview {
+            model_name: "hy4-preview",
+            constructor_name: hy4_preview,
+            display_name: "Hy4 preview",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
     }
 }

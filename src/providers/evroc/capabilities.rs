@@ -14,7 +14,7 @@ model_capabilities! {
             model_name: "KBLab/kb-whisper-large",
             constructor_name: kblab_kb_whisper_large,
             display_name: "KB Whisper",
-            capabilities: [AudioInputSupport, TextOutputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
         },
         QwenQwen3Embedding8b {
             model_name: "Qwen/Qwen3-Embedding-8B",
@@ -28,17 +28,17 @@ model_capabilities! {
             display_name: "Qwen3 Reranker 4B",
             capabilities: [TextInputSupport, TextOutputSupport]
         },
-        QwenQwen3Vl30bA3bInstruct {
-            model_name: "Qwen/Qwen3-VL-30B-A3B-Instruct",
-            constructor_name: qwen_qwen3_vl_30b_a3b_instruct,
-            display_name: "Qwen3 VL 30B",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        QwenQwen3635bA3bFp8 {
-            model_name: "Qwen/Qwen3.6-35B-A3B-FP8",
-            constructor_name: qwen_qwen3_6_35b_a3b_fp8,
+        QwenQwen3635bA3b {
+            model_name: "Qwen/Qwen3.6-35B-A3B",
+            constructor_name: qwen_qwen3_6_35b_a3b,
             display_name: "Qwen3.6 35B-A3B",
-            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen3827b {
+            model_name: "Qwen/Qwen3.8-27B",
+            constructor_name: qwen_qwen3_8_27b,
+            display_name: "Qwen3.8-27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         EvrocRoc {
             model_name: "evroc/roc",
@@ -68,7 +68,7 @@ model_capabilities! {
             model_name: "mistralai/Voxtral-Small-24B-2507",
             constructor_name: mistralai_voxtral_small_24b_2507,
             display_name: "Voxtral Small 24B",
-            capabilities: [AudioInputSupport, TextInputSupport, TextOutputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport]
         },
         MoonshotaiKimiK26 {
             model_name: "moonshotai/Kimi-K2.6",
@@ -80,7 +80,7 @@ model_capabilities! {
             model_name: "nvidia/Llama-3.3-70B-Instruct-FP8",
             constructor_name: nvidia_llama_3_3_70b_instruct_fp8,
             display_name: "Llama-3.3-70B-Instruct",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGptOss120b {
             model_name: "openai/gpt-oss-120b",
@@ -92,13 +92,13 @@ model_capabilities! {
             model_name: "openai/whisper-large-v3",
             constructor_name: openai_whisper_large_v3,
             display_name: "Whisper 3 Large",
-            capabilities: [AudioInputSupport, TextOutputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
         },
         OpenaiWhisperLargeV3Turbo {
             model_name: "openai/whisper-large-v3-turbo",
             constructor_name: openai_whisper_large_v3_turbo,
             display_name: "Whisper Large v3 Turbo",
-            capabilities: [AudioInputSupport, TextOutputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
         },
         ZaiOrgGlm52 {
             model_name: "zai-org/GLM-5.2",

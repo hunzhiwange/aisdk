@@ -10,17 +10,17 @@ use crate::providers::greenpt::Greenpt;
 model_capabilities! {
     provider: Greenpt,
     models: {
-        Devstral2123bInstruct2512 {
-            model_name: "devstral-2-123b-instruct-2512",
-            constructor_name: devstral_2_123b_instruct_2512,
-            display_name: "Devstral 2",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        DeepseekV4Flash0731 {
+            model_name: "deepseek-v4-flash-0731",
+            constructor_name: deepseek_v4_flash_0731,
+            display_name: "DeepSeek V4 Flash 0731",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Gemma327bIt {
-            model_name: "gemma-3-27b-it",
-            constructor_name: gemma_3_27b_it,
-            display_name: "Gemma 3 27B",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        DeepseekV41Flash {
+            model_name: "deepseek-v4.1-flash",
+            constructor_name: deepseek_v4_1_flash,
+            display_name: "DeepSeek V4.1 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gemma4 {
             model_name: "gemma4",
@@ -28,16 +28,76 @@ model_capabilities! {
             display_name: "gemma4",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Glm51 {
-            model_name: "glm-5.1",
-            constructor_name: glm_5_1,
-            display_name: "GLM-5.1",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Glm52 {
             model_name: "glm-5.2",
             constructor_name: glm_5_2,
             display_name: "GLM-5.2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52Caveman {
+            model_name: "glm-5.2-caveman",
+            constructor_name: glm_5_2_caveman,
+            display_name: "GLM-5.2 Caveman",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52CavemanLite {
+            model_name: "glm-5.2-caveman-lite",
+            constructor_name: glm_5_2_caveman_lite,
+            display_name: "GLM-5.2 Caveman Lite",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52CavemanUltra {
+            model_name: "glm-5.2-caveman-ultra",
+            constructor_name: glm_5_2_caveman_ultra,
+            display_name: "GLM-5.2 Caveman Ultra",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52Honey {
+            model_name: "glm-5.2-honey",
+            constructor_name: glm_5_2_honey,
+            display_name: "GLM-5.2 Honey",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52HoneyLite {
+            model_name: "glm-5.2-honey-lite",
+            constructor_name: glm_5_2_honey_lite,
+            display_name: "GLM-5.2 Honey Lite",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52HoneyUltra {
+            model_name: "glm-5.2-honey-ultra",
+            constructor_name: glm_5_2_honey_ultra,
+            display_name: "GLM-5.2 Honey Ultra",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52Ponytail {
+            model_name: "glm-5.2-ponytail",
+            constructor_name: glm_5_2_ponytail,
+            display_name: "GLM-5.2 Ponytail",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52PonytailLite {
+            model_name: "glm-5.2-ponytail-lite",
+            constructor_name: glm_5_2_ponytail_lite,
+            display_name: "GLM-5.2 Ponytail Lite",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52PonytailUltra {
+            model_name: "glm-5.2-ponytail-ultra",
+            constructor_name: glm_5_2_ponytail_ultra,
+            display_name: "GLM-5.2 Ponytail Ultra",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm53 {
+            model_name: "glm-5.3",
+            constructor_name: glm_5_3,
+            display_name: "GLM-5.3",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm53Flash {
+            model_name: "glm-5.3-flash",
+            constructor_name: glm_5_3_flash,
+            display_name: "GLM-5.3-Flash",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GptOss120b {
@@ -74,30 +134,18 @@ model_capabilities! {
             model_name: "green-s",
             constructor_name: green_s,
             display_name: "Green S",
-            capabilities: [AudioInputSupport, TextOutputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
         },
         GreenSPro {
             model_name: "green-s-pro",
             constructor_name: green_s_pro,
             display_name: "Green S Pro",
-            capabilities: [AudioInputSupport, TextOutputSupport]
-        },
-        Holo230bA3b {
-            model_name: "holo2-30b-a3b",
-            constructor_name: holo2_30b_a3b,
-            display_name: "Holo2 30B A3B",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
         },
         KimiK26 {
             model_name: "kimi-k2.6",
             constructor_name: kimi_k2_6,
             display_name: "Kimi K2.6",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        KimiK26Fast {
-            model_name: "kimi-k2.6-fast",
-            constructor_name: kimi_k2_6_fast,
-            display_name: "Kimi K2.6 Fast",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         KimiK27Code {
@@ -106,11 +154,23 @@ model_capabilities! {
             display_name: "Kimi K2.7 Code",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        KimiK3 {
+            model_name: "kimi-k3",
+            constructor_name: kimi_k3,
+            display_name: "Kimi K3",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Llama3370bInstruct {
             model_name: "llama-3.3-70b-instruct",
             constructor_name: llama_3_3_70b_instruct,
             display_name: "Llama-3.3-70B-Instruct",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Metis {
+            model_name: "metis",
+            constructor_name: metis,
+            display_name: "Metis",
+            capabilities: [TextInputSupport, TextOutputSupport]
         },
         MinimaxM25 {
             model_name: "minimax-m2.5",
@@ -130,23 +190,11 @@ model_capabilities! {
             display_name: "Mistral Small 3.2",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Pixtral12b2409 {
-            model_name: "pixtral-12b-2409",
-            constructor_name: pixtral_12b_2409,
-            display_name: "Pixtral 12B",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Qwen3235bA22bInstruct2507 {
             model_name: "qwen3-235b-a22b-instruct-2507",
             constructor_name: qwen3_235b_a22b_instruct_2507,
             display_name: "Qwen3 235B A22B Instruct 2507",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Qwen3Coder30bA3bInstruct {
-            model_name: "qwen3-coder-30b-a3b-instruct",
-            constructor_name: qwen3_coder_30b_a3b_instruct,
-            display_name: "Qwen3-Coder 30B-A3B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Qwen35397bA17b {
             model_name: "qwen3.5-397b-a17b",
@@ -159,12 +207,6 @@ model_capabilities! {
             constructor_name: qwen3_6_35b_a3b,
             display_name: "Qwen3.6 35B-A3B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        VoxtralSmall24b2507 {
-            model_name: "voxtral-small-24b-2507",
-            constructor_name: voxtral_small_24b_2507,
-            display_name: "Voxtral Small 24B",
-            capabilities: [AudioInputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

@@ -16,57 +16,51 @@ model_capabilities! {
             display_name: "Ambient Large",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        DeepseekDeepseekV4Flash {
-            model_name: "deepseek/deepseek-v4-flash",
-            constructor_name: deepseek_deepseek_v4_flash,
-            display_name: "DeepSeek V4 Flash",
+        AmbientSmall {
+            model_name: "ambient/small",
+            constructor_name: ambient_small,
+            display_name: "Ambient Small",
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MinimaxMinimaxM3 {
+            model_name: "minimax/minimax-m3",
+            constructor_name: minimax_minimax_m3,
+            display_name: "MiniMax-M3",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        DeepseekDeepseekV4Flash0731 {
-            model_name: "deepseek/deepseek-v4-flash-0731",
-            constructor_name: deepseek_deepseek_v4_flash_0731,
-            display_name: "DeepSeek V4 Flash 0731",
+        QwenQwen330bA3bInstruct2507 {
+            model_name: "qwen/qwen3-30b-a3b-instruct-2507",
+            constructor_name: qwen_qwen3_30b_a3b_instruct_2507,
+            display_name: "Qwen3 30B-A3B Instruct 2507",
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        QwenQwen3627b {
+            model_name: "qwen/qwen3.6-27b",
+            constructor_name: qwen_qwen3_6_27b,
+            display_name: "Qwen3.6 27B",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MoonshotaiKimiK26 {
-            model_name: "moonshotai/kimi-k2.6",
-            constructor_name: moonshotai_kimi_k2_6,
-            display_name: "Kimi K2.6",
+        QwenQwen3635bA3b {
+            model_name: "qwen/qwen3.6-35b-a3b",
+            constructor_name: qwen_qwen3_6_35b_a3b,
+            display_name: "Qwen3.6 35B-A3B",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        QwenQwen3827b {
+            model_name: "qwen/qwen3.8-27b",
+            constructor_name: qwen_qwen3_8_27b,
+            display_name: "Qwen3.8 27B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MoonshotaiKimiK27Code {
-            model_name: "moonshotai/kimi-k2.7-code",
-            constructor_name: moonshotai_kimi_k2_7_code,
-            display_name: "Kimi K2.7 Code",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        StepfunStep37Flash {
-            model_name: "stepfun/step-3.7-flash",
-            constructor_name: stepfun_step_3_7_flash,
-            display_name: "Step 3.7 Flash",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        XiaomiMimoV25 {
-            model_name: "xiaomi/mimo-v2.5",
-            constructor_name: xiaomi_mimo_v2_5,
-            display_name: "MiMo-V2.5",
-            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        UnslothQwen3827bGguf {
+            model_name: "unsloth/qwen3.8-27b-gguf",
+            constructor_name: unsloth_qwen3_8_27b_gguf,
+            display_name: "qwen3.8-27b-4q",
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ZAiGlm52 {
             model_name: "z-ai/glm-5.2",
             constructor_name: z_ai_glm_5_2,
-            display_name: "GLM-5.2",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ZaiOrgGlm51Fp8 {
-            model_name: "zai-org/GLM-5.1-FP8",
-            constructor_name: zai_org_glm_5_1_fp8,
-            display_name: "GLM 5.1",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ZaiOrgGlm52Fp8 {
-            model_name: "zai-org/GLM-5.2-FP8",
-            constructor_name: zai_org_glm_5_2_fp8,
             display_name: "GLM-5.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },

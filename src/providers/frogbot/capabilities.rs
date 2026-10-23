@@ -38,7 +38,7 @@ model_capabilities! {
             model_name: "deepseek-v4-pro",
             constructor_name: deepseek_v4_pro,
             display_name: "DeepSeek v4 Pro",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gemini25Flash {
             model_name: "gemini-2.5-flash",
@@ -135,36 +135,6 @@ model_capabilities! {
             constructor_name: kimi_k2_6,
             display_name: "Kimi-K2.6",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        KimiK25 {
-            model_name: "kimi-k2.5",
-            constructor_name: kimi_k2_5,
-            display_name: "Kimi-K2.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MinimaxM25 {
-            model_name: "minimax-m2-5",
-            constructor_name: minimax_m2_5,
-            display_name: "MiniMax-M2.5",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MinimaxM27 {
-            model_name: "minimax-m2-7",
-            constructor_name: minimax_m2_7,
-            display_name: "MiniMax-M2.7",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Qwen36Plus {
-            model_name: "qwen-3-6-plus",
-            constructor_name: qwen_3_6_plus,
-            display_name: "Qwen 3.6 Plus",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ZaiGlm51 {
-            model_name: "zai-glm-5-1",
-            constructor_name: zai_glm_5_1,
-            display_name: "Z.AI GLM-5.1",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

@@ -10,10 +10,10 @@ use crate::providers::inceptron::Inceptron;
 model_capabilities! {
     provider: Inceptron,
     models: {
-        MinimaxaiMinimaxM25 {
-            model_name: "MiniMaxAI/MiniMax-M2.5",
-            constructor_name: minimaxai_minimax_m2_5,
-            display_name: "MiniMax M2.5",
+        DeepseekAiDeepseekV4Flash0731 {
+            model_name: "deepseek-ai/DeepSeek-V4-Flash-0731",
+            constructor_name: deepseek_ai_deepseek_v4_flash_0731,
+            display_name: "DeepSeek V4 Flash 0731",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MoonshotaiKimiK26 {
@@ -22,28 +22,28 @@ model_capabilities! {
             display_name: "Kimi K2.6",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MoonshotaiKimiK26Fast {
-            model_name: "moonshotai/Kimi-K2.6-Fast",
-            constructor_name: moonshotai_kimi_k2_6_fast,
-            display_name: "Kimi K2.6 Fast",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         MoonshotaiKimiK27Code {
             model_name: "moonshotai/Kimi-K2.7-Code",
             constructor_name: moonshotai_kimi_k2_7_code,
             display_name: "Kimi K2.7 Code",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        ZaiOrgGlm51Fp8 {
-            model_name: "zai-org/GLM-5.1-FP8",
-            constructor_name: zai_org_glm_5_1_fp8,
-            display_name: "GLM 5.1",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         ZaiOrgGlm52 {
             model_name: "zai-org/GLM-5.2",
             constructor_name: zai_org_glm_5_2,
             display_name: "GLM 5.2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm53 {
+            model_name: "zai-org/GLM-5.3",
+            constructor_name: zai_org_glm_5_3,
+            display_name: "GLM 5.3",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm53Flash {
+            model_name: "zai-org/GLM-5.3-Flash",
+            constructor_name: zai_org_glm_5_3_flash,
+            display_name: "GLM 5.3 Flash",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

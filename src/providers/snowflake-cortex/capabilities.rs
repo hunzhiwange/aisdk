@@ -14,43 +14,67 @@ model_capabilities! {
             model_name: "claude-fable-5",
             constructor_name: claude_fable_5,
             display_name: "Claude Fable 5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ClaudeHaiku45 {
             model_name: "claude-haiku-4-5",
             constructor_name: claude_haiku_4_5,
             display_name: "Claude Haiku 4.5 (latest)",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ClaudeOpus45 {
+            model_name: "claude-opus-4-5",
+            constructor_name: claude_opus_4_5,
+            display_name: "Claude Opus 4.5 (latest)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ClaudeOpus46 {
+            model_name: "claude-opus-4-6",
+            constructor_name: claude_opus_4_6,
+            display_name: "Claude Opus 4.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ClaudeOpus47 {
             model_name: "claude-opus-4-7",
             constructor_name: claude_opus_4_7,
             display_name: "Claude Opus 4.7",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ClaudeOpus48 {
             model_name: "claude-opus-4-8",
             constructor_name: claude_opus_4_8,
             display_name: "Claude Opus 4.8",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ClaudeOpus5 {
+            model_name: "claude-opus-5",
+            constructor_name: claude_opus_5,
+            display_name: "Claude Opus 5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ClaudeSonnet45 {
             model_name: "claude-sonnet-4-5",
             constructor_name: claude_sonnet_4_5,
             display_name: "Claude Sonnet 4.5 (latest)",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ClaudeSonnet46 {
             model_name: "claude-sonnet-4-6",
             constructor_name: claude_sonnet_4_6,
             display_name: "Claude Sonnet 4.6",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ClaudeSonnet5 {
+            model_name: "claude-sonnet-5",
+            constructor_name: claude_sonnet_5,
+            display_name: "Claude Sonnet 5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekR1 {
             model_name: "deepseek-r1",
             constructor_name: deepseek_r1,
             display_name: "DeepSeek-R1",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport]
         },
         Gemini31Pro {
             model_name: "gemini-3.1-pro",
@@ -61,8 +85,8 @@ model_capabilities! {
         MistralLarge2 {
             model_name: "mistral-large2",
             constructor_name: mistral_large2,
-            display_name: "Mistral Large (latest)",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            display_name: "Mistral Large 2407",
+            capabilities: [TextInputSupport, TextOutputSupport]
         },
         OpenaiGpt41 {
             model_name: "openai-gpt-4.1",
@@ -134,7 +158,7 @@ model_capabilities! {
             model_name: "snowflake-llama3.3-70b",
             constructor_name: snowflake_llama3_3_70b,
             display_name: "Llama-3.3-70B-Instruct",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [TextInputSupport, TextOutputSupport]
         },
     }
 }

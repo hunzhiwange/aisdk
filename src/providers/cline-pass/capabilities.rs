@@ -10,34 +10,28 @@ use crate::providers::cline_pass::ClinePass;
 model_capabilities! {
     provider: ClinePass,
     models: {
-        ClinePassDeepseekV4Flash {
-            model_name: "cline-pass/deepseek-v4-flash",
-            constructor_name: cline_pass_deepseek_v4_flash,
-            display_name: "DeepSeek V4 Flash",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         ClinePassDeepseekV4Pro {
             model_name: "cline-pass/deepseek-v4-pro",
             constructor_name: cline_pass_deepseek_v4_pro,
             display_name: "DeepSeek V4 Pro",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        ClinePassGlm52 {
-            model_name: "cline-pass/glm-5.2",
-            constructor_name: cline_pass_glm_5_2,
-            display_name: "GLM-5.2",
+        ClinePassDeepseekV41Flash {
+            model_name: "cline-pass/deepseek-v4.1-flash",
+            constructor_name: cline_pass_deepseek_v4_1_flash,
+            display_name: "DeepSeek V4.1 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ClinePassGlm53 {
+            model_name: "cline-pass/glm-5.3",
+            constructor_name: cline_pass_glm_5_3,
+            display_name: "GLM-5.3",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        ClinePassKimiK26 {
-            model_name: "cline-pass/kimi-k2.6",
-            constructor_name: cline_pass_kimi_k2_6,
-            display_name: "Kimi K2.6",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        ClinePassKimiK27Code {
-            model_name: "cline-pass/kimi-k2.7-code",
-            constructor_name: cline_pass_kimi_k2_7_code,
-            display_name: "Kimi K2.7 Code",
+        ClinePassGlm53Flash {
+            model_name: "cline-pass/glm-5.3-flash",
+            constructor_name: cline_pass_glm_5_3_flash,
+            display_name: "cline-pass/glm-5.3-flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         ClinePassKimiK3 {
@@ -64,6 +58,12 @@ model_capabilities! {
             display_name: "MiniMax-M3",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        ClinePassMuseSpark13Contributor {
+            model_name: "cline-pass/muse-spark-1.3-contributor",
+            constructor_name: cline_pass_muse_spark_1_3_contributor,
+            display_name: "Muse Spark 1.3 Contributor",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         ClinePassQwen37Max {
             model_name: "cline-pass/qwen3.7-max",
             constructor_name: cline_pass_qwen3_7_max,
@@ -75,6 +75,12 @@ model_capabilities! {
             constructor_name: cline_pass_qwen3_7_plus,
             display_name: "Qwen3.7 Plus",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        ClinePassQwen38Max {
+            model_name: "cline-pass/qwen3.8-max",
+            constructor_name: cline_pass_qwen3_8_max,
+            display_name: "Qwen3.8 Max",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }
 }

@@ -7,7 +7,7 @@ crate::openai_compatible_settings!(
     OpencodeProviderSettings,
     OpencodeProviderSettingsBuilder,
     "Opencode",
-    "https://opencode.ai/zen/v1",
+    "https://opencode.ai/inference/openai/v1",
     "OPENCODE_API_KEY"
 );
 

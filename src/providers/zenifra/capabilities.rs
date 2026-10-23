@@ -14,7 +14,7 @@ model_capabilities! {
             model_name: "alibaba/qwen3.6-35b-a3b",
             constructor_name: alibaba_qwen3_6_35b_a3b,
             display_name: "Qwen3.6 35B-A3B",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

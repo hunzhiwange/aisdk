@@ -28,6 +28,18 @@ model_capabilities! {
             display_name: "Agent Standard",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        BytedanceProLatest {
+            model_name: "bytedance-pro-latest",
+            constructor_name: bytedance_pro_latest,
+            display_name: "ByteDance Pro Latest",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ClaudeOpusLatest {
+            model_name: "claude-opus-latest",
+            constructor_name: claude_opus_latest,
+            display_name: "Claude Opus Latest",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         CodeMax {
             model_name: "code-max",
             constructor_name: code_max,
@@ -44,6 +56,42 @@ model_capabilities! {
             model_name: "code-standard",
             constructor_name: code_standard,
             display_name: "Code Standard",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekProLatest {
+            model_name: "deepseek-pro-latest",
+            constructor_name: deepseek_pro_latest,
+            display_name: "DeepSeek Pro Latest",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GeminiProLatest {
+            model_name: "gemini-pro-latest",
+            constructor_name: gemini_pro_latest,
+            display_name: "Gemini Pro Latest",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GlmLatest {
+            model_name: "glm-latest",
+            constructor_name: glm_latest,
+            display_name: "GLM Latest",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GptSolLatest {
+            model_name: "gpt-sol-latest",
+            constructor_name: gpt_sol_latest,
+            display_name: "GPT Sol Latest",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        KimiLatest {
+            model_name: "kimi-latest",
+            constructor_name: kimi_latest,
+            display_name: "Kimi Latest",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MinimaxLatest {
+            model_name: "minimax-latest",
+            constructor_name: minimax_latest,
+            display_name: "MiniMax Latest",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         TextMax {

@@ -225,3 +225,5 @@ impl<M: ModelName> AnthropicBuilder<M> {
 
 // Re-exports for convenience
 pub use capabilities::*;
+
+mod reasoning;

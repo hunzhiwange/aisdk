@@ -50,13 +50,13 @@ model_capabilities! {
             model_name: "deepseek/deepseek-chat",
             constructor_name: deepseek_deepseek_chat,
             display_name: "DeepSeek Chat",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekDeepseekR1 {
             model_name: "deepseek/deepseek-r1",
             constructor_name: deepseek_deepseek_r1,
             display_name: "DeepSeek Reasoner",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekDeepseekV4Flash {
             model_name: "deepseek/deepseek-v4-flash",

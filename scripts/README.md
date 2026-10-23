@@ -76,6 +76,22 @@ provider-codegen capabilities anthropic
 
 **Output:** Creates `src/providers/{provider}/capabilities.rs`
 
+## Regenerate from a local catalog
+
+Use `--input` to regenerate from a reviewed local `api.json` without downloading
+another version from models.dev. Run from the aisdk repository:
+
+```bash
+uv run --python 3.13 scripts/provider-codegen.py openai-compatible --with-capabilities --input ../vibe-window/crates/vw-provider-resolver/assets/model/api.json
+uv run --python 3.13 scripts/provider-codegen.py capabilities --input ../vibe-window/crates/vw-provider-resolver/assets/model/api.json
+uv run --python 3.13 scripts/provider-codegen.py registry --input ../vibe-window/crates/vw-provider-resolver/assets/model/api.json
+```
+
+This updates provider modules, model capability types, Cargo features and the
+provider registry. Formatting is limited to generated files. Native request
+mapping code is preserved. VibeWindow's `shiju.json` overlay is separate from
+`api.json`; it is consumed by VibeWindow and is not part of this generation.
+
 ## Features
 
 ### Atomic File Writing
@@ -88,7 +104,7 @@ provider-codegen capabilities anthropic
 
 1. **Content Generation** - Generate all code without touching disk
 2. **Atomic Writing** - Write all files together with rollback support
-3. **Formatting** - Run `cargo fmt` on generated code
+3. **Formatting** - Run `rustfmt` on generated files only
 
 ### Error Handling
 

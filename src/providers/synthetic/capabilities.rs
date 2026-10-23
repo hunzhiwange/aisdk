@@ -10,22 +10,16 @@ use crate::providers::synthetic::Synthetic;
 model_capabilities! {
     provider: Synthetic,
     models: {
-        HfMinimaxaiMinimaxM3 {
-            model_name: "hf:MiniMaxAI/MiniMax-M3",
-            constructor_name: hf_minimaxai_minimax_m3,
-            display_name: "MiniMax-M3",
+        HfDeepseekAiDeepseekV41Flash {
+            model_name: "hf:deepseek-ai/DeepSeek-V4.1-Flash",
+            constructor_name: hf_deepseek_ai_deepseek_v4_1_flash,
+            display_name: "DeepSeek V4.1 Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        HfQwenQwen3627b {
-            model_name: "hf:Qwen/Qwen3.6-27B",
-            constructor_name: hf_qwen_qwen3_6_27b,
-            display_name: "Qwen3.6 27B",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        HfMoonshotaiKimiK27Code {
-            model_name: "hf:moonshotai/Kimi-K2.7-Code",
-            constructor_name: hf_moonshotai_kimi_k2_7_code,
-            display_name: "Kimi K2.7 Code",
+        HfDeepseekAiDeepseekV41Flash1017 {
+            model_name: "hf:deepseek-ai/DeepSeek-V4.1-Flash-1017",
+            constructor_name: hf_deepseek_ai_deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         HfMoonshotaiKimiK3 {
@@ -52,11 +46,17 @@ model_capabilities! {
             display_name: "GLM-4.7-Flash",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        HfZaiOrgGlm52 {
-            model_name: "hf:zai-org/GLM-5.2",
-            constructor_name: hf_zai_org_glm_5_2,
-            display_name: "GLM-5.2",
+        HfZaiOrgGlm53 {
+            model_name: "hf:zai-org/GLM-5.3",
+            constructor_name: hf_zai_org_glm_5_3,
+            display_name: "GLM-5.3",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        HfZaiOrgGlm53Flash {
+            model_name: "hf:zai-org/GLM-5.3-Flash",
+            constructor_name: hf_zai_org_glm_5_3_flash,
+            display_name: "GLM-5.3-Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

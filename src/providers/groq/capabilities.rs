@@ -10,6 +10,12 @@ use crate::providers::groq::Groq;
 model_capabilities! {
     provider: Groq,
     models: {
+        Allam27b {
+            model_name: "allam-2-7b",
+            constructor_name: allam_2_7b,
+            display_name: "ALLaM-2-7b",
+            capabilities: [TextInputSupport, TextOutputSupport]
+        },
         CanopylabsOrpheusArabicSaudi {
             model_name: "canopylabs/orpheus-arabic-saudi",
             constructor_name: canopylabs_orpheus_arabic_saudi,
@@ -21,36 +27,6 @@ model_capabilities! {
             constructor_name: canopylabs_orpheus_v1_english,
             display_name: "Canopy Labs Orpheus V1 English",
             capabilities: [AudioOutputSupport, TextInputSupport]
-        },
-        GroqCompound {
-            model_name: "groq/compound",
-            constructor_name: groq_compound,
-            display_name: "Compound",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        GroqCompoundMini {
-            model_name: "groq/compound-mini",
-            constructor_name: groq_compound_mini,
-            display_name: "Compound Mini",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        Llama318bInstant {
-            model_name: "llama-3.1-8b-instant",
-            constructor_name: llama_3_1_8b_instant,
-            display_name: "Llama 3.1 8B",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Llama3370bVersatile {
-            model_name: "llama-3.3-70b-versatile",
-            constructor_name: llama_3_3_70b_versatile,
-            display_name: "Llama 3.3 70B",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MetaLlamaLlama4Scout17b16eInstruct {
-            model_name: "meta-llama/llama-4-scout-17b-16e-instruct",
-            constructor_name: meta_llama_llama_4_scout_17b_16e_instruct,
-            display_name: "Llama 4 Scout 17B 16E",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MetaLlamaLlamaPromptGuard222m {
             model_name: "meta-llama/llama-prompt-guard-2-22m",
@@ -82,23 +58,23 @@ model_capabilities! {
             display_name: "Safety GPT OSS 20B",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        QwenQwen332b {
-            model_name: "qwen/qwen3-32b",
-            constructor_name: qwen_qwen3_32b,
-            display_name: "Qwen3-32B",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        QwenQwen3827b {
+            model_name: "qwen/qwen3.8-27b",
+            constructor_name: qwen_qwen3_8_27b,
+            display_name: "Qwen3.8 27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         WhisperLargeV3 {
             model_name: "whisper-large-v3",
             constructor_name: whisper_large_v3,
             display_name: "Whisper",
-            capabilities: [AudioInputSupport, TextOutputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
         },
         WhisperLargeV3Turbo {
             model_name: "whisper-large-v3-turbo",
             constructor_name: whisper_large_v3_turbo,
             display_name: "Whisper Large V3 Turbo",
-            capabilities: [AudioInputSupport, TextOutputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
         },
     }
 }

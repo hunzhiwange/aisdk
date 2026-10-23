@@ -53,13 +53,21 @@ def log(message: str):
     print(f"[INFO] {message}")
 
 
-def fetch_models_dev_json() -> dict[str, Any]:
+def fetch_models_dev_json(input_path: Optional[Path] = None) -> dict[str, Any]:
     """
     Fetch models.dev API JSON.
 
     Returns:
         Dictionary containing all provider and model data from models.dev
     """
+    if input_path is not None:
+        log(f"Loading model catalog from {input_path}")
+        with input_path.open(encoding="utf-8") as source:
+            data = json.load(source)
+        if not isinstance(data, dict):
+            raise ValueError("Model catalog must be an object keyed by provider ID")
+        return data
+
     log("Fetching models.dev API data...")
     headers = {"User-Agent": "Mozilla/5.0 (compatible; aisdk-provider-codegen/1.0)"}
 
@@ -1058,13 +1066,13 @@ app = (
 )
 
 
-def run_cargo_fmt():
-    """Run cargo fmt to format generated code."""
+def run_cargo_fmt(paths: list[Path]):
+    """Format generated Rust files without touching handwritten modules."""
     try:
         root = get_project_root()
-        log("Running cargo fmt...")
+        log("Formatting generated Rust files...")
         result = subprocess.run(
-            ["cargo", "fmt", "--all"], cwd=root, capture_output=True, text=True
+            ["rustfmt", "--edition", "2024", "--config", "skip_children=true", *map(str, paths)], cwd=root, capture_output=True, text=True
         )
         if result.returncode != 0:
             log(f"Warning: cargo fmt failed: {result.stderr}")
@@ -1077,6 +1085,7 @@ def run_cargo_fmt():
 def openai_compatible_command(
     provider_id: Optional[str] = None,
     with_capabilities: bool = False,
+    input_path: Optional[Path] = None,
 ):
     """
     Generate OpenAI-compatible provider code.
@@ -1089,7 +1098,7 @@ def openai_compatible_command(
     """
     try:
         # Fetch models.dev data
-        all_providers = fetch_models_dev_json()
+        all_providers = fetch_models_dev_json(input_path)
 
         # PHASE 1: Generate all content (no I/O)
         if provider_id:
@@ -1133,7 +1142,7 @@ def openai_compatible_command(
         update_providers_mod_rs()
 
         # PHASE 4: Format
-        run_cargo_fmt()
+        run_cargo_fmt(written_files + [get_project_root() / "src/providers/mod.rs"])
 
         # Report success
         log(f"✓ Successfully wrote {len(written_files)} files")
@@ -1143,7 +1152,7 @@ def openai_compatible_command(
         raise SystemExit(1)
 
 
-def capabilities_command(provider_id: Optional[str] = None):
+def capabilities_command(provider_id: Optional[str] = None, input_path: Optional[Path] = None):
     """
     Generate capabilities.rs for providers.
 
@@ -1154,7 +1163,7 @@ def capabilities_command(provider_id: Optional[str] = None):
     """
     try:
         # Fetch models.dev data
-        all_providers = fetch_models_dev_json()
+        all_providers = fetch_models_dev_json(input_path)
 
         # PHASE 1: Generate all content (no I/O)
         if provider_id:
@@ -1180,7 +1189,7 @@ def capabilities_command(provider_id: Optional[str] = None):
         update_providers_mod_rs()
 
         # PHASE 4: Format
-        run_cargo_fmt()
+        run_cargo_fmt(written_files + [get_project_root() / "src/providers/mod.rs"])
 
         # Report success
         log(f"✓ Successfully wrote {len(written_files)} files")
@@ -1190,10 +1199,10 @@ def capabilities_command(provider_id: Optional[str] = None):
         raise SystemExit(1)
 
 
-def registry_command():
+def registry_command(input_path: Optional[Path] = None):
     """Generate only the OpenAI-compatible provider metadata registry."""
     try:
-        all_providers = fetch_models_dev_json()
+        all_providers = fetch_models_dev_json(input_path)
         pending_write = prepare_provider_registry(all_providers)
         written_files = batch_write_files([pending_write])
         log(f"✓ Successfully wrote {len(written_files)} files")
@@ -1216,8 +1225,9 @@ if app is not None:
             bool,
             typer.Option("--with-capabilities", "-c", help="Also generate capabilities.rs"),
         ] = False,
+        input_path: Annotated[Optional[Path], typer.Option("--input", help="Use a local model catalog JSON instead of downloading")] = None,
     ):
-        openai_compatible_command(provider_id, with_capabilities)
+        openai_compatible_command(provider_id, with_capabilities, input_path)
 
 
     @app.command()
@@ -1228,13 +1238,14 @@ if app is not None:
                 help="Specific provider ID to generate (e.g., 'openai', 'anthropic')"
             ),
         ] = None,
+        input_path: Annotated[Optional[Path], typer.Option("--input", help="Use a local model catalog JSON instead of downloading")] = None,
     ):
-        capabilities_command(provider_id)
+        capabilities_command(provider_id, input_path)
 
     @app.command()
-    def registry():
+    def registry(input_path: Annotated[Optional[Path], typer.Option("--input", help="Use a local model catalog JSON instead of downloading")] = None):
         """Generate only the OpenAI-compatible provider registry."""
-        registry_command()
+        registry_command(input_path)
 
 
 def main():
@@ -1244,11 +1255,18 @@ def main():
         return
 
     args = sys.argv[1:]
+    input_path = None
+    if "--input" in args:
+        index = args.index("--input")
+        if index + 1 >= len(args):
+            raise SystemExit("--input requires a JSON file path")
+        input_path = Path(args[index + 1])
+        del args[index:index + 2]
     if not args or args[0] in {"-h", "--help"}:
         print(
             "Usage: provider-codegen.py "
             "<capabilities|openai-compatible|registry> "
-            "[provider_id] [--with-capabilities|-c]"
+            "[provider_id] [--with-capabilities|-c] [--input PATH]"
         )
         raise SystemExit(0)
 
@@ -1257,12 +1275,12 @@ def main():
         if len(args) > 1:
             print(f"Unexpected argument: {args[1]}")
             raise SystemExit(1)
-        registry_command()
+        registry_command(input_path)
         return
 
     if command == "capabilities":
         provider_id = args[1] if len(args) > 1 else None
-        capabilities_command(provider_id)
+        capabilities_command(provider_id, input_path)
         return
 
     if command == "openai-compatible":
@@ -1276,7 +1294,7 @@ def main():
             else:
                 print(f"Unexpected argument: {arg}")
                 raise SystemExit(1)
-        openai_compatible_command(provider_id, with_capabilities)
+        openai_compatible_command(provider_id, with_capabilities, input_path)
         return
 
     print(f"Unknown command: {command}")

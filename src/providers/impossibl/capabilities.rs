@@ -64,12 +64,6 @@ model_capabilities! {
             display_name: "Claude Sonnet 5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        CerebrasGptOss120b {
-            model_name: "cerebras/gpt-oss-120b",
-            constructor_name: cerebras_gpt_oss_120b,
-            display_name: "GPT OSS 120B",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         DeepseekDeepseekV4Flash {
             model_name: "deepseek/deepseek-v4-flash",
             constructor_name: deepseek_deepseek_v4_flash,
@@ -80,24 +74,6 @@ model_capabilities! {
             model_name: "deepseek/deepseek-v4-pro",
             constructor_name: deepseek_deepseek_v4_pro,
             display_name: "DeepSeek V4 Pro",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        FireworksGlm52 {
-            model_name: "fireworks/glm-5.2",
-            constructor_name: fireworks_glm_5_2,
-            display_name: "GLM-5.2",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        FireworksGptOss120b {
-            model_name: "fireworks/gpt-oss-120b",
-            constructor_name: fireworks_gpt_oss_120b,
-            display_name: "GPT OSS 120B",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        FireworksGptOss20b {
-            model_name: "fireworks/gpt-oss-20b",
-            constructor_name: fireworks_gpt_oss_20b,
-            display_name: "GPT OSS 20B",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GoogleGemini25Flash {
@@ -147,18 +123,6 @@ model_capabilities! {
             constructor_name: google_gemini_3_6_flash,
             display_name: "Gemini 3.6 Flash",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        GroqGptOss120b {
-            model_name: "groq/gpt-oss-120b",
-            constructor_name: groq_gpt_oss_120b,
-            display_name: "GPT OSS 120B",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        GroqGptOss20b {
-            model_name: "groq/gpt-oss-20b",
-            constructor_name: groq_gpt_oss_20b,
-            display_name: "GPT OSS 20B",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MoonshotaiKimiK3 {
             model_name: "moonshotai/kimi-k3",
@@ -368,12 +332,6 @@ model_capabilities! {
             model_name: "qwen/qwen3.7-plus",
             constructor_name: qwen_qwen3_7_plus,
             display_name: "Qwen3.7 Plus",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        QwenQwen38MaxPreview {
-            model_name: "qwen/qwen3.8-max-preview",
-            constructor_name: qwen_qwen3_8_max_preview,
-            display_name: "Qwen3.8 Max Preview",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         ThinkingmachinesInkling {

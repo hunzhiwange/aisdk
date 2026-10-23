@@ -552,7 +552,7 @@ mod tests {
             .temperature(70u32)
             .top_p(80u32)
             .stop_sequences(vec!["END".to_string()])
-            .frequency_penalty(0.5)
+            .frequency_penalty(0.5_f32)
             .build();
         request.system = Some("You are helpful".to_string());
         request.schema = Some(schema_for!(StructuredOutput));
@@ -594,7 +594,7 @@ mod tests {
             .model(test_model(server.uri()))
             .messages(vec![Message::User("Hello".to_string().into())])
             .seed(42u32)
-            .frequency_penalty(0.5)
+            .frequency_penalty(0.5_f32)
             .headers(HashMap::from([(
                 "x-trace-id".to_string(),
                 "trace-123".to_string(),

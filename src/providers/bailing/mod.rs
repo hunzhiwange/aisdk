@@ -7,7 +7,7 @@ crate::openai_compatible_settings!(
     BailingProviderSettings,
     BailingProviderSettingsBuilder,
     "Bailing",
-    "https://api.tbox.cn/api/llm/v1/chat/completions",
+    "https://api.tbox.cn/api/llm/v1",
     "BAILING_API_TOKEN"
 );
 

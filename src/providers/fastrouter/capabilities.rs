@@ -22,12 +22,6 @@ model_capabilities! {
             display_name: "Claude Opus 4.8",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        AnthropicClaudeSonnet4 {
-            model_name: "anthropic/claude-sonnet-4",
-            constructor_name: anthropic_claude_sonnet_4,
-            display_name: "Claude Sonnet 4",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         AnthropicClaudeSonnet46 {
             model_name: "anthropic/claude-sonnet-4.6",
             constructor_name: anthropic_claude_sonnet_4_6,
@@ -40,12 +34,6 @@ model_capabilities! {
             display_name: "Seedance 2",
             capabilities: [ImageInputSupport, TextInputSupport, VideoOutputSupport]
         },
-        DeepseekAiDeepseekR1DistillLlama70b {
-            model_name: "deepseek-ai/deepseek-r1-distill-llama-70b",
-            constructor_name: deepseek_ai_deepseek_r1_distill_llama_70b,
-            display_name: "DeepSeek R1 Distill Llama 70B",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport]
-        },
         DeepseekDeepseekV4Pro {
             model_name: "deepseek/deepseek-v4-pro",
             constructor_name: deepseek_deepseek_v4_pro,
@@ -56,7 +44,7 @@ model_capabilities! {
             model_name: "google/gemini-2.5-flash",
             constructor_name: google_gemini_2_5_flash,
             display_name: "Gemini 2.5 Flash",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GoogleGemini25Pro {
             model_name: "google/gemini-2.5-pro",
@@ -67,13 +55,13 @@ model_capabilities! {
         GoogleGemini3ProImagePreview {
             model_name: "google/gemini-3-pro-image-preview",
             constructor_name: google_gemini_3_pro_image_preview,
-            display_name: "Nano Banana Pro",
+            display_name: "Nano Banana Pro Preview",
             capabilities: [ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport]
         },
         GoogleGemini31FlashImagePreview {
             model_name: "google/gemini-3.1-flash-image-preview",
             constructor_name: google_gemini_3_1_flash_image_preview,
-            display_name: "Nano Banana 2",
+            display_name: "Nano Banana 2 Preview",
             capabilities: [ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport]
         },
         GoogleGemini31ProPreview {
@@ -93,18 +81,6 @@ model_capabilities! {
             constructor_name: google_gemma_4_31b_it,
             display_name: "Gemma 4 31B IT",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        GoogleImagen40Fast {
-            model_name: "google/imagen-4.0-fast",
-            constructor_name: google_imagen_4_0_fast,
-            display_name: "Imagen 4 Fast",
-            capabilities: [ImageOutputSupport, TextInputSupport]
-        },
-        GoogleImagen40Ultra {
-            model_name: "google/imagen-4.0-ultra",
-            constructor_name: google_imagen_4_0_ultra,
-            display_name: "Imagen 4 Ultra",
-            capabilities: [ImageOutputSupport, TextInputSupport]
         },
         GoogleVeo31 {
             model_name: "google/veo3.1",
@@ -128,13 +104,13 @@ model_capabilities! {
             model_name: "leonardo-ai/lucid-origin",
             constructor_name: leonardo_ai_lucid_origin,
             display_name: "Lucid Origin",
-            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageOutputSupport, TextInputSupport]
         },
         LeonardoAiLucidRealism {
             model_name: "leonardo-ai/lucid-realism",
             constructor_name: leonardo_ai_lucid_realism,
             display_name: "Lucid Realism",
-            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageOutputSupport, TextInputSupport]
         },
         MinimaxMinimaxM27 {
             model_name: "minimax/minimax-m2.7",
@@ -147,12 +123,6 @@ model_capabilities! {
             constructor_name: minimax_minimax_m2_7_highspeed,
             display_name: "MiniMax-M2.7-highspeed",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MoonshotaiKimiK2 {
-            model_name: "moonshotai/kimi-k2",
-            constructor_name: moonshotai_kimi_k2,
-            display_name: "Kimi K2",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MoonshotaiKimiK26 {
             model_name: "moonshotai/kimi-k2.6",
@@ -232,28 +202,10 @@ model_capabilities! {
             display_name: "GPT OSS 20B",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        OpenaiGptRealtime15 {
-            model_name: "openai/gpt-realtime-1.5",
-            constructor_name: openai_gpt_realtime_1_5,
-            display_name: "GPT Realtime 1.5",
-            capabilities: [AudioInputSupport, AudioOutputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        QwenQwen3Coder {
-            model_name: "qwen/qwen3-coder",
-            constructor_name: qwen_qwen3_coder,
-            display_name: "Qwen3 Coder",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         SarvamSarvam105b {
             model_name: "sarvam/sarvam-105b",
             constructor_name: sarvam_sarvam_105b,
             display_name: "Sarvam 105B",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        SarvamSarvam30b {
-            model_name: "sarvam/sarvam-30b",
-            constructor_name: sarvam_sarvam_30b,
-            display_name: "Sarvam 30B",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         WanxWanV26 {
@@ -261,12 +213,6 @@ model_capabilities! {
             constructor_name: wanx_wan_v2_6,
             display_name: "Wan 2.6",
             capabilities: [ImageInputSupport, TextInputSupport, VideoOutputSupport]
-        },
-        XAiGrok4 {
-            model_name: "x-ai/grok-4",
-            constructor_name: x_ai_grok_4,
-            display_name: "Grok 4",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         XAiGrok43 {
             model_name: "x-ai/grok-4.3",

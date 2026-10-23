@@ -39,6 +39,9 @@ pub(crate) struct AnthropicOptions {
     pub thinking: Option<AnthropicThinking>,
     #[builder(default)]
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub output_config: Option<serde_json::Value>,
+    #[builder(default)]
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub tools: Option<Vec<AnthropicTool>>,
     #[builder(default)]
     #[serde(skip_serializing_if = "Option::is_none")]

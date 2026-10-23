@@ -82,11 +82,5 @@ model_capabilities! {
             display_name: "Xpersona Frieren 1",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        XpersonaGpt55 {
-            model_name: "xpersona-gpt-5.5",
-            constructor_name: xpersona_gpt_5_5,
-            display_name: "GPT-5.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
     }
 }

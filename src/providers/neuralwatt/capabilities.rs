@@ -10,23 +10,35 @@ use crate::providers::neuralwatt::Neuralwatt;
 model_capabilities! {
     provider: Neuralwatt,
     models: {
-        QwenQwen35397bA17bFp8 {
-            model_name: "Qwen/Qwen3.5-397B-A17B-FP8",
-            constructor_name: qwen_qwen3_5_397b_a17b_fp8,
-            display_name: "Qwen3.5 397B A17B FP8",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        QwenQwen3635bA3b {
-            model_name: "Qwen/Qwen3.6-35B-A3B",
-            constructor_name: qwen_qwen3_6_35b_a3b,
-            display_name: "Qwen3.6 35B A3B",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         DeepseekV4Flash {
             model_name: "deepseek-v4-flash",
             constructor_name: deepseek_v4_flash,
             display_name: "DeepSeek V4 Flash",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV4FlashFlex {
+            model_name: "deepseek-v4-flash-flex",
+            constructor_name: deepseek_v4_flash_flex,
+            display_name: "DeepSeek V4 Flash Flex",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV4FlashSpeed {
+            model_name: "deepseek-v4-flash-speed",
+            constructor_name: deepseek_v4_flash_speed,
+            display_name: "DeepSeek V4 Flash (Speed)",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV41Flash {
+            model_name: "deepseek-v4.1-flash",
+            constructor_name: deepseek_v4_1_flash,
+            display_name: "DeepSeek V4.1 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV41FlashFlex {
+            model_name: "deepseek-v4.1-flash-flex",
+            constructor_name: deepseek_v4_1_flash_flex,
+            display_name: "DeepSeek V4.1 Flash Flex",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gemma431b {
             model_name: "gemma-4-31b",
@@ -34,101 +46,89 @@ model_capabilities! {
             display_name: "Gemma 4 31B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Glm52 {
-            model_name: "glm-5.2",
-            constructor_name: glm_5_2,
-            display_name: "GLM 5.2",
+        Glm53 {
+            model_name: "glm-5.3",
+            constructor_name: glm_5_3,
+            display_name: "GLM 5.3",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Glm52Fast {
-            model_name: "glm-5.2-fast",
-            constructor_name: glm_5_2_fast,
-            display_name: "GLM 5.2 Fast",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Glm52Flex {
-            model_name: "glm-5.2-flex",
-            constructor_name: glm_5_2_flex,
-            display_name: "GLM 5.2 Flex",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Glm52Short {
-            model_name: "glm-5.2-short",
-            constructor_name: glm_5_2_short,
-            display_name: "GLM 5.2 Short",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Glm52ShortFast {
-            model_name: "glm-5.2-short-fast",
-            constructor_name: glm_5_2_short_fast,
-            display_name: "GLM 5.2 Short Fast",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Glm52ShortFastFlex {
-            model_name: "glm-5.2-short-fast-flex",
-            constructor_name: glm_5_2_short_fast_flex,
-            display_name: "GLM 5.2 Short Fast Flex",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Glm52ShortFlex {
-            model_name: "glm-5.2-short-flex",
-            constructor_name: glm_5_2_short_flex,
-            display_name: "GLM 5.2 Short Flex",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        KimiK25Fast {
-            model_name: "kimi-k2.5-fast",
-            constructor_name: kimi_k2_5_fast,
-            display_name: "Kimi K2.5 Fast",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        KimiK26Fast {
-            model_name: "kimi-k2.6-fast",
-            constructor_name: kimi_k2_6_fast,
-            display_name: "Kimi K2.6 Fast",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        KimiK26Flex {
-            model_name: "kimi-k2.6-flex",
-            constructor_name: kimi_k2_6_flex,
-            display_name: "Kimi K2.6 Flex",
+        Glm53Flash {
+            model_name: "glm-5.3-flash",
+            constructor_name: glm_5_3_flash,
+            display_name: "GLM-5.3 Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        KimiK27CodeFlex {
-            model_name: "kimi-k2.7-code-flex",
-            constructor_name: kimi_k2_7_code_flex,
-            display_name: "Kimi K2.7 Code Flex",
+        Glm53FlashFlex {
+            model_name: "glm-5.3-flash-flex",
+            constructor_name: glm_5_3_flash_flex,
+            display_name: "GLM-5.3 Flash Flex",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm53Flex {
+            model_name: "glm-5.3-flex",
+            constructor_name: glm_5_3_flex,
+            display_name: "GLM 5.3 Flex",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        KimiK3 {
+            model_name: "kimi-k3",
+            constructor_name: kimi_k3,
+            display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MoonshotaiKimiK25 {
-            model_name: "moonshotai/Kimi-K2.5",
-            constructor_name: moonshotai_kimi_k2_5,
-            display_name: "Kimi K2.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        KimiK3Fast {
+            model_name: "kimi-k3-fast",
+            constructor_name: kimi_k3_fast,
+            display_name: "Kimi K3 Fast",
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MoonshotaiKimiK26 {
-            model_name: "moonshotai/Kimi-K2.6",
-            constructor_name: moonshotai_kimi_k2_6,
-            display_name: "Kimi K2.6",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MoonshotaiKimiK27Code {
-            model_name: "moonshotai/Kimi-K2.7-Code",
-            constructor_name: moonshotai_kimi_k2_7_code,
-            display_name: "Kimi K2.7 Code",
+        KimiK3Flex {
+            model_name: "kimi-k3-flex",
+            constructor_name: kimi_k3_flex,
+            display_name: "Kimi K3 Flex",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Qwen35397bFast {
-            model_name: "qwen3.5-397b-fast",
-            constructor_name: qwen3_5_397b_fast,
-            display_name: "Qwen3.5 397B Fast",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        MimoV26Pro {
+            model_name: "mimo-v2.6-pro",
+            constructor_name: mimo_v2_6_pro,
+            display_name: "MiMo-V2.6-Pro",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MimoV26ProFlex {
+            model_name: "mimo-v2.6-pro-flex",
+            constructor_name: mimo_v2_6_pro_flex,
+            display_name: "MiMo-V2.6-Pro Flex",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen3827b {
+            model_name: "qwen-3.8-27b",
+            constructor_name: qwen_3_8_27b,
+            display_name: "Qwen3.8 27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen3827bFlex {
+            model_name: "qwen-3.8-27b-flex",
+            constructor_name: qwen_3_8_27b_flex,
+            display_name: "Qwen3.8 27B Flex",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen3635b {
+            model_name: "qwen3.6-35b",
+            constructor_name: qwen3_6_35b,
+            display_name: "Qwen3.6 35B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Qwen3635bFast {
             model_name: "qwen3.6-35b-fast",
             constructor_name: qwen3_6_35b_fast,
             display_name: "Qwen3.6 35B Fast",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen3635bFlex {
+            model_name: "qwen3.6-35b-flex",
+            constructor_name: qwen3_6_35b_flex,
+            display_name: "Qwen3.6 35B Flex",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

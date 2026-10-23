@@ -12,7 +12,7 @@ generate_language_model_tests!(
     default_model: Mistral::mistral_large_latest(),
     tool_model: Mistral::mistral_large_latest(),
     structured_output_model: Mistral::mistral_large_latest(),
-    reasoning_model: Mistral::magistral_medium_latest(),
+    reasoning_model: Mistral::mistral_medium_latest(),
     embedding_model: Mistral::mistral_large_latest(),
     skip_reasoning: false,
     skip_tool: false,

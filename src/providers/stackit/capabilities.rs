@@ -22,23 +22,11 @@ model_capabilities! {
             display_name: "Qwen3-VL Embedding 8B",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
         },
-        QwenQwen3627b {
-            model_name: "Qwen/Qwen3.6-27B",
-            constructor_name: qwen_qwen3_6_27b,
-            display_name: "Qwen3.6 27B",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         CortecsLlama3370bInstructFp8Dynamic {
             model_name: "cortecs/Llama-3.3-70B-Instruct-FP8-Dynamic",
             constructor_name: cortecs_llama_3_3_70b_instruct_fp8_dynamic,
             display_name: "Llama 3.3 70B",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        GoogleGemma327bIt {
-            model_name: "google/gemma-3-27b-it",
-            constructor_name: google_gemma_3_27b_it,
-            display_name: "Gemma 3 27B",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
         },
         IntfloatE5Mistral7bInstruct {
             model_name: "intfloat/e5-mistral-7b-instruct",

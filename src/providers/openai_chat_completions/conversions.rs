@@ -1,8 +1,6 @@
 //! Helper functions and conversions for the OpenAI Chat Completions provider.
 
-use crate::core::language_model::{
-    LanguageModelOptions, LanguageModelResponseContentType, ReasoningEffort, Usage,
-};
+use crate::core::language_model::{LanguageModelOptions, LanguageModelResponseContentType, Usage};
 use crate::core::messages::{Message, UserContentPart, UserMessage};
 use crate::core::tools::Tool as SdkTool;
 use crate::providers::openai_chat_completions::client::{self, types};
@@ -72,14 +70,9 @@ impl From<LanguageModelOptions> for client::ChatCompletionsOptions {
             }
         });
 
-        let reasoning_effort = options.reasoning_effort.map(|effort| {
-            match effort {
-                ReasoningEffort::Low => "low",
-                ReasoningEffort::Medium => "medium",
-                ReasoningEffort::High => "high",
-            }
-            .to_string()
-        });
+        let reasoning_effort = options
+            .reasoning_effort
+            .map(|effort| effort.as_str().to_string());
 
         let tool_choice = if tools.is_some() {
             Some(types::ToolChoice::String("auto".to_string()))
@@ -295,6 +288,7 @@ impl From<types::Usage> for Usage {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::core::language_model::ReasoningEffort;
     use crate::core::tools::{Tool, ToolExecute, ToolList};
     use schemars::{JsonSchema, schema_for};
     use serde::{Deserialize, Serialize};

@@ -2,6 +2,8 @@ import importlib.util
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+import json
 from pathlib import Path
 
 
@@ -141,6 +143,25 @@ class ProviderRegistryGenerationTests(unittest.TestCase):
             'env_names: &["Z_PRIMARY_API_KEY", "Z_SECONDARY_API_KEY"]',
             content,
         )
+
+
+class LocalCatalogTests(unittest.TestCase):
+    def test_local_catalog_does_not_fetch_network(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "api.json"
+            data = {"custom": compatible_provider_data()}
+            path.write_text(json.dumps(data), encoding="utf-8")
+            with patch.object(provider_codegen, "urlopen", side_effect=AssertionError("network")), patch.object(provider_codegen, "requests", None):
+                self.assertEqual(provider_codegen.fetch_models_dev_json(path), data)
+
+    def test_invalid_local_catalog_does_not_fall_back_to_network(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "api.json"
+            path.write_text("[]", encoding="utf-8")
+            with self.assertRaises(ValueError):
+                provider_codegen.fetch_models_dev_json(path)
+            with self.assertRaises(FileNotFoundError):
+                provider_codegen.fetch_models_dev_json(path.with_name("missing.json"))
 
 
 if __name__ == "__main__":

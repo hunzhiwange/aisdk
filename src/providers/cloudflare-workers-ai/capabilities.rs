@@ -16,11 +16,53 @@ model_capabilities! {
             display_name: "Gemma Sea Lion V4 27B It",
             capabilities: [TextInputSupport, TextOutputSupport]
         },
+        CfCloudflareClairic {
+            model_name: "@cf/cloudflare/clairic",
+            constructor_name: cf_cloudflare_clairic,
+            display_name: "Clairic",
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
+        },
+        CfCloudflareClef {
+            model_name: "@cf/cloudflare/clef",
+            constructor_name: cf_cloudflare_clef,
+            display_name: "Clef",
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
+        },
+        CfCloudflareClefFlash {
+            model_name: "@cf/cloudflare/clef-flash",
+            constructor_name: cf_cloudflare_clef_flash,
+            display_name: "Clef Flash",
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
+        },
+        CfCloudflareClefOmni {
+            model_name: "@cf/cloudflare/clef-omni",
+            constructor_name: cf_cloudflare_clef_omni,
+            display_name: "Clef Omni",
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
+        },
         CfDeepseekAiDeepseekR1DistillQwen32b {
             model_name: "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
             constructor_name: cf_deepseek_ai_deepseek_r1_distill_qwen_32b,
             display_name: "Deepseek R1 Distill Qwen 32B",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport]
+        },
+        CfDeepseekAiDeepseekV4Flash0731 {
+            model_name: "@cf/deepseek-ai/deepseek-v4-flash-0731",
+            constructor_name: cf_deepseek_ai_deepseek_v4_flash_0731,
+            display_name: "DeepSeek V4 Flash 0731",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        CfDeepseekAiDeepseekV4Pro0813 {
+            model_name: "@cf/deepseek-ai/deepseek-v4-pro-0813",
+            constructor_name: cf_deepseek_ai_deepseek_v4_pro_0813,
+            display_name: "DeepSeek V4 Pro 0813",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        CfDeepseekAiDeepseekV41Flash1017 {
+            model_name: "@cf/deepseek-ai/deepseek-v4.1-flash-1017",
+            constructor_name: cf_deepseek_ai_deepseek_v4_1_flash_1017,
+            display_name: "Deepseek V4.1 Flash 1017",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         CfGoogleGemma426bA4bIt {
             model_name: "@cf/google/gemma-4-26b-a4b-it",
@@ -80,7 +122,7 @@ model_capabilities! {
             model_name: "@cf/mistralai/mistral-small-3.1-24b-instruct",
             constructor_name: cf_mistralai_mistral_small_3_1_24b_instruct,
             display_name: "Mistral Small 3.1 24B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         CfMoonshotaiKimiK26 {
             model_name: "@cf/moonshotai/kimi-k2.6",
@@ -124,6 +166,12 @@ model_capabilities! {
             display_name: "Qwen3 30B A3b fp8",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        CfQwenQwen3827b {
+            model_name: "@cf/qwen/qwen3.8-27b",
+            constructor_name: cf_qwen_qwen3_8_27b,
+            display_name: "Qwen3.8 27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         CfQwenQwq32b {
             model_name: "@cf/qwen/qwq-32b",
             constructor_name: cf_qwen_qwq_32b,
@@ -141,6 +189,18 @@ model_capabilities! {
             constructor_name: cf_zai_org_glm_5_2,
             display_name: "Glm 5.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        CfZaiOrgGlm53 {
+            model_name: "@cf/zai-org/glm-5.3",
+            constructor_name: cf_zai_org_glm_5_3,
+            display_name: "Glm 5.3",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        CfZaiOrgGlm53Flash {
+            model_name: "@cf/zai-org/glm-5.3-flash",
+            constructor_name: cf_zai_org_glm_5_3_flash,
+            display_name: "Glm 5.3 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

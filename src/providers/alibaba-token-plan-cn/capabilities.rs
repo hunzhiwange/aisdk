@@ -16,18 +16,6 @@ model_capabilities! {
             display_name: "MiniMax-M2.5",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        DeepseekV32 {
-            model_name: "deepseek-v3.2",
-            constructor_name: deepseek_v3_2,
-            display_name: "DeepSeek V3.2",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        DeepseekV4Flash {
-            model_name: "deepseek-v4-flash",
-            constructor_name: deepseek_v4_flash,
-            display_name: "DeepSeek V4 Flash",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         DeepseekV4Flash0731 {
             model_name: "deepseek-v4-flash-0731",
             constructor_name: deepseek_v4_flash_0731,
@@ -39,6 +27,24 @@ model_capabilities! {
             constructor_name: deepseek_v4_pro,
             display_name: "DeepSeek V4 Pro",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV4Pro0813 {
+            model_name: "deepseek-v4-pro-0813",
+            constructor_name: deepseek_v4_pro_0813,
+            display_name: "DeepSeek V4 Pro 0813",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV41Flash {
+            model_name: "deepseek-v4.1-flash",
+            constructor_name: deepseek_v4_1_flash,
+            display_name: "DeepSeek V4.1 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV41Flash1017 {
+            model_name: "deepseek-v4.1-flash-1017",
+            constructor_name: deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Glm5 {
             model_name: "glm-5",
@@ -56,6 +62,12 @@ model_capabilities! {
             model_name: "glm-5.2",
             constructor_name: glm_5_2,
             display_name: "GLM-5.2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm53 {
+            model_name: "glm-5.3",
+            constructor_name: glm_5_3,
+            display_name: "GLM-5.3",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Happyhorse11I2v {
@@ -130,16 +142,16 @@ model_capabilities! {
             display_name: "Qwen3.7 Plus",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        Qwen38Flash {
+            model_name: "qwen3.8-flash",
+            constructor_name: qwen3_8_flash,
+            display_name: "Qwen3.8 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         Qwen38Max {
             model_name: "qwen3.8-max",
             constructor_name: qwen3_8_max,
             display_name: "Qwen3.8 Max",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        Qwen38MaxPreview {
-            model_name: "qwen3.8-max-preview",
-            constructor_name: qwen3_8_max_preview,
-            display_name: "Qwen3.8 Max Preview",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Wan27Image {

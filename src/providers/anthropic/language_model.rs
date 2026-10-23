@@ -33,7 +33,14 @@ impl<M: ModelName> LanguageModel for Anthropic<M> {
         &mut self,
         options: LanguageModelOptions,
     ) -> Result<LanguageModelResponse> {
+        let effort = options.reasoning_effort;
+        super::reasoning::validate_effort(&self.options.model, effort)?;
         let mut options: AnthropicOptions = options.into();
+        if effort.is_some_and(|effort| effort != crate::core::language_model::ReasoningEffort::None)
+            && !self.options.model.starts_with("claude-opus-4-5")
+        {
+            options.thinking = Some(super::client::AnthropicThinking::Adaptive);
+        }
         options.model = self.options.model.clone();
         self.options = options;
 
@@ -86,7 +93,14 @@ impl<M: ModelName> LanguageModel for Anthropic<M> {
 
     /// Streams text using the Anthropic provider.
     async fn stream_text(&mut self, options: LanguageModelOptions) -> Result<ProviderStream> {
+        let effort = options.reasoning_effort;
+        super::reasoning::validate_effort(&self.options.model, effort)?;
         let mut options: AnthropicOptions = options.into();
+        if effort.is_some_and(|effort| effort != crate::core::language_model::ReasoningEffort::None)
+            && !self.options.model.starts_with("claude-opus-4-5")
+        {
+            options.thinking = Some(super::client::AnthropicThinking::Adaptive);
+        }
         options.stream = Some(true);
         options.model = self.options.model.clone();
         self.options = options;
@@ -372,7 +386,7 @@ mod tests {
     }
 
     fn test_model(base_url: String) -> Anthropic<DynamicModel> {
-        let mut model = Anthropic::<DynamicModel>::model_name("claude-sonnet-4-0");
+        let mut model = Anthropic::<DynamicModel>::model_name("claude-sonnet-4-6");
         model.settings.base_url = base_url;
         model.settings.api_key = "test-key".to_string();
         model
@@ -383,7 +397,7 @@ mod tests {
             "id": "msg_1",
             "type": "message",
             "role": "assistant",
-            "model": "claude-sonnet-4-0",
+            "model": "claude-sonnet-4-6",
             "content": [
                 {
                     "type": "text",
@@ -546,7 +560,7 @@ mod tests {
             .and(header("anthropic-version", ANTHROPIC_API_VERSION))
             .and(header("content-type", "application/json"))
             .and(body_partial_json(json!({
-                "model": "claude-sonnet-4-0",
+                "model": "claude-sonnet-4-6",
                 "system": "You are helpful",
                 "messages": [
                     {
@@ -554,10 +568,7 @@ mod tests {
                         "content": "Hello"
                     }
                 ],
-                "thinking": {
-                    "type": "enable",
-                    "budget_tokens": 5000
-                },
+                "output_config": {"effort": "medium"},
                 "tools": [
                     {
                         "name": "sum",
@@ -609,7 +620,7 @@ mod tests {
             .and(header("anthropic-version", ANTHROPIC_API_VERSION))
             .and(header("x-trace-id", "trace-123"))
             .and(body_partial_json(json!({
-                "model": "claude-sonnet-4-0",
+                "model": "claude-sonnet-4-6",
                 "messages": [
                     {
                         "role": "user",
@@ -646,7 +657,7 @@ mod tests {
             .and(header("x-api-key", "test-key"))
             .and(header("anthropic-version", ANTHROPIC_API_VERSION))
             .and(body_partial_json(json!({
-                "model": "claude-sonnet-4-0",
+                "model": "claude-sonnet-4-6",
                 "messages": [
                     {
                         "role": "user",
@@ -693,7 +704,7 @@ mod tests {
             .and(path("/messages"))
             .and(header("x-api-key", "test-key"))
             .and(body_partial_json(json!({
-                "model": "claude-sonnet-4-0",
+                "model": "claude-sonnet-4-6",
                 "messages": [
                     {
                         "role": "user",
@@ -791,11 +802,11 @@ mod tests {
         );
 
         let body = body_json(&request);
-        assert_eq!(body["model"], json!("claude-sonnet-4-0"));
+        assert_eq!(body["model"], json!("claude-sonnet-4-6"));
         assert_eq!(body["stream"], json!(true));
         assert_eq!(body["system"], json!("You are helpful"));
-        assert_eq!(body["thinking"]["type"], json!("enable"));
-        assert_eq!(body["thinking"]["budget_tokens"], json!(5000));
+        assert_eq!(body["output_config"]["effort"], json!("medium"));
+        assert_eq!(body["thinking"]["type"], "adaptive");
 
         let messages = body["messages"]
             .as_array()

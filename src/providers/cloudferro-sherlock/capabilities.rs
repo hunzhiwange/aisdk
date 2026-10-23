@@ -28,17 +28,17 @@ model_capabilities! {
             display_name: "OpenAI GPT OSS 120B",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        SpeakleashBielik11bV26Instruct {
-            model_name: "speakleash/Bielik-11B-v2.6-Instruct",
-            constructor_name: speakleash_bielik_11b_v2_6_instruct,
-            display_name: "Bielik 11B v2.6 Instruct",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         SpeakleashBielik11bV30Instruct {
             model_name: "speakleash/Bielik-11B-v3.0-Instruct",
             constructor_name: speakleash_bielik_11b_v3_0_instruct,
             display_name: "Bielik 11B v3.0 Instruct",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm53 {
+            model_name: "zai-org/GLM-5.3",
+            constructor_name: zai_org_glm_5_3,
+            display_name: "GLM-5.3",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

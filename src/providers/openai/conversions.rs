@@ -198,7 +198,11 @@ impl From<types::ResponseUsage> for Usage {
 impl From<ReasoningEffort> for types::ReasoningEffort {
     fn from(value: ReasoningEffort) -> Self {
         match value {
-            ReasoningEffort::Low => client::ReasoningEffort::Minimal,
+            ReasoningEffort::None => client::ReasoningEffort::None,
+            ReasoningEffort::Minimal => client::ReasoningEffort::Minimal,
+            ReasoningEffort::Low => client::ReasoningEffort::Low,
+            ReasoningEffort::Xhigh => client::ReasoningEffort::XHigh,
+            ReasoningEffort::Max => client::ReasoningEffort::Max,
             ReasoningEffort::Medium => client::ReasoningEffort::Medium,
             ReasoningEffort::High => client::ReasoningEffort::High,
         }
@@ -419,7 +423,7 @@ mod tests {
     fn test_reasoning_effort_conversion_low() {
         let effort = LMReasoningEffort::Low;
         let openai_effort: ReasoningEffort = effort.into();
-        assert_eq!(openai_effort, ReasoningEffort::Minimal);
+        assert_eq!(openai_effort, ReasoningEffort::Low);
         let _ = openai_effort;
     }
 
@@ -446,7 +450,7 @@ mod tests {
         let lm_options: OpenAILanguageModelOptions = options.into();
         assert!(lm_options.reasoning.is_some());
         let reasoning = lm_options.reasoning.unwrap();
-        assert_eq!(reasoning.effort, Some(ReasoningEffort::Minimal));
+        assert_eq!(reasoning.effort, Some(ReasoningEffort::Low));
         assert_eq!(reasoning.summary, Some(SummaryType::Auto));
     }
 

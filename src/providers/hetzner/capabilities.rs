@@ -16,5 +16,11 @@ model_capabilities! {
             display_name: "Qwen3.6 35B A3B FP8",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Qwen3827b {
+            model_name: "Qwen3.8-27B",
+            constructor_name: qwen3_8_27b,
+            display_name: "Qwen3.8-27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
     }
 }

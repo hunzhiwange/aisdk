@@ -10,45 +10,45 @@ use crate::providers::trustedrouter::Trustedrouter;
 model_capabilities! {
     provider: Trustedrouter,
     models: {
-        Auto {
-            model_name: "auto",
-            constructor_name: auto,
+        TrustedrouterAuto {
+            model_name: "trustedrouter/auto",
+            constructor_name: trustedrouter_auto,
             display_name: "Auto",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Cheap {
-            model_name: "cheap",
-            constructor_name: cheap,
+        TrustedrouterCheap {
+            model_name: "trustedrouter/cheap",
+            constructor_name: trustedrouter_cheap,
             display_name: "Cheap",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        E2e {
-            model_name: "e2e",
-            constructor_name: e2e,
+        TrustedrouterE2e {
+            model_name: "trustedrouter/e2e",
+            constructor_name: trustedrouter_e2e,
             display_name: "End-to-End Encrypted",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Fast {
-            model_name: "fast",
-            constructor_name: fast,
+        TrustedrouterFast {
+            model_name: "trustedrouter/fast",
+            constructor_name: trustedrouter_fast,
             display_name: "Fast",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Synth {
-            model_name: "synth",
-            constructor_name: synth,
+        TrustedrouterSynth {
+            model_name: "trustedrouter/synth",
+            constructor_name: trustedrouter_synth,
             display_name: "Synth",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        SynthCode {
-            model_name: "synth-code",
-            constructor_name: synth_code,
+        TrustedrouterSynthCode {
+            model_name: "trustedrouter/synth-code",
+            constructor_name: trustedrouter_synth_code,
             display_name: "Synth Code",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Zdr {
-            model_name: "zdr",
-            constructor_name: zdr,
+        TrustedrouterZdr {
+            model_name: "trustedrouter/zdr",
+            constructor_name: trustedrouter_zdr,
             display_name: "Zero Data Retention",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },

@@ -40,12 +40,6 @@ model_capabilities! {
             display_name: "Qwen3.5 Plus",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        XiaomimimoMimoV2Flash {
-            model_name: "XiaomiMiMo/MiMo-V2-Flash",
-            constructor_name: xiaomimimo_mimo_v2_flash,
-            display_name: "MiMo V2 Flash",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         DeepseekAiDeepseekR10528 {
             model_name: "deepseek-ai/DeepSeek-R1-0528",
             constructor_name: deepseek_ai_deepseek_r1_0528,

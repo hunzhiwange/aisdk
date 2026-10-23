@@ -22,12 +22,6 @@ model_capabilities! {
             display_name: "PaddlePaddle/PaddleOCR-VL-1.5",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
         },
-        ProMinimaxaiMinimaxM25 {
-            model_name: "Pro/MiniMaxAI/MiniMax-M2.5",
-            constructor_name: pro_minimaxai_minimax_m2_5,
-            display_name: "Pro/MiniMaxAI/MiniMax-M2.5",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         ProDeepseekAiDeepseekR1 {
             model_name: "Pro/deepseek-ai/DeepSeek-R1",
             constructor_name: pro_deepseek_ai_deepseek_r1,
@@ -52,23 +46,11 @@ model_capabilities! {
             display_name: "Pro/deepseek-ai/DeepSeek-V3.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        ProMoonshotaiKimiK25 {
-            model_name: "Pro/moonshotai/Kimi-K2.5",
-            constructor_name: pro_moonshotai_kimi_k2_5,
-            display_name: "Pro/moonshotai/Kimi-K2.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         ProMoonshotaiKimiK26 {
             model_name: "Pro/moonshotai/Kimi-K2.6",
             constructor_name: pro_moonshotai_kimi_k2_6,
             display_name: "Pro/moonshotai/Kimi-K2.6",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ProZaiOrgGlm5 {
-            model_name: "Pro/zai-org/GLM-5",
-            constructor_name: pro_zai_org_glm_5,
-            display_name: "Pro/zai-org/GLM-5",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ProZaiOrgGlm51 {
             model_name: "Pro/zai-org/GLM-5.1",
@@ -92,12 +74,6 @@ model_capabilities! {
             model_name: "Qwen/Qwen3-14B",
             constructor_name: qwen_qwen3_14b,
             display_name: "Qwen/Qwen3-14B",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        QwenQwen3235bA22bThinking2507 {
-            model_name: "Qwen/Qwen3-235B-A22B-Thinking-2507",
-            constructor_name: qwen_qwen3_235b_a22b_thinking_2507,
-            display_name: "Qwen/Qwen3-235B-A22B-Thinking-2507",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenQwen330bA3bInstruct2507 {
@@ -124,53 +100,35 @@ model_capabilities! {
             display_name: "Qwen/Qwen3-Coder-30B-A3B-Instruct",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        QwenQwen3Coder480bA35bInstruct {
-            model_name: "Qwen/Qwen3-Coder-480B-A35B-Instruct",
-            constructor_name: qwen_qwen3_coder_480b_a35b_instruct,
-            display_name: "Qwen/Qwen3-Coder-480B-A35B-Instruct",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        QwenQwen3Vl235bA22bInstruct {
-            model_name: "Qwen/Qwen3-VL-235B-A22B-Instruct",
-            constructor_name: qwen_qwen3_vl_235b_a22b_instruct,
-            display_name: "Qwen/Qwen3-VL-235B-A22B-Instruct",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        QwenQwen3Vl235bA22bThinking {
-            model_name: "Qwen/Qwen3-VL-235B-A22B-Thinking",
-            constructor_name: qwen_qwen3_vl_235b_a22b_thinking,
-            display_name: "Qwen/Qwen3-VL-235B-A22B-Thinking",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         QwenQwen3Vl30bA3bInstruct {
             model_name: "Qwen/Qwen3-VL-30B-A3B-Instruct",
             constructor_name: qwen_qwen3_vl_30b_a3b_instruct,
             display_name: "Qwen/Qwen3-VL-30B-A3B-Instruct",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         QwenQwen3Vl30bA3bThinking {
             model_name: "Qwen/Qwen3-VL-30B-A3B-Thinking",
             constructor_name: qwen_qwen3_vl_30b_a3b_thinking,
             display_name: "Qwen/Qwen3-VL-30B-A3B-Thinking",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         QwenQwen3Vl32bInstruct {
             model_name: "Qwen/Qwen3-VL-32B-Instruct",
             constructor_name: qwen_qwen3_vl_32b_instruct,
             display_name: "Qwen/Qwen3-VL-32B-Instruct",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         QwenQwen3Vl32bThinking {
             model_name: "Qwen/Qwen3-VL-32B-Thinking",
             constructor_name: qwen_qwen3_vl_32b_thinking,
             display_name: "Qwen/Qwen3-VL-32B-Thinking",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         QwenQwen3Vl8bInstruct {
             model_name: "Qwen/Qwen3-VL-8B-Instruct",
             constructor_name: qwen_qwen3_vl_8b_instruct,
             display_name: "Qwen/Qwen3-VL-8B-Instruct",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         QwenQwen35122bA10b {
             model_name: "Qwen/Qwen3.5-122B-A10B",
@@ -190,12 +148,6 @@ model_capabilities! {
             display_name: "Qwen/Qwen3.5-35B-A3B",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        QwenQwen35397bA17b {
-            model_name: "Qwen/Qwen3.5-397B-A17B",
-            constructor_name: qwen_qwen3_5_397b_a17b,
-            display_name: "Qwen/Qwen3.5-397B-A17B",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
         QwenQwen354b {
             model_name: "Qwen/Qwen3.5-4B",
             constructor_name: qwen_qwen3_5_4b,
@@ -213,12 +165,6 @@ model_capabilities! {
             constructor_name: qwen_qwen3_6_35b_a3b,
             display_name: "Qwen/Qwen3.6-35B-A3B",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        BaiduErnie45300bA47b {
-            model_name: "baidu/ERNIE-4.5-300B-A47B",
-            constructor_name: baidu_ernie_4_5_300b_a47b,
-            display_name: "baidu/ERNIE-4.5-300B-A47B",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekAiDeepseekOcr {
             model_name: "deepseek-ai/DeepSeek-OCR",
@@ -278,7 +224,7 @@ model_capabilities! {
             model_name: "tencent/Hunyuan-A13B-Instruct",
             constructor_name: tencent_hunyuan_a13b_instruct,
             display_name: "tencent/Hunyuan-A13B-Instruct",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
         },
         ZaiOrgGlm45Air {
             model_name: "zai-org/GLM-4.5-Air",

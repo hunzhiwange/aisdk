@@ -10,6 +10,48 @@ use crate::providers::regolo_ai::RegoloAi;
 model_capabilities! {
     provider: RegoloAi,
     models: {
+        Apertus70b {
+            model_name: "apertus-70b",
+            constructor_name: apertus_70b,
+            display_name: "Apertus 70B",
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        BrickComplexityPro {
+            model_name: "brick-complexity-pro",
+            constructor_name: brick_complexity_pro,
+            display_name: "Brick Complexity Pro",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        BrickV1Beta {
+            model_name: "brick-v1-beta",
+            constructor_name: brick_v1_beta,
+            display_name: "Brick v1 Beta",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekOcr2 {
+            model_name: "deepseek-ocr-2",
+            constructor_name: deepseek_ocr_2,
+            display_name: "DeepSeek OCR 2",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
+        },
+        FasterWhisperLargeV3 {
+            model_name: "faster-whisper-large-v3",
+            constructor_name: faster_whisper_large_v3,
+            display_name: "Faster Whisper Large v3",
+            capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
+        },
+        Gemma431b {
+            model_name: "gemma4-31b",
+            constructor_name: gemma4_31b,
+            display_name: "Gemma 4 31B IT",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm52 {
+            model_name: "glm5.2",
+            constructor_name: glm5_2,
+            display_name: "GLM-5.2",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         GptOss120b {
             model_name: "gpt-oss-120b",
             constructor_name: gpt_oss_120b,
@@ -22,47 +64,17 @@ model_capabilities! {
             display_name: "GPT-OSS-20B",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Llama318bInstruct {
-            model_name: "llama-3.1-8b-instruct",
-            constructor_name: llama_3_1_8b_instruct,
-            display_name: "Llama 3.1 8B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Llama3370bInstruct {
-            model_name: "llama-3.3-70b-instruct",
-            constructor_name: llama_3_3_70b_instruct,
-            display_name: "Llama 3.3 70B Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MinimaxM25 {
-            model_name: "minimax-m2.5",
-            constructor_name: minimax_m2_5,
-            display_name: "MiniMax 2.5",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         MistralSmall4119b {
             model_name: "mistral-small-4-119b",
             constructor_name: mistral_small_4_119b,
             display_name: "Mistral Small 4 119B",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MistralSmall32 {
-            model_name: "mistral-small3.2",
-            constructor_name: mistral_small3_2,
-            display_name: "Mistral Small 3.2",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         QwenImage {
             model_name: "qwen-image",
             constructor_name: qwen_image,
             display_name: "Qwen-Image",
             capabilities: [ImageOutputSupport, TextInputSupport]
-        },
-        Qwen3CoderNext {
-            model_name: "qwen3-coder-next",
-            constructor_name: qwen3_coder_next,
-            display_name: "Qwen3-Coder-Next",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Qwen3Embedding8b {
             model_name: "qwen3-embedding-8b",
@@ -87,6 +99,12 @@ model_capabilities! {
             constructor_name: qwen3_5_9b,
             display_name: "Qwen3.5-9B",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen3827b {
+            model_name: "qwen3.8-27b",
+            constructor_name: qwen3_8_27b,
+            display_name: "Qwen3.8 27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }
 }

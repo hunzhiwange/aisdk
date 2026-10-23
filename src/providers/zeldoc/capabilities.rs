@@ -10,11 +10,11 @@ use crate::providers::zeldoc::Zeldoc;
 model_capabilities! {
     provider: Zeldoc,
     models: {
-        ZCode {
-            model_name: "z-code",
-            constructor_name: z_code,
-            display_name: "Z-Code",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Zdev {
+            model_name: "zdev",
+            constructor_name: zdev,
+            display_name: "ZDev",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

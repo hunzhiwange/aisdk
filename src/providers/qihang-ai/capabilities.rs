@@ -16,18 +16,6 @@ model_capabilities! {
             display_name: "Claude Haiku 4.5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        ClaudeOpus4520251101 {
-            model_name: "claude-opus-4-5-20251101",
-            constructor_name: claude_opus_4_5_20251101,
-            display_name: "Claude Opus 4.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ClaudeSonnet4520250929 {
-            model_name: "claude-sonnet-4-5-20250929",
-            constructor_name: claude_sonnet_4_5_20250929,
-            display_name: "Claude Sonnet 4.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Gemini25Flash {
             model_name: "gemini-2.5-flash",
             constructor_name: gemini_2_5_flash,
@@ -51,18 +39,6 @@ model_capabilities! {
             constructor_name: gpt_5_mini,
             display_name: "GPT-5-Mini",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt52 {
-            model_name: "gpt-5.2",
-            constructor_name: gpt_5_2,
-            display_name: "GPT-5.2",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt52Codex {
-            model_name: "gpt-5.2-codex",
-            constructor_name: gpt_5_2_codex,
-            display_name: "GPT-5.2 Codex",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

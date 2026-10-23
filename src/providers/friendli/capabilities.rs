@@ -10,22 +10,10 @@ use crate::providers::friendli::Friendli;
 model_capabilities! {
     provider: Friendli,
     models: {
-        MinimaxaiMinimaxM25 {
-            model_name: "MiniMaxAI/MiniMax-M2.5",
-            constructor_name: minimaxai_minimax_m2_5,
-            display_name: "MiniMax-M2.5",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        QwenQwen3235bA22bInstruct2507 {
-            model_name: "Qwen/Qwen3-235B-A22B-Instruct-2507",
-            constructor_name: qwen_qwen3_235b_a22b_instruct_2507,
-            display_name: "Qwen3 235B A22B Instruct 2507",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         DeepseekAiDeepseekV32 {
             model_name: "deepseek-ai/DeepSeek-V3.2",
             constructor_name: deepseek_ai_deepseek_v3_2,
-            display_name: "DeepSeek-V3.2",
+            display_name: "DeepSeek V3.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GoogleGemma431bIt {
@@ -45,6 +33,18 @@ model_capabilities! {
             constructor_name: zai_org_glm_5_2,
             display_name: "GLM-5.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm53 {
+            model_name: "zai-org/GLM-5.3",
+            constructor_name: zai_org_glm_5_3,
+            display_name: "GLM-5.3",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm53Flash {
+            model_name: "zai-org/GLM-5.3-Flash",
+            constructor_name: zai_org_glm_5_3_flash,
+            display_name: "GLM-5.3-Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }
 }

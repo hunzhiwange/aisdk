@@ -16,11 +16,5 @@ model_capabilities! {
             display_name: "Sarvam-105B",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Sarvam30b {
-            model_name: "sarvam-30b",
-            constructor_name: sarvam_30b,
-            display_name: "Sarvam-30B",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
     }
 }

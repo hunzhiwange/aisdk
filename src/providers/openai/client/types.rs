@@ -235,7 +235,9 @@ pub(crate) enum ReasoningEffort {
     Low,
     Medium,
     High,
+    #[serde(rename = "xhigh")]
     XHigh,
+    Max,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]

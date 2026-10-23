@@ -28,12 +28,6 @@ model_capabilities! {
             display_name: "Meta-Llama-3_3-70B-Instruct",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Mistral7bInstructV03 {
-            model_name: "mistral-7b-instruct-v0.3",
-            constructor_name: mistral_7b_instruct_v0_3,
-            display_name: "Mistral-7B-Instruct-v0.3",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         MistralNemoInstruct2407 {
             model_name: "mistral-nemo-instruct-2407",
             constructor_name: mistral_nemo_instruct_2407,
@@ -52,18 +46,6 @@ model_capabilities! {
             display_name: "Qwen2.5-VL-72B-Instruct",
             capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
         },
-        Qwen332b {
-            model_name: "qwen3-32b",
-            constructor_name: qwen3_32b,
-            display_name: "Qwen3-32B",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Qwen3Coder30bA3bInstruct {
-            model_name: "qwen3-coder-30b-a3b-instruct",
-            constructor_name: qwen3_coder_30b_a3b_instruct,
-            display_name: "Qwen3-Coder-30B-A3B-Instruct",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Qwen35397bA17b {
             model_name: "qwen3.5-397b-a17b",
             constructor_name: qwen3_5_397b_a17b,
@@ -80,6 +62,12 @@ model_capabilities! {
             model_name: "qwen3.6-27b",
             constructor_name: qwen3_6_27b,
             display_name: "Qwen3.6-27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen3827b {
+            model_name: "qwen3.8-27b",
+            constructor_name: qwen3_8_27b,
+            display_name: "Qwen3.8-27B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Qwen3guardGen06b {

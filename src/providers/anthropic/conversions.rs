@@ -44,9 +44,9 @@ impl From<LanguageModelOptions> for AnthropicOptions {
 
         // TODO: anthropic max_tokens is required. handle compile
         // time checks if not set in core
-        let max_tokens = options.max_output_tokens.unwrap_or(10_000);
+        let max_tokens = options.max_output_tokens.unwrap_or(4096);
 
-        // TODO: temperature, top_p, top_k, stop_sequences, and max_tokens are not mapped for Anthropic yet.
+        // TODO: temperature, top_p, top_k, and stop_sequences are not mapped for Anthropic yet.
         // Add support once provider behavior is confirmed and covered.
 
         if let Some(system) = options.system
@@ -168,21 +168,15 @@ impl From<LanguageModelOptions> for AnthropicOptions {
             ));
         }
 
-        // convert reasoning to antropic thinking
-        request.thinking(options.reasoning_effort.map(|effort| match effort {
-            // Low is 25% of the max_tokens
-            ReasoningEffort::Low => AnthropicThinking::Enable {
-                budget_tokens: (max_tokens / 4) as usize,
-            },
-            // Medium is 50% of the max_tokens
-            ReasoningEffort::Medium => AnthropicThinking::Enable {
-                budget_tokens: (max_tokens / 2) as usize,
-            },
-            // High is 75% of the max_tokens
-            ReasoningEffort::High => AnthropicThinking::Enable {
-                budget_tokens: (max_tokens - (max_tokens / 4)) as usize,
-            },
-        }));
+        request.max_tokens(max_tokens);
+        // Effort is a native output setting, not a percentage of max_tokens.
+        if let Some(effort) = options.reasoning_effort {
+            if effort == ReasoningEffort::None {
+                request.thinking(Some(AnthropicThinking::Disable));
+            } else {
+                request.output_config(Some(serde_json::json!({"effort": effort.as_str()})));
+            }
+        }
 
         let mut request = request.build().expect("Failed to build AntropicRequest");
         request.extra_body = extra_body;
@@ -258,21 +252,16 @@ mod tests {
     }
 
     #[test]
-    fn test_reasoning_maps_to_thinking_budget() {
-        let options = LanguageModelOptions {
+    fn test_reasoning_maps_to_native_effort() {
+        let req: AnthropicOptions = LanguageModelOptions {
             max_output_tokens: Some(200),
             reasoning_effort: Some(ReasoningEffort::High),
             ..Default::default()
-        };
-
-        let req: AnthropicOptions = options.into();
-
-        match req.thinking {
-            Some(AnthropicThinking::Enable { budget_tokens }) => {
-                assert_eq!(budget_tokens, 150);
-            }
-            _ => panic!("expected anthropic thinking to be enabled"),
         }
+        .into();
+        assert_eq!(req.output_config, Some(json!({"effort": "high"})));
+        assert!(req.thinking.is_none());
+        assert_eq!(req.max_tokens, 200);
     }
 
     #[test]

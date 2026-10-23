@@ -40,6 +40,12 @@ model_capabilities! {
             display_name: "Qwen3.6 27B TEE",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        QwenQwen3827bTee {
+            model_name: "Qwen/Qwen3.8-27B-TEE",
+            constructor_name: qwen_qwen3_8_27b_tee,
+            display_name: "Qwen3.8 27B TEE",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         DeepseekAiDeepseekV32Tee {
             model_name: "deepseek-ai/DeepSeek-V3.2-TEE",
             constructor_name: deepseek_ai_deepseek_v3_2_tee,
