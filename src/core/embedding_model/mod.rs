@@ -42,6 +42,8 @@ impl EmbeddingModelOptions {
 #[async_trait]
 pub trait EmbeddingModel: Clone + Send + Sync + std::fmt::Debug + 'static {
     /// Embeds text inputs into vectors of floats.
+    // async_trait adds #[must_use] to a future that is already must-use.
+    #[allow(clippy::double_must_use)]
     async fn embed(&self, input: EmbeddingModelOptions) -> Result<EmbeddingModelResponse>;
 }
 

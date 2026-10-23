@@ -65,6 +65,8 @@ pub trait LanguageModel: Send + Sync + std::fmt::Debug + Clone + 'static {
     /// # Errors
     ///
     /// Returns an `Error` if the API call fails or the request is invalid.
+    // async_trait adds #[must_use] to a future that is already must-use.
+    #[allow(clippy::double_must_use)]
     async fn generate_text(
         &mut self,
         options: LanguageModelOptions,
@@ -77,6 +79,8 @@ pub trait LanguageModel: Send + Sync + std::fmt::Debug + Clone + 'static {
     /// # Errors
     ///
     /// Returns an `Error` if the API call fails or the request is invalid.
+    // async_trait adds #[must_use] to a future that is already must-use.
+    #[allow(clippy::double_must_use)]
     async fn stream_text(&mut self, options: LanguageModelOptions) -> Result<ProviderStream>;
 }
 

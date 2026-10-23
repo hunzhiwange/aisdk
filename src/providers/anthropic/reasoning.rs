@@ -1,4 +1,4 @@
-//! Native effort support: https://platform.claude.com/docs/en/build-with-claude/effort
+//! Native effort support: <https://platform.claude.com/docs/en/build-with-claude/effort>
 use crate::core::language_model::ReasoningEffort;
 
 pub(super) fn validate_effort(model: &str, effort: Option<ReasoningEffort>) -> crate::Result<()> {

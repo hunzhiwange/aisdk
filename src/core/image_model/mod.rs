@@ -58,6 +58,8 @@ impl ImageModelOptions {
 #[async_trait]
 pub trait ImageModel: Clone + Send + Sync + std::fmt::Debug + 'static {
     /// 执行图片生成或编辑请求。
+    // async_trait adds #[must_use] to a future that is already must-use.
+    #[allow(clippy::double_must_use)]
     async fn generate_image(&self, input: ImageModelOptions) -> Result<ImageModelResponse>;
 }
 
