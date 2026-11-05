@@ -331,6 +331,23 @@ async fn map_sse_event_result<C: LanguageModelClient + ?Sized>(
     event_result: std::result::Result<Event, reqwest_eventsource::Error>,
 ) -> Result<C::StreamEvent> {
     match event_result {
+        Err(reqwest_eventsource::Error::Transport(error)) => {
+            let status_code = error.status();
+            // reqwest uses the same display text for truncated bodies and decoder
+            // failures. Preserve transport causes without retaining URL credentials.
+            let error = error.without_url();
+            let mut details = error.to_string();
+            let mut source = std::error::Error::source(&error);
+            while let Some(cause) = source {
+                details.push_str(" | caused_by: ");
+                details.push_str(&cause.to_string());
+                source = cause.source();
+            }
+            Err(Error::ApiError {
+                status_code,
+                details,
+            })
+        }
         Err(reqwest_eventsource::Error::InvalidStatusCode(status, response)) => {
             let details = match response.text().await {
                 Ok(body) if !body.trim().is_empty() => {
@@ -353,6 +370,10 @@ async fn map_sse_event_result<C: LanguageModelClient + ?Sized>(
         other => C::parse_stream_sse(other),
     }
 }
+
+#[cfg(all(test, feature = "openaichatcompletions"))]
+#[path = "client_stream_error_tests.rs"]
+mod stream_error_tests;
 
 #[allow(dead_code)]
 pub(crate) trait LanguageModelClient {
