@@ -263,3 +263,6 @@ impl<M: ModelName> OpenAIBuilder<M> {
 
 // Re-exports Models for convenience
 pub use capabilities::*;
+
+#[cfg(test)]
+mod native_tool_search_tests;

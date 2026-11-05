@@ -122,8 +122,8 @@ fn native_tool_search_core_rejects_nonloadable_and_unknown_tools() {
 async fn native_tool_search_core_providers_reject_before_network() {
     use super::{DynamicModel, LanguageModel};
     use crate::providers::{
-        anthropic::Anthropic, google::Google, openai::OpenAI,
-        openai_chat_completions::OpenAIChatCompletions, openai_compatible::OpenAICompatible,
+        anthropic::Anthropic, google::Google, openai_chat_completions::OpenAIChatCompletions,
+        openai_compatible::OpenAICompatible,
     };
     async fn rejects<M: LanguageModel>(mut model: M) {
         let mut qualified = ToolCallInfo::new("read");
@@ -193,15 +193,6 @@ async fn native_tool_search_core_providers_reject_before_network() {
             );
         }
     }
-    rejects(
-        OpenAI::<DynamicModel>::builder()
-            .model_name("fixture")
-            .api_key("fixture")
-            .base_url("http://127.0.0.1:1")
-            .build()
-            .unwrap(),
-    )
-    .await;
     let mut chat = OpenAIChatCompletions::<DynamicModel>::model_name("fixture");
     chat.settings.base_url = "http://127.0.0.1:1".into();
     chat.settings.api_key = "fixture".into();

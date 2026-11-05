@@ -244,10 +244,18 @@ pub(crate) enum ReasoningEffort {
 #[serde(tag = "type", rename_all = "snake_case")]
 #[non_exhaustive]
 pub(crate) enum ToolParams {
+    Namespace(crate::core::tools::NamespaceToolSpec),
+    ToolSearch {
+        execution: crate::core::tools::ToolSearchExecution,
+        description: String,
+        parameters: serde_json::Value,
+    },
     Function {
         name: String,
         parameters: serde_json::Value,
         strict: bool,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        defer_loading: Option<bool>,
         description: Option<String>,
     },
 }
@@ -332,6 +340,7 @@ pub(crate) enum Role {
 #[non_exhaustive]
 #[serde(untagged)]
 pub(crate) enum MessageItem {
+    NativeSearch(NativeSearchItem),
     InputMessage {
         content: Vec<ContentType>,
         role: Role,
@@ -351,6 +360,8 @@ pub(crate) enum MessageItem {
         arguments: String,
         call_id: String,
         name: String,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        namespace: Option<String>,
         #[serde(rename = "type")]
         type_: String, // always "function_call"
         #[serde(skip_serializing_if = "Option::is_none")]
@@ -518,4 +529,11 @@ pub(crate) struct OpenAIEmbeddingOptions {
     #[serde(skip)]
     #[builder(default)]
     pub(crate) extra_headers: Option<std::collections::HashMap<String, String>>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[serde(tag = "type", rename_all = "snake_case")]
+pub(crate) enum NativeSearchItem {
+    ToolSearchCall(crate::core::tools::ToolSearchCall),
+    ToolSearchOutput(crate::core::tools::ToolSearchOutput),
 }

@@ -51,6 +51,7 @@ impl From<Tool> for types::ToolParams {
             name: value.name,
             description: Some(value.description),
             strict: true,
+            defer_loading: None,
             parameters: params,
         }
     }
@@ -60,7 +61,6 @@ impl TryFrom<LanguageModelOptions> for client::OpenAILanguageModelOptions {
     type Error = crate::Error;
 
     fn try_from(options: LanguageModelOptions) -> crate::Result<Self> {
-        options.reject_native_tool_protocol("openai")?;
         let extra_body = options.body.clone();
         let extra_headers = options.headers.clone();
         let items: Vec<types::InputItem> = options
@@ -72,7 +72,7 @@ impl TryFrom<LanguageModelOptions> for client::OpenAILanguageModelOptions {
             .flatten()
             .collect();
 
-        let tools: Option<Vec<types::ToolParams>> = options.tools.map(|t| {
+        let mut tools: Option<Vec<types::ToolParams>> = options.tools.map(|t| {
             t.tools
                 .lock()
                 .unwrap_or_else(|poisoned| poisoned.into_inner())
@@ -80,6 +80,13 @@ impl TryFrom<LanguageModelOptions> for client::OpenAILanguageModelOptions {
                 .map(|t| types::ToolParams::from(t.clone()))
                 .collect()
         });
+
+        if let Some(native) = options.native_tools {
+            let target = tools.get_or_insert_with(Vec::new);
+            for tool in native {
+                target.push(native_tool(tool)?);
+            }
+        }
 
         let reasoning = options
             .reasoning_effort
@@ -116,7 +123,6 @@ impl TryFrom<Message> for Option<types::InputItem> {
     type Error = crate::Error;
 
     fn try_from(m: Message) -> crate::Result<Self> {
-        m.reject_native_tool_protocol("openai")?;
         Ok(match m {
             Message::Tool(ref tool_info) => Some(types::InputItem::Item(
                 types::MessageItem::FunctionCallOutput {
@@ -154,6 +160,7 @@ impl TryFrom<Message> for Option<types::InputItem> {
                         arguments: tool_info.input.to_string(),
                         call_id: tool_info.tool.id.clone(),
                         name: tool_info.tool.name.clone(),
+                        namespace: tool_info.tool.namespace.clone(),
                         type_: "function_call".to_string(),
                     }))
                 }
@@ -170,6 +177,15 @@ impl TryFrom<Message> for Option<types::InputItem> {
                         status: None,
                     }))
                 }
+                LanguageModelResponseContentType::ToolSearchCall(ref call) => {
+                    validate_search(call.execution, &call.call_id)?;
+                    Some(types::InputItem::Item(types::MessageItem::NativeSearch(
+                        types::NativeSearchItem::ToolSearchCall(call.clone()),
+                    )))
+                }
+                LanguageModelResponseContentType::ToolSearchOutput(ref output) => {
+                    Some(search_output(output.clone())?)
+                }
                 _ => None,
             },
             Message::User(u) => Some(types::InputItem::Item(types::MessageItem::InputMessage {
@@ -182,11 +198,7 @@ impl TryFrom<Message> for Option<types::InputItem> {
                 role: types::Role::System,
                 type_: "message".to_string(),
             })),
-            Message::ToolSearchOutput(_) => {
-                return Err(crate::Error::InvalidInput(
-                    "openai does not support the native tool protocol".into(),
-                ));
-            }
+            Message::ToolSearchOutput(output) => Some(search_output(output)?),
             Message::Developer(d) => {
                 Some(client::InputItem::Item(types::MessageItem::InputMessage {
                     content: vec![types::ContentType::InputText { text: d }],
@@ -254,6 +266,104 @@ fn from_schema_to_response_format(schema: Schema) -> types::TextResponseFormat {
         schema: json,
         strict: Some(false),
     }
+}
+
+fn validate_search(
+    execution: crate::core::tools::ToolSearchExecution,
+    call_id: &Option<String>,
+) -> crate::Result<()> {
+    if execution == crate::core::tools::ToolSearchExecution::Client
+        && call_id.as_ref().is_none_or(|id| id.trim().is_empty())
+    {
+        return Err(crate::Error::InvalidInput(
+            "client tool_search requires call_id".into(),
+        ));
+    }
+    Ok(())
+}
+
+fn normalize_function(function: &mut crate::core::tools::FunctionToolSpec) -> crate::Result<()> {
+    let mut schema = function.parameters.clone().to_value();
+    if !schema.is_object() {
+        return Err(crate::Error::InvalidInput(
+            "native function schema must be an object".into(),
+        ));
+    }
+    schema["additionalProperties"] = Value::Bool(false);
+    if !schema.get("properties").is_some_and(Value::is_object) {
+        schema["properties"] = serde_json::json!({});
+    }
+    function.parameters =
+        Schema::try_from(schema).map_err(|e| crate::Error::InvalidInput(e.to_string()))?;
+    Ok(())
+}
+
+fn native_tool(tool: crate::core::tools::NativeToolSpec) -> crate::Result<types::ToolParams> {
+    use crate::core::tools::NativeToolSpec;
+    Ok(match tool {
+        NativeToolSpec::Function(mut f) => {
+            normalize_function(&mut f)?;
+            types::ToolParams::Function {
+                name: f.name,
+                description: Some(f.description),
+                parameters: f.parameters.to_value(),
+                strict: f.strict.unwrap_or(true),
+                defer_loading: f.defer_loading,
+            }
+        }
+        NativeToolSpec::Namespace(mut namespace) => {
+            for f in &mut namespace.tools {
+                normalize_function(f)?;
+            }
+            types::ToolParams::Namespace(namespace)
+        }
+        NativeToolSpec::ToolSearch {
+            execution,
+            description,
+            parameters,
+        } => {
+            if execution != crate::core::tools::ToolSearchExecution::Client {
+                return Err(crate::Error::InvalidInput(
+                    "only client tool_search declarations are supported".into(),
+                ));
+            }
+            types::ToolParams::ToolSearch {
+                execution,
+                description,
+                parameters: parameters.to_value(),
+            }
+        }
+    })
+}
+
+fn search_output(
+    mut output: crate::core::tools::ToolSearchOutput,
+) -> crate::Result<types::InputItem> {
+    use crate::core::tools::LoadableToolSpec;
+    validate_search(output.execution, &output.call_id)?;
+    let mut merged: Vec<crate::core::tools::LoadableToolSpec> = Vec::new();
+    for mut tool in output.tools {
+        match &mut tool {
+            LoadableToolSpec::Function(f) => normalize_function(f)?,
+            LoadableToolSpec::Namespace(ns) => {
+                for f in &mut ns.tools {
+                    normalize_function(f)?;
+                }
+                if let Some(LoadableToolSpec::Namespace(existing)) = merged
+                    .iter_mut()
+                    .find(|t| matches!(t, LoadableToolSpec::Namespace(n) if n.name == ns.name))
+                {
+                    existing.tools.append(&mut ns.tools);
+                    continue;
+                }
+            }
+        }
+        merged.push(tool);
+    }
+    output.tools = merged;
+    Ok(types::InputItem::Item(types::MessageItem::NativeSearch(
+        types::NativeSearchItem::ToolSearchOutput(output),
+    )))
 }
 
 #[cfg(test)]
@@ -421,6 +531,7 @@ mod tests {
                 description,
                 strict,
                 parameters,
+                ..
             } => {
                 assert_eq!(name, "sum");
                 assert_eq!(description.as_deref(), Some("Adds two numbers"));
@@ -430,6 +541,7 @@ mod tests {
                 assert!(parameters["properties"].get("a").is_some());
                 assert!(parameters["properties"].get("b").is_some());
             }
+            _ => panic!("expected ordinary function"),
         }
     }
 
