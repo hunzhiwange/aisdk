@@ -175,6 +175,19 @@ impl<M: ModelName> LanguageModel for OpenAI<M> {
                     LanguageModelStreamChunkType::ToolCallDelta { id: item_id, delta },
                 )]),
 
+                // Ordinary final items are emitted once from response.completed below.
+                // Native search final items are consumed by NativeSearchStream first.
+                Ok(client::OpenAiStreamEvent::ResponseOutputItemDone {
+                    item:
+                        types::MessageItem::FunctionCall { .. }
+                        | types::MessageItem::OutputMessage { .. }
+                        | types::MessageItem::Reasoning { .. },
+                    ..
+                })
+                | Ok(client::OpenAiStreamEvent::ResponseFunctionCallArgumentsDone { .. }) => {
+                    Ok(vec![])
+                }
+
                 Ok(client::OpenAiStreamEvent::ResponseCompleted { response, .. }) => {
                     let mut result: Vec<LanguageModelStreamChunk> =
                         searches.finish(response.usage.clone().map(Into::into))?;
@@ -216,11 +229,13 @@ impl<M: ModelName> LanguageModel for OpenAI<M> {
                             types::MessageItem::FunctionCall {
                                 call_id,
                                 name,
+                                namespace,
                                 arguments,
                                 ..
                             } => {
                                 let mut tool_info = ToolCallInfo::new(name.clone());
                                 tool_info.id(call_id.clone());
+                                tool_info.tool.namespace = namespace.clone();
                                 tool_info
                                     .input(serde_json::from_str(arguments).unwrap_or_default());
 

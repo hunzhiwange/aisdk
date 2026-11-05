@@ -204,3 +204,43 @@ async fn native_tool_search_stream_rejects_conflicting_or_truncated_arguments() 
         );
     }
 }
+
+#[tokio::test]
+async fn native_tool_search_stream_ordinary_completion_lifecycle_preserves_namespace() {
+    use crate::core::language_model::LanguageModelStreamChunkType;
+    let function = json!({"type":"function_call","id":"function-item","call_id":"function-call","name":"read","namespace":"files","arguments":"{}","status":"completed"});
+    let text = json!({"type":"message","id":"text-item","role":"assistant","status":"completed","content":[{"type":"output_text","text":"finished","annotations":[],"logprobs":[]}]});
+    let chunks = run(vec![
+        item("added", 0, function.clone()),
+        json!({"type":"response.function_call_arguments.delta","sequence_number":2,"item_id":"function-item","output_index":0,"delta":"{}"}),
+        json!({"type":"response.function_call_arguments.done","sequence_number":3,"item_id":"function-item","output_index":0,"arguments":"{}"}),
+        item("done", 0, function.clone()),
+        item("added", 1, text.clone()),
+        item("done", 1, text.clone()),
+        completed(vec![function, text, call("search", json!({"query":"read"}))]),
+    ]).await;
+    let messages: Vec<_> = chunks.iter().flat_map(|c| c.as_ref().unwrap()).collect();
+    assert!(
+        !messages.iter().any(|c| matches!(
+            c,
+            LanguageModelStreamChunk::Delta(LanguageModelStreamChunkType::NotSupported(_))
+        )),
+        "ordinary completion events must be consumed"
+    );
+    let functions: Vec<_> = messages
+        .iter()
+        .filter_map(|c| match c {
+            LanguageModelStreamChunk::Done(m) => match &m.content {
+                LanguageModelResponseContentType::ToolCall(call) => Some(call),
+                _ => None,
+            },
+            _ => None,
+        })
+        .collect();
+    assert_eq!(functions.len(), 1);
+    assert_eq!(functions[0].tool.id, "function-call");
+    assert_eq!(functions[0].tool.namespace.as_deref(), Some("files"));
+    assert_eq!(functions[0].input, json!({}));
+    assert!(messages.iter().any(|c| matches!(c, LanguageModelStreamChunk::Done(m) if matches!(&m.content,LanguageModelResponseContentType::Text(text) if text == "finished"))));
+    assert_eq!(calls(&chunks).len(), 1);
+}
