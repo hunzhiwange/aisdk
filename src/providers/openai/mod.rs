@@ -266,3 +266,6 @@ pub use capabilities::*;
 
 #[cfg(test)]
 mod native_tool_search_tests;
+
+#[cfg(test)]
+mod native_tool_search_stream_tests;

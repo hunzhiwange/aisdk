@@ -634,3 +634,175 @@ mod tests {
         assert_eq!(usage.reasoning_tokens, Some(0));
     }
 }
+
+/// Native searches are released only after successful response completion. Item
+/// done and the final snapshot describe the same call, rather than two calls.
+#[derive(Default)]
+pub(super) struct NativeSearchStream {
+    calls: std::collections::BTreeMap<String, crate::core::tools::ToolSearchCall>,
+    items: std::collections::HashMap<String, String>,
+    arguments: std::collections::HashMap<String, String>,
+    completed: std::collections::HashSet<String>,
+}
+
+impl NativeSearchStream {
+    fn remember(
+        &mut self,
+        call: &crate::core::tools::ToolSearchCall,
+        done: bool,
+    ) -> crate::Result<()> {
+        validate_search(call.execution, &call.call_id)?;
+        if call.execution != crate::core::tools::ToolSearchExecution::Client {
+            return Err(crate::Error::InvalidInput(
+                "server tool_search is unsupported".into(),
+            ));
+        }
+        let key = call.call_id.clone().expect("validated client call_id");
+        if let Some(id) = &call.id {
+            if self.items.get(id).is_some_and(|previous| previous != &key) {
+                return Err(crate::Error::InvalidInput(
+                    "tool_search item changed call_id".into(),
+                ));
+            }
+            self.items.insert(id.clone(), key.clone());
+        }
+        let mut call = call.clone();
+        if done {
+            if call
+                .status
+                .as_deref()
+                .is_some_and(|status| status != "completed")
+            {
+                return Err(crate::Error::InvalidInput(
+                    "tool_search did not complete".into(),
+                ));
+            }
+            if let Value::String(arguments) = &call.arguments {
+                call.arguments = serde_json::from_str(arguments).map_err(|_| {
+                    crate::Error::InvalidInput("Invalid tool_search arguments".into())
+                })?;
+            }
+            if !call.arguments.is_object() {
+                return Err(crate::Error::InvalidInput(
+                    "tool_search arguments must be an object".into(),
+                ));
+            }
+            if let Some(arguments) = self.arguments.get(&key) {
+                let assembled: Value = serde_json::from_str(arguments).map_err(|_| {
+                    crate::Error::InvalidInput("Truncated tool_search arguments".into())
+                })?;
+                if assembled != call.arguments {
+                    return Err(crate::Error::InvalidInput(
+                        "tool_search arguments disagree with completed item".into(),
+                    ));
+                }
+            }
+            if self.completed.contains(&key) {
+                if self.calls.get(&key).is_some_and(|old| {
+                    old.arguments != call.arguments || old.execution != call.execution
+                }) {
+                    return Err(crate::Error::InvalidInput(
+                        "Conflicting completed tool_search call".into(),
+                    ));
+                }
+                return Ok(());
+            }
+            self.completed.insert(key.clone());
+        } else if self.completed.contains(&key) {
+            return Ok(());
+        }
+        self.calls.insert(key, call);
+        Ok(())
+    }
+
+    /// Return true when the native event is consumed here rather than exposed as
+    /// an ordinary function-call delta.
+    pub(super) fn observe(&mut self, event: &types::OpenAiStreamEvent) -> crate::Result<bool> {
+        use types::{MessageItem, NativeSearchItem, OpenAiStreamEvent as Event};
+        match event {
+            Event::ResponseOutputItemAdded {
+                item: MessageItem::NativeSearch(NativeSearchItem::ToolSearchCall(call)),
+                ..
+            } => {
+                self.remember(call, false)?;
+                Ok(true)
+            }
+            Event::ResponseOutputItemDone {
+                item: MessageItem::NativeSearch(NativeSearchItem::ToolSearchCall(call)),
+                ..
+            } => {
+                self.remember(call, true)?;
+                Ok(true)
+            }
+            Event::ResponseFunctionCallArgumentsDelta { item_id, delta, .. }
+                if self.items.contains_key(item_id) =>
+            {
+                let key = &self.items[item_id];
+                if !self.completed.contains(key) {
+                    self.arguments
+                        .entry(key.clone())
+                        .or_default()
+                        .push_str(delta);
+                }
+                Ok(true)
+            }
+            Event::ResponseFunctionCallArgumentsDone {
+                item_id, arguments, ..
+            } if self.items.contains_key(item_id) => {
+                let key = &self.items[item_id];
+                if let Some(assembled) = self.arguments.get(key) {
+                    if assembled != arguments {
+                        return Err(crate::Error::InvalidInput(
+                            "tool_search argument delta/done mismatch".into(),
+                        ));
+                    }
+                } else {
+                    self.arguments.insert(key.clone(), arguments.clone());
+                }
+                Ok(true)
+            }
+            Event::ResponseCompleted { response, .. } => {
+                for item in response.output.iter().flatten() {
+                    if let MessageItem::NativeSearch(NativeSearchItem::ToolSearchCall(call)) = item
+                    {
+                        self.remember(call, true)?;
+                    }
+                }
+                Ok(false)
+            }
+            Event::ResponseOutputItemAdded {
+                item: MessageItem::NativeSearch(_),
+                ..
+            }
+            | Event::ResponseOutputItemDone {
+                item: MessageItem::NativeSearch(_),
+                ..
+            } => Err(crate::Error::InvalidInput(
+                "Unexpected tool_search output from provider".into(),
+            )),
+            _ => Ok(false),
+        }
+    }
+
+    pub(super) fn finish(
+        &mut self,
+        usage: Option<Usage>,
+    ) -> crate::Result<Vec<crate::core::language_model::LanguageModelStreamChunk>> {
+        if self.calls.len() != self.completed.len() {
+            return Err(crate::Error::InvalidInput(
+                "Response completed with unfinished tool_search".into(),
+            ));
+        }
+        Ok(std::mem::take(&mut self.calls)
+            .into_values()
+            .map(|call| {
+                crate::core::language_model::LanguageModelStreamChunk::Done(
+                    crate::core::messages::AssistantMessage {
+                        content: LanguageModelResponseContentType::ToolSearchCall(call),
+                        usage: usage.clone(),
+                    },
+                )
+            })
+            .collect())
+    }
+}

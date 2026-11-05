@@ -100,143 +100,177 @@ impl<M: ModelName> LanguageModel for OpenAI<M> {
             }
         };
 
-        let stream = openai_stream.map(|evt_res| match evt_res {
-            Ok(client::OpenAiStreamEvent::ResponseOutputItemAdded { item, .. }) => match item {
-                // Handle "start" events
-                types::MessageItem::FunctionCall { id, name, .. } => {
-                    let mut tool_info = ToolCallInfo::new(name);
-                    tool_info.id(id.unwrap_or_default());
-
-                    Ok(vec![LanguageModelStreamChunk::Delta(
-                        LanguageModelStreamChunkType::ToolCallStart(tool_info.tool),
-                    )])
-                }
-
-                types::MessageItem::Reasoning { .. } => Ok(vec![LanguageModelStreamChunk::Delta(
-                    LanguageModelStreamChunkType::ReasoningStart,
-                )]),
-
-                types::MessageItem::OutputMessage { .. } => {
-                    Ok(vec![LanguageModelStreamChunk::Delta(
-                        LanguageModelStreamChunkType::TextStart,
-                    )])
-                }
-
-                _ => Ok(vec![]), // ignore other content types
-            },
-
-            Ok(client::OpenAiStreamEvent::ResponseOutputTextDelta { delta, .. }) => {
-                Ok(vec![LanguageModelStreamChunk::Delta(
-                    LanguageModelStreamChunkType::TextDelta(delta),
-                )])
+        let mut searches = super::conversions::NativeSearchStream::default();
+        let mut native_failed = false;
+        let stream = openai_stream.map(move |evt_res| {
+            if native_failed {
+                return Ok(vec![]);
             }
-
-            Ok(client::OpenAiStreamEvent::ResponseOutputTextDone { .. }) => {
-                Ok(vec![LanguageModelStreamChunk::Delta(
-                    LanguageModelStreamChunkType::TextEnd,
-                )])
-            }
-
-            Ok(client::OpenAiStreamEvent::ResponseReasoningSummaryTextDelta { delta, .. }) => {
-                Ok(vec![LanguageModelStreamChunk::Delta(
-                    LanguageModelStreamChunkType::ReasoningDelta(delta),
-                )])
-            }
-
-            Ok(client::OpenAiStreamEvent::ResponseReasoningSummaryTextDone { .. }) => {
-                Ok(vec![LanguageModelStreamChunk::Delta(
-                    LanguageModelStreamChunkType::ReasoningEnd,
-                )])
-            }
-
-            Ok(client::OpenAiStreamEvent::ResponseFunctionCallArgumentsDelta {
-                item_id,
-                delta,
-                ..
-            }) => Ok(vec![LanguageModelStreamChunk::Delta(
-                LanguageModelStreamChunkType::ToolCallDelta { id: item_id, delta },
-            )]),
-
-            Ok(client::OpenAiStreamEvent::ResponseCompleted { response, .. }) => {
-                let mut result: Vec<LanguageModelStreamChunk> = Vec::new();
-
-                let usage: Usage = response.usage.unwrap_or_default().into();
-                let output = response.output.unwrap_or_default();
-
-                for msg in output {
-                    match &msg {
-                        // ---- Final OutputMessage ----
-                        types::MessageItem::OutputMessage { content, .. } => {
-                            if let Some(types::OutputContent::OutputText { text, .. }) =
-                                content.first()
-                            {
-                                result.push(LanguageModelStreamChunk::Done(AssistantMessage {
-                                    content: LanguageModelResponseContentType::new(text.clone()),
-                                    usage: Some(usage.clone()),
-                                }));
-                            }
-                        }
-
-                        // ---- Reasoning ----
-                        types::MessageItem::Reasoning { summary, .. } => {
-                            if let Some(types::ReasoningSummary { text, .. }) = summary.first() {
-                                result.push(LanguageModelStreamChunk::Done(AssistantMessage {
-                                    content: LanguageModelResponseContentType::Reasoning {
-                                        content: text.to_owned(),
-                                        extensions: crate::extensions::Extensions::default(),
-                                    },
-                                    usage: Some(usage.clone()),
-                                }));
-                            }
-                        }
-
-                        // ---- FunctionCall ----
-                        types::MessageItem::FunctionCall {
-                            call_id,
-                            name,
-                            arguments,
-                            ..
-                        } => {
-                            let mut tool_info = ToolCallInfo::new(name.clone());
-                            tool_info.id(call_id.clone());
-                            tool_info.input(serde_json::from_str(arguments).unwrap_or_default());
-
-                            result.push(LanguageModelStreamChunk::Done(AssistantMessage {
-                                content: LanguageModelResponseContentType::ToolCall(tool_info),
-                                usage: Some(usage.clone()),
-                            }));
-                        }
-
-                        _ => {}
+            if let Ok(event) = &evt_res {
+                match searches.observe(event) {
+                    Ok(true) => return Ok(vec![]),
+                    Ok(false) => {}
+                    Err(error) => {
+                        native_failed = true;
+                        return Err(error);
                     }
                 }
-
-                Ok(result)
             }
+            match evt_res {
+                Ok(client::OpenAiStreamEvent::ResponseOutputItemAdded { item, .. }) => match item {
+                    // Handle "start" events
+                    types::MessageItem::FunctionCall { id, name, .. } => {
+                        let mut tool_info = ToolCallInfo::new(name);
+                        tool_info.id(id.unwrap_or_default());
 
-            Ok(client::OpenAiStreamEvent::ResponseIncomplete { response, .. }) => {
-                Ok(vec![LanguageModelStreamChunk::Delta(
-                    LanguageModelStreamChunkType::Incomplete(
-                        response
-                            .incomplete_details
-                            .map(|d| d.reason)
-                            .unwrap_or("Unknown".to_string()),
-                    ),
-                )])
+                        Ok(vec![LanguageModelStreamChunk::Delta(
+                            LanguageModelStreamChunkType::ToolCallStart(tool_info.tool),
+                        )])
+                    }
+
+                    types::MessageItem::Reasoning { .. } => {
+                        Ok(vec![LanguageModelStreamChunk::Delta(
+                            LanguageModelStreamChunkType::ReasoningStart,
+                        )])
+                    }
+
+                    types::MessageItem::OutputMessage { .. } => {
+                        Ok(vec![LanguageModelStreamChunk::Delta(
+                            LanguageModelStreamChunkType::TextStart,
+                        )])
+                    }
+
+                    _ => Ok(vec![]), // ignore other content types
+                },
+
+                Ok(client::OpenAiStreamEvent::ResponseOutputTextDelta { delta, .. }) => {
+                    Ok(vec![LanguageModelStreamChunk::Delta(
+                        LanguageModelStreamChunkType::TextDelta(delta),
+                    )])
+                }
+
+                Ok(client::OpenAiStreamEvent::ResponseOutputTextDone { .. }) => {
+                    Ok(vec![LanguageModelStreamChunk::Delta(
+                        LanguageModelStreamChunkType::TextEnd,
+                    )])
+                }
+
+                Ok(client::OpenAiStreamEvent::ResponseReasoningSummaryTextDelta {
+                    delta, ..
+                }) => Ok(vec![LanguageModelStreamChunk::Delta(
+                    LanguageModelStreamChunkType::ReasoningDelta(delta),
+                )]),
+
+                Ok(client::OpenAiStreamEvent::ResponseReasoningSummaryTextDone { .. }) => {
+                    Ok(vec![LanguageModelStreamChunk::Delta(
+                        LanguageModelStreamChunkType::ReasoningEnd,
+                    )])
+                }
+
+                Ok(client::OpenAiStreamEvent::ResponseFunctionCallArgumentsDelta {
+                    item_id,
+                    delta,
+                    ..
+                }) => Ok(vec![LanguageModelStreamChunk::Delta(
+                    LanguageModelStreamChunkType::ToolCallDelta { id: item_id, delta },
+                )]),
+
+                Ok(client::OpenAiStreamEvent::ResponseCompleted { response, .. }) => {
+                    let mut result: Vec<LanguageModelStreamChunk> =
+                        searches.finish(response.usage.clone().map(Into::into))?;
+
+                    let usage: Usage = response.usage.unwrap_or_default().into();
+                    let output = response.output.unwrap_or_default();
+
+                    for msg in output {
+                        match &msg {
+                            // ---- Final OutputMessage ----
+                            types::MessageItem::OutputMessage { content, .. } => {
+                                if let Some(types::OutputContent::OutputText { text, .. }) =
+                                    content.first()
+                                {
+                                    result.push(LanguageModelStreamChunk::Done(AssistantMessage {
+                                        content: LanguageModelResponseContentType::new(
+                                            text.clone(),
+                                        ),
+                                        usage: Some(usage.clone()),
+                                    }));
+                                }
+                            }
+
+                            // ---- Reasoning ----
+                            types::MessageItem::Reasoning { summary, .. } => {
+                                if let Some(types::ReasoningSummary { text, .. }) = summary.first()
+                                {
+                                    result.push(LanguageModelStreamChunk::Done(AssistantMessage {
+                                        content: LanguageModelResponseContentType::Reasoning {
+                                            content: text.to_owned(),
+                                            extensions: crate::extensions::Extensions::default(),
+                                        },
+                                        usage: Some(usage.clone()),
+                                    }));
+                                }
+                            }
+
+                            // ---- FunctionCall ----
+                            types::MessageItem::FunctionCall {
+                                call_id,
+                                name,
+                                arguments,
+                                ..
+                            } => {
+                                let mut tool_info = ToolCallInfo::new(name.clone());
+                                tool_info.id(call_id.clone());
+                                tool_info
+                                    .input(serde_json::from_str(arguments).unwrap_or_default());
+
+                                result.push(LanguageModelStreamChunk::Done(AssistantMessage {
+                                    content: LanguageModelResponseContentType::ToolCall(tool_info),
+                                    usage: Some(usage.clone()),
+                                }));
+                            }
+
+                            _ => {}
+                        }
+                    }
+
+                    Ok(result)
+                }
+
+                Ok(client::OpenAiStreamEvent::ResponseFailed { response, .. }) => {
+                    Ok(vec![LanguageModelStreamChunk::Delta(
+                        LanguageModelStreamChunkType::Failed(
+                            response
+                                .error
+                                .map(|e| e.message)
+                                .unwrap_or_else(|| "Response failed or cancelled".into()),
+                        ),
+                    )])
+                }
+                Ok(client::OpenAiStreamEvent::ResponseIncomplete { response, .. }) => {
+                    Ok(vec![LanguageModelStreamChunk::Delta(
+                        LanguageModelStreamChunkType::Incomplete(
+                            response
+                                .incomplete_details
+                                .map(|d| d.reason)
+                                .unwrap_or("Unknown".to_string()),
+                        ),
+                    )])
+                }
+
+                Ok(client::OpenAiStreamEvent::ResponseError { code, message, .. }) => {
+                    let reason = format!("{}: {}", code.unwrap_or("unknown".to_string()), message);
+                    Ok(vec![LanguageModelStreamChunk::Delta(
+                        LanguageModelStreamChunkType::Failed(reason),
+                    )])
+                }
+
+                Ok(evt) => Ok(vec![LanguageModelStreamChunk::Delta(
+                    LanguageModelStreamChunkType::NotSupported(format!("{evt:?}")),
+                )]),
+
+                Err(e) => Err(e),
             }
-
-            Ok(client::OpenAiStreamEvent::ResponseError { code, message, .. }) => {
-                let reason = format!("{}: {}", code.unwrap_or("unknown".to_string()), message);
-                Ok(vec![LanguageModelStreamChunk::Delta(
-                    LanguageModelStreamChunkType::Failed(reason),
-                )])
-            }
-
-            Ok(evt) => Ok(vec![LanguageModelStreamChunk::Delta(
-                LanguageModelStreamChunkType::NotSupported(format!("{evt:?}")),
-            )]),
-
-            Err(e) => Err(e),
         });
 
         Ok(Box::pin(stream))

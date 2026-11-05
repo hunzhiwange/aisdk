@@ -78,6 +78,20 @@ impl<M: ModelName> LanguageModelClient for OpenAI<M> {
                             details: format!("Invalid JSON in SSE data: {e}"),
                         })?;
 
+                    // Unknown or malformed native calls must never disappear as ignored items.
+                    let native = value
+                        .get("item")
+                        .and_then(|item| item.get("type"))
+                        .and_then(serde_json::Value::as_str)
+                        .is_some_and(|kind| kind.starts_with("tool_search"));
+                    if native
+                        && serde_json::from_value::<types::OpenAiStreamEvent>(value.clone())
+                            .is_err()
+                    {
+                        return Err(Error::InvalidInput(
+                            "Unsupported native tool_search stream item".into(),
+                        ));
+                    }
                     Ok(serde_json::from_value::<types::OpenAiStreamEvent>(value)
                         .unwrap_or(types::OpenAiStreamEvent::NotSupported(msg.data)))
                 }
@@ -97,8 +111,12 @@ impl<M: ModelName> LanguageModelClient for OpenAI<M> {
     }
 
     fn end_stream(event: &Self::StreamEvent) -> bool {
-        matches!(event, types::OpenAiStreamEvent::ResponseCompleted { .. })
-            || matches!(event, types::OpenAiStreamEvent::NotSupported(json) if json == "[END]")
+        matches!(
+            event,
+            types::OpenAiStreamEvent::ResponseCompleted { .. }
+                | types::OpenAiStreamEvent::ResponseIncomplete { .. }
+                | types::OpenAiStreamEvent::ResponseFailed { .. }
+        ) || matches!(event, types::OpenAiStreamEvent::NotSupported(json) if json == "[END]")
             || matches!(event, types::OpenAiStreamEvent::ResponseError { .. })
     }
 }

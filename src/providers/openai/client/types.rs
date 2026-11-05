@@ -88,6 +88,12 @@ pub(crate) enum OpenAiStreamEvent {
         sequence_number: u64,
         response: OpenAIResponse,
     },
+    /// Failed and cancelled responses are observable terminal events.
+    #[serde(rename = "response.failed", alias = "response.cancelled")]
+    ResponseFailed {
+        sequence_number: u64,
+        response: OpenAIResponse,
+    },
     /// Emitted when an output item is added to the response.
     #[serde(rename = "response.output_item.added")]
     ResponseOutputItemAdded {
