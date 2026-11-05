@@ -35,7 +35,7 @@ impl<M: ModelName> LanguageModel for Anthropic<M> {
     ) -> Result<LanguageModelResponse> {
         let effort = options.reasoning_effort;
         super::reasoning::validate_effort(&self.options.model, effort)?;
-        let mut options: AnthropicOptions = options.into();
+        let mut options: AnthropicOptions = options.try_into()?;
         if effort.is_some_and(|effort| effort != crate::core::language_model::ReasoningEffort::None)
             && !self.options.model.starts_with("claude-opus-4-5")
         {
@@ -76,6 +76,7 @@ impl<M: ModelName> LanguageModel for Anthropic<M> {
                     collected.push(LanguageModelResponseContentType::ToolCall(ToolCallInfo {
                         input,
                         tool: ToolDetails {
+                            namespace: None,
                             id: id.to_string(),
                             name: name.to_string(),
                         },
@@ -95,7 +96,7 @@ impl<M: ModelName> LanguageModel for Anthropic<M> {
     async fn stream_text(&mut self, options: LanguageModelOptions) -> Result<ProviderStream> {
         let effort = options.reasoning_effort;
         super::reasoning::validate_effort(&self.options.model, effort)?;
-        let mut options: AnthropicOptions = options.into();
+        let mut options: AnthropicOptions = options.try_into()?;
         if effort.is_some_and(|effort| effort != crate::core::language_model::ReasoningEffort::None)
             && !self.options.model.starts_with("claude-opus-4-5")
         {
@@ -203,7 +204,7 @@ impl<M: ModelName> LanguageModel for Anthropic<M> {
                                     },
                                 );
                                 Some(Ok(vec![LanguageModelStreamChunk::Delta(
-                                    LanguageModelStreamChunkType::ToolCallStart(ToolDetails { name, id }),
+                                    LanguageModelStreamChunkType::ToolCallStart(ToolDetails {name, id, namespace: None }),
                                 )]))
                             }
                         },
@@ -310,6 +311,7 @@ impl<M: ModelName> LanguageModel for Anthropic<M> {
                                                     ToolCallInfo {
                                                         input,
                                                         tool: ToolDetails {
+                                                            namespace: None,
                                                             id: id.clone(),
                                                             name: name.clone(),
                                                         },

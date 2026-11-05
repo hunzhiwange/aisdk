@@ -25,9 +25,16 @@ impl From<Tool> for FunctionDeclaration {
     }
 }
 
-impl From<LanguageModelOptions> for GenerateContentRequest {
-    fn from(options: LanguageModelOptions) -> Self {
-        let contents = options.messages.into_iter().map(|m| m.into()).collect();
+impl TryFrom<LanguageModelOptions> for GenerateContentRequest {
+    type Error = crate::Error;
+
+    fn try_from(options: LanguageModelOptions) -> crate::Result<Self> {
+        options.reject_native_tool_protocol("google")?;
+        let contents = options
+            .messages
+            .into_iter()
+            .map(TryInto::try_into)
+            .collect::<crate::Result<Vec<Content>>>()?;
 
         let system_instruction = options.system.map(|s| Content {
             role: Role::User, // System instructions are often text-only content
@@ -75,7 +82,7 @@ impl From<LanguageModelOptions> for GenerateContentRequest {
             seed: options.seed.map(|seed| seed as i32),
         });
 
-        Self {
+        Ok(Self {
             contents,
             tools,
             tool_config: None, // Default to auto
@@ -83,29 +90,33 @@ impl From<LanguageModelOptions> for GenerateContentRequest {
             system_instruction,
             generation_config,
             cached_content: None,
-        }
+        })
     }
 }
 
-impl From<LanguageModelOptions> for GoogleOptions {
-    fn from(options: LanguageModelOptions) -> Self {
+impl TryFrom<LanguageModelOptions> for GoogleOptions {
+    type Error = crate::Error;
+
+    fn try_from(options: LanguageModelOptions) -> crate::Result<Self> {
         let extra_body = options.body.clone();
         let extra_headers = options.headers.clone();
-        let request: GenerateContentRequest = options.into();
+        let request: GenerateContentRequest = options.try_into()?;
 
-        GoogleOptions {
+        Ok(GoogleOptions {
             model: String::new(),
             request: Some(request),
             streaming: false,
             extra_body,
             extra_headers,
-        }
+        })
     }
 }
 
-impl From<TaggedMessage> for Content {
-    fn from(tagged: TaggedMessage) -> Self {
-        tagged.message.into()
+impl TryFrom<TaggedMessage> for Content {
+    type Error = crate::Error;
+
+    fn try_from(tagged: TaggedMessage) -> crate::Result<Self> {
+        tagged.message.try_into()
     }
 }
 
@@ -141,9 +152,12 @@ impl From<UserContentPart> for Part {
     }
 }
 
-impl From<Message> for Content {
-    fn from(message: Message) -> Self {
-        match message {
+impl TryFrom<Message> for Content {
+    type Error = crate::Error;
+
+    fn try_from(message: Message) -> crate::Result<Self> {
+        message.reject_native_tool_protocol("google")?;
+        Ok(match message {
             Message::User(u) => Content {
                 role: Role::User,
                 parts: u.content.into_iter().map(Into::into).collect(),
@@ -203,6 +217,11 @@ impl From<Message> for Content {
                     ..Default::default()
                 }],
             },
+            Message::ToolSearchOutput(_) => {
+                return Err(crate::Error::InvalidInput(
+                    "google does not support the native tool protocol".into(),
+                ));
+            }
             Message::Developer(d) => Content {
                 role: Role::User,
                 parts: vec![Part {
@@ -210,7 +229,7 @@ impl From<Message> for Content {
                     ..Default::default()
                 }],
             },
-        }
+        })
     }
 }
 
@@ -290,7 +309,7 @@ mod tests {
             ..Default::default()
         };
 
-        let req: GenerateContentRequest = options.into();
+        let req: GenerateContentRequest = options.try_into().unwrap();
 
         let gen_config = req
             .generation_config
@@ -326,7 +345,7 @@ mod tests {
             ..Default::default()
         };
 
-        let req: GenerateContentRequest = options.into();
+        let req: GenerateContentRequest = options.try_into().unwrap();
 
         let gen_config = req
             .generation_config
@@ -358,7 +377,7 @@ mod tests {
             ..Default::default()
         };
 
-        let req: GenerateContentRequest = options.into();
+        let req: GenerateContentRequest = options.try_into().unwrap();
 
         let tools = req.tools.expect("tools should be present");
         assert_eq!(tools.len(), 1);
@@ -393,7 +412,7 @@ mod tests {
             ..Default::default()
         };
 
-        let req: GenerateContentRequest = options.into();
+        let req: GenerateContentRequest = options.try_into().unwrap();
         let content = &req.contents[0];
 
         assert_eq!(

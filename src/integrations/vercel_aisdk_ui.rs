@@ -747,6 +747,7 @@ mod tests {
 
         let start_chunks = map_language_model_chunk_to_vercel_ui(
             LanguageModelStreamChunkType::ToolCallStart(ToolDetails {
+                namespace: None,
                 id: "call_1".to_string(),
                 name: "get_weather".to_string(),
             }),
@@ -766,6 +767,7 @@ mod tests {
         let available_chunks = map_language_model_chunk_to_vercel_ui(
             LanguageModelStreamChunkType::ToolCallAvailable(ToolCallInfo {
                 tool: ToolDetails {
+                    namespace: None,
                     id: "call_1".to_string(),
                     name: "get_weather".to_string(),
                 },
@@ -838,6 +840,7 @@ mod tests {
 
         let result_info = ToolResultInfo {
             tool: ToolDetails {
+                namespace: None,
                 id: "call_2".to_string(),
                 name: "get_weather".to_string(),
             },

@@ -78,6 +78,7 @@ impl<M: LanguageModel> LanguageModelRequest<M> {
             stop_reason: None,
             headers: self.options.headers.clone(),
             body: self.options.body.clone(),
+            native_tools: self.options.native_tools.clone(),
             ..self.options
         };
 

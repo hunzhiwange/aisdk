@@ -34,8 +34,11 @@ impl From<UserContentPart>
     }
 }
 
-impl From<LanguageModelOptions> for AnthropicOptions {
-    fn from(options: LanguageModelOptions) -> Self {
+impl TryFrom<LanguageModelOptions> for AnthropicOptions {
+    type Error = crate::Error;
+
+    fn try_from(options: LanguageModelOptions) -> crate::Result<Self> {
+        options.reject_native_tool_protocol("anthropic")?;
         let extra_body = options.body.clone();
         let extra_headers = options.headers.clone();
         let mut messages = Vec::new();
@@ -119,6 +122,12 @@ impl From<LanguageModelOptions> for AnthropicOptions {
                             }],
                         });
                     }
+                    LanguageModelResponseContentType::ToolSearchCall(_)
+                    | LanguageModelResponseContentType::ToolSearchOutput(_) => {
+                        return Err(crate::Error::InvalidInput(
+                            "anthropic does not support the native tool protocol".into(),
+                        ));
+                    }
                     LanguageModelResponseContentType::NotSupported(_) => {}
                 },
                 Message::Tool(tool) => {
@@ -130,6 +139,11 @@ impl From<LanguageModelOptions> for AnthropicOptions {
                             },
                         ]),
                     });
+                }
+                Message::ToolSearchOutput(_) => {
+                    return Err(crate::Error::InvalidInput(
+                        "anthropic does not support the native tool protocol".into(),
+                    ));
                 }
                 Message::Developer(dev) => {
                     messages.push(AnthropicMessageParam::User {
@@ -181,7 +195,7 @@ impl From<LanguageModelOptions> for AnthropicOptions {
         let mut request = request.build().expect("Failed to build AntropicRequest");
         request.extra_body = extra_body;
         request.extra_headers = extra_headers;
-        request
+        Ok(request)
     }
 }
 
@@ -235,7 +249,7 @@ mod tests {
             ..Default::default()
         };
 
-        let req: AnthropicOptions = options.into();
+        let req: AnthropicOptions = options.try_into().unwrap();
 
         assert_eq!(req.system.as_deref(), Some("You are helpful"));
         assert_eq!(req.messages.len(), 1);
@@ -258,7 +272,8 @@ mod tests {
             reasoning_effort: Some(ReasoningEffort::High),
             ..Default::default()
         }
-        .into();
+        .try_into()
+        .unwrap();
         assert_eq!(req.output_config, Some(json!({"effort": "high"})));
         assert!(req.thinking.is_none());
         assert_eq!(req.max_tokens, 200);
@@ -279,7 +294,7 @@ mod tests {
             ..Default::default()
         };
 
-        let req: AnthropicOptions = options.into();
+        let req: AnthropicOptions = options.try_into().unwrap();
         let tools = req.tools.expect("tools should be present");
         assert_eq!(tools.len(), 1);
         assert_eq!(tools[0].name, "sum");
@@ -303,7 +318,7 @@ mod tests {
             ..Default::default()
         };
 
-        let req: AnthropicOptions = options.into();
+        let req: AnthropicOptions = options.try_into().unwrap();
 
         match &req.messages[0] {
             AnthropicMessageParam::User { content } => match content {

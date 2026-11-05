@@ -28,7 +28,7 @@ impl<M: ModelName> LanguageModel for OpenAI<M> {
         &mut self,
         options: LanguageModelOptions,
     ) -> Result<LanguageModelResponse> {
-        let mut options: OpenAILanguageModelOptions = options.into();
+        let mut options: OpenAILanguageModelOptions = options.try_into()?;
 
         options.model = self.lm_options.model.clone();
 
@@ -70,7 +70,7 @@ impl<M: ModelName> LanguageModel for OpenAI<M> {
 
     /// Streams text using the OpenAI provider.
     async fn stream_text(&mut self, options: LanguageModelOptions) -> Result<ProviderStream> {
-        let mut options: OpenAILanguageModelOptions = options.into();
+        let mut options: OpenAILanguageModelOptions = options.try_into()?;
 
         options.model = self.lm_options.model.to_string();
         options.stream = Some(true);

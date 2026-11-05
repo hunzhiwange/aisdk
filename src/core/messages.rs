@@ -172,12 +172,35 @@ pub enum Message {
     Tool(ToolResultInfo),
     /// A developer-specific message for advanced use cases.
     Developer(String),
+    /// Dedicated native search output, never an ordinary function result.
+    ToolSearchOutput(crate::core::tools::ToolSearchOutput),
 }
 
 /// A List of `Message`s
 pub type Messages = Vec<Message>;
 
 impl Message {
+    /// Reject native history before conversion to a provider without native support.
+    pub(crate) fn reject_native_tool_protocol(&self, provider: &str) -> crate::Result<()> {
+        let native = match self {
+            Self::ToolSearchOutput(_) => true,
+            Self::Assistant(a) => match &a.content {
+                LanguageModelResponseContentType::ToolSearchCall(_)
+                | LanguageModelResponseContentType::ToolSearchOutput(_) => true,
+                LanguageModelResponseContentType::ToolCall(c) => c.tool.namespace.is_some(),
+                _ => false,
+            },
+            Self::Tool(t) => t.tool.namespace.is_some(),
+            _ => false,
+        };
+        if native {
+            return Err(crate::Error::InvalidInput(format!(
+                "{provider} does not support the native tool protocol"
+            )));
+        }
+        Ok(())
+    }
+
     /// Start a new conversation with an empty message list.
     ///
     /// Returns a `MessageBuilder<Conversation>`, allowing any number of

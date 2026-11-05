@@ -25,7 +25,7 @@ impl<M: ModelName> LanguageModel for Google<M> {
         &mut self,
         options: LanguageModelOptions,
     ) -> Result<LanguageModelResponse> {
-        let mut options: client::GoogleOptions = options.into();
+        let mut options: client::GoogleOptions = options.try_into()?;
         options.model = self.lm_options.model.clone();
         options.streaming = false;
         self.lm_options = options;
@@ -61,7 +61,7 @@ impl<M: ModelName> LanguageModel for Google<M> {
     }
 
     async fn stream_text(&mut self, options: LanguageModelOptions) -> Result<ProviderStream> {
-        let mut options: client::GoogleOptions = options.into();
+        let mut options: client::GoogleOptions = options.try_into()?;
         options.model = self.lm_options.model.clone();
         options.streaming = true;
         self.lm_options = options;
@@ -139,6 +139,7 @@ impl<M: ModelName> LanguageModel for Google<M> {
                                     state.tool_call_open = true;
                                     chunks.push(LanguageModelStreamChunk::Delta(
                                         LanguageModelStreamChunkType::ToolCallStart(ToolDetails {
+                                            namespace: None,
                                             id: fc.name.clone(),
                                             name: fc.name.clone(),
                                         }),

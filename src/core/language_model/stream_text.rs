@@ -81,6 +81,7 @@ impl<M: LanguageModel> LanguageModelRequest<M> {
             stop_reason: None,
             headers: self.options.headers.clone(),
             body: self.options.body.clone(),
+            native_tools: self.options.native_tools.clone(),
             ..self.options
         }));
 
@@ -453,6 +454,7 @@ mod tests {
             let chunks = if call_index == 0 {
                 let tool_call = ToolCallInfo {
                     tool: ToolDetails {
+                        namespace: None,
                         id: "call_1".to_string(),
                         name: "get_weather".to_string(),
                     },

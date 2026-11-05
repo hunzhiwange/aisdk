@@ -24,7 +24,7 @@ impl<M: ModelName> LanguageModel for OpenAIChatCompletions<M> {
         &mut self,
         options: LanguageModelOptions,
     ) -> Result<LanguageModelResponse> {
-        let mut options: client::ChatCompletionsOptions = options.into();
+        let mut options: client::ChatCompletionsOptions = options.try_into()?;
         options.model = self.options.model.clone();
         self.options = options;
 
@@ -65,7 +65,7 @@ impl<M: ModelName> LanguageModel for OpenAIChatCompletions<M> {
     }
 
     async fn stream_text(&mut self, options: LanguageModelOptions) -> Result<ProviderStream> {
-        let mut options: client::ChatCompletionsOptions = options.into();
+        let mut options: client::ChatCompletionsOptions = options.try_into()?;
         options.model = self.options.model.clone();
         options.stream = Some(true);
         // Note: stream_options is not sent to maintain compatibility with
@@ -164,6 +164,7 @@ impl<M: ModelName> LanguageModel for OpenAIChatCompletions<M> {
                                     };
                                     results.push(LanguageModelStreamChunk::Delta(
                                         LanguageModelStreamChunkType::ToolCallStart(ToolDetails {
+                                            namespace: None,
                                             id: tool_id,
                                             name: entry.1.clone(),
                                         }),

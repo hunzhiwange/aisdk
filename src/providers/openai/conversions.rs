@@ -56,14 +56,20 @@ impl From<Tool> for types::ToolParams {
     }
 }
 
-impl From<LanguageModelOptions> for client::OpenAILanguageModelOptions {
-    fn from(options: LanguageModelOptions) -> Self {
+impl TryFrom<LanguageModelOptions> for client::OpenAILanguageModelOptions {
+    type Error = crate::Error;
+
+    fn try_from(options: LanguageModelOptions) -> crate::Result<Self> {
+        options.reject_native_tool_protocol("openai")?;
         let extra_body = options.body.clone();
         let extra_headers = options.headers.clone();
         let items: Vec<types::InputItem> = options
             .messages
             .into_iter()
-            .filter_map(|m| m.message.into())
+            .map(|m| m.message.try_into())
+            .collect::<crate::Result<Vec<Option<types::InputItem>>>>()?
+            .into_iter()
+            .flatten()
             .collect();
 
         let tools: Option<Vec<types::ToolParams>> = options.tools.map(|t| {
@@ -82,7 +88,7 @@ impl From<LanguageModelOptions> for client::OpenAILanguageModelOptions {
                 effort: Some(reasoning.into()),
             });
 
-        client::OpenAILanguageModelOptions {
+        Ok(client::OpenAILanguageModelOptions {
             model: "".to_string(), // will be set in mod.rs
             input: Some(types::Input::InputItemList(items)),
             text: Some(types::TextConfig {
@@ -102,13 +108,16 @@ impl From<LanguageModelOptions> for client::OpenAILanguageModelOptions {
             tools,
             extra_body,
             extra_headers,
-        }
+        })
     }
 }
 
-impl From<Message> for Option<types::InputItem> {
-    fn from(m: Message) -> Self {
-        match m {
+impl TryFrom<Message> for Option<types::InputItem> {
+    type Error = crate::Error;
+
+    fn try_from(m: Message) -> crate::Result<Self> {
+        m.reject_native_tool_protocol("openai")?;
+        Ok(match m {
             Message::Tool(ref tool_info) => Some(types::InputItem::Item(
                 types::MessageItem::FunctionCallOutput {
                     id: None,
@@ -173,6 +182,11 @@ impl From<Message> for Option<types::InputItem> {
                 role: types::Role::System,
                 type_: "message".to_string(),
             })),
+            Message::ToolSearchOutput(_) => {
+                return Err(crate::Error::InvalidInput(
+                    "openai does not support the native tool protocol".into(),
+                ));
+            }
             Message::Developer(d) => {
                 Some(client::InputItem::Item(types::MessageItem::InputMessage {
                     content: vec![types::ContentType::InputText { text: d }],
@@ -180,7 +194,7 @@ impl From<Message> for Option<types::InputItem> {
                     type_: "message".to_string(),
                 }))
             }
-        }
+        })
     }
 }
 
@@ -279,7 +293,7 @@ mod tests {
             ..Default::default()
         };
 
-        let req: OpenAILanguageModelOptions = options.into();
+        let req: OpenAILanguageModelOptions = options.try_into().unwrap();
 
         assert!(
             req.temperature
@@ -327,7 +341,7 @@ mod tests {
             ..Default::default()
         };
 
-        let req: OpenAILanguageModelOptions = options.into();
+        let req: OpenAILanguageModelOptions = options.try_into().unwrap();
         let text = req.text.expect("text config should be present");
         let format = text.format.expect("format should be present");
 
@@ -359,7 +373,7 @@ mod tests {
             ..Default::default()
         };
 
-        let req: OpenAILanguageModelOptions = options.into();
+        let req: OpenAILanguageModelOptions = options.try_into().unwrap();
         let input = req.input.expect("input should be present");
         let Input::InputItemList(items) = input else {
             panic!("expected input item list")
@@ -397,7 +411,7 @@ mod tests {
             ..Default::default()
         };
 
-        let req: OpenAILanguageModelOptions = options.into();
+        let req: OpenAILanguageModelOptions = options.try_into().unwrap();
         let tools = req.tools.expect("tools should be present");
         assert_eq!(tools.len(), 1);
 
@@ -447,7 +461,7 @@ mod tests {
             reasoning_effort: Some(LMReasoningEffort::Low),
             ..Default::default()
         };
-        let lm_options: OpenAILanguageModelOptions = options.into();
+        let lm_options: OpenAILanguageModelOptions = options.try_into().unwrap();
         assert!(lm_options.reasoning.is_some());
         let reasoning = lm_options.reasoning.unwrap();
         assert_eq!(reasoning.effort, Some(ReasoningEffort::Low));
@@ -460,7 +474,7 @@ mod tests {
             reasoning_effort: Some(LMReasoningEffort::Medium),
             ..Default::default()
         };
-        let lm_options: OpenAILanguageModelOptions = options.into();
+        let lm_options: OpenAILanguageModelOptions = options.try_into().unwrap();
         assert!(lm_options.reasoning.is_some());
         let reasoning = lm_options.reasoning.unwrap();
         assert_eq!(reasoning.effort, Some(ReasoningEffort::Medium));
@@ -473,7 +487,7 @@ mod tests {
             reasoning_effort: Some(LMReasoningEffort::High),
             ..Default::default()
         };
-        let lm_options: OpenAILanguageModelOptions = options.into();
+        let lm_options: OpenAILanguageModelOptions = options.try_into().unwrap();
         assert!(lm_options.reasoning.is_some());
         let reasoning = lm_options.reasoning.unwrap();
         assert_eq!(reasoning.effort, Some(ReasoningEffort::High));
@@ -486,7 +500,7 @@ mod tests {
             reasoning_effort: None,
             ..Default::default()
         };
-        let lm_options: OpenAILanguageModelOptions = options.into();
+        let lm_options: OpenAILanguageModelOptions = options.try_into().unwrap();
         assert!(lm_options.reasoning.is_none());
     }
 

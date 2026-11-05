@@ -74,6 +74,141 @@ use std::pin::Pin;
 use std::sync::{Arc, Mutex};
 use tokio::sync::mpsc::UnboundedSender;
 
+/// A function declaration without a local executor, for native protocol requests.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct FunctionToolSpec {
+    /// Function name within its namespace.
+    pub name: String,
+    /// Model-facing description.
+    pub description: String,
+    /// Typed JSON schema for function arguments.
+    pub parameters: Schema,
+    /// Whether the server enforces strict schema validation.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub strict: Option<bool>,
+    /// Whether discovery is required before exposing this function.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub defer_loading: Option<bool>,
+}
+
+/// A namespace containing only function declarations.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct NamespaceToolSpec {
+    /// Namespace name, retained separately from function names.
+    pub name: String,
+    /// Model-facing namespace description.
+    pub description: String,
+    /// Functions in this namespace. Search and nested namespaces are not allowed.
+    #[serde(with = "namespace_functions")]
+    pub tools: Vec<FunctionToolSpec>,
+}
+
+mod namespace_functions {
+    use super::*;
+
+    #[derive(Serialize, Deserialize)]
+    #[serde(tag = "type", rename_all = "snake_case")]
+    enum Function {
+        Function(FunctionToolSpec),
+    }
+
+    pub fn serialize<S: serde::Serializer>(
+        functions: &[FunctionToolSpec],
+        serializer: S,
+    ) -> std::result::Result<S::Ok, S::Error> {
+        functions
+            .iter()
+            .cloned()
+            .map(Function::Function)
+            .collect::<Vec<_>>()
+            .serialize(serializer)
+    }
+
+    pub fn deserialize<'de, D: serde::Deserializer<'de>>(
+        deserializer: D,
+    ) -> std::result::Result<Vec<FunctionToolSpec>, D::Error> {
+        Ok(Vec::<Function>::deserialize(deserializer)?
+            .into_iter()
+            .map(|Function::Function(f)| f)
+            .collect())
+    }
+}
+
+/// Declarations that may be returned by native tool discovery.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(tag = "type", rename_all = "snake_case")]
+pub enum LoadableToolSpec {
+    /// A top-level function.
+    Function(FunctionToolSpec),
+    /// A namespace of functions.
+    Namespace(NamespaceToolSpec),
+}
+
+/// Where a native tool search is executed.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum ToolSearchExecution {
+    /// The caller executes the search.
+    Client,
+    /// The provider executes the search.
+    Server,
+}
+
+/// Native declarations, separate from locally executable ordinary tools.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(tag = "type", rename_all = "snake_case")]
+pub enum NativeToolSpec {
+    /// A top-level function.
+    Function(FunctionToolSpec),
+    /// A namespace of functions.
+    Namespace(NamespaceToolSpec),
+    /// A native search declaration, never a regular function.
+    ToolSearch {
+        /// Search execution location.
+        execution: ToolSearchExecution,
+        /// Model-facing search description.
+        description: String,
+        /// Search argument schema.
+        parameters: Schema,
+    },
+}
+
+/// A native search call, excluded from ordinary function execution.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct ToolSearchCall {
+    /// Provider response item identifier.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
+    /// Identifier linking a client search to its result; absent for some server calls.
+    pub call_id: Option<String>,
+    /// Provider lifecycle status, retained without coercion.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub status: Option<String>,
+    /// Search execution location.
+    pub execution: ToolSearchExecution,
+    /// Search arguments, separate from the protocol envelope.
+    pub arguments: Value,
+    /// Opaque encrypted provider content for replay.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub encrypted_content: Option<String>,
+}
+
+/// A native search result containing declarations rather than a string output.
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct ToolSearchOutput {
+    /// Provider response item identifier.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
+    /// Identifier of the search call, if supplied by the provider.
+    pub call_id: Option<String>,
+    /// Provider lifecycle status.
+    pub status: String,
+    /// Search execution location.
+    pub execution: ToolSearchExecution,
+    /// Discovered declarations; this does not grant local execution permission.
+    pub tools: Vec<LoadableToolSpec>,
+}
+
 /// Stream sender that tools can use to emit chunks during `stream_text()`.
 pub type ToolStreamSender = UnboundedSender<LanguageModelStreamChunkType>;
 
@@ -300,6 +435,11 @@ impl ToolList {
 
     /// Executes a tool with runtime context.
     pub async fn execute(&self, context: ToolContext, tool_info: ToolCallInfo) -> Result<String> {
+        if tool_info.tool.namespace.is_some() {
+            return Err(Error::ToolCallError(
+                "Namespaced native calls require an external executor".into(),
+            ));
+        }
         let tool = self
             .tools
             .lock()
@@ -320,6 +460,8 @@ impl ToolList {
 #[derive(Default, Debug, Clone, PartialEq)]
 /// Describes a tool
 pub struct ToolDetails {
+    /// Optional native function namespace, separate from the function name.
+    pub namespace: Option<String>,
     /// The name of the tool, usually a function name.
     pub name: String,
     /// Uniquely identifies a tool, usually provided by the provider.

@@ -234,6 +234,11 @@ pub struct LanguageModelOptions {
     /// List of tools to use.
     pub(crate) tools: Option<ToolList>,
 
+    /// Native protocol declarations without SDK-managed executors.
+    /// Providers must explicitly support these; they must never be lowered to ordinary tools.
+    #[builder(default)]
+    pub native_tools: Option<Vec<crate::core::tools::NativeToolSpec>>,
+
     /// Current step ID for tracking multi-step interactions.
     pub(crate) current_step_id: usize,
 
@@ -269,6 +274,7 @@ impl Debug for LanguageModelOptions {
             .field("presence_penalty", &self.presence_penalty)
             .field("frequency_penalty", &self.frequency_penalty)
             .field("tools", &self.tools)
+            .field("native_tools", &self.native_tools)
             .field("current_step_id", &self.current_step_id)
             .field("stop_when", &self.stop_when.is_some())
             .field("on_step_start", &self.on_step_start.is_some())
@@ -280,6 +286,23 @@ impl Debug for LanguageModelOptions {
 }
 
 impl LanguageModelOptions {
+    /// Reject native declarations and history before an unsupported provider sends a request.
+    pub(crate) fn reject_native_tool_protocol(&self, provider: &str) -> Result<()> {
+        if self
+            .native_tools
+            .as_ref()
+            .is_some_and(|tools| !tools.is_empty())
+        {
+            return Err(Error::InvalidInput(format!(
+                "{provider} does not support the native tool protocol"
+            )));
+        }
+        for tagged in &self.messages {
+            tagged.message.reject_native_tool_protocol(provider)?;
+        }
+        Ok(())
+    }
+
     /// Creates a new builder for `LanguageModelOptions`.
     pub fn builder() -> LanguageModelOptionsBuilder {
         LanguageModelOptionsBuilder::default()
@@ -438,6 +461,10 @@ pub enum LanguageModelResponseContentType {
     Text(String),
     /// A tool call request.
     ToolCall(ToolCallInfo),
+    /// A native search call, handled by the caller rather than ordinary tool execution.
+    ToolSearchCall(crate::core::tools::ToolSearchCall),
+    /// Provider-executed search output, retained for protocol replay.
+    ToolSearchOutput(crate::core::tools::ToolSearchOutput),
     /// Reasoning or thinking content.
     Reasoning {
         /// The reasoning/thinking content

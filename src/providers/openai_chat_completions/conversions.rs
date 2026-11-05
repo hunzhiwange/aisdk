@@ -9,8 +9,11 @@ use crate::providers::openai_chat_completions::client::{self, types};
 // LanguageModelOptions -> ChatCompletionsOptions
 // ============================================================================
 
-impl From<LanguageModelOptions> for client::ChatCompletionsOptions {
-    fn from(options: LanguageModelOptions) -> Self {
+impl TryFrom<LanguageModelOptions> for client::ChatCompletionsOptions {
+    type Error = crate::Error;
+
+    fn try_from(options: LanguageModelOptions) -> crate::Result<Self> {
+        options.reject_native_tool_protocol("openai_chat_completions")?;
         let extra_body = options.body.clone();
         let extra_headers = options.headers.clone();
         let mut messages: Vec<types::ChatMessage> = Vec::new();
@@ -29,7 +32,8 @@ impl From<LanguageModelOptions> for client::ChatCompletionsOptions {
             options
                 .messages
                 .into_iter()
-                .map(|tagged| tagged.message.into()),
+                .map(|tagged| tagged.message.try_into())
+                .collect::<crate::Result<Vec<types::ChatMessage>>>()?,
         );
 
         let tools: Option<Vec<types::Tool>> = options.tools.map(|tool_list| {
@@ -82,7 +86,7 @@ impl From<LanguageModelOptions> for client::ChatCompletionsOptions {
 
         let parallel_tool_calls = if tools.is_some() { Some(true) } else { None };
 
-        client::ChatCompletionsOptions {
+        Ok(client::ChatCompletionsOptions {
             model: "".to_string(),
             messages,
             frequency_penalty: options.frequency_penalty,
@@ -112,7 +116,7 @@ impl From<LanguageModelOptions> for client::ChatCompletionsOptions {
             verbosity: None,
             extra_body,
             extra_headers,
-        }
+        })
     }
 }
 
@@ -120,9 +124,12 @@ impl From<LanguageModelOptions> for client::ChatCompletionsOptions {
 // SDK Message -> ChatMessage
 // ============================================================================
 
-impl From<Message> for types::ChatMessage {
-    fn from(msg: Message) -> Self {
-        match msg {
+impl TryFrom<Message> for types::ChatMessage {
+    type Error = crate::Error;
+
+    fn try_from(msg: Message) -> crate::Result<Self> {
+        msg.reject_native_tool_protocol("openai_chat_completions")?;
+        Ok(match msg {
             Message::System(s) => types::ChatMessage {
                 role: types::Role::System,
                 content: Some(types::ChatMessageContent::text(s.content)),
@@ -192,6 +199,11 @@ impl From<Message> for types::ChatMessage {
                 tool_calls: None,
                 tool_call_id: Some(tool_result.tool.id),
             },
+            Message::ToolSearchOutput(_) => {
+                return Err(crate::Error::InvalidInput(
+                    "openai_chat_completions does not support the native tool protocol".into(),
+                ));
+            }
             Message::Developer(d) => types::ChatMessage {
                 role: types::Role::Developer,
                 content: Some(types::ChatMessageContent::text(d)),
@@ -199,7 +211,7 @@ impl From<Message> for types::ChatMessage {
                 tool_calls: None,
                 tool_call_id: None,
             },
-        }
+        })
     }
 }
 
@@ -308,7 +320,7 @@ mod tests {
     #[test]
     fn test_message_conversion_system() {
         let msg = Message::System("You are helpful".to_string().into());
-        let chat_msg: types::ChatMessage = msg.into();
+        let chat_msg: types::ChatMessage = msg.try_into().unwrap();
 
         assert_eq!(chat_msg.role, types::Role::System);
         assert_eq!(
@@ -323,7 +335,7 @@ mod tests {
     #[test]
     fn test_message_conversion_user() {
         let msg = Message::User("Hello".to_string().into());
-        let chat_msg: types::ChatMessage = msg.into();
+        let chat_msg: types::ChatMessage = msg.try_into().unwrap();
 
         assert_eq!(chat_msg.role, types::Role::User);
         assert_eq!(
@@ -337,7 +349,7 @@ mod tests {
         let msg = Message::User(
             UserMessage::new("Describe this image").with_image_url("https://example.com/cat.png"),
         );
-        let chat_msg: types::ChatMessage = msg.into();
+        let chat_msg: types::ChatMessage = msg.try_into().unwrap();
 
         assert_eq!(chat_msg.role, types::Role::User);
         assert_eq!(
@@ -362,7 +374,7 @@ mod tests {
             ..Default::default()
         };
 
-        let completions_opts: client::ChatCompletionsOptions = options.into();
+        let completions_opts: client::ChatCompletionsOptions = options.try_into().unwrap();
         assert!(matches!(
             completions_opts.stop,
             Some(types::StopSequences::Single(_))
@@ -382,7 +394,7 @@ mod tests {
             ..Default::default()
         };
 
-        let completions_opts: client::ChatCompletionsOptions = options.into();
+        let completions_opts: client::ChatCompletionsOptions = options.try_into().unwrap();
         if let Some(types::StopSequences::Multiple(seqs)) = completions_opts.stop {
             assert_eq!(seqs.len(), 4);
         }
@@ -401,7 +413,7 @@ mod tests {
             ..Default::default()
         };
 
-        let completions_opts: client::ChatCompletionsOptions = options.into();
+        let completions_opts: client::ChatCompletionsOptions = options.try_into().unwrap();
 
         assert!(
             completions_opts
@@ -445,7 +457,7 @@ mod tests {
             ..Default::default()
         };
 
-        let completions_opts: client::ChatCompletionsOptions = options.into();
+        let completions_opts: client::ChatCompletionsOptions = options.try_into().unwrap();
         let request = serde_json::to_value(&completions_opts).expect("request should serialize");
 
         assert_eq!(request["messages"][0]["role"], json!("user"));
@@ -473,7 +485,7 @@ mod tests {
             ..Default::default()
         };
 
-        let completions_opts: client::ChatCompletionsOptions = options.into();
+        let completions_opts: client::ChatCompletionsOptions = options.try_into().unwrap();
 
         let Some(types::ResponseFormat::JsonSchema { json_schema }) =
             completions_opts.response_format
@@ -503,7 +515,7 @@ mod tests {
             ..Default::default()
         };
 
-        let completions_opts: client::ChatCompletionsOptions = options.into();
+        let completions_opts: client::ChatCompletionsOptions = options.try_into().unwrap();
         let tools = completions_opts.tools.expect("tools should be present");
         let tool = &tools[0];
 

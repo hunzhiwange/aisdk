@@ -41,4 +41,10 @@ pub use messages::{
 };
 pub use model_ref::ModelRef;
 pub use provider::Provider;
-pub use tools::{Tool, ToolCallInfo, ToolContext, ToolResultInfo};
+pub use tools::{
+    FunctionToolSpec, LoadableToolSpec, NamespaceToolSpec, NativeToolSpec, Tool, ToolCallInfo,
+    ToolContext, ToolResultInfo, ToolSearchCall, ToolSearchExecution, ToolSearchOutput,
+};
+
+#[cfg(test)]
+mod dynamic_tools_tests;
