@@ -1,18 +1,49 @@
 //! Helper functions and conversions for the OpenAI Chat Completions provider.
 
 use crate::core::language_model::{LanguageModelOptions, LanguageModelResponseContentType, Usage};
-use crate::core::messages::{Message, UserContentPart, UserMessage};
+use crate::core::messages::{
+    Message, UserAudio, UserContentPart, UserMediaSource, UserMessage, UserVideo,
+};
 use crate::core::tools::Tool as SdkTool;
 use crate::providers::openai_chat_completions::client::{self, types};
+use crate::providers::openai_chat_completions::settings::OpenAIChatCompletionsSettings;
+use base64::{Engine, engine::general_purpose::STANDARD};
 
 // ============================================================================
 // LanguageModelOptions -> ChatCompletionsOptions
 // ============================================================================
 
+#[cfg(test)]
 impl TryFrom<LanguageModelOptions> for client::ChatCompletionsOptions {
     type Error = crate::Error;
 
     fn try_from(options: LanguageModelOptions) -> crate::Result<Self> {
+        Self::from_sdk(options, String::new(), ChatMediaProtocol::Unsupported)
+    }
+}
+
+impl client::ChatCompletionsOptions {
+    pub(crate) fn for_model(
+        options: LanguageModelOptions,
+        model: &str,
+        settings: &OpenAIChatCompletionsSettings,
+    ) -> crate::Result<Self> {
+        // Extra body fields can override the model used by the deployment.
+        let effective_model = options
+            .body
+            .as_ref()
+            .and_then(|body| body.get("model"))
+            .or_else(|| settings.body.as_ref().and_then(|body| body.get("model")))
+            .map_or(model, |value| value.as_str().unwrap_or_default());
+        let protocol = ChatMediaProtocol::for_model(settings, effective_model);
+        Self::from_sdk(options, model.to_owned(), protocol)
+    }
+
+    fn from_sdk(
+        options: LanguageModelOptions,
+        model: String,
+        protocol: ChatMediaProtocol,
+    ) -> crate::Result<Self> {
         options.reject_native_tool_protocol("openai_chat_completions")?;
         let extra_body = options.body.clone();
         let extra_headers = options.headers.clone();
@@ -32,7 +63,7 @@ impl TryFrom<LanguageModelOptions> for client::ChatCompletionsOptions {
             options
                 .messages
                 .into_iter()
-                .map(|tagged| tagged.message.try_into())
+                .map(|tagged| types::ChatMessage::from_sdk(tagged.message, protocol))
                 .collect::<crate::Result<Vec<types::ChatMessage>>>()?,
         );
 
@@ -87,7 +118,7 @@ impl TryFrom<LanguageModelOptions> for client::ChatCompletionsOptions {
         let parallel_tool_calls = if tools.is_some() { Some(true) } else { None };
 
         Ok(client::ChatCompletionsOptions {
-            model: "".to_string(),
+            model,
             messages,
             frequency_penalty: options.frequency_penalty,
             logit_bias: None,
@@ -124,10 +155,17 @@ impl TryFrom<LanguageModelOptions> for client::ChatCompletionsOptions {
 // SDK Message -> ChatMessage
 // ============================================================================
 
+#[cfg(test)]
 impl TryFrom<Message> for types::ChatMessage {
     type Error = crate::Error;
 
     fn try_from(msg: Message) -> crate::Result<Self> {
+        Self::from_sdk(msg, ChatMediaProtocol::Unsupported)
+    }
+}
+
+impl types::ChatMessage {
+    fn from_sdk(msg: Message, protocol: ChatMediaProtocol) -> crate::Result<Self> {
         msg.reject_native_tool_protocol("openai_chat_completions")?;
         Ok(match msg {
             Message::System(s) => types::ChatMessage {
@@ -139,7 +177,7 @@ impl TryFrom<Message> for types::ChatMessage {
             },
             Message::User(u) => types::ChatMessage {
                 role: types::Role::User,
-                content: Some(u.into()),
+                content: Some(types::ChatMessageContent::from_sdk(u, protocol)?),
                 name: None,
                 tool_calls: None,
                 tool_call_id: None,
@@ -215,28 +253,130 @@ impl TryFrom<Message> for types::ChatMessage {
     }
 }
 
-impl From<UserMessage> for types::ChatMessageContent {
-    fn from(message: UserMessage) -> Self {
-        let parts = message.content;
-
-        if let [UserContentPart::Text(text)] = parts.as_slice() {
-            return types::ChatMessageContent::Text(text.clone());
+impl types::ChatMessageContent {
+    fn from_sdk(message: UserMessage, protocol: ChatMediaProtocol) -> crate::Result<Self> {
+        if let [UserContentPart::Text(text)] = message.content.as_slice() {
+            return Ok(Self::Text(text.clone()));
         }
 
-        types::ChatMessageContent::Parts(parts.into_iter().map(Into::into).collect())
+        let parts = message
+            .content
+            .into_iter()
+            .map(|part| {
+                Ok(match part {
+                    UserContentPart::Text(text) => types::ChatMessageContentPart::Text { text },
+                    UserContentPart::Image(image) => types::ChatMessageContentPart::ImageUrl {
+                        image_url: types::ChatMessageImageUrl {
+                            url: image.image_url,
+                        },
+                    },
+                    UserContentPart::Audio(audio) => protocol.audio_part(audio)?,
+                    UserContentPart::Video(video) => protocol.video_part(video)?,
+                })
+            })
+            .collect::<crate::Result<_>>()?;
+        Ok(Self::Parts(parts))
     }
 }
 
-impl From<UserContentPart> for types::ChatMessageContentPart {
-    fn from(part: UserContentPart) -> Self {
-        match part {
-            UserContentPart::Text(text) => types::ChatMessageContentPart::Text { text },
-            UserContentPart::Image(image) => types::ChatMessageContentPart::ImageUrl {
-                image_url: types::ChatMessageImageUrl {
-                    url: image.image_url,
-                },
-            },
+/// Protocols supported by specific Chat Completions deployments.
+///
+/// OpenAI accepts raw base64 for `input_audio`. DashScope accepts a data URL
+/// or a public HTTPS URL for `input_audio` and `video_url` where supported.
+/// See the [OpenAI](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create)
+/// and [DashScope](https://www.alibabacloud.com/help/en/model-studio/qwen-api-via-openai-chat-completions)
+/// Chat Completions references.
+#[derive(Clone, Copy)]
+enum ChatMediaProtocol {
+    Unsupported,
+    OpenAiAudio,
+    DashScopeVideo,
+    DashScopeOmni,
+}
+
+impl ChatMediaProtocol {
+    fn for_model(settings: &OpenAIChatCompletionsSettings, model: &str) -> Self {
+        let provider_name = settings.provider_name.to_ascii_lowercase();
+        let provider = match provider_name.as_str() {
+            "openaicompatible"
+                if reqwest::Url::parse(&settings.base_url).is_ok_and(|url| {
+                    url.scheme() == "https" && url.host_str() == Some("api.openai.com")
+                }) =>
+            {
+                "openai"
+            }
+            name => name,
+        };
+        match (provider, model) {
+            ("openai" | "openai-chat", "gpt-audio" | "gpt-audio-mini" | "gpt-audio-2025-08-28") => {
+                Self::OpenAiAudio
+            }
+            ("alibaba" | "alibaba-cn" | "alibabacn", "qwen3.8-omni-flash") => Self::DashScopeOmni,
+            (
+                "alibaba" | "alibaba-cn" | "alibabacn",
+                "qwen3-vl-plus" | "qwen3-vl-30b-a3b" | "qwen3.5-flash" | "qwen3.5-plus"
+                | "qwen3.6-flash" | "qwen3.6-plus" | "qwen3.7-flash" | "qwen3.7-plus"
+                | "qwen3.8-flash" | "qwen3.8-max" | "qwen4-max",
+            ) => Self::DashScopeVideo,
+            _ => Self::Unsupported,
         }
+    }
+
+    fn audio_part(self, audio: UserAudio) -> crate::Result<types::ChatMessageContentPart> {
+        if !matches!(self, Self::OpenAiAudio | Self::DashScopeOmni) {
+            return Err(crate::Error::InvalidInput(
+                "this Chat Completions deployment does not support native audio input".into(),
+            ));
+        }
+
+        audio.source.validate(&audio.mime_type, "audio")?;
+        let (format, mime_type) = match audio.mime_type.to_ascii_lowercase().as_str() {
+            "audio/wav" | "audio/x-wav" | "audio/wave" => {
+                (types::ChatAudioFormat::Wav, "audio/wav")
+            }
+            "audio/mp3" | "audio/mpeg" => (types::ChatAudioFormat::Mp3, "audio/mpeg"),
+            _ => {
+                return Err(crate::Error::InvalidInput(
+                    "Chat Completions audio input requires WAV or MP3".into(),
+                ));
+            }
+        };
+        let data = match (self, audio.source) {
+            (Self::OpenAiAudio, UserMediaSource::Bytes(bytes)) => STANDARD.encode(bytes),
+            (Self::OpenAiAudio, UserMediaSource::Url(_)) => {
+                return Err(crate::Error::InvalidInput(
+                    "OpenAI Chat Completions audio input requires inline bytes".into(),
+                ));
+            }
+            (_, source) => media_url(source, mime_type),
+        };
+        Ok(types::ChatMessageContentPart::InputAudio {
+            input_audio: types::ChatMessageInputAudio { data, format },
+        })
+    }
+
+    fn video_part(self, video: UserVideo) -> crate::Result<types::ChatMessageContentPart> {
+        if !matches!(self, Self::DashScopeVideo | Self::DashScopeOmni) {
+            return Err(crate::Error::InvalidInput(
+                "this Chat Completions deployment does not support native video input".into(),
+            ));
+        }
+
+        video.source.validate(&video.mime_type, "video")?;
+        Ok(types::ChatMessageContentPart::VideoUrl {
+            video_url: types::ChatMessageVideoUrl {
+                url: media_url(video.source, &video.mime_type),
+            },
+        })
+    }
+}
+
+fn media_url(source: UserMediaSource, mime_type: &str) -> String {
+    match source {
+        UserMediaSource::Bytes(bytes) => {
+            format!("data:{mime_type};base64,{}", STANDARD.encode(bytes))
+        }
+        UserMediaSource::Url(url) => url,
     }
 }
 
@@ -565,3 +705,7 @@ mod tests {
         assert_eq!(sdk_usage.reasoning_tokens, Some(10));
     }
 }
+
+#[cfg(test)]
+#[path = "media_input_tests.rs"]
+mod media_input_tests;

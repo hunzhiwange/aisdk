@@ -216,8 +216,8 @@ macro_rules! openai_compatible_provider {
                 "A configured `", stringify!($provider_struct), "<DynamicModel>` provider instance with default settings."
             )]
             pub fn model_name(name: impl Into<String>) -> Self {
-                let settings = $settings_struct::default();
-                let inner = OpenAIChatCompletions::<DynamicModel>::model_name(name);
+                let $builder_struct { settings, inner } =
+                    $builder_struct::<DynamicModel>::default().model_name(name);
 
                 $provider_struct { settings, inner }
             }

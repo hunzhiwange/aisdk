@@ -24,8 +24,11 @@ impl<M: ModelName> LanguageModel for OpenAIChatCompletions<M> {
         &mut self,
         options: LanguageModelOptions,
     ) -> Result<LanguageModelResponse> {
-        let mut options: client::ChatCompletionsOptions = options.try_into()?;
-        options.model = self.options.model.clone();
+        let options = client::ChatCompletionsOptions::for_model(
+            options,
+            &self.options.model,
+            &self.settings,
+        )?;
         self.options = options;
 
         let response: types::ChatCompletionsResponse = self.send(&self.settings.base_url).await?;
@@ -65,8 +68,11 @@ impl<M: ModelName> LanguageModel for OpenAIChatCompletions<M> {
     }
 
     async fn stream_text(&mut self, options: LanguageModelOptions) -> Result<ProviderStream> {
-        let mut options: client::ChatCompletionsOptions = options.try_into()?;
-        options.model = self.options.model.clone();
+        let mut options = client::ChatCompletionsOptions::for_model(
+            options,
+            &self.options.model,
+            &self.settings,
+        )?;
         options.stream = Some(true);
         // Note: stream_options is not sent to maintain compatibility with
         // OpenAI-compatible providers that don't support this field (e.g., Z.ai)

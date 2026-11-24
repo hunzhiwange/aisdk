@@ -112,7 +112,9 @@ impl ChatMessageContent {
                     .into_iter()
                     .filter_map(|part| match part {
                         ChatMessageContentPart::Text { text } => Some(text),
-                        ChatMessageContentPart::ImageUrl { .. } => None,
+                        ChatMessageContentPart::ImageUrl { .. }
+                        | ChatMessageContentPart::InputAudio { .. }
+                        | ChatMessageContentPart::VideoUrl { .. } => None,
                     })
                     .collect::<Vec<_>>()
                     .join("");
@@ -128,10 +130,30 @@ impl ChatMessageContent {
 pub(crate) enum ChatMessageContentPart {
     Text { text: String },
     ImageUrl { image_url: ChatMessageImageUrl },
+    InputAudio { input_audio: ChatMessageInputAudio },
+    VideoUrl { video_url: ChatMessageVideoUrl },
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub(crate) struct ChatMessageImageUrl {
+    pub url: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub(crate) struct ChatMessageInputAudio {
+    pub data: String,
+    pub format: ChatAudioFormat,
+}
+
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq)]
+#[serde(rename_all = "lowercase")]
+pub(crate) enum ChatAudioFormat {
+    Wav,
+    Mp3,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub(crate) struct ChatMessageVideoUrl {
     pub url: String,
 }
 

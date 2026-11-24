@@ -1,13 +1,14 @@
 //! Conversions between types used by the Google provider and the types used by the core library.
 use crate::core::embedding_model::EmbeddingModelOptions;
 use crate::core::language_model::{LanguageModelOptions, LanguageModelResponseContentType, Usage};
-use crate::core::messages::{Message, TaggedMessage, UserContentPart};
+use crate::core::messages::{Message, TaggedMessage, UserContentPart, UserMediaSource};
 use crate::core::tools::Tool;
 use crate::providers::google::client::types::{
     self, Content, FunctionDeclaration, GenerateContentRequest, Part, Role,
 };
 use crate::providers::google::client::{GoogleEmbeddingOptions, GoogleOptions};
 use crate::providers::google::extensions::GoogleToolMetadata;
+use base64::{Engine, engine::general_purpose::STANDARD};
 use serde_json::Value;
 
 impl From<Tool> for FunctionDeclaration {
@@ -94,6 +95,43 @@ impl TryFrom<LanguageModelOptions> for GenerateContentRequest {
     }
 }
 
+impl GoogleOptions {
+    pub(crate) fn for_model(
+        options: LanguageModelOptions,
+        model: &str,
+        streaming: bool,
+    ) -> crate::Result<Self> {
+        // Enable native media only for selected GenerateContent models.
+        // https://ai.google.dev/gemini-api/docs/models
+        let supports_native_media = matches!(
+            model,
+            "gemini-2.5-flash"
+                | "gemini-2.5-flash-lite"
+                | "gemini-2.5-pro"
+                | "gemini-3-flash-preview"
+                | "gemini-3.1-flash-lite"
+                | "gemini-3.1-pro-preview"
+        );
+        if !supports_native_media
+            && options.messages.iter().any(|tagged| {
+                matches!(&tagged.message, Message::User(user) if user.content.iter().any(|part| {
+                    matches!(part, UserContentPart::Audio(_) | UserContentPart::Video(_))
+                }))
+            })
+        {
+            return Err(crate::Error::InvalidInput(
+                "this Google GenerateContent model does not support native audio or video input"
+                    .into(),
+            ));
+        }
+
+        let mut request = Self::try_from(options)?;
+        request.model = model.to_owned();
+        request.streaming = streaming;
+        Ok(request)
+    }
+}
+
 impl TryFrom<LanguageModelOptions> for GoogleOptions {
     type Error = crate::Error;
 
@@ -120,9 +158,11 @@ impl TryFrom<TaggedMessage> for Content {
     }
 }
 
-impl From<UserContentPart> for Part {
-    fn from(value: UserContentPart) -> Self {
-        match value {
+impl TryFrom<UserContentPart> for Part {
+    type Error = crate::Error;
+
+    fn try_from(value: UserContentPart) -> crate::Result<Self> {
+        Ok(match value {
             UserContentPart::Text(text) => Part {
                 text: Some(text),
                 ..Default::default()
@@ -148,8 +188,30 @@ impl From<UserContentPart> for Part {
                     }
                 }
             }
-        }
+            UserContentPart::Audio(audio) => media_part(audio.source, audio.mime_type, "audio")?,
+            UserContentPart::Video(video) => media_part(video.source, video.mime_type, "video")?,
+        })
     }
+}
+
+fn media_part(source: UserMediaSource, mime_type: String, kind: &str) -> crate::Result<Part> {
+    source.validate(&mime_type, kind)?;
+    Ok(match source {
+        UserMediaSource::Bytes(bytes) => Part {
+            inline_data: Some(types::Blob {
+                mime_type,
+                data: STANDARD.encode(bytes),
+            }),
+            ..Default::default()
+        },
+        UserMediaSource::Url(file_uri) => Part {
+            file_data: Some(types::FileData {
+                mime_type,
+                file_uri,
+            }),
+            ..Default::default()
+        },
+    })
 }
 
 impl TryFrom<Message> for Content {
@@ -160,7 +222,11 @@ impl TryFrom<Message> for Content {
         Ok(match message {
             Message::User(u) => Content {
                 role: Role::User,
-                parts: u.content.into_iter().map(Into::into).collect(),
+                parts: u
+                    .content
+                    .into_iter()
+                    .map(TryInto::try_into)
+                    .collect::<crate::Result<_>>()?,
             },
             Message::Assistant(a) => {
                 let part = match a.content {

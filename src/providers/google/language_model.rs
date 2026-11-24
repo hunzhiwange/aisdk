@@ -25,10 +25,7 @@ impl<M: ModelName> LanguageModel for Google<M> {
         &mut self,
         options: LanguageModelOptions,
     ) -> Result<LanguageModelResponse> {
-        let mut options: client::GoogleOptions = options.try_into()?;
-        options.model = self.lm_options.model.clone();
-        options.streaming = false;
-        self.lm_options = options;
+        self.lm_options = client::GoogleOptions::for_model(options, &self.lm_options.model, false)?;
 
         let response: types::GenerateContentResponse = self.send(&self.settings.base_url).await?;
 
@@ -61,10 +58,7 @@ impl<M: ModelName> LanguageModel for Google<M> {
     }
 
     async fn stream_text(&mut self, options: LanguageModelOptions) -> Result<ProviderStream> {
-        let mut options: client::GoogleOptions = options.try_into()?;
-        options.model = self.lm_options.model.clone();
-        options.streaming = true;
-        self.lm_options = options;
+        self.lm_options = client::GoogleOptions::for_model(options, &self.lm_options.model, true)?;
 
         // Retry logic for rate limiting
         let max_retries = 5;
@@ -756,3 +750,7 @@ mod tests {
         assert!(request.contains("\"topP\":0.95"));
     }
 }
+
+#[cfg(test)]
+#[path = "media_input_tests.rs"]
+mod media_input_tests;

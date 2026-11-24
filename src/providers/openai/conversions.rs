@@ -20,16 +20,24 @@ impl From<UserImageDetail> for types::ImageDetail {
     }
 }
 
-impl From<UserContentPart> for types::ContentType {
-    fn from(value: UserContentPart) -> Self {
-        match value {
+impl TryFrom<UserContentPart> for types::ContentType {
+    type Error = crate::Error;
+
+    fn try_from(value: UserContentPart) -> crate::Result<Self> {
+        Ok(match value {
             UserContentPart::Text(text) => types::ContentType::InputText { text },
             UserContentPart::Image(image) => types::ContentType::InputImage {
                 detail: image.detail.into(),
                 file_id: None,
                 image_url: Some(image.image_url),
             },
-        }
+            UserContentPart::Audio(_) | UserContentPart::Video(_) => {
+                return Err(crate::Error::InvalidInput(
+                    "OpenAI Responses does not support native audio or video input in this SDK"
+                        .into(),
+                ));
+            }
+        })
     }
 }
 
@@ -189,7 +197,11 @@ impl TryFrom<Message> for Option<types::InputItem> {
                 _ => None,
             },
             Message::User(u) => Some(types::InputItem::Item(types::MessageItem::InputMessage {
-                content: u.content.into_iter().map(Into::into).collect(),
+                content: u
+                    .content
+                    .into_iter()
+                    .map(TryInto::try_into)
+                    .collect::<crate::Result<_>>()?,
                 role: types::Role::User,
                 type_: "message".to_string(),
             })),

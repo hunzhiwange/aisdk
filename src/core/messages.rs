@@ -101,6 +101,115 @@ fn infer_image_media_type_from_url(url: &str) -> Option<&'static str> {
     }
 }
 
+/// Source of a native audio or video input.
+#[derive(Clone, PartialEq, Eq)]
+pub enum UserMediaSource {
+    /// Encoded media bytes in the declared MIME type.
+    Bytes(Vec<u8>),
+    /// An HTTPS URL accessible to the provider.
+    Url(String),
+}
+
+impl std::fmt::Debug for UserMediaSource {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Bytes(bytes) => f.debug_struct("Bytes").field("len", &bytes.len()).finish(),
+            Self::Url(_) => f.write_str("Url(..)"),
+        }
+    }
+}
+
+#[cfg(any(feature = "google", feature = "openaichatcompletions"))]
+impl UserMediaSource {
+    pub(crate) fn validate(&self, mime_type: &str, kind: &str) -> crate::Result<()> {
+        let valid_mime = mime_type.split_once('/').is_some_and(|(ty, subtype)| {
+            ty.eq_ignore_ascii_case(kind)
+                && !subtype.is_empty()
+                && subtype.bytes().all(|byte| {
+                    byte.is_ascii_alphanumeric() || matches!(byte, b'-' | b'.' | b'+' | b'_')
+                })
+        });
+        if !valid_mime {
+            return Err(crate::Error::InvalidInput(format!(
+                "expected a valid {kind} MIME type"
+            )));
+        }
+
+        match self {
+            Self::Bytes(bytes) if bytes.is_empty() => {
+                Err(crate::Error::InvalidInput(format!("{kind} input is empty")))
+            }
+            Self::Url(url)
+                if !reqwest::Url::parse(url).is_ok_and(|url| {
+                    url.scheme() == "https"
+                        && url.host().is_some()
+                        && url.username().is_empty()
+                        && url.password().is_none()
+                }) =>
+            {
+                Err(crate::Error::InvalidInput(format!(
+                    "{kind} input requires a valid HTTPS URL"
+                )))
+            }
+            _ => Ok(()),
+        }
+    }
+}
+
+/// A native user audio input.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct UserAudio {
+    /// MIME type of the encoded audio, such as `audio/wav`.
+    pub mime_type: String,
+    /// Audio bytes or an HTTPS reference.
+    pub source: UserMediaSource,
+}
+
+impl UserAudio {
+    /// Creates an audio input from encoded bytes and their MIME type.
+    pub fn from_bytes(mime_type: impl Into<String>, bytes: impl Into<Vec<u8>>) -> Self {
+        Self {
+            mime_type: mime_type.into(),
+            source: UserMediaSource::Bytes(bytes.into()),
+        }
+    }
+
+    /// Creates an audio input from an HTTPS URL and its MIME type.
+    pub fn from_url(mime_type: impl Into<String>, url: impl Into<String>) -> Self {
+        Self {
+            mime_type: mime_type.into(),
+            source: UserMediaSource::Url(url.into()),
+        }
+    }
+}
+
+/// A native user video input.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct UserVideo {
+    /// MIME type of the encoded video, such as `video/mp4`.
+    pub mime_type: String,
+    /// Video bytes or an HTTPS reference.
+    pub source: UserMediaSource,
+}
+
+impl UserVideo {
+    /// Creates a video input from encoded bytes and their MIME type.
+    pub fn from_bytes(mime_type: impl Into<String>, bytes: impl Into<Vec<u8>>) -> Self {
+        Self {
+            mime_type: mime_type.into(),
+            source: UserMediaSource::Bytes(bytes.into()),
+        }
+    }
+
+    /// Creates a video input from an HTTPS URL and its MIME type.
+    pub fn from_url(mime_type: impl Into<String>, url: impl Into<String>) -> Self {
+        Self {
+            mime_type: mime_type.into(),
+            source: UserMediaSource::Url(url.into()),
+        }
+    }
+}
+
 /// A single content part in a user message.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum UserContentPart {
@@ -108,6 +217,10 @@ pub enum UserContentPart {
     Text(String),
     /// An image referenced by URL.
     Image(UserImage),
+    /// A native audio input.
+    Audio(UserAudio),
+    /// A native video input.
+    Video(UserVideo),
 }
 
 impl UserContentPart {
@@ -126,6 +239,8 @@ impl UserContentPart {
         match self {
             Self::Text(text) => text.clone(),
             Self::Image(image) => image.fallback_text(),
+            Self::Audio(_) => "[audio]".to_string(),
+            Self::Video(_) => "[video]".to_string(),
         }
     }
 }
@@ -145,6 +260,18 @@ impl From<&str> for UserContentPart {
 impl From<UserImage> for UserContentPart {
     fn from(value: UserImage) -> Self {
         Self::Image(value)
+    }
+}
+
+impl From<UserAudio> for UserContentPart {
+    fn from(value: UserAudio) -> Self {
+        Self::Audio(value)
+    }
+}
+
+impl From<UserVideo> for UserContentPart {
+    fn from(value: UserVideo) -> Self {
+        Self::Video(value)
     }
 }
 
@@ -314,6 +441,18 @@ impl UserMessage {
     /// Appends an image URL part to the user message.
     pub fn with_image_url(self, image_url: impl Into<String>) -> Self {
         self.with_image(UserImage::new(image_url))
+    }
+
+    /// Appends a native audio part to the user message.
+    pub fn with_audio(mut self, audio: UserAudio) -> Self {
+        self.content.push(audio.into());
+        self
+    }
+
+    /// Appends a native video part to the user message.
+    pub fn with_video(mut self, video: UserVideo) -> Self {
+        self.content.push(video.into());
+        self
     }
 
     #[allow(dead_code)]

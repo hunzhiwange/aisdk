@@ -9,11 +9,13 @@ use crate::providers::anthropic::client::{
 };
 use crate::providers::anthropic::extensions;
 
-impl From<UserContentPart>
+impl TryFrom<UserContentPart>
     for crate::providers::anthropic::client::AnthropicUserMessageContentBlock
 {
-    fn from(value: UserContentPart) -> Self {
-        match value {
+    type Error = crate::Error;
+
+    fn try_from(value: UserContentPart) -> crate::Result<Self> {
+        Ok(match value {
             UserContentPart::Text(text) => {
                 crate::providers::anthropic::client::AnthropicUserMessageContentBlock::Text { text }
             }
@@ -30,7 +32,12 @@ impl From<UserContentPart>
                     source,
                 }
             }
-        }
+            UserContentPart::Audio(_) | UserContentPart::Video(_) => {
+                return Err(crate::Error::InvalidInput(
+                    "Anthropic does not support native audio or video input in this SDK".into(),
+                ));
+            }
+        })
     }
 }
 
@@ -69,7 +76,11 @@ impl TryFrom<LanguageModelOptions> for AnthropicOptions {
                     }
                 }
                 Message::User(u) => {
-                    let blocks: Vec<_> = u.content.into_iter().map(Into::into).collect();
+                    let blocks = u
+                        .content
+                        .into_iter()
+                        .map(TryInto::try_into)
+                        .collect::<crate::Result<Vec<_>>>()?;
                     let content = if blocks.len() == 1 {
                         match blocks.into_iter().next().expect("single block should exist") {
                             crate::providers::anthropic::client::AnthropicUserMessageContentBlock::Text {
