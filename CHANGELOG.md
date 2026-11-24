@@ -17,6 +17,19 @@ Changelog entries are grouped by type, with the following types:
 
 ## [Unreleased] - ReleaseDate
 
+## [0.7.2] - 2026-11-24
+
+### Added
+
+- Added typed native tool discovery and OpenAI Responses tool search support,
+  including streamed search calls and namespaced tool calls.
+
+### Fixed
+
+- Completed ordinary OpenAI Responses tool calls after native tool search.
+- Preserved the underlying error chain when response streams disconnect.
+- Fixed unused native tool validation methods in default builds.
+
 ## [0.7.1] - 2026-10-23
 
 ### Changed
@@ -183,7 +196,8 @@ Changelog entries are grouped by type, with the following types:
 - Rebranded to aisdk
 
 <!-- next-url -->
-[Unreleased]: https://github.com/hunzhiwange/aisdk/compare/v0.7.1...HEAD
+[Unreleased]: https://github.com/hunzhiwange/aisdk/compare/v0.7.2...HEAD
+[0.7.2]: https://github.com/hunzhiwange/aisdk/compare/v0.7.1...v0.7.2
 [0.7.1]: https://github.com/hunzhiwange/aisdk/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/hunzhiwange/aisdk/compare/v0.6.2...v0.7.0
 [0.6.2]: https://github.com/hunzhiwange/aisdk/compare/v0.6.1...v0.6.2
