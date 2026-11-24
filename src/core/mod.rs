@@ -7,6 +7,7 @@
 //! Key types like `GenerateTextCallOptions` and `GenerateTextResponse` are also
 //! re-exported for convenient access.
 
+pub mod audio_model;
 pub mod capabilities;
 pub mod client;
 pub mod embedding_model;
@@ -20,6 +21,10 @@ pub mod utils;
 pub mod video_model;
 
 // Re-export key components to provide a clean public API.
+pub use audio_model::{
+    AudioFile, AudioFormat, AudioModel, AudioModelError, SpeechAudio, SpeechOptions,
+    SpeechResponse, TranscriptionFormat, TranscriptionOptions, TranscriptionResponse,
+};
 pub use capabilities::DynamicModel;
 pub use language_model::{LanguageModel, LanguageModelStreamChunkType};
 #[cfg(feature = "language-model-request")]

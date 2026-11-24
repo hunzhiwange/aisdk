@@ -1,5 +1,6 @@
 //! OpenAI provider implementation.
 
+pub mod audio_model;
 pub mod capabilities;
 pub mod client;
 pub mod conversions;
@@ -264,6 +265,9 @@ impl<M: ModelName> OpenAIBuilder<M> {
 
 // Re-exports Models for convenience
 pub use capabilities::*;
+
+#[cfg(test)]
+mod audio_model_tests;
 
 #[cfg(test)]
 mod native_tool_search_tests;
