@@ -14,6 +14,10 @@ use crate::providers::google::client::types::{
     ImageConfig, Part, Role,
 };
 use async_trait::async_trait;
+use base64::Engine as _;
+
+const MAX_IMAGE_BYTES: usize = 32 * 1024 * 1024;
+const MAX_RESPONSE_BYTES: usize = 128 * 1024 * 1024;
 
 #[async_trait]
 impl<M> ImageModel for Google<M>
@@ -87,7 +91,7 @@ where
             });
         let url = join_url(&self.settings.base_url, &path)?;
 
-        let response: GenerateContentResponse = reqwest::Client::new()
+        let mut response = reqwest::Client::new()
             .post(url)
             .headers(headers)
             .body(body)
@@ -101,23 +105,47 @@ where
             .map_err(|error| Error::ApiError {
                 status_code: error.status(),
                 details: error.to_string(),
-            })?
-            .json()
-            .await
-            .map_err(|error| Error::ApiError {
-                status_code: None,
-                details: format!("failed to parse google image response: {error}"),
             })?;
+        if response
+            .content_length()
+            .is_some_and(|length| length > MAX_RESPONSE_BYTES as u64)
+        {
+            return Err(google_image_response_error(
+                "image response exceeds the size limit",
+            ));
+        }
+        let mut body = Vec::new();
+        while let Some(chunk) = response.chunk().await.map_err(|error| Error::ApiError {
+            status_code: error.status(),
+            details: "failed to read google image response".into(),
+        })? {
+            if chunk.len() > MAX_RESPONSE_BYTES - body.len() {
+                return Err(google_image_response_error(
+                    "image response exceeds the size limit",
+                ));
+            }
+            body.extend_from_slice(&chunk);
+        }
+        let response: GenerateContentResponse = serde_json::from_slice(&body).map_err(|error| {
+            google_image_response_error(&format!("failed to parse google image response: {error}"))
+        })?;
 
-        let images = response
+        let mut images = Vec::new();
+        for data in response
             .candidates
             .into_iter()
-            .flat_map(|candidate| candidate.content.parts.into_iter())
-            .filter_map(|part| {
-                part.inline_data
-                    .and_then(|data| data.mime_type.starts_with("image/").then_some(data.data))
-            })
-            .collect();
+            .flat_map(|candidate| candidate.content.parts)
+            .filter_map(|part| part.inline_data)
+            .filter(|data| is_image_media_type(&data.mime_type))
+        {
+            validate_image_data(&data.data).map_err(google_image_response_error)?;
+            images.push(data.data);
+        }
+        if images.is_empty() {
+            return Err(google_image_response_error(
+                "image response contains no inline images",
+            ));
+        }
 
         Ok(ImageModelResponse {
             images,
@@ -141,23 +169,42 @@ fn google_warnings(input: &ImageModelOptions) -> Vec<ImageModelWarning> {
         });
     }
 
+    if input.mask.is_some() {
+        warnings.push(ImageModelWarning::Unsupported {
+            feature: "mask",
+            details: None,
+        });
+    }
+
     warnings
 }
 
 fn user_image_to_google_part(image: &UserImage) -> Result<Part> {
     if let Some((mime_type, data)) = image.inline_data() {
+        if !is_image_media_type(&mime_type) {
+            return Err(Error::InvalidInput(
+                "input data URL requires an image MIME type".into(),
+            ));
+        }
+        validate_image_data(&data).map_err(|details| Error::InvalidInput(details.into()))?;
         return Ok(Part {
             inline_data: Some(Blob { mime_type, data }),
             ..Default::default()
         });
     }
 
-    let mime_type = image.resolved_media_type().ok_or_else(|| {
-        Error::InvalidInput(
-            "input image requires an explicit media type or a URL with a known image extension"
-                .to_string(),
-        )
-    })?;
+    if image.image_url.starts_with("data:") {
+        return Err(Error::InvalidInput("invalid image data URL".into()));
+    }
+    let mime_type = image
+        .resolved_media_type()
+        .filter(|mime_type| is_image_media_type(mime_type))
+        .ok_or_else(|| {
+            Error::InvalidInput(
+                "input image requires an explicit media type or a URL with a known image extension"
+                    .to_string(),
+            )
+        })?;
 
     Ok(Part {
         file_data: Some(FileData {
@@ -166,6 +213,32 @@ fn user_image_to_google_part(image: &UserImage) -> Result<Part> {
         }),
         ..Default::default()
     })
+}
+
+fn is_image_media_type(value: &str) -> bool {
+    value
+        .split_once('/')
+        .is_some_and(|(kind, subtype)| kind.eq_ignore_ascii_case("image") && !subtype.is_empty())
+}
+
+fn validate_image_data(data: &str) -> std::result::Result<(), &'static str> {
+    if data.is_empty() || data.len() > MAX_IMAGE_BYTES.div_ceil(3) * 4 {
+        return Err("base64 image is empty or exceeds the size limit");
+    }
+    let bytes = base64::engine::general_purpose::STANDARD
+        .decode(data)
+        .map_err(|_| "invalid base64 image")?;
+    if bytes.len() > MAX_IMAGE_BYTES {
+        return Err("base64 image exceeds the size limit");
+    }
+    Ok(())
+}
+
+fn google_image_response_error(details: &str) -> Error {
+    Error::ApiError {
+        status_code: None,
+        details: details.into(),
+    }
 }
 
 #[cfg(test)]

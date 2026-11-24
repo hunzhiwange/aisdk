@@ -12,6 +12,13 @@ use crate::providers::openai::OpenAI;
 use async_trait::async_trait;
 use base64::Engine as _;
 use reqwest::header::CONTENT_TYPE;
+use reqwest::{Url, redirect};
+use std::net::IpAddr;
+use std::time::Duration;
+
+const MAX_IMAGE_BYTES: usize = 32 * 1024 * 1024;
+const MAX_RESPONSE_BYTES: usize = 128 * 1024 * 1024;
+const DOWNLOAD_TIMEOUT: Duration = Duration::from_secs(30);
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize)]
@@ -35,7 +42,8 @@ struct OpenAIImageResponse {
 
 #[derive(Debug, Clone, Deserialize)]
 struct OpenAIImageData {
-    b64_json: String,
+    b64_json: Option<String>,
+    url: Option<String>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -54,6 +62,12 @@ where
     async fn generate_image(&self, input: ImageModelOptions) -> Result<ImageModelResponse> {
         let model_name = self.lm_options.model.clone();
         let warnings = openai_warnings(&input);
+
+        if input.files.is_empty() && input.mask.is_some() {
+            return Err(Error::InvalidInput(
+                "an edit mask requires an input image".into(),
+            ));
+        }
 
         let response: OpenAIImageResponse = if input.files.is_empty() {
             let request = OpenAIImageGenerationRequest {
@@ -112,11 +126,17 @@ where
             }
 
             for file in &input.files {
-                form = form.part("image", image_to_multipart_part(file, "image").await?);
+                form = form.part(
+                    "image",
+                    image_to_multipart_part(file, "image", &self.settings.base_url).await?,
+                );
             }
 
             if let Some(mask) = &input.mask {
-                form = form.part("mask", image_to_multipart_part(mask, "mask").await?);
+                form = form.part(
+                    "mask",
+                    image_to_multipart_part(mask, "mask", &self.settings.base_url).await?,
+                );
             }
 
             for (key, value) in merge_extra_body(self.settings.body.as_ref(), input.body.as_ref()) {
@@ -134,12 +154,34 @@ where
             send_multipart_request(url, headers, form).await?
         };
 
+        if response.data.is_empty() {
+            return Err(image_response_error("image response contains no results"));
+        }
+        let mut images = Vec::new();
+        let mut encoded_bytes = 0;
+        for item in response.data {
+            let image = if let Some(data) = item.b64_json {
+                decode_image(&data).map_err(image_response_error)?;
+                data
+            } else if let Some(url) = item.url {
+                let (bytes, _) = download_image(&url, None, &self.settings.base_url).await?;
+                base64::engine::general_purpose::STANDARD.encode(bytes)
+            } else {
+                return Err(image_response_error(
+                    "image result contains neither b64_json nor url",
+                ));
+            };
+            encoded_bytes += image.len();
+            if encoded_bytes > MAX_RESPONSE_BYTES {
+                return Err(image_response_error(
+                    "encoded image results exceed the size limit",
+                ));
+            }
+            images.push(image);
+        }
+
         Ok(ImageModelResponse {
-            images: response
-                .data
-                .into_iter()
-                .map(|item| item.b64_json)
-                .collect(),
+            images,
             usage: response.usage.map(|usage| ImageModelUsage {
                 input_tokens: usage.input_tokens,
                 output_tokens: usage.output_tokens,
@@ -185,8 +227,9 @@ fn has_default_response_format(model_name: &str) -> bool {
 async fn image_to_multipart_part(
     image: &UserImage,
     fallback_name: &str,
+    base_url: &str,
 ) -> Result<reqwest::multipart::Part> {
-    let (bytes, media_type) = load_image_bytes(image).await?;
+    let (bytes, media_type) = load_image_bytes(image, base_url).await?;
     let file_name = infer_file_name(image, fallback_name, &media_type);
 
     reqwest::multipart::Part::bytes(bytes)
@@ -195,54 +238,247 @@ async fn image_to_multipart_part(
         .map_err(|error| Error::InvalidInput(format!("invalid image media type: {error}")))
 }
 
-async fn load_image_bytes(image: &UserImage) -> Result<(Vec<u8>, String)> {
+async fn load_image_bytes(image: &UserImage, base_url: &str) -> Result<(Vec<u8>, String)> {
     if let Some((media_type, data)) = image.inline_data() {
-        let bytes = base64::engine::general_purpose::STANDARD
-            .decode(data)
-            .map_err(|error| {
-                Error::InvalidInput(format!("failed to decode data url image payload: {error}"))
-            })?;
+        let media_type = image_media_type(&media_type).ok_or_else(|| {
+            Error::InvalidInput("input data URL requires an image MIME type".into())
+        })?;
+        let bytes = decode_image(&data).map_err(|details| Error::InvalidInput(details.into()))?;
         return Ok((bytes, media_type));
     }
 
-    let media_type = image.resolved_media_type().ok_or_else(|| {
-        Error::InvalidInput(
-            "input image requires an explicit media type or a URL with a known image extension"
-                .to_string(),
-        )
-    })?;
+    if image.image_url.starts_with("data:") {
+        return Err(Error::InvalidInput("invalid image data URL".into()));
+    }
+    let media_type = image.resolved_media_type();
+    if let Some(media_type) = image.media_type.as_deref()
+        && image_media_type(media_type).is_none()
+    {
+        return Err(Error::InvalidInput(
+            "input requires an image MIME type".into(),
+        ));
+    }
+    download_image(&image.image_url, media_type.as_deref(), base_url).await
+}
 
-    let response = reqwest::Client::new()
-        .get(&image.image_url)
+fn decode_image(data: &str) -> std::result::Result<Vec<u8>, &'static str> {
+    if data.is_empty() || data.len() > MAX_IMAGE_BYTES.div_ceil(3) * 4 {
+        return Err("base64 image is empty or exceeds the size limit");
+    }
+    let bytes = base64::engine::general_purpose::STANDARD
+        .decode(data)
+        .map_err(|_| "invalid base64 image")?;
+    if bytes.len() > MAX_IMAGE_BYTES {
+        return Err("base64 image exceeds the size limit");
+    }
+    Ok(bytes)
+}
+
+fn image_media_type(value: &str) -> Option<String> {
+    let mime = value.split(';').next()?.trim().to_ascii_lowercase();
+    let subtype = mime.strip_prefix("image/")?;
+    (!subtype.is_empty()
+        && subtype
+            .bytes()
+            .all(|byte| byte.is_ascii_alphanumeric() || b"!#$&^_.+-".contains(&byte)))
+    .then_some(mime)
+}
+
+fn image_response_error(details: &str) -> Error {
+    Error::ApiError {
+        status_code: None,
+        details: details.into(),
+    }
+}
+
+async fn download_image(
+    url: &str,
+    fallback_media_type: Option<&str>,
+    base_url: &str,
+) -> Result<(Vec<u8>, String)> {
+    let url = Url::parse(url).map_err(|_| image_response_error("invalid image URL"))?;
+    let host = url
+        .host_str()
+        .ok_or_else(|| image_response_error("invalid image URL host"))?;
+    let ip = host.trim_matches(['[', ']']).parse::<IpAddr>().ok();
+    // A locally configured provider may serve its own media on the same origin.
+    let local_provider = ip.is_some_and(|ip| ip.to_canonical().is_loopback())
+        && Url::parse(base_url).is_ok_and(|base| base.origin() == url.origin());
+
+    if (url.scheme() != "https" && !(local_provider && url.scheme() == "http"))
+        || !url.username().is_empty()
+        || url.password().is_some()
+    {
+        return Err(image_response_error(
+            "image URL requires HTTPS without credentials",
+        ));
+    }
+
+    let mut client = reqwest::Client::builder()
+        .no_proxy()
+        .redirect(redirect::Policy::none())
+        .timeout(DOWNLOAD_TIMEOUT);
+    if let Some(ip) = ip {
+        if !local_provider && !is_public_image_address(ip) {
+            return Err(image_response_error(
+                "image URL points to a non-public address",
+            ));
+        }
+    } else {
+        let port = url.port_or_known_default().unwrap_or(443);
+        let addresses: Vec<_> =
+            tokio::time::timeout(DOWNLOAD_TIMEOUT, tokio::net::lookup_host((host, port)))
+                .await
+                .ok()
+                .and_then(std::result::Result::ok)
+                .ok_or_else(|| image_response_error("failed to resolve image URL host"))?
+                .collect();
+        if addresses.is_empty()
+            || addresses
+                .iter()
+                .any(|addr| !is_public_image_address(addr.ip()))
+        {
+            return Err(image_response_error(
+                "image URL points to a non-public address",
+            ));
+        }
+        // Use the validated DNS answers for the connection as well.
+        client = client.resolve_to_addrs(host, &addresses);
+    }
+
+    let response = client
+        .build()
+        .map_err(|_| image_response_error("failed to prepare image download"))?
+        .get(url)
         .send()
         .await
-        .map_err(|error| Error::ApiError {
-            status_code: error.status(),
-            details: error.to_string(),
-        })?;
+        .map_err(|_| image_response_error("failed to download image"))?;
     let status = response.status();
-    let bytes = response.bytes().await.map_err(|error| Error::ApiError {
-        status_code: Some(status),
-        details: format!("failed to read image bytes: {error}"),
-    })?;
-
     if !status.is_success() {
         return Err(Error::ApiError {
             status_code: Some(status),
-            details: String::from_utf8_lossy(&bytes).into_owned(),
+            details: "image download returned an unsuccessful status".into(),
         });
     }
 
-    Ok((bytes.to_vec(), media_type))
+    let content_type = response
+        .headers()
+        .get(CONTENT_TYPE)
+        .map(|value| {
+            value
+                .to_str()
+                .map_err(|_| image_response_error("invalid image download MIME type"))
+        })
+        .transpose()?;
+    let media_type =
+        match content_type {
+            None => None,
+            Some(value)
+                if value.split(';').next().is_some_and(|mime| {
+                    mime.trim().eq_ignore_ascii_case("application/octet-stream")
+                }) =>
+            {
+                None
+            }
+            Some(value) => Some(image_media_type(value).ok_or_else(|| {
+                image_response_error("image download requires an image MIME type")
+            })?),
+        };
+
+    let bytes = read_limited_body(response, MAX_IMAGE_BYTES).await?;
+    if bytes.is_empty() {
+        return Err(image_response_error(
+            "image download returned an empty body",
+        ));
+    }
+    let media_type = media_type
+        .or_else(|| infer_download_media_type(&bytes).map(str::to_string))
+        .or_else(|| fallback_media_type.and_then(image_media_type))
+        .ok_or_else(|| image_response_error("image download requires an image MIME type"))?;
+    Ok((bytes, media_type))
+}
+
+fn infer_download_media_type(bytes: &[u8]) -> Option<&'static str> {
+    match bytes {
+        [0x89, b'P', b'N', b'G', b'\r', b'\n', 0x1a, b'\n', ..] => Some("image/png"),
+        [0xff, 0xd8, 0xff, ..] => Some("image/jpeg"),
+        [
+            b'R',
+            b'I',
+            b'F',
+            b'F',
+            _,
+            _,
+            _,
+            _,
+            b'W',
+            b'E',
+            b'B',
+            b'P',
+            ..,
+        ] => Some("image/webp"),
+        [b'G', b'I', b'F', b'8', b'7' | b'9', b'a', ..] => Some("image/gif"),
+        _ => None,
+    }
+}
+
+fn is_public_image_address(ip: IpAddr) -> bool {
+    match ip.to_canonical() {
+        IpAddr::V4(ip) => {
+            let [a, b, c, _] = ip.octets();
+            !(ip.is_private()
+                || ip.is_loopback()
+                || ip.is_link_local()
+                || ip.is_documentation()
+                || a == 0
+                || a >= 224
+                || (a == 100 && (64..=127).contains(&b))
+                || (a == 192 && ((b == 0 && c == 0) || (b == 88 && c == 99)))
+                || (a == 198 && (18..=19).contains(&b)))
+        }
+        IpAddr::V6(ip) => {
+            let [a, b, ..] = ip.segments();
+            // Global unicast only, excluding reserved protocol assignments and transition ranges.
+            (a & 0xe000) == 0x2000
+                && a != 0x2002
+                && (a != 0x2001 || (b >= 0x0200 && b != 0x0db8))
+                && (a & 0xfff0) != 0x3ff0
+        }
+    }
+}
+
+async fn read_limited_body(mut response: reqwest::Response, max_bytes: usize) -> Result<Vec<u8>> {
+    if response
+        .content_length()
+        .is_some_and(|length| length > max_bytes as u64)
+    {
+        return Err(image_response_error(
+            "image response exceeds the size limit",
+        ));
+    }
+    let mut bytes = Vec::new();
+    while let Some(chunk) = response
+        .chunk()
+        .await
+        .map_err(|_| image_response_error("failed to read image response body"))?
+    {
+        if chunk.len() > max_bytes - bytes.len() {
+            return Err(image_response_error(
+                "image response exceeds the size limit",
+            ));
+        }
+        bytes.extend_from_slice(&chunk);
+    }
+    Ok(bytes)
 }
 
 fn infer_file_name(image: &UserImage, fallback_name: &str, media_type: &str) -> String {
-    let path = image
-        .image_url
-        .split(['?', '#'])
-        .next()
-        .unwrap_or(&image.image_url);
-    let candidate = path.rsplit('/').next().unwrap_or_default();
+    let url = Url::parse(&image.image_url).ok();
+    let candidate = url
+        .as_ref()
+        .and_then(Url::path_segments)
+        .and_then(|mut segments| segments.next_back())
+        .unwrap_or_default();
 
     if !candidate.is_empty() && candidate.contains('.') {
         return candidate.to_string();
@@ -331,19 +567,16 @@ where
     T: for<'de> Deserialize<'de>,
 {
     let status = response.status();
-    let body = response.text().await.map_err(|error| Error::ApiError {
-        status_code: error.status(),
-        details: format!("failed to read response body: {error}"),
-    })?;
+    let body = read_limited_body(response, MAX_RESPONSE_BYTES).await?;
 
     if !status.is_success() {
         return Err(Error::ApiError {
             status_code: Some(status),
-            details: body,
+            details: String::from_utf8_lossy(&body).into_owned(),
         });
     }
 
-    serde_json::from_str(&body).map_err(|error| Error::ApiError {
+    serde_json::from_slice(&body).map_err(|error| Error::ApiError {
         status_code: Some(status),
         details: format!("failed to parse response: {error}"),
     })
@@ -489,3 +722,7 @@ mod tests {
         assert_eq!(response.warnings.len(), 2);
     }
 }
+
+#[cfg(all(test, feature = "image-model-request"))]
+#[path = "image_model_media_tests.rs"]
+mod media_tests;
