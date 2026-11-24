@@ -181,6 +181,11 @@ pub type Messages = Vec<Message>;
 
 impl Message {
     /// Reject native history before conversion to a provider without native support.
+    #[cfg(any(
+        feature = "anthropic",
+        feature = "google",
+        feature = "openaichatcompletions"
+    ))]
     pub(crate) fn reject_native_tool_protocol(&self, provider: &str) -> crate::Result<()> {
         let native = match self {
             Self::ToolSearchOutput(_) => true,

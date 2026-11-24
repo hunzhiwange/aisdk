@@ -287,6 +287,11 @@ impl Debug for LanguageModelOptions {
 
 impl LanguageModelOptions {
     /// Reject native declarations and history before an unsupported provider sends a request.
+    #[cfg(any(
+        feature = "anthropic",
+        feature = "google",
+        feature = "openaichatcompletions"
+    ))]
     pub(crate) fn reject_native_tool_protocol(&self, provider: &str) -> Result<()> {
         if self
             .native_tools
