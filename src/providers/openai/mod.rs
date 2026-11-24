@@ -8,6 +8,7 @@ pub mod embedding_model;
 pub mod image_model;
 pub mod language_model;
 pub mod settings;
+pub mod video_model;
 
 use crate::core::DynamicModel;
 use crate::core::capabilities::ModelName;
@@ -269,3 +270,6 @@ mod native_tool_search_tests;
 
 #[cfg(test)]
 mod native_tool_search_stream_tests;
+
+#[cfg(test)]
+mod video_model_tests;

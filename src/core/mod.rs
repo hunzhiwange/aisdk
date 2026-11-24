@@ -17,6 +17,7 @@ pub mod model_ref;
 pub mod provider;
 pub mod tools;
 pub mod utils;
+pub mod video_model;
 
 // Re-export key components to provide a clean public API.
 pub use capabilities::DynamicModel;
@@ -44,6 +45,10 @@ pub use provider::Provider;
 pub use tools::{
     FunctionToolSpec, LoadableToolSpec, NamespaceToolSpec, NativeToolSpec, Tool, ToolCallInfo,
     ToolContext, ToolResultInfo, ToolSearchCall, ToolSearchExecution, ToolSearchOutput,
+};
+pub use video_model::{
+    VideoContent, VideoJob, VideoJobStatus, VideoModel, VideoModelError, VideoModelOptions,
+    VideoReferenceImage,
 };
 
 #[cfg(test)]
