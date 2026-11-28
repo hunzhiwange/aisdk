@@ -290,7 +290,7 @@ model_capabilities! {
             model_name: "gemini-3.1-flash-lite-image",
             constructor_name: gemini_3_1_flash_lite_image,
             display_name: "Nano Banana 2 Lite",
-            capabilities: [ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Gemini31ProPreview {
             model_name: "gemini-3.1-pro-preview",
@@ -327,6 +327,18 @@ model_capabilities! {
             constructor_name: gemini_4_argon,
             display_name: "Gemini 4 Argon",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Gemma426bA4bItFree {
+            model_name: "gemma-4-26b-a4b-it-free",
+            constructor_name: gemma_4_26b_a4b_it_free,
+            display_name: "Gemma 4 26B A4B IT (free)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gemma431bItFree {
+            model_name: "gemma-4-31b-it-free",
+            constructor_name: gemma_4_31b_it_free,
+            display_name: "Gemma 4 31B IT (free)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Glm45v {
             model_name: "glm-4.5v",
@@ -381,6 +393,18 @@ model_capabilities! {
             constructor_name: glm_5v_turbo,
             display_name: "GLM 5 Vision Turbo",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Gpt41Mini {
+            model_name: "gpt-4.1-mini",
+            constructor_name: gpt_4_1_mini,
+            display_name: "GPT-4.1 mini",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt4o {
+            model_name: "gpt-4o",
+            constructor_name: gpt_4o,
+            display_name: "GPT-4o",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gpt5 {
             model_name: "gpt-5",
@@ -519,6 +543,12 @@ model_capabilities! {
             constructor_name: gpt_image_2_5_sunburst,
             display_name: "GPT Image 2.5 Sunburst",
             capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
+        },
+        Grok4FastNonReasoning {
+            model_name: "grok-4-fast-non-reasoning",
+            constructor_name: grok_4_fast_non_reasoning,
+            display_name: "Grok 4 Fast (Non-Reasoning)",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Grok43 {
             model_name: "grok-4.3",
@@ -693,6 +723,12 @@ model_capabilities! {
             constructor_name: o4_mini,
             display_name: "o4-mini",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen3CoderNext {
+            model_name: "qwen3-coder-next",
+            constructor_name: qwen3_coder_next,
+            display_name: "Qwen3 Coder Next",
+            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Qwen3VlPlus {
             model_name: "qwen3-vl-plus",

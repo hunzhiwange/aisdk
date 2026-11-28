@@ -10,18 +10,6 @@ use crate::providers::melious::Melious;
 model_capabilities! {
     provider: Melious,
     models: {
-        Clef {
-            model_name: "clef",
-            constructor_name: clef,
-            display_name: "Clef",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport]
-        },
-        ClefFlash {
-            model_name: "clef-flash",
-            constructor_name: clef_flash,
-            display_name: "Clef Flash",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport]
-        },
         DeepseekV4Flash0731 {
             model_name: "deepseek-v4-flash-0731",
             constructor_name: deepseek_v4_flash_0731,

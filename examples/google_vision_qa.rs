@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         });
 
         let response = LanguageModelRequest::builder()
-            .model(Google::gemini_2_5_pro())
+            .model(Google::gemini_3_1_pro_preview())
             .messages(vec![Message::User(
                 UserMessage::new(question).with_image_url(image_url),
             )])

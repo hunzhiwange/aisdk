@@ -46,7 +46,7 @@ impl<M: LanguageModel> LanguageModelRequest<M> {
     ///
     ///    async fn main() -> Result<(), Box<dyn std::error::Error>> {
     ///
-    ///        let openai = OpenAI::gpt_5();
+    ///        let openai = OpenAI::gpt_5_2();
     ///
     ///        let mut stream = LanguageModelRequest::builder()
     ///            .model(openai)

@@ -22,6 +22,12 @@ model_capabilities! {
             display_name: "DeepSeek V4.1 Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        ClinePassDeepseekV41Flash1017 {
+            model_name: "cline-pass/deepseek-v4.1-flash-1017",
+            constructor_name: cline_pass_deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         ClinePassGlm53 {
             model_name: "cline-pass/glm-5.3",
             constructor_name: cline_pass_glm_5_3,
@@ -40,22 +46,34 @@ model_capabilities! {
             display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        ClinePassMimoV25 {
-            model_name: "cline-pass/mimo-v2.5",
-            constructor_name: cline_pass_mimo_v2_5,
-            display_name: "MiMo-V2.5",
+        ClinePassKimiK31Pro {
+            model_name: "cline-pass/kimi-k3.1-pro",
+            constructor_name: cline_pass_kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        ClinePassMimoV26Flash {
+            model_name: "cline-pass/mimo-v2.6-flash",
+            constructor_name: cline_pass_mimo_v2_6_flash,
+            display_name: "MiMo-V2.6-Flash",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        ClinePassMimoV25Pro {
-            model_name: "cline-pass/mimo-v2.5-pro",
-            constructor_name: cline_pass_mimo_v2_5_pro,
-            display_name: "MiMo-V2.5-Pro",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        ClinePassMimoV26Pro {
+            model_name: "cline-pass/mimo-v2.6-pro",
+            constructor_name: cline_pass_mimo_v2_6_pro,
+            display_name: "MiMo-V2.6-Pro",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         ClinePassMinimaxM3 {
             model_name: "cline-pass/minimax-m3",
             constructor_name: cline_pass_minimax_m3,
             display_name: "MiniMax-M3",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        ClinePassMinimaxM31Flash {
+            model_name: "cline-pass/minimax-m3.1-flash",
+            constructor_name: cline_pass_minimax_m3_1_flash,
+            display_name: "MiniMax-M3.1-Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         ClinePassMuseSpark13Contributor {

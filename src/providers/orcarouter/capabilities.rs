@@ -254,7 +254,7 @@ model_capabilities! {
             model_name: "meta/muse-spark-1.1",
             constructor_name: meta_muse_spark_1_1,
             display_name: "Muse Spark 1.1",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         MetaMuseSpark12 {
             model_name: "meta/muse-spark-1.2",

@@ -52,6 +52,12 @@ model_capabilities! {
             display_name: "DeepSeek V4.1 Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        DeepseekAiDeepseekV41Flash1017 {
+            model_name: "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+            constructor_name: deepseek_ai_deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         GoogleGemma426bA4bIt {
             model_name: "google/gemma-4-26B-A4B-it",
             constructor_name: google_gemma_4_26b_a4b_it,

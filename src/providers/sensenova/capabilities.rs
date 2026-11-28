@@ -10,6 +10,12 @@ use crate::providers::sensenova::Sensenova;
 model_capabilities! {
     provider: Sensenova,
     models: {
+        DeepseekFlash {
+            model_name: "deepseek-flash",
+            constructor_name: deepseek_flash,
+            display_name: "DeepSeek V4.1 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         DeepseekV4Flash {
             model_name: "deepseek-v4-flash",
             constructor_name: deepseek_v4_flash,
@@ -21,12 +27,6 @@ model_capabilities! {
             constructor_name: deepseek_v4_pro,
             display_name: "DeepSeek V4 Pro",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        DeepseekV41Flash {
-            model_name: "deepseek-v4.1-flash",
-            constructor_name: deepseek_v4_1_flash,
-            display_name: "DeepSeek V4.1 Flash",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Glm52 {
             model_name: "glm-5.2",

@@ -10,24 +10,6 @@ use crate::providers::xiaomi_token_plan_ams::XiaomiTokenPlanAms;
 model_capabilities! {
     provider: XiaomiTokenPlanAms,
     models: {
-        MimoV25Tts {
-            model_name: "mimo-v2.5-tts",
-            constructor_name: mimo_v2_5_tts,
-            display_name: "MiMo-V2.5-TTS",
-            capabilities: [AudioOutputSupport, TextInputSupport]
-        },
-        MimoV25TtsVoiceclone {
-            model_name: "mimo-v2.5-tts-voiceclone",
-            constructor_name: mimo_v2_5_tts_voiceclone,
-            display_name: "MiMo-V2.5-TTS-VoiceClone",
-            capabilities: [AudioOutputSupport, TextInputSupport]
-        },
-        MimoV25TtsVoicedesign {
-            model_name: "mimo-v2.5-tts-voicedesign",
-            constructor_name: mimo_v2_5_tts_voicedesign,
-            display_name: "MiMo-V2.5-TTS-VoiceDesign",
-            capabilities: [AudioOutputSupport, TextInputSupport]
-        },
         MimoV26Flash {
             model_name: "mimo-v2.6-flash",
             constructor_name: mimo_v2_6_flash,

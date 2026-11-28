@@ -7,7 +7,7 @@
 ///
 /// * `provider: $provider_type:ident` - The type of the provider (e.g., `OpenAI`)
 /// * `api_key_var: $env_key:expr` - Environment variable name for the API key (e.g., `"OPENAI_API_KEY"`)
-/// * `model_struct: $model_struct:ident` - The model struct type (e.g., `Gpt5`)
+/// * `model_struct: $model_struct:ident` - The model struct type (e.g., `Gpt54Mini`)
 /// * `default_model: $default_model:expr` - Expression for the default model instance
 /// * `tool_model: $tool_model:expr` - Expression for the model instance used in tool tests
 /// * `structured_output_model: $structured_output_model:expr` - Expression for the model instance used in structured output tests
@@ -25,11 +25,11 @@
 /// generate_language_model_tests!(
 ///     provider: OpenAI,
 ///     api_key_var: "OPENAI_API_KEY",
-///     model_struct: Gpt5,
-///     default_model: OpenAI::gpt_5_nano(),
-///     tool_model: OpenAI::gpt_5_nano(),
-///     structured_output_model: OpenAI::gpt_5_nano(),
-///     reasoning_model: OpenAI::gpt_5_nano(),
+///     model_struct: Gpt54Mini,
+///     default_model: OpenAI::gpt_5_4_mini(),
+///     tool_model: OpenAI::gpt_5_4_mini(),
+///     structured_output_model: OpenAI::gpt_5_4_mini(),
+///     reasoning_model: OpenAI::gpt_5_4_mini(),
 ///     embedding_model: OpenAI::text_embedding_3_small(),
 ///     skip_reasoning: true,
 ///     skip_tool: false,

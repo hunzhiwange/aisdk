@@ -25,26 +25,20 @@ model_capabilities! {
         DeepseekV4Pro {
             model_name: "deepseek-v4-pro",
             constructor_name: deepseek_v4_pro,
-            display_name: "DeepSeek V4 Pro (New)",
+            display_name: "DeepSeek V4 Pro",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekV41Flash {
             model_name: "deepseek-v4.1-flash",
             constructor_name: deepseek_v4_1_flash,
-            display_name: "DeepSeek V4.1 Flash",
+            display_name: "DeepSeek V4.1 Flash 1017",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Gemini4ArgonContributor {
-            model_name: "gemini-4-argon-contributor",
-            constructor_name: gemini_4_argon_contributor,
-            display_name: "Gemini 4 Argon Contributor",
+        Gemini4Argon {
+            model_name: "gemini-4-argon",
+            constructor_name: gemini_4_argon,
+            display_name: "Gemini 4 Argon",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        Glm52 {
-            model_name: "glm-5.2",
-            constructor_name: glm_5_2,
-            display_name: "GLM-5.2",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Glm53 {
             model_name: "glm-5.3",
@@ -76,16 +70,40 @@ model_capabilities! {
             display_name: "Grok 4.7",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        HungergFree {
+            model_name: "hungerg-free",
+            constructor_name: hungerg_free,
+            display_name: "HungerG Free",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         Hy3 {
             model_name: "hy3",
             constructor_name: hy3,
             display_name: "Hy3",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Hy4 {
+            model_name: "hy4",
+            constructor_name: hy4,
+            display_name: "Hy4",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Hy4FlashFree {
+            model_name: "hy4-flash-free",
+            constructor_name: hy4_flash_free,
+            display_name: "Hy4 flash Free",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Hy4Preview {
             model_name: "hy4-preview",
             constructor_name: hy4_preview,
             display_name: "Hy4 preview",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        IcemanContributorFree {
+            model_name: "iceman-contributor-free",
+            constructor_name: iceman_contributor_free,
+            display_name: "Iceman Contributor Free",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         KimiK27Code {
@@ -100,23 +118,17 @@ model_capabilities! {
             display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        Longcat20 {
-            model_name: "longcat-2.0",
-            constructor_name: longcat_2_0,
-            display_name: "LongCat-2.0",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        KimiK31Pro {
+            model_name: "kimi-k3.1-pro",
+            constructor_name: kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        MimoV25 {
-            model_name: "mimo-v2.5",
-            constructor_name: mimo_v2_5,
-            display_name: "MiMo V2.5",
-            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        MimoV25Pro {
-            model_name: "mimo-v2.5-pro",
-            constructor_name: mimo_v2_5_pro,
-            display_name: "MiMo V2.5 Pro",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Longcat25 {
+            model_name: "longcat-2.5",
+            constructor_name: longcat_2_5,
+            display_name: "LongCat-2.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MimoV26Flash {
             model_name: "mimo-v2.6-flash",
@@ -170,6 +182,12 @@ model_capabilities! {
             model_name: "qwen3.8-max",
             constructor_name: qwen3_8_max,
             display_name: "Qwen3.8 Max",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen4Max {
+            model_name: "qwen4-max",
+            constructor_name: qwen4_max,
+            display_name: "Qwen4 Max",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Step5Preview {

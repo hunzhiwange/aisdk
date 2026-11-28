@@ -76,6 +76,18 @@ model_capabilities! {
             display_name: "gpt-oss:20b",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Hy4 {
+            model_name: "hy4",
+            constructor_name: hy4,
+            display_name: "hy4",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Inkling2Small {
+            model_name: "inkling-2-small",
+            constructor_name: inkling_2_small,
+            display_name: "Inkling 2 Small",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         KimiK26 {
             model_name: "kimi-k2.6",
             constructor_name: kimi_k2_6,
@@ -92,6 +104,24 @@ model_capabilities! {
             model_name: "kimi-k3",
             constructor_name: kimi_k3,
             display_name: "kimi-k3",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        KimiK31Pro {
+            model_name: "kimi-k3.1-pro",
+            constructor_name: kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MimoV26Flash {
+            model_name: "mimo-v2.6-flash",
+            constructor_name: mimo_v2_6_flash,
+            display_name: "MiMo-V2.6-Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MimoV26Pro {
+            model_name: "mimo-v2.6-pro",
+            constructor_name: mimo_v2_6_pro,
+            display_name: "MiMo-V2.6-Pro",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MinimaxM27 {

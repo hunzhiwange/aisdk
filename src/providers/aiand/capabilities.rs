@@ -10,22 +10,22 @@ use crate::providers::aiand::Aiand;
 model_capabilities! {
     provider: Aiand,
     models: {
-        DeepseekAiDeepseekV4Flash {
-            model_name: "deepseek-ai/deepseek-v4-flash",
-            constructor_name: deepseek_ai_deepseek_v4_flash,
-            display_name: "DeepSeek V4 Flash",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         DeepseekAiDeepseekV4Pro {
             model_name: "deepseek-ai/deepseek-v4-pro",
             constructor_name: deepseek_ai_deepseek_v4_pro,
             display_name: "DeepSeek V4 Pro",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        DeepseekAiDeepseekV41Flash {
-            model_name: "deepseek-ai/deepseek-v4.1-flash",
-            constructor_name: deepseek_ai_deepseek_v4_1_flash,
-            display_name: "DeepSeek V4.1 Flash",
+        DeepseekAiDeepseekV4Pro0813 {
+            model_name: "deepseek-ai/deepseek-v4-pro-0813",
+            constructor_name: deepseek_ai_deepseek_v4_pro_0813,
+            display_name: "DeepSeek V4 Pro 0813",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekAiDeepseekV41Flash1017 {
+            model_name: "deepseek-ai/deepseek-v4.1-flash-1017",
+            constructor_name: deepseek_ai_deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GoogleGemma431bIt {
@@ -34,11 +34,11 @@ model_capabilities! {
             display_name: "Gemma 4 31B IT",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        MoonshotaiKimiK27Code {
-            model_name: "moonshotai/kimi-k2.7-code",
-            constructor_name: moonshotai_kimi_k2_7_code,
-            display_name: "Kimi K2.7 Code",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        MetaMuseSparkOpen {
+            model_name: "meta/muse-spark-open",
+            constructor_name: meta_muse_spark_open,
+            display_name: "Muse Spark Open",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         MoonshotaiKimiK3 {
             model_name: "moonshotai/kimi-k3",
@@ -46,11 +46,17 @@ model_capabilities! {
             display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MoonshotaiKimiK31Pro {
+            model_name: "moonshotai/kimi-k3.1-pro",
+            constructor_name: moonshotai_kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MotifTechnologiesMotif3 {
             model_name: "motif-technologies/motif-3",
             constructor_name: motif_technologies_motif_3,
             display_name: "Motif 3",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGptOss120b {
             model_name: "openai/gpt-oss-120b",
@@ -69,12 +75,6 @@ model_capabilities! {
             constructor_name: qwen_qwen3_8_27b,
             display_name: "Qwen3.8 27B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        ZaiOrgGlm52 {
-            model_name: "zai-org/glm-5.2",
-            constructor_name: zai_org_glm_5_2,
-            display_name: "GLM-5.2",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ZaiOrgGlm53 {
             model_name: "zai-org/glm-5.3",

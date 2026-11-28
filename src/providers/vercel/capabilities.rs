@@ -16,12 +16,6 @@ model_capabilities! {
             display_name: "Qwen3-14B",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        AlibabaQwen3235b {
-            model_name: "alibaba/qwen-3-235b",
-            constructor_name: alibaba_qwen_3_235b,
-            display_name: "Qwen3 235B A22B Instruct 2507",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         AlibabaQwen330b {
             model_name: "alibaba/qwen-3-30b",
             constructor_name: alibaba_qwen_3_30b,
@@ -32,12 +26,6 @@ model_capabilities! {
             model_name: "alibaba/qwen-3-32b",
             constructor_name: alibaba_qwen_3_32b,
             display_name: "Qwen 3.32B",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AlibabaQwen3Coder {
-            model_name: "alibaba/qwen3-coder",
-            constructor_name: alibaba_qwen3_coder,
-            display_name: "Qwen3 Coder 480B A35B Instruct",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AlibabaQwen3Coder30bA3b {
@@ -70,23 +58,11 @@ model_capabilities! {
             display_name: "Qwen3 Embedding 8B",
             capabilities: [TextInputSupport, TextOutputSupport]
         },
-        AlibabaQwen3MaxThinking {
-            model_name: "alibaba/qwen3-max-thinking",
-            constructor_name: alibaba_qwen3_max_thinking,
-            display_name: "Qwen 3 Max Thinking",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         AlibabaQwen3Next80bA3bInstruct {
             model_name: "alibaba/qwen3-next-80b-a3b-instruct",
             constructor_name: alibaba_qwen3_next_80b_a3b_instruct,
             display_name: "Qwen3 Next 80B A3B Instruct",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AlibabaQwen3Next80bA3bThinking {
-            model_name: "alibaba/qwen3-next-80b-a3b-thinking",
-            constructor_name: alibaba_qwen3_next_80b_a3b_thinking,
-            display_name: "Qwen3 Next 80B A3B Thinking",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AlibabaQwen3VlInstruct {
             model_name: "alibaba/qwen3-vl-instruct",
@@ -111,6 +87,12 @@ model_capabilities! {
             constructor_name: alibaba_qwen3_6_27b,
             display_name: "Qwen 3.6 27B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AlibabaQwen3635bA3b {
+            model_name: "alibaba/qwen3.6-35b-a3b",
+            constructor_name: alibaba_qwen3_6_35b_a3b,
+            display_name: "Qwen 3.6 35B A3B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AlibabaQwen36Plus {
             model_name: "alibaba/qwen3.6-plus",
@@ -176,6 +158,12 @@ model_capabilities! {
             model_name: "alibaba/qwen3.8-omni-flash",
             constructor_name: alibaba_qwen3_8_omni_flash,
             display_name: "Qwen 3.8 Omni Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AlibabaQwen4Max {
+            model_name: "alibaba/qwen4-max",
+            constructor_name: alibaba_qwen4_max,
+            display_name: "Qwen 4 Max",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AlibabaWanV25T2vPreview {
@@ -248,19 +236,19 @@ model_capabilities! {
             model_name: "amazon/nova-lite",
             constructor_name: amazon_nova_lite,
             display_name: "Nova Lite",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AmazonNovaMicro {
             model_name: "amazon/nova-micro",
             constructor_name: amazon_nova_micro,
             display_name: "Nova Micro",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AmazonNovaPro {
             model_name: "amazon/nova-pro",
             constructor_name: amazon_nova_pro,
             display_name: "Nova Pro",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AmazonTitanEmbedTextV2 {
             model_name: "amazon/titan-embed-text-v2",
@@ -278,6 +266,18 @@ model_capabilities! {
             model_name: "anthropic/claude-fable-5.1",
             constructor_name: anthropic_claude_fable_5_1,
             display_name: "Claude Fable 5.1",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AnthropicClaudeFable52 {
+            model_name: "anthropic/claude-fable-5.2",
+            constructor_name: anthropic_claude_fable_5_2,
+            display_name: "Claude Fable 5.2",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AnthropicClaudeFable52Fast {
+            model_name: "anthropic/claude-fable-5.2-fast",
+            constructor_name: anthropic_claude_fable_5_2_fast,
+            display_name: "Claude Fable 5.2 (Fast)",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AnthropicClaudeHaiku45 {
@@ -370,65 +370,47 @@ model_capabilities! {
             display_name: "Claude Sonnet 5.5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        ArceeAiTrinityLargeThinking {
-            model_name: "arcee-ai/trinity-large-thinking",
-            constructor_name: arcee_ai_trinity_large_thinking,
-            display_name: "Trinity Large Thinking",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        BasetenElephant1 {
-            model_name: "baseten/elephant-1",
-            constructor_name: baseten_elephant_1,
-            display_name: "Elephant-1",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        BasetenMammoth1 {
-            model_name: "baseten/mammoth-1",
-            constructor_name: baseten_mammoth_1,
-            display_name: "Mammoth-1",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
         BflFlux2Flex {
             model_name: "bfl/flux-2-flex",
             constructor_name: bfl_flux_2_flex,
             display_name: "FLUX.2 [flex]",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BflFlux2Klein4b {
             model_name: "bfl/flux-2-klein-4b",
             constructor_name: bfl_flux_2_klein_4b,
             display_name: "FLUX.2 [klein] 4B",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BflFlux2Klein9b {
             model_name: "bfl/flux-2-klein-9b",
             constructor_name: bfl_flux_2_klein_9b,
             display_name: "FLUX.2 [klein] 9B",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BflFlux2Max {
             model_name: "bfl/flux-2-max",
             constructor_name: bfl_flux_2_max,
             display_name: "FLUX.2 [max]",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BflFlux2Pro {
             model_name: "bfl/flux-2-pro",
             constructor_name: bfl_flux_2_pro,
             display_name: "FLUX.2 [pro]",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BflFlux3Image {
             model_name: "bfl/flux-3-image",
             constructor_name: bfl_flux_3_image,
             display_name: "FLUX 3 Image",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BflFlux3ImageKlein {
             model_name: "bfl/flux-3-image-klein",
             constructor_name: bfl_flux_3_image_klein,
             display_name: "FLUX 3 Image Klein",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BflFlux3Video {
             model_name: "bfl/flux-3-video",
@@ -440,19 +422,19 @@ model_capabilities! {
             model_name: "bfl/flux-kontext-max",
             constructor_name: bfl_flux_kontext_max,
             display_name: "FLUX.1 Kontext Max",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BflFluxKontextPro {
             model_name: "bfl/flux-kontext-pro",
             constructor_name: bfl_flux_kontext_pro,
             display_name: "FLUX.1 Kontext Pro",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BflFluxPro10Fill {
             model_name: "bfl/flux-pro-1.0-fill",
             constructor_name: bfl_flux_pro_1_0_fill,
             display_name: "FLUX.1 Fill [pro]",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BflFluxPro11 {
             model_name: "bfl/flux-pro-1.1",
@@ -465,18 +447,6 @@ model_capabilities! {
             constructor_name: bfl_flux_pro_1_1_ultra,
             display_name: "FLUX1.1 [pro] Ultra",
             capabilities: [ImageOutputSupport, TextInputSupport]
-        },
-        BytedanceSeed16 {
-            model_name: "bytedance/seed-1.6",
-            constructor_name: bytedance_seed_1_6,
-            display_name: "Seed 1.6",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        BytedanceSeed18 {
-            model_name: "bytedance/seed-1.8",
-            constructor_name: bytedance_seed_1_8,
-            display_name: "Seed 1.8",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         BytedanceSeed21Turbo {
             model_name: "bytedance/seed-2.1-turbo",
@@ -520,35 +490,29 @@ model_capabilities! {
             display_name: "Seedance v1.0 Pro Fast",
             capabilities: [ImageInputSupport, TextInputSupport, VideoOutputSupport]
         },
-        BytedanceSeedanceV15Pro {
-            model_name: "bytedance/seedance-v1.5-pro",
-            constructor_name: bytedance_seedance_v1_5_pro,
-            display_name: "Seedance v1.5 Pro",
-            capabilities: [ImageInputSupport, TextInputSupport, VideoOutputSupport]
-        },
         BytedanceSeedream40 {
             model_name: "bytedance/seedream-4.0",
             constructor_name: bytedance_seedream_4_0,
             display_name: "Seedream 4.0",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BytedanceSeedream45 {
             model_name: "bytedance/seedream-4.5",
             constructor_name: bytedance_seedream_4_5,
             display_name: "Seedream 4.5",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BytedanceSeedream50Lite {
             model_name: "bytedance/seedream-5.0-lite",
             constructor_name: bytedance_seedream_5_0_lite,
             display_name: "Seedream 5.0 Lite",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         BytedanceSeedream50Pro {
             model_name: "bytedance/seedream-5.0-pro",
             constructor_name: bytedance_seedream_5_0_pro,
             display_name: "Seedream 5.0 Pro",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         CallstackApex {
             model_name: "callstack/apex",
@@ -610,17 +574,11 @@ model_capabilities! {
             display_name: "Cohere Rerank 5 Pro",
             capabilities: [TextInputSupport, TextOutputSupport]
         },
-        ConvaiinnovationsLaya {
-            model_name: "convaiinnovations/laya",
-            constructor_name: convaiinnovations_laya,
-            display_name: "Laya",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        ConvaiinnovationsLayaFree {
-            model_name: "convaiinnovations/laya-free",
-            constructor_name: convaiinnovations_laya_free,
-            display_name: "Laya (Free)",
-            capabilities: [TextInputSupport, TextOutputSupport]
+        DeepseekDeepseekR1 {
+            model_name: "deepseek/deepseek-r1",
+            constructor_name: deepseek_deepseek_r1,
+            display_name: "DeepSeek-R1",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekDeepseekV31 {
             model_name: "deepseek/deepseek-v3.1",
@@ -687,6 +645,12 @@ model_capabilities! {
             constructor_name: deepseek_deepseek_v4_1_flash_1017_fast,
             display_name: "DeepSeek V4.1 Flash 1017 Fast",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekDeepseekV41Flash1017Ultrafast {
+            model_name: "deepseek/deepseek-v4.1-flash-1017-ultrafast",
+            constructor_name: deepseek_deepseek_v4_1_flash_1017_ultrafast,
+            display_name: "DeepSeek V4.1 Flash 1017 Ultrafast",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekDeepseekV41FlashFast {
             model_name: "deepseek/deepseek-v4.1-flash-fast",
@@ -778,12 +742,6 @@ model_capabilities! {
             display_name: "Nano Banana 2",
             capabilities: [ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport]
         },
-        GoogleGemini31FlashImagePreview {
-            model_name: "google/gemini-3.1-flash-image-preview",
-            constructor_name: google_gemini_3_1_flash_image_preview,
-            display_name: "Gemini 3.1 Flash Image Preview (Nano Banana 2)",
-            capabilities: [ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport]
-        },
         GoogleGemini31FlashLite {
             model_name: "google/gemini-3.1-flash-lite",
             constructor_name: google_gemini_3_1_flash_lite,
@@ -832,12 +790,6 @@ model_capabilities! {
             display_name: "Gemini 3.6 Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        GoogleGemini37Flash {
-            model_name: "google/gemini-3.7-flash",
-            constructor_name: google_gemini_3_7_flash,
-            display_name: "Gemini 3.7 Flash",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         GoogleGemini38Flash {
             model_name: "google/gemini-3.8-flash",
             constructor_name: google_gemini_3_8_flash,
@@ -874,6 +826,30 @@ model_capabilities! {
             display_name: "Gemini 4 Argon",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        GoogleGemini4Carbon {
+            model_name: "google/gemini-4-carbon",
+            constructor_name: google_gemini_4_carbon,
+            display_name: "Gemini 4 Carbon",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GoogleGemini4Hydrogen {
+            model_name: "google/gemini-4-hydrogen",
+            constructor_name: google_gemini_4_hydrogen,
+            display_name: "Gemini 4 Hydrogen",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GoogleGemini4Neon {
+            model_name: "google/gemini-4-neon",
+            constructor_name: google_gemini_4_neon,
+            display_name: "Gemini 4 Neon",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GoogleGemini4NeonFast {
+            model_name: "google/gemini-4-neon-fast",
+            constructor_name: google_gemini_4_neon_fast,
+            display_name: "Gemini 4 Neon (Fast)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         GoogleGeminiEmbedding001 {
             model_name: "google/gemini-embedding-001",
             constructor_name: google_gemini_embedding_001,
@@ -892,11 +868,17 @@ model_capabilities! {
             display_name: "Gemini Nano Banana 2.1",
             capabilities: [ImageInputSupport, ImageOutputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport]
         },
+        GoogleGeminiOmni12Flash {
+            model_name: "google/gemini-omni-1.2-flash",
+            constructor_name: google_gemini_omni_1_2_flash,
+            display_name: "Gemini Omni 1.2 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, VideoOutputSupport]
+        },
         GoogleGeminiOmniFlashPreview {
             model_name: "google/gemini-omni-flash-preview",
             constructor_name: google_gemini_omni_flash_preview,
             display_name: "Gemini Omni Flash Preview",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, VideoOutputSupport]
         },
         GoogleGemma426bA4bIt {
             model_name: "google/gemma-4-26b-a4b-it",
@@ -922,18 +904,6 @@ model_capabilities! {
             display_name: "Text Multilingual Embedding 002",
             capabilities: [TextInputSupport, TextOutputSupport]
         },
-        GoogleVeo30FastGenerate001 {
-            model_name: "google/veo-3.0-fast-generate-001",
-            constructor_name: google_veo_3_0_fast_generate_001,
-            display_name: "Veo 3.0 Fast Generate",
-            capabilities: [ImageInputSupport, TextInputSupport, VideoOutputSupport]
-        },
-        GoogleVeo30Generate001 {
-            model_name: "google/veo-3.0-generate-001",
-            constructor_name: google_veo_3_0_generate_001,
-            display_name: "Veo 3.0",
-            capabilities: [ImageInputSupport, TextInputSupport, VideoOutputSupport]
-        },
         GoogleVeo31FastGenerate001 {
             model_name: "google/veo-3.1-fast-generate-001",
             constructor_name: google_veo_3_1_fast_generate_001,
@@ -958,29 +928,11 @@ model_capabilities! {
             display_name: "HeyGen Video",
             capabilities: [AudioInputSupport, ImageInputSupport, TextInputSupport, VideoInputSupport, VideoOutputSupport]
         },
-        InceptionMercury2 {
-            model_name: "inception/mercury-2",
-            constructor_name: inception_mercury_2,
-            display_name: "Mercury 2",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        InceptionMercury25 {
-            model_name: "inception/mercury-2.5",
-            constructor_name: inception_mercury_2_5,
-            display_name: "Mercury 2.5",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        InceptionMercury3 {
-            model_name: "inception/mercury-3",
-            constructor_name: inception_mercury_3,
-            display_name: "Mercury 3",
+        HumansandAmpersandV01 {
+            model_name: "humansand/ampersand-v0.1",
+            constructor_name: humansand_ampersand_v0_1,
+            display_name: "Ampersand v0.1",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        InceptionMercuryCoderSmall {
-            model_name: "inception/mercury-coder-small",
-            constructor_name: inception_mercury_coder_small,
-            display_name: "Mercury Coder Small Beta",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         InclusionaiLing30Flash {
             model_name: "inclusionai/ling-3.0-flash",
@@ -1010,6 +962,12 @@ model_capabilities! {
             model_name: "inclusionai/ling-3.1-flash",
             constructor_name: inclusionai_ling_3_1_flash,
             display_name: "Ling 3.1 Flash",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        InclusionaiLing31Flash1019 {
+            model_name: "inclusionai/ling-3.1-flash-1019",
+            constructor_name: inclusionai_ling_3_1_flash_1019,
+            display_name: "Ling 3.1 Flash 1019",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         InferenceNetSchematronV2Small {
@@ -1078,28 +1036,16 @@ model_capabilities! {
             display_name: "Kling v3.0 Text-to-Video",
             capabilities: [TextInputSupport, VideoOutputSupport]
         },
-        LiquidD1 {
-            model_name: "liquid/d1",
-            constructor_name: liquid_d1,
-            display_name: "Liquid d1",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
-        },
-        LiquidD1Ultra {
-            model_name: "liquid/d1-ultra",
-            constructor_name: liquid_d1_ultra,
-            display_name: "Liquid d1 Ultra",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
-        },
         LiquidLfm2524bA2b {
             model_name: "liquid/lfm2.5-24b-a2b",
             constructor_name: liquid_lfm2_5_24b_a2b,
             display_name: "LFM2.5-24B-A2B",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MeituanLongcat25Preview {
-            model_name: "meituan/longcat-2.5-preview",
-            constructor_name: meituan_longcat_2_5_preview,
-            display_name: "LongCat 2.5 Preview",
+        MeituanLongcat25 {
+            model_name: "meituan/longcat-2.5",
+            constructor_name: meituan_longcat_2_5,
+            display_name: "LongCat 2.5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MetaLlama3170b {
@@ -1131,6 +1077,12 @@ model_capabilities! {
             constructor_name: meta_llama_4_scout,
             display_name: "Llama-4-Scout-17B-16E-Instruct-FP8",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MetaMuseEmber {
+            model_name: "meta/muse-ember",
+            constructor_name: meta_muse_ember,
+            display_name: "Muse Ember",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MetaMuseGlimmer30b {
             model_name: "meta/muse-glimmer-30b",
@@ -1190,13 +1142,13 @@ model_capabilities! {
             model_name: "microsoft/mai-image-2.6",
             constructor_name: microsoft_mai_image_2_6,
             display_name: "MAI-Image-2.6",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         MicrosoftMaiImage26Flash {
             model_name: "microsoft/mai-image-2.6-flash",
             constructor_name: microsoft_mai_image_2_6_flash,
             display_name: "MAI-Image-2.6-Flash",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         MicrosoftMaiTranscribe2 {
             model_name: "microsoft/mai-transcribe-2",
@@ -1234,12 +1186,6 @@ model_capabilities! {
             display_name: "MAI-Voice-2.1-Flash",
             capabilities: [AudioOutputSupport, TextInputSupport]
         },
-        MicrosoftMicrosoftDecision1 {
-            model_name: "microsoft/microsoft-decision-1",
-            constructor_name: microsoft_microsoft_decision_1,
-            display_name: "Decision-1",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
         MinimaxMinimaxH3 {
             model_name: "minimax/minimax-h3",
             constructor_name: minimax_minimax_h3,
@@ -1252,22 +1198,10 @@ model_capabilities! {
             display_name: "MiniMax H3 Max",
             capabilities: [ImageInputSupport, TextInputSupport, VideoOutputSupport]
         },
-        MinimaxMinimaxM2 {
-            model_name: "minimax/minimax-m2",
-            constructor_name: minimax_minimax_m2,
-            display_name: "MiniMax M2",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         MinimaxMinimaxM21 {
             model_name: "minimax/minimax-m2.1",
             constructor_name: minimax_minimax_m2_1,
             display_name: "MiniMax M2.1",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MinimaxMinimaxM21Lightning {
-            model_name: "minimax/minimax-m2.1-lightning",
-            constructor_name: minimax_minimax_m2_1_lightning,
-            display_name: "MiniMax M2.1 Lightning",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MinimaxMinimaxM25 {
@@ -1276,22 +1210,10 @@ model_capabilities! {
             display_name: "MiniMax M2.5",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MinimaxMinimaxM25Highspeed {
-            model_name: "minimax/minimax-m2.5-highspeed",
-            constructor_name: minimax_minimax_m2_5_highspeed,
-            display_name: "MiniMax M2.5 High Speed",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         MinimaxMinimaxM27 {
             model_name: "minimax/minimax-m2.7",
             constructor_name: minimax_minimax_m2_7,
             display_name: "Minimax M2.7",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MinimaxMinimaxM27Highspeed {
-            model_name: "minimax/minimax-m2.7-highspeed",
-            constructor_name: minimax_minimax_m2_7_highspeed,
-            display_name: "MiniMax M2.7 High Speed",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MinimaxMinimaxM3 {
@@ -1438,23 +1360,29 @@ model_capabilities! {
             display_name: "Kimi K3 Fast",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MoonshotaiKimiK31Pro {
+            model_name: "moonshotai/kimi-k3.1-pro",
+            constructor_name: moonshotai_kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MoonshotaiKimiK31ProHighspeed {
+            model_name: "moonshotai/kimi-k3.1-pro-highspeed",
+            constructor_name: moonshotai_kimi_k3_1_pro_highspeed,
+            display_name: "Kimi K3.1 Pro Highspeed",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MorphMorphV3Fast {
             model_name: "morph/morph-v3-fast",
             constructor_name: morph_morph_v3_fast,
-            display_name: "Morph v3 Fast",
-            capabilities: [TextInputSupport, TextOutputSupport]
+            display_name: "Morph V3 Fast",
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport]
         },
         MorphMorphV3Large {
             model_name: "morph/morph-v3-large",
             constructor_name: morph_morph_v3_large,
-            display_name: "Morph v3 Large",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        NvidiaNemotron3Nano30bA3b {
-            model_name: "nvidia/nemotron-3-nano-30b-a3b",
-            constructor_name: nvidia_nemotron_3_nano_30b_a3b,
-            display_name: "Nemotron 3 Nano 30B A3B",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport]
+            display_name: "Morph V3 Large",
+            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport]
         },
         NvidiaNemotron3Super120bA12b {
             model_name: "nvidia/nemotron-3-super-120b-a12b",
@@ -1545,18 +1473,6 @@ model_capabilities! {
             constructor_name: openai_gpt_4o_mini_fast,
             display_name: "GPT-4o mini (Fast)",
             capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        OpenaiGpt4oMiniTranscribe {
-            model_name: "openai/gpt-4o-mini-transcribe",
-            constructor_name: openai_gpt_4o_mini_transcribe,
-            display_name: "GPT-4o mini Transcribe",
-            capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
-        },
-        OpenaiGpt4oTranscribe {
-            model_name: "openai/gpt-4o-transcribe",
-            constructor_name: openai_gpt_4o_transcribe,
-            display_name: "GPT-4o Transcribe",
-            capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
         },
         OpenaiGpt5 {
             model_name: "openai/gpt-5",
@@ -1774,12 +1690,6 @@ model_capabilities! {
             display_name: "GPT-6 Luna",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        OpenaiGpt6LunaDecisions {
-            model_name: "openai/gpt-6-luna-decisions",
-            constructor_name: openai_gpt_6_luna_decisions,
-            display_name: "GPT-6 Luna Decisions",
-            capabilities: [TextInputSupport, TextOutputSupport]
-        },
         OpenaiGpt6LunaFast {
             model_name: "openai/gpt-6-luna-fast",
             constructor_name: openai_gpt_6_luna_fast,
@@ -1810,35 +1720,71 @@ model_capabilities! {
             display_name: "GPT-6.1 Sol (Fast)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        OpenaiGpt61Terra {
+            model_name: "openai/gpt-6.1-terra",
+            constructor_name: openai_gpt_6_1_terra,
+            display_name: "GPT-6.1 Terra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt61TerraFast {
+            model_name: "openai/gpt-6.1-terra-fast",
+            constructor_name: openai_gpt_6_1_terra_fast,
+            display_name: "GPT-6.1 Terra (Fast)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt62Astra {
+            model_name: "openai/gpt-6.2-astra",
+            constructor_name: openai_gpt_6_2_astra,
+            display_name: "GPT-6.2 Astra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt62AstraFast {
+            model_name: "openai/gpt-6.2-astra-fast",
+            constructor_name: openai_gpt_6_2_astra_fast,
+            display_name: "GPT-6.2 Astra (Fast)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt62Sol {
+            model_name: "openai/gpt-6.2-sol",
+            constructor_name: openai_gpt_6_2_sol,
+            display_name: "GPT-6.2 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt62SolFast {
+            model_name: "openai/gpt-6.2-sol-fast",
+            constructor_name: openai_gpt_6_2_sol_fast,
+            display_name: "GPT-6.2 Sol (Fast)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         OpenaiGptImage1Mini {
             model_name: "openai/gpt-image-1-mini",
             constructor_name: openai_gpt_image_1_mini,
             display_name: "GPT Image 1 Mini",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         OpenaiGptImage15 {
             model_name: "openai/gpt-image-1.5",
             constructor_name: openai_gpt_image_1_5,
             display_name: "GPT Image 1.5",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         OpenaiGptImage2 {
             model_name: "openai/gpt-image-2",
             constructor_name: openai_gpt_image_2,
             display_name: "GPT Image 2",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         OpenaiGptImage25Flare {
             model_name: "openai/gpt-image-2.5-flare",
             constructor_name: openai_gpt_image_2_5_flare,
             display_name: "GPT Image 2.5 Flare",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         OpenaiGptImage25Sunburst {
             model_name: "openai/gpt-image-2.5-sunburst",
             constructor_name: openai_gpt_image_2_5_sunburst,
             display_name: "GPT Image 2.5 Sunburst",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         OpenaiGptLive1 {
             model_name: "openai/gpt-live-1",
@@ -1948,23 +1894,17 @@ model_capabilities! {
             display_name: "TTS-1 HD",
             capabilities: [AudioOutputSupport, TextInputSupport]
         },
-        OpenaiWhisper1 {
-            model_name: "openai/whisper-1",
-            constructor_name: openai_whisper_1,
-            display_name: "Whisper",
-            capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
+        PaperinstrumentsUltramarine1Flash {
+            model_name: "paperinstruments/ultramarine-1-flash",
+            constructor_name: paperinstruments_ultramarine_1_flash,
+            display_name: "Ultramarine 1 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        PerplexityPplxDeciderFlashV12 {
-            model_name: "perplexity/pplx-decider-flash-v1.2",
-            constructor_name: perplexity_pplx_decider_flash_v1_2,
-            display_name: "Decider Flash V1.2 4B",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
-        },
-        PerplexityPplxDeciderV12 {
-            model_name: "perplexity/pplx-decider-v1.2",
-            constructor_name: perplexity_pplx_decider_v1_2,
-            display_name: "Decider V1.2 27B",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
+        ParticleParticle1 {
+            model_name: "particle/particle-1",
+            constructor_name: particle_particle_1,
+            display_name: "Particle-1",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         PerplexityPplxEmbedV106b {
             model_name: "perplexity/pplx-embed-v1-0.6b",
@@ -1983,24 +1923,6 @@ model_capabilities! {
             constructor_name: perplexity_sonar,
             display_name: "Sonar",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        PoolsideLagunaS21 {
-            model_name: "poolside/laguna-s-2.1",
-            constructor_name: poolside_laguna_s_2_1,
-            display_name: "Laguna S 2.1",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        PoolsideLagunaS21Free {
-            model_name: "poolside/laguna-s-2.1-free",
-            constructor_name: poolside_laguna_s_2_1_free,
-            display_name: "Laguna S 2.1 Free",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ProdiaFluxFastSchnell {
-            model_name: "prodia/flux-fast-schnell",
-            constructor_name: prodia_flux_fast_schnell,
-            display_name: "Flux Schnell",
-            capabilities: [ImageOutputSupport, TextInputSupport]
         },
         QuiveraiArrow2 {
             model_name: "quiverai/arrow-2",
@@ -2068,6 +1990,12 @@ model_capabilities! {
             display_name: "Recraft V4.1 Utility Pro",
             capabilities: [ImageOutputSupport, TextInputSupport]
         },
+        RecursiveFlintV10 {
+            model_name: "recursive/flint-v1.0",
+            constructor_name: recursive_flint_v1_0,
+            display_name: "Flint",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         ReflectionBeam {
             model_name: "reflection/beam",
             constructor_name: reflection_beam,
@@ -2104,11 +2032,11 @@ model_capabilities! {
             display_name: "Sakana Namazu",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        ScaledownScaledownClassify1 {
-            model_name: "scaledown/scaledown-classify-1",
-            constructor_name: scaledown_scaledown_classify_1,
-            display_name: "Classify-1",
-            capabilities: [TextInputSupport, TextOutputSupport]
+        ScaledownExtract1 {
+            model_name: "scaledown/extract-1",
+            constructor_name: scaledown_extract_1,
+            display_name: "Extract-1",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
         },
         ScaledownScaledownExtract1 {
             model_name: "scaledown/scaledown-extract-1",
@@ -2182,23 +2110,17 @@ model_capabilities! {
             display_name: "Grok 4.7",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        SpacexaiGrokBuild01 {
-            model_name: "spacexai/grok-build-0.1",
-            constructor_name: spacexai_grok_build_0_1,
-            display_name: "Grok Build 0.1",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         SpacexaiGrokImagineImage {
             model_name: "spacexai/grok-imagine-image",
             constructor_name: spacexai_grok_imagine_image,
             display_name: "Grok Imagine Image",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         SpacexaiGrokImagineImage20 {
             model_name: "spacexai/grok-imagine-image-2.0",
             constructor_name: spacexai_grok_imagine_image_2_0,
             display_name: "Grok Imagine Image 2.0",
-            capabilities: [ImageOutputSupport, TextInputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         SpacexaiGrokImagineVideo {
             model_name: "spacexai/grok-imagine-video",
@@ -2229,12 +2151,6 @@ model_capabilities! {
             constructor_name: spacexai_grok_tts,
             display_name: "Grok TTS",
             capabilities: [AudioOutputSupport, TextInputSupport]
-        },
-        SpacexaiGrokVoiceThinkFast20 {
-            model_name: "spacexai/grok-voice-think-fast-2.0",
-            constructor_name: spacexai_grok_voice_think_fast_2_0,
-            display_name: "Grok Voice Think Fast 2.0",
-            capabilities: [AudioInputSupport, AudioOutputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         StealthGlyphCluster {
             model_name: "stealth/glyph-cluster",
@@ -2278,6 +2194,18 @@ model_capabilities! {
             display_name: "Hy3",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        TencentHy4 {
+            model_name: "tencent/hy4",
+            constructor_name: tencent_hy4,
+            display_name: "Tencent Hy4",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        TencentHy4Flash {
+            model_name: "tencent/hy4-flash",
+            constructor_name: tencent_hy4_flash,
+            display_name: "Tencent Hy4 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         TencentHy4Preview {
             model_name: "tencent/hy4-preview",
             constructor_name: tencent_hy4_preview,
@@ -2290,6 +2218,18 @@ model_capabilities! {
             display_name: "Inkling",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        ThinkingmachinesInkling2Mini {
+            model_name: "thinkingmachines/inkling-2-mini",
+            constructor_name: thinkingmachines_inkling_2_mini,
+            display_name: "Inkling 2 Mini",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ThinkingmachinesInkling2Small {
+            model_name: "thinkingmachines/inkling-2-small",
+            constructor_name: thinkingmachines_inkling_2_small,
+            display_name: "Inkling 2 Small",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         ThinkingmachinesInklingSmall {
             model_name: "thinkingmachines/inkling-small",
             constructor_name: thinkingmachines_inkling_small,
@@ -2300,37 +2240,19 @@ model_capabilities! {
             model_name: "topaz/proteus",
             constructor_name: topaz_proteus,
             display_name: "Proteus",
-            capabilities: [TextInputSupport, VideoOutputSupport]
+            capabilities: [ImageInputSupport, TextInputSupport, VideoInputSupport, VideoOutputSupport]
         },
         TopazStarlightPrecise26 {
             model_name: "topaz/starlight-precise-2.6",
             constructor_name: topaz_starlight_precise_2_6,
             display_name: "Starlight Precise 2.6",
-            capabilities: [TextInputSupport, VideoOutputSupport]
+            capabilities: [ImageInputSupport, TextInputSupport, VideoInputSupport, VideoOutputSupport]
         },
         TopazWonder35 {
             model_name: "topaz/wonder-3.5",
             constructor_name: topaz_wonder_3_5,
             display_name: "Wonder 3.5",
-            capabilities: [ImageOutputSupport, TextInputSupport]
-        },
-        TypesafeAiJev {
-            model_name: "typesafe-ai/jev",
-            constructor_name: typesafe_ai_jev,
-            display_name: "Jev",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport]
-        },
-        TypesafeAiJev1130 {
-            model_name: "typesafe-ai/jev-1.13.0",
-            constructor_name: typesafe_ai_jev_1_13_0,
-            display_name: "Jev 1.13.0",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
-        },
-        TypesafeAiJev1140 {
-            model_name: "typesafe-ai/jev-1.14.0",
-            constructor_name: typesafe_ai_jev_1_14_0,
-            display_name: "Jev 1.14.0",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
+            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
         VoyageRerank25 {
             model_name: "voyage/rerank-2.5",
@@ -2415,18 +2337,6 @@ model_capabilities! {
             constructor_name: voyage_voyage_law_2,
             display_name: "voyage-law-2",
             capabilities: [TextInputSupport, TextOutputSupport]
-        },
-        XiaomiMimoV25 {
-            model_name: "xiaomi/mimo-v2.5",
-            constructor_name: xiaomi_mimo_v2_5,
-            display_name: "MiMo M2.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        XiaomiMimoV25Pro {
-            model_name: "xiaomi/mimo-v2.5-pro",
-            constructor_name: xiaomi_mimo_v2_5_pro,
-            display_name: "MiMo V2.5 Pro",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         XiaomiMimoV26Flash {
             model_name: "xiaomi/mimo-v2.6-flash",
@@ -2541,6 +2451,12 @@ model_capabilities! {
             constructor_name: zai_glm_5_3_flashx,
             display_name: "GLM 5.3 FlashX",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiGlm53FlashxLegal {
+            model_name: "zai/glm-5.3-flashx-legal",
+            constructor_name: zai_glm_5_3_flashx_legal,
+            display_name: "GLM 5.3 FlashX Legal",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ZaiGlm5vTurbo {
             model_name: "zai/glm-5v-turbo",

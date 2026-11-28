@@ -22,6 +22,18 @@ model_capabilities! {
             display_name: "Kimi K3-256K",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        K31Pro {
+            model_name: "k3.1-pro",
+            constructor_name: k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        K31ProHighspeed {
+            model_name: "k3.1-pro-highspeed",
+            constructor_name: k3_1_pro_highspeed,
+            display_name: "Kimi K3.1 Pro Highspeed",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         KimiForCoding {
             model_name: "kimi-for-coding",
             constructor_name: kimi_for_coding,

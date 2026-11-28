@@ -22,10 +22,10 @@ model_capabilities! {
             display_name: "DeepSeek V4 Flash 0731",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        DeepseekV41Flash {
-            model_name: "deepseek-v4.1-flash",
-            constructor_name: deepseek_v4_1_flash,
-            display_name: "DeepSeek V4.1 Flash",
+        DeepseekV41Flash1017 {
+            model_name: "deepseek-v4.1-flash-1017",
+            constructor_name: deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gemma426bA4bIt {

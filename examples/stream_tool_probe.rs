@@ -69,7 +69,7 @@ async fn run_openai(mode: &str) -> Result<(), Box<dyn std::error::Error>> {
     if mode == "core" || mode == "both" {
         println!("=== OPENAI core stream ===");
         let response = LanguageModelRequest::builder()
-            .model(OpenAI::gpt_5_nano())
+            .model(OpenAI::gpt_5_4_mini())
             .system("You must call tool get_username with user_id = '123'. After tool result, respond with only the username.")
             .prompt("What is the username for user id 123?")
             .with_tool(get_username())
@@ -100,7 +100,7 @@ async fn run_openai(mode: &str) -> Result<(), Box<dyn std::error::Error>> {
     if mode == "vercel" || mode == "both" {
         println!("=== OPENAI vercel ui stream ===");
         let response = LanguageModelRequest::builder()
-            .model(OpenAI::gpt_5_nano())
+            .model(OpenAI::gpt_5_4_mini())
             .system("You must call tool get_username with user_id = '123'. After tool result, respond with only the username.")
             .prompt("What is the username for user id 123?")
             .with_tool(get_username())

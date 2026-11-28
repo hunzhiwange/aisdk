@@ -40,5 +40,11 @@ model_capabilities! {
             display_name: "Step Router v1",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Stepaudio25Chat {
+            model_name: "stepaudio-2.5-chat",
+            constructor_name: stepaudio_2_5_chat,
+            display_name: "StepAudio 2.5 Chat",
+            capabilities: [AudioInputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport]
+        },
     }
 }

@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         });
 
         let response = LanguageModelRequest::builder()
-            .model(Anthropic::claude_sonnet_4_5())
+            .model(Anthropic::claude_sonnet_4_6())
             .messages(vec![Message::User(
                 UserMessage::new(question).with_image_url(image_url),
             )])

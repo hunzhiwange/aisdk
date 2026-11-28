@@ -22,6 +22,12 @@ model_capabilities! {
             display_name: "Claude Fable 5.1",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        ClaudeFable52 {
+            model_name: "claude-fable-5-2",
+            constructor_name: claude_fable_5_2,
+            display_name: "Claude Fable 5.2",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         ClaudeHaiku45 {
             model_name: "claude-haiku-4-5",
             constructor_name: claude_haiku_4_5,
@@ -38,18 +44,6 @@ model_capabilities! {
             model_name: "claude-haiku-5-5",
             constructor_name: claude_haiku_5_5,
             display_name: "Claude Haiku 5.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ClaudeOpus45 {
-            model_name: "claude-opus-4-5",
-            constructor_name: claude_opus_4_5,
-            display_name: "Claude Opus 4.5 (latest)",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ClaudeOpus4520251101 {
-            model_name: "claude-opus-4-5-20251101",
-            constructor_name: claude_opus_4_5_20251101,
-            display_name: "Claude Opus 4.5",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ClaudeOpus46 {
@@ -80,18 +74,6 @@ model_capabilities! {
             model_name: "claude-opus-5-5",
             constructor_name: claude_opus_5_5,
             display_name: "Claude Opus 5.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ClaudeSonnet45 {
-            model_name: "claude-sonnet-4-5",
-            constructor_name: claude_sonnet_4_5,
-            display_name: "Claude Sonnet 4.5 (latest)",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ClaudeSonnet4520250929 {
-            model_name: "claude-sonnet-4-5-20250929",
-            constructor_name: claude_sonnet_4_5_20250929,
-            display_name: "Claude Sonnet 4.5",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ClaudeSonnet46 {

@@ -12,7 +12,7 @@ async fn chat_handler(axum::Json(request): axum::Json<VercelUIRequest>) -> AxumS
 
     // Generate streaming response
     let response = LanguageModelRequest::builder()
-        .model(Google::gemini_2_5_flash())
+        .model(Google::gemini_3_flash_preview())
         .system("You are helpful assistant. who explains topics about the aisdk.rs library.")
         .messages(messages)
         .with_tool(web_fetch())

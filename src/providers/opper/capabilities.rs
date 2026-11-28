@@ -208,6 +208,12 @@ model_capabilities! {
             display_name: "GPT-6 Astra",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Gpt6Luna {
+            model_name: "gpt-6-luna",
+            constructor_name: gpt_6_luna,
+            display_name: "GPT-6 Luna",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         GptOss120b {
             model_name: "gpt-oss-120b",
             constructor_name: gpt_oss_120b,

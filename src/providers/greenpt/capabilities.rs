@@ -22,6 +22,12 @@ model_capabilities! {
             display_name: "DeepSeek V4.1 Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        DeepseekV41Flash1017 {
+            model_name: "deepseek-v4.1-flash-1017",
+            constructor_name: deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Gemma4 {
             model_name: "gemma4",
             constructor_name: gemma4,
@@ -165,12 +171,6 @@ model_capabilities! {
             constructor_name: llama_3_3_70b_instruct,
             display_name: "Llama-3.3-70B-Instruct",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Metis {
-            model_name: "metis",
-            constructor_name: metis,
-            display_name: "Metis",
-            capabilities: [TextInputSupport, TextOutputSupport]
         },
         MinimaxM25 {
             model_name: "minimax-m2.5",

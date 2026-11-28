@@ -13,8 +13,14 @@ model_capabilities! {
         DeepseekV4Flash {
             model_name: "deepseek-v4-flash",
             constructor_name: deepseek_v4_flash,
-            display_name: "DeepSeek V4.1 Flash",
+            display_name: "DeepSeek V4.1 Flash 1017",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV4Pro {
+            model_name: "deepseek-v4-pro",
+            constructor_name: deepseek_v4_pro,
+            display_name: "DeepSeek V4 Pro 0813",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gemma4 {
             model_name: "gemma4",
@@ -34,17 +40,23 @@ model_capabilities! {
             display_name: "GLM-5.3-Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Hy4 {
+            model_name: "hy4",
+            constructor_name: hy4,
+            display_name: "Hy4",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        KimiK31Pro {
+            model_name: "kimi-k3.1-pro",
+            constructor_name: kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MimoV26Flash {
             model_name: "mimo-v2.6-flash",
             constructor_name: mimo_v2_6_flash,
             display_name: "MiMo-V2.6-Flash",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        QwenImage21 {
-            model_name: "qwen-image-2.1",
-            constructor_name: qwen_image_2_1,
-            display_name: "Qwen-Image-2.1",
-            capabilities: [ImageOutputSupport, TextInputSupport]
         },
         Qwen36 {
             model_name: "qwen3.6",
@@ -57,6 +69,12 @@ model_capabilities! {
             constructor_name: qwen3_8_flash,
             display_name: "Qwen3.8 Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen38Max {
+            model_name: "qwen3.8-max",
+            constructor_name: qwen3_8_max,
+            display_name: "Qwen3.8 Max",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

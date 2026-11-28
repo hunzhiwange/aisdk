@@ -58,5 +58,11 @@ model_capabilities! {
             display_name: "Grok 4.6",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        XaiGrok47 {
+            model_name: "xai.grok-4.7",
+            constructor_name: xai_grok_4_7,
+            display_name: "Grok 4.7",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
     }
 }

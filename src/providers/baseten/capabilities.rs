@@ -46,22 +46,46 @@ model_capabilities! {
             display_name: "DeepSeek V4.1 Flash Fast",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MetaModelsMuseSparkOpen {
+            model_name: "meta-models/muse-spark-open",
+            constructor_name: meta_models_muse_spark_open,
+            display_name: "Muse Spark Open",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MoonshotaiKimiK3 {
             model_name: "moonshotai/Kimi-K3",
             constructor_name: moonshotai_kimi_k3,
             display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MoonshotaiKimiK31Pro {
+            model_name: "moonshotai/Kimi-K3.1-Pro",
+            constructor_name: moonshotai_kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         NvidiaNvidiaNemotron3Ultra550bA55b {
             model_name: "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B",
             constructor_name: nvidia_nvidia_nemotron_3_ultra_550b_a55b,
-            display_name: "Nemotron Ultra",
+            display_name: "Nemotron 3 Ultra",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        NvidiaNvidiaNemotron35SuperVl120bA12b {
+            model_name: "nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B",
+            constructor_name: nvidia_nvidia_nemotron_3_5_super_vl_120b_a12b,
+            display_name: "Nemotron 3.5 Super VL",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGptOss120b {
             model_name: "openai/gpt-oss-120b",
             constructor_name: openai_gpt_oss_120b,
             display_name: "OpenAI GPT 120B",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ReflectionBeam10 {
+            model_name: "reflection/Beam-1.0",
+            constructor_name: reflection_beam_1_0,
+            display_name: "Beam",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ZaiOrgGlm52 {

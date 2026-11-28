@@ -17,6 +17,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["ABACUS_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "abliteratedllm")]
+    ProviderDescriptor {
+        id: "abliteratedllm",
+        base_url: "https://api.abliteratedllm.dev/v1",
+        env_names: &["ABLITERATEDLLM_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "abliteration-ai")]
     ProviderDescriptor {
         id: "abliteration-ai",
@@ -29,6 +36,20 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "above",
         base_url: "https://api.above.dev/v1",
         env_names: &["ABOVE_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "adaption")]
+    ProviderDescriptor {
+        id: "adaption",
+        base_url: "https://api.prod.adaptionlabs.ai/api/v1",
+        env_names: &["ADAPTION_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "adzuki")]
+    ProviderDescriptor {
+        id: "adzuki",
+        base_url: "https://adzukiai.com/v1",
+        env_names: &["ADZUKI_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "agentrouter")]
@@ -66,6 +87,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["AIAND_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "aigrow")]
+    ProviderDescriptor {
+        id: "aigrow",
+        base_url: "https://aigrow.gg/v1",
+        env_names: &["AIGROW_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "aimlapi")]
     ProviderDescriptor {
         id: "aimlapi",
@@ -80,6 +108,20 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["AINETCAFE_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "aipg")]
+    ProviderDescriptor {
+        id: "aipg",
+        base_url: "https://api.aipowergrid.io/v1",
+        env_names: &["AIPG_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "aistupidlevel")]
+    ProviderDescriptor {
+        id: "aistupidlevel",
+        base_url: "https://aistupidlevel.info/v1",
+        env_names: &["AISTUPIDLEVEL_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "aixy")]
     ProviderDescriptor {
         id: "aixy",
@@ -90,7 +132,7 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
     #[cfg(feature = "aki-io")]
     ProviderDescriptor {
         id: "aki-io",
-        base_url: "https://aki.io/v1",
+        base_url: "https://aki.io/openai/v1",
         env_names: &["AKI_IO_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
@@ -150,11 +192,25 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["AMD_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "anonrouter")]
+    ProviderDescriptor {
+        id: "anonrouter",
+        base_url: "https://api.anonrouter.ai/v1",
+        env_names: &["ANONROUTER_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "anyapi")]
     ProviderDescriptor {
         id: "anyapi",
         base_url: "https://api.anyapi.ai/v1",
         env_names: &["ANYAPI_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "apiko")]
+    ProviderDescriptor {
+        id: "apiko",
+        base_url: "https://api.apiko.app/v1",
+        env_names: &["APIKO_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "arcee")]
@@ -171,6 +227,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["ATOMIC_CHAT_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "augure")]
+    ProviderDescriptor {
+        id: "augure",
+        base_url: "https://api.augureai.ca/v1",
+        env_names: &["AUGURE_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "auriko")]
     ProviderDescriptor {
         id: "auriko",
@@ -178,10 +241,17 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["AURIKO_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "autarcho")]
+    ProviderDescriptor {
+        id: "autarcho",
+        base_url: "https://api.autarcho.com/v1",
+        env_names: &["AUTARCHO_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "bailing")]
     ProviderDescriptor {
         id: "bailing",
-        base_url: "https://api.tbox.cn/api/llm/v1",
+        base_url: "https://api.ant-ling.com/v1",
         env_names: &["BAILING_API_TOKEN"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
@@ -227,6 +297,48 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["BOUNDLESS_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "bumo")]
+    ProviderDescriptor {
+        id: "bumo",
+        base_url: "https://router.bumo.ai/v1",
+        env_names: &["BUMO_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "byteplus")]
+    ProviderDescriptor {
+        id: "byteplus",
+        base_url: "https://ark.ap-southeast.bytepluses.com/api/v3",
+        env_names: &["BYTEPLUS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "cedarllm")]
+    ProviderDescriptor {
+        id: "cedarllm",
+        base_url: "https://api.cedarllm.com/v1",
+        env_names: &["CEDARLLM_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "cheapaimodel")]
+    ProviderDescriptor {
+        id: "cheapaimodel",
+        base_url: "https://api.cheapaimodel.ai/v1",
+        env_names: &["CHEAPAIMODEL_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "cheapest-token")]
+    ProviderDescriptor {
+        id: "cheapest-token",
+        base_url: "https://api.cheapest-token.com/v1",
+        env_names: &["CHEAPEST_TOKEN_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "cheapllm")]
+    ProviderDescriptor {
+        id: "cheapllm",
+        base_url: "https://cheapllm.shop/v1",
+        env_names: &["CHEAPLLM_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "chutes")]
     ProviderDescriptor {
         id: "chutes",
@@ -255,6 +367,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["CLINE_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "cloudcode")]
+    ProviderDescriptor {
+        id: "cloudcode",
+        base_url: "https://api.cloudcode.one/v1",
+        env_names: &["CLOUDCODE_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "cloudferro-sherlock")]
     ProviderDescriptor {
         id: "cloudferro-sherlock",
@@ -274,6 +393,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "commandcode",
         base_url: "https://api.commandcode.ai/provider/v1",
         env_names: &["CMD_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "confidential-ai")]
+    ProviderDescriptor {
+        id: "confidential-ai",
+        base_url: "https://api.confidential.ai/v1",
+        env_names: &["CONFIDENTIAL_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "coralbricks")]
@@ -339,6 +465,20 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["DINFERENCE_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "dothoosh")]
+    ProviderDescriptor {
+        id: "dothoosh",
+        base_url: "https://gateway.dothoosh.com/v1",
+        env_names: &["DOTHOOSH_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "doubleword")]
+    ProviderDescriptor {
+        id: "doubleword",
+        base_url: "https://api.doubleword.ai/v1",
+        env_names: &["DOUBLEWORD_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "drun")]
     ProviderDescriptor {
         id: "drun",
@@ -381,11 +521,25 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["ENGY_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "entrim")]
+    ProviderDescriptor {
+        id: "entrim",
+        base_url: "https://api.entrim.ai/v1",
+        env_names: &["ENTRIM_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "evroc")]
     ProviderDescriptor {
         id: "evroc",
         base_url: "https://models.think.evroc.com/v1",
         env_names: &["EVROC_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "ezkielyna")]
+    ProviderDescriptor {
+        id: "ezkielyna",
+        base_url: "https://api.ezkielyna.store/v1",
+        env_names: &["EZKIELYNA_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "fastrouter")]
@@ -395,11 +549,32 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["FASTROUTER_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "fiftyx")]
+    ProviderDescriptor {
+        id: "fiftyx",
+        base_url: "https://api.ai.50x.energy/v1",
+        env_names: &["FIFTYX_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "fireworks-ai")]
     ProviderDescriptor {
         id: "fireworks-ai",
         base_url: "https://api.fireworks.ai/inference/v1/",
         env_names: &["FIREWORKS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "fortytwo")]
+    ProviderDescriptor {
+        id: "fortytwo",
+        base_url: "https://api.fortytwo.network/v1",
+        env_names: &["FORTYTWO_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "frequency")]
+    ProviderDescriptor {
+        id: "frequency",
+        base_url: "https://llm.scalefrequency.com/v2",
+        env_names: &["FREQUENCY_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "friendli")]
@@ -416,6 +591,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["FROGBOT_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "gisoo")]
+    ProviderDescriptor {
+        id: "gisoo",
+        base_url: "https://gisoo.pro/api/v1",
+        env_names: &["GISOO_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "github-copilot")]
     ProviderDescriptor {
         id: "github-copilot",
@@ -428,6 +610,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "gmicloud",
         base_url: "https://api.gmi-serving.com/v1",
         env_names: &["GMICLOUD_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "graphn")]
+    ProviderDescriptor {
+        id: "graphn",
+        base_url: "https://model.graphn.ai/v1",
+        env_names: &["GRAPHN_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "greenpt")]
@@ -447,8 +636,22 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
     #[cfg(feature = "hetzner")]
     ProviderDescriptor {
         id: "hetzner",
-        base_url: "https://inference.hetzner.com/api/v1",
+        base_url: "https://inference.hetzner.com/v1",
         env_names: &["HETZNER_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "hopper")]
+    ProviderDescriptor {
+        id: "hopper",
+        base_url: "https://api.withhopper.com/v1",
+        env_names: &["HOPPER_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "hostinger-router")]
+    ProviderDescriptor {
+        id: "hostinger-router",
+        base_url: "https://router.hostinger.com/v1",
+        env_names: &["HOSTINGER_ROUTER_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "hpc-ai")]
@@ -458,11 +661,32 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["HPC_AI_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "huawei-maas")]
+    ProviderDescriptor {
+        id: "huawei-maas",
+        base_url: "https://api.modelarts-maas.com/openai/v1",
+        env_names: &["MAAS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "hubris")]
+    ProviderDescriptor {
+        id: "hubris",
+        base_url: "https://api.hubris.pw/v1",
+        env_names: &["HUBRIS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "huggingface")]
     ProviderDescriptor {
         id: "huggingface",
         base_url: "https://router.huggingface.co/v1",
         env_names: &["HF_TOKEN"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "humain")]
+    ProviderDescriptor {
+        id: "humain",
+        base_url: "https://api.node.humainaic.com/v1",
+        env_names: &["HUMAIN_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "hyper")]
@@ -500,11 +724,46 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["INCO_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "inferall")]
+    ProviderDescriptor {
+        id: "inferall",
+        base_url: "https://api.inferall.ai/v1",
+        env_names: &["INFERALL_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "inference")]
     ProviderDescriptor {
         id: "inference",
         base_url: "https://inference.net/v1",
         env_names: &["INFERENCE_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "inference-coop")]
+    ProviderDescriptor {
+        id: "inference-coop",
+        base_url: "https://gateway.inference.coop/v1",
+        env_names: &["INFERENCE_COOP_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "inferenceapis")]
+    ProviderDescriptor {
+        id: "inferenceapis",
+        base_url: "https://api.inferenceapis.com/v1",
+        env_names: &["INFERENCEAPIS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "inferris")]
+    ProviderDescriptor {
+        id: "inferris",
+        base_url: "https://api.inferris.ai/v1",
+        env_names: &["INFERRIS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "infersia")]
+    ProviderDescriptor {
+        id: "infersia",
+        base_url: "https://api.infersia.com/v1",
+        env_names: &["INFERSIA_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "inferx")]
@@ -528,11 +787,25 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["IOINTELLIGENCE_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "isoquant")]
+    ProviderDescriptor {
+        id: "isoquant",
+        base_url: "https://api.isoquant.ai/v1",
+        env_names: &["ISOQUANT_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "iteracompute")]
     ProviderDescriptor {
         id: "iteracompute",
         base_url: "https://api.iteracompute.com/v1",
         env_names: &["ITERACOMPUTE_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "jad-ai")]
+    ProviderDescriptor {
+        id: "jad-ai",
+        base_url: "https://jadai.freesrv.com/v1",
+        env_names: &["JAD_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "jalapeno")]
@@ -547,6 +820,27 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "jiekou",
         base_url: "https://api.jiekou.ai/openai",
         env_names: &["JIEKOU_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "joingonka")]
+    ProviderDescriptor {
+        id: "joingonka",
+        base_url: "https://gate.joingonka.ai/v1",
+        env_names: &["JOINGONKA_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "jzstoken")]
+    ProviderDescriptor {
+        id: "jzstoken",
+        base_url: "https://jzstoken.com/api/v1",
+        env_names: &["JZSTOKEN_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "keln")]
+    ProviderDescriptor {
+        id: "keln",
+        base_url: "https://api.keln.ai/v1",
+        env_names: &["KELN_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "kenari")]
@@ -577,11 +871,32 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["KIMI_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "kitani")]
+    ProviderDescriptor {
+        id: "kitani",
+        base_url: "https://api.kitani.ai/v1",
+        env_names: &["KITANI_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "klavo")]
+    ProviderDescriptor {
+        id: "klavo",
+        base_url: "https://api.klavo.ru/v1",
+        env_names: &["KLAVO_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "klokintegration")]
     ProviderDescriptor {
         id: "klokintegration",
         base_url: "https://api-gw.klok.ipaas.se/proxy/kloker-key/v1",
         env_names: &["KLOKINTEGRATION_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "korouter")]
+    ProviderDescriptor {
+        id: "korouter",
+        base_url: "https://korouter.ai/v1",
+        env_names: &["KOROUTER_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "kosmik")]
@@ -598,11 +913,11 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["KUAE_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
-    #[cfg(feature = "lilac")]
+    #[cfg(feature = "kunavo")]
     ProviderDescriptor {
-        id: "lilac",
-        base_url: "https://api.getlilac.com/v1",
-        env_names: &["LILAC_API_KEY"],
+        id: "kunavo",
+        base_url: "https://api.kunavo.com/v1",
+        env_names: &["KUNAVO_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "liquid")]
@@ -610,6 +925,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "liquid",
         base_url: "https://router.inference.ai.exchange/v1",
         env_names: &["LIQUID_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "lithosai")]
+    ProviderDescriptor {
+        id: "lithosai",
+        base_url: "https://api.lithosai.cloud/v1",
+        env_names: &["LITHOSAI_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "llmgateway")]
@@ -647,6 +969,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["LMSTUDIO_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "logits")]
+    ProviderDescriptor {
+        id: "logits",
+        base_url: "https://api.logits.com/v1",
+        env_names: &["LOGITS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "longcat")]
     ProviderDescriptor {
         id: "longcat",
@@ -668,11 +997,25 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["LUCIDQUERY_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "lyceum")]
+    ProviderDescriptor {
+        id: "lyceum",
+        base_url: "https://api.lyceum.technology/openai/v1",
+        env_names: &["LYCEUM_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "lynkr")]
     ProviderDescriptor {
         id: "lynkr",
         base_url: "http://127.0.0.1:8081/v1",
         env_names: &["LYNKR_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "mallard")]
+    ProviderDescriptor {
+        id: "mallard",
+        base_url: "https://api.mallardai.co.uk/v1",
+        env_names: &["MALLARD_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "meganova")]
@@ -687,6 +1030,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "melious",
         base_url: "https://api.melious.ai/v1",
         env_names: &["MELIOUS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "meragpt")]
+    ProviderDescriptor {
+        id: "meragpt",
+        base_url: "https://meragpt.com/v1",
+        env_names: &["MERAGPT_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "mixlayer")]
@@ -731,6 +1081,20 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["MODELSCOPE_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "modular")]
+    ProviderDescriptor {
+        id: "modular",
+        base_url: "https://api.modular.com/v1",
+        env_names: &["MODULAR_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "moneo")]
+    ProviderDescriptor {
+        id: "moneo",
+        base_url: "https://api.moneo.one/v1",
+        env_names: &["MONEO_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "moonshotai")]
     ProviderDescriptor {
         id: "moonshotai",
@@ -750,6 +1114,20 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "morph",
         base_url: "https://api.morphllm.com/v1",
         env_names: &["MORPH_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "munito")]
+    ProviderDescriptor {
+        id: "munito",
+        base_url: "https://api.munito.ai/inference/v1",
+        env_names: &["MUNITO_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "munito-eu")]
+    ProviderDescriptor {
+        id: "munito-eu",
+        base_url: "https://api.eu.munito.ai/inference/v1",
+        env_names: &["MUNITO_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "nan")]
@@ -794,6 +1172,20 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["NEURALWATT_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "nodecode")]
+    ProviderDescriptor {
+        id: "nodecode",
+        base_url: "https://api.nodecode.ai/v1",
+        env_names: &["NODECODE_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "nokeep")]
+    ProviderDescriptor {
+        id: "nokeep",
+        base_url: "https://nokeep.ai/v1",
+        env_names: &["NOKEEP_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "nova")]
     ProviderDescriptor {
         id: "nova",
@@ -813,6 +1205,20 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "nvidia",
         base_url: "https://integrate.api.nvidia.com/v1",
         env_names: &["NVIDIA_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "oathbreaker")]
+    ProviderDescriptor {
+        id: "oathbreaker",
+        base_url: "https://oathbreaker.ai/v1",
+        env_names: &["OATHBREAKER_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "obscurify")]
+    ProviderDescriptor {
+        id: "obscurify",
+        base_url: "https://obscurify.ai/v1",
+        env_names: &["OBSCURIFY_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "oci")]
@@ -871,11 +1277,25 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["ORCAROUTER_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "outerlabs")]
+    ProviderDescriptor {
+        id: "outerlabs",
+        base_url: "https://api.outerlabs.ai/v1",
+        env_names: &["OUTERLABS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "ovhcloud")]
     ProviderDescriptor {
         id: "ovhcloud",
         base_url: "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
         env_names: &["OVHCLOUD_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "paraloncloud")]
+    ProviderDescriptor {
+        id: "paraloncloud",
+        base_url: "https://paraloncloud.com/v1",
+        env_names: &["PARALONCLOUD_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "pareto")]
@@ -890,6 +1310,20 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "pendra",
         base_url: "https://api.pendra.ai/api/v1",
         env_names: &["PENDRA_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "phala")]
+    ProviderDescriptor {
+        id: "phala",
+        base_url: "https://inference.phala.com/v1",
+        env_names: &["PHALA_AI_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "phase")]
+    ProviderDescriptor {
+        id: "phase",
+        base_url: "https://router.phase.xyz/v1",
+        env_names: &["PHASE_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "pioneer")]
@@ -913,6 +1347,20 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["POOLSIDE_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "powerspring")]
+    ProviderDescriptor {
+        id: "powerspring",
+        base_url: "https://api.powerspring.eu/v1",
+        env_names: &["POWERSPRING_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "primalabs")]
+    ProviderDescriptor {
+        id: "primalabs",
+        base_url: "https://api.primalabs.ai/v1",
+        env_names: &["PRIMALABS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "prime")]
     ProviderDescriptor {
         id: "prime",
@@ -925,6 +1373,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "privatemode-ai",
         base_url: "http://localhost:8080/v1",
         env_names: &["PRIVATEMODE_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "proxystacks")]
+    ProviderDescriptor {
+        id: "proxystacks",
+        base_url: "https://proxystacks.com/v1",
+        env_names: &["RELAY_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "qihang-ai")]
@@ -948,6 +1403,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["REFLECTION_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "refuseless")]
+    ProviderDescriptor {
+        id: "refuseless",
+        base_url: "https://api.refuseless.com/v1",
+        env_names: &["REFUSELESS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "regolo-ai")]
     ProviderDescriptor {
         id: "regolo-ai",
@@ -969,11 +1431,32 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["ROUTING_RUN_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "ruapi")]
+    ProviderDescriptor {
+        id: "ruapi",
+        base_url: "https://www.ruapi.ai/v1",
+        env_names: &["RUAPI_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "runcrate")]
+    ProviderDescriptor {
+        id: "runcrate",
+        base_url: "https://api.runcrate.ai/v1",
+        env_names: &["RUNCRATE_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "runinfra")]
     ProviderDescriptor {
         id: "runinfra",
         base_url: "https://api.runinfra.ai/v1",
         env_names: &["RUNINFRA_GATEWAY_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "sagg")]
+    ProviderDescriptor {
+        id: "sagg",
+        base_url: "https://api.privatedeskai.com/v1",
+        env_names: &["SAGG_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "sakana")]
@@ -990,10 +1473,17 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["SAMBANOVA_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "sandbase")]
+    ProviderDescriptor {
+        id: "sandbase",
+        base_url: "https://api.sandbase.ai/v1",
+        env_names: &["SANDBASE_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "sarvam")]
     ProviderDescriptor {
         id: "sarvam",
-        base_url: "https://api.sarvam.ai/v1",
+        base_url: "https://api.sarvam.ai/v2",
         env_names: &["SARVAM_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
@@ -1046,6 +1536,20 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["SNOWFLAKE_ACCOUNT", "SNOWFLAKE_CORTEX_PAT"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "sokkan")]
+    ProviderDescriptor {
+        id: "sokkan",
+        base_url: "https://router.sokkan.ch/v1",
+        env_names: &["SOKKAN_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "sparrowcodes")]
+    ProviderDescriptor {
+        id: "sparrowcodes",
+        base_url: "https://api.sparrowcodes.com/v1",
+        env_names: &["SPARROWCODES_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "stackit")]
     ProviderDescriptor {
         id: "stackit",
@@ -1058,6 +1562,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "standardcompute",
         base_url: "https://api.stdcmpt.com/v1",
         env_names: &["STANDARDCOMPUTE_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "steadyrouter")]
+    ProviderDescriptor {
+        id: "steadyrouter",
+        base_url: "https://api.steadyrouter.com/v1",
+        env_names: &["STEADYROUTER_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "stepfun")]
@@ -1088,11 +1599,25 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["STEPFUN_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "stepping-stone")]
+    ProviderDescriptor {
+        id: "stepping-stone",
+        base_url: "https://llm.stoney-cloud.com/v1",
+        env_names: &["STONEY_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "submodel")]
     ProviderDescriptor {
         id: "submodel",
         base_url: "https://llm.submodel.ai/v1",
         env_names: &["SUBMODEL_INSTAGEN_ACCESS_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "superbot-gg")]
+    ProviderDescriptor {
+        id: "superbot-gg",
+        base_url: "https://api.superbot.gg/v1",
+        env_names: &["SUPERBOT_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "synthetic")]
@@ -1102,11 +1627,25 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["SYNTHETIC_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
-    #[cfg(feature = "tempr")]
+    #[cfg(feature = "synthorai")]
     ProviderDescriptor {
-        id: "tempr",
-        base_url: "https://api.temprhq.io/v1",
-        env_names: &["TEMPR_API_KEY"],
+        id: "synthorai",
+        base_url: "https://synthorai.io/v1",
+        env_names: &["SYNTHORAI_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "teamorouter")]
+    ProviderDescriptor {
+        id: "teamorouter",
+        base_url: "https://api.teamorouter.com/v1",
+        env_names: &["TEAMOROUTER_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "teapot-router")]
+    ProviderDescriptor {
+        id: "teapot-router",
+        base_url: "https://api.teapotrouter.com/v1",
+        env_names: &["TEAPOT_ROUTER_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "tencent-coding-plan")]
@@ -1119,7 +1658,14 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
     #[cfg(feature = "tencent-token-plan")]
     ProviderDescriptor {
         id: "tencent-token-plan",
-        base_url: "https://api.lkeap.cloud.tencent.com/plan/v3",
+        base_url: "https://tokenhub.tencentmaas.com/plan/v3",
+        env_names: &["TENCENT_TOKEN_PLAN_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "tencent-token-plan-intl")]
+    ProviderDescriptor {
+        id: "tencent-token-plan-intl",
+        base_url: "https://tokenhub-intl.tencentcloudmaas.com/plan/v3",
         env_names: &["TENCENT_TOKEN_PLAN_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
@@ -1137,11 +1683,25 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["TENSORX_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "tenstorrent")]
+    ProviderDescriptor {
+        id: "tenstorrent",
+        base_url: "https://console.tenstorrent.com/v1",
+        env_names: &["TENSTORRENT_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "the-grid-ai")]
     ProviderDescriptor {
         id: "the-grid-ai",
         base_url: "https://api.thegrid.ai/v1",
         env_names: &["THEGRID_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "therouter")]
+    ProviderDescriptor {
+        id: "therouter",
+        base_url: "https://api.therouter.ai/v1",
+        env_names: &["THEROUTER_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "tinfoil")]
@@ -1151,11 +1711,32 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["TINFOIL_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "toapis")]
+    ProviderDescriptor {
+        id: "toapis",
+        base_url: "https://toapis.com/v1",
+        env_names: &["TOAPIS_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "tokengo")]
     ProviderDescriptor {
         id: "tokengo",
         base_url: "https://api.tokengo.com/v1",
         env_names: &["TOKENGO_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "tokenify")]
+    ProviderDescriptor {
+        id: "tokenify",
+        base_url: "https://api.tokenify.dev/v1",
+        env_names: &["TOKENIFY_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "tokenlab")]
+    ProviderDescriptor {
+        id: "tokenlab",
+        base_url: "https://api.tokenlab.sh/v1",
+        env_names: &["TOKENLAB_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "tokenrouter")]
@@ -1165,11 +1746,25 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["TOKENROUTER_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "tokenwatt")]
+    ProviderDescriptor {
+        id: "tokenwatt",
+        base_url: "https://api.tokenwatt.io/v1",
+        env_names: &["TOKENWATT_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "trustedrouter")]
     ProviderDescriptor {
         id: "trustedrouter",
         base_url: "https://api.trustedrouter.com/v1",
         env_names: &["TRUSTEDROUTER_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "trustedtokens")]
+    ProviderDescriptor {
+        id: "trustedtokens",
+        base_url: "https://api.trustedtokens.eu/v1",
+        env_names: &["TRUSTEDTOKENS_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "umans-ai")]
@@ -1186,11 +1781,39 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["UMANS_AI_CODING_PLAN_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "unbiased")]
+    ProviderDescriptor {
+        id: "unbiased",
+        base_url: "https://api.unbiased.ai/v1",
+        env_names: &["UNBIASED_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "uncensuredai")]
+    ProviderDescriptor {
+        id: "uncensuredai",
+        base_url: "https://uncensuredai.com/v1",
+        env_names: &["UNCENSURED_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "unorouter")]
     ProviderDescriptor {
         id: "unorouter",
         base_url: "https://api.unorouter.com/v1",
         env_names: &["UNOROUTER_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "unrestricted")]
+    ProviderDescriptor {
+        id: "unrestricted",
+        base_url: "https://api.unrestricted.sh/v1",
+        env_names: &["UNRESTRICTED_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "uplinkswitch")]
+    ProviderDescriptor {
+        id: "uplinkswitch",
+        base_url: "https://api.uplinkswitch.com/v1",
+        env_names: &["UPLINKSWITCH_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "upstage")]
@@ -1205,6 +1828,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "vancine",
         base_url: "https://vancine.com/v1",
         env_names: &["VANCINE_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "verda")]
+    ProviderDescriptor {
+        id: "verda",
+        base_url: "https://inference.verda.com/v1",
+        env_names: &["VERDA_INFERENCE_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "vispark")]
@@ -1249,11 +1879,25 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["WALLABY_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "wally")]
+    ProviderDescriptor {
+        id: "wally",
+        base_url: "https://inference.runanywhere.ai/v1",
+        env_names: &["WALLY_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "wandb")]
     ProviderDescriptor {
         id: "wandb",
         base_url: "https://api.inference.wandb.ai/v1",
         env_names: &["WANDB_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "watt")]
+    ProviderDescriptor {
+        id: "watt",
+        base_url: "https://api.watt-cloud.com/v1",
+        env_names: &["WATT_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "xiaomi")]
@@ -1291,6 +1935,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         env_names: &["XPERSONA_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
+    #[cfg(feature = "xxapi")]
+    ProviderDescriptor {
+        id: "xxapi",
+        base_url: "https://xxapi.ai/v1",
+        env_names: &["XXAPI_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
     #[cfg(feature = "zai")]
     ProviderDescriptor {
         id: "zai",
@@ -1316,7 +1967,7 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
     ProviderDescriptor {
         id: "zenifra",
         base_url: "https://ai.zenifra.com/v1",
-        env_names: &["ZENIFRA_AI_KEY"],
+        env_names: &["ZENIFRA_AI_API_KEY", "ZENIFRA_AI_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "zenmux")]
@@ -1324,6 +1975,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "zenmux",
         base_url: "https://zenmux.ai/api/v1",
         env_names: &["ZENMUX_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "zerogpu")]
+    ProviderDescriptor {
+        id: "zerogpu",
+        base_url: "https://api.zerogpu.ai/v1",
+        env_names: &["ZEROGPU_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
     #[cfg(feature = "zhipuai")]
@@ -1338,6 +1996,13 @@ pub(super) static PROVIDERS: &[ProviderDescriptor] = &[
         id: "zhipuai-coding-plan",
         base_url: "https://open.bigmodel.cn/api/coding/paas/v4",
         env_names: &["ZHIPU_API_KEY"],
+        protocol: super::registry::ProviderProtocol::OpenAiCompatible,
+    },
+    #[cfg(feature = "zro")]
+    ProviderDescriptor {
+        id: "zro",
+        base_url: "https://zro.moonmath.ai/v1",
+        env_names: &["ZRO_API_KEY"],
         protocol: super::registry::ProviderProtocol::OpenAiCompatible,
     },
 ];

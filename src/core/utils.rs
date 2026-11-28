@@ -31,7 +31,7 @@ use crate::{
 /// // #[tokio::main]
 /// // async fn main() -> Result<(), Box<dyn std::error::Error>> {
 /// //     let result = LanguageModelRequest::builder()
-/// //         .model(OpenAI::gpt_5())
+/// //         .model(OpenAI::gpt_5_2())
 /// //         .system("You are a helpful assistant with access to tools.")
 /// //         .prompt("What is the weather in New York?")
 /// //         .stop_when(step_count_is(3)) // Limit agent loop to 3 steps

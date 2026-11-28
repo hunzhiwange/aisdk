@@ -28,6 +28,12 @@ model_capabilities! {
             display_name: "Ornith 1.5 35B A3B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        StepfunAiStep5Preview {
+            model_name: "stepfun-ai/Step-5-Preview",
+            constructor_name: stepfun_ai_step_5_preview,
+            display_name: "Step 5 Preview",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         ZaiOrgGlm53 {
             model_name: "zai-org/GLM-5.3",
             constructor_name: zai_org_glm_5_3,

@@ -292,6 +292,18 @@ model_capabilities! {
             display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        MoonshotaiKimiK31Pro {
+            model_name: "moonshotai/kimi-k3.1-pro",
+            constructor_name: moonshotai_kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        MoonshotaiKimiK31ProHighspeed {
+            model_name: "moonshotai/kimi-k3.1-pro-highspeed",
+            constructor_name: moonshotai_kimi_k3_1_pro_highspeed,
+            display_name: "Kimi K3.1 Pro Highspeed",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         NousresearchHermes2ProLlama38b {
             model_name: "nousresearch/hermes-2-pro-llama-3-8b",
             constructor_name: nousresearch_hermes_2_pro_llama_3_8b,
@@ -303,6 +315,24 @@ model_capabilities! {
             constructor_name: nvidia_nemotron_3_nano_30b_a3b,
             display_name: "Nemotron 3 Nano 30B A3B",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt61Terra {
+            model_name: "openai/gpt-6.1-terra",
+            constructor_name: openai_gpt_6_1_terra,
+            display_name: "GPT-6.1 Terra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt62Astra {
+            model_name: "openai/gpt-6.2-astra",
+            constructor_name: openai_gpt_6_2_astra,
+            display_name: "GPT-6.2 Astra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt62Sol {
+            model_name: "openai/gpt-6.2-sol",
+            constructor_name: openai_gpt_6_2_sol,
+            display_name: "GPT-6.2 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGptOss120b {
             model_name: "openai/gpt-oss-120b",
@@ -345,6 +375,12 @@ model_capabilities! {
             constructor_name: qwen_qwen3_vl_30b_a3b_instruct,
             display_name: "Qwen3 VL 30B A3B Instruct",
             capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen3VlPlus {
+            model_name: "qwen/qwen3-vl-plus",
+            constructor_name: qwen_qwen3_vl_plus,
+            display_name: "Qwen3-VL Plus",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         QwenQwen35122bA10b {
             model_name: "qwen/qwen3.5-122b-a10b",
@@ -412,6 +448,12 @@ model_capabilities! {
             display_name: "Qwen3.8 Max",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        QwenQwen4Max {
+            model_name: "qwen/qwen4-max",
+            constructor_name: qwen_qwen4_max,
+            display_name: "Qwen4 Max",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         StepfunStep37Flash {
             model_name: "stepfun/step-3.7-flash",
             constructor_name: stepfun_step_3_7_flash,
@@ -429,6 +471,18 @@ model_capabilities! {
             constructor_name: tencent_hy3,
             display_name: "Hy3",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        TencentHy4 {
+            model_name: "tencent/hy4",
+            constructor_name: tencent_hy4,
+            display_name: "Hy4",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        TencentHy4Flash {
+            model_name: "tencent/hy4-flash",
+            constructor_name: tencent_hy4_flash,
+            display_name: "Hy4 flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         TencentHy4Preview {
             model_name: "tencent/hy4-preview",
@@ -530,6 +584,12 @@ model_capabilities! {
             model_name: "zai-org/glm-5.3-flash",
             constructor_name: zai_org_glm_5_3_flash,
             display_name: "GLM-5.3-Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        ZaiOrgGlm53Flashx {
+            model_name: "zai-org/glm-5.3-flashX",
+            constructor_name: zai_org_glm_5_3_flashx,
+            display_name: "GLM 5.3 FlashX",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }

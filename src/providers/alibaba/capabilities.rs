@@ -22,10 +22,52 @@ model_capabilities! {
             display_name: "GLM-5.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Glm53Prime {
+            model_name: "glm-5.3-prime",
+            constructor_name: glm_5_3_prime,
+            display_name: "GLM-5.3 Prime",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         KimiK3 {
             model_name: "kimi-k3",
             constructor_name: kimi_k3,
             display_name: "Kimi K3",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        KimiK31Pro {
+            model_name: "kimi-k3.1-pro",
+            constructor_name: kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        KimiK31ProPrime {
+            model_name: "kimi-k3.1-pro-prime",
+            constructor_name: kimi_k3_1_pro_prime,
+            display_name: "Kimi K3.1 Pro Prime",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MindlabMacaronV1Tall {
+            model_name: "mindlab/macaron-v1-tall",
+            constructor_name: mindlab_macaron_v1_tall,
+            display_name: "Macaron V1 Tall",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MindlabMacaronV11CodingVenti {
+            model_name: "mindlab/macaron-v1.1-coding-venti",
+            constructor_name: mindlab_macaron_v1_1_coding_venti,
+            display_name: "Macaron V1.1 Coding Venti",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MindlabMacaronV11Venti {
+            model_name: "mindlab/macaron-v1.1-venti",
+            constructor_name: mindlab_macaron_v1_1_venti,
+            display_name: "Macaron V1.1 Venti",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MindlabMacaronV11VentiPro {
+            model_name: "mindlab/macaron-v1.1-venti-pro",
+            constructor_name: mindlab_macaron_v1_1_venti_pro,
+            display_name: "Macaron V1.1 Venti Pro",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenFlash {
@@ -82,17 +124,11 @@ model_capabilities! {
             display_name: "Qwen3-Omni Flash",
             capabilities: [AudioInputSupport, AudioOutputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        Qwen3Vl30bA3b {
-            model_name: "qwen3-vl-30b-a3b",
-            constructor_name: qwen3_vl_30b_a3b,
-            display_name: "Qwen3-VL 30B-A3B",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Qwen3VlPlus {
             model_name: "qwen3-vl-plus",
             constructor_name: qwen3_vl_plus,
             display_name: "Qwen3-VL Plus",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Qwen35122bA10b {
             model_name: "qwen3.5-122b-a10b",
@@ -112,22 +148,10 @@ model_capabilities! {
             display_name: "Qwen3.5 35B-A3B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        Qwen35397bA17b {
-            model_name: "qwen3.5-397b-a17b",
-            constructor_name: qwen3_5_397b_a17b,
-            display_name: "Qwen3.5 397B-A17B",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
         Qwen35Flash {
             model_name: "qwen3.5-flash",
             constructor_name: qwen3_5_flash,
             display_name: "Qwen3.5 Flash",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        Qwen35Plus {
-            model_name: "qwen3.5-plus",
-            constructor_name: qwen3_5_plus,
-            display_name: "Qwen3.5 Plus",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Qwen3627b {
@@ -189,6 +213,12 @@ model_capabilities! {
             constructor_name: qwen3_8_omni_flash,
             display_name: "Qwen3.8 Omni Flash",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen4Max {
+            model_name: "qwen4-max",
+            constructor_name: qwen4_max,
+            display_name: "Qwen4 Max",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }
 }

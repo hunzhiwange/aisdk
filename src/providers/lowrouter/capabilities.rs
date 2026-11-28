@@ -10,6 +10,84 @@ use crate::providers::lowrouter::Lowrouter;
 model_capabilities! {
     provider: Lowrouter,
     models: {
+        AutoAnthropicClaudeFable5 {
+            model_name: "auto/anthropic/claude-fable-5",
+            constructor_name: auto_anthropic_claude_fable_5,
+            display_name: "Claude Fable 5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeFable51 {
+            model_name: "auto/anthropic/claude-fable-5.1",
+            constructor_name: auto_anthropic_claude_fable_5_1,
+            display_name: "Claude Fable 5.1",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeHaiku45 {
+            model_name: "auto/anthropic/claude-haiku-4.5",
+            constructor_name: auto_anthropic_claude_haiku_4_5,
+            display_name: "Claude Haiku 4.5 (latest)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeHaiku55 {
+            model_name: "auto/anthropic/claude-haiku-5.5",
+            constructor_name: auto_anthropic_claude_haiku_5_5,
+            display_name: "Claude Haiku 5.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeOpus45 {
+            model_name: "auto/anthropic/claude-opus-4.5",
+            constructor_name: auto_anthropic_claude_opus_4_5,
+            display_name: "Claude Opus 4.5 (latest)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeOpus46 {
+            model_name: "auto/anthropic/claude-opus-4.6",
+            constructor_name: auto_anthropic_claude_opus_4_6,
+            display_name: "Claude Opus 4.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeOpus47 {
+            model_name: "auto/anthropic/claude-opus-4.7",
+            constructor_name: auto_anthropic_claude_opus_4_7,
+            display_name: "Claude Opus 4.7",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeOpus48 {
+            model_name: "auto/anthropic/claude-opus-4.8",
+            constructor_name: auto_anthropic_claude_opus_4_8,
+            display_name: "Claude Opus 4.8",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeOpus5 {
+            model_name: "auto/anthropic/claude-opus-5",
+            constructor_name: auto_anthropic_claude_opus_5,
+            display_name: "Claude Opus 5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeOpus55 {
+            model_name: "auto/anthropic/claude-opus-5.5",
+            constructor_name: auto_anthropic_claude_opus_5_5,
+            display_name: "Claude Opus 5.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeSonnet46 {
+            model_name: "auto/anthropic/claude-sonnet-4.6",
+            constructor_name: auto_anthropic_claude_sonnet_4_6,
+            display_name: "Claude Sonnet 4.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeSonnet5 {
+            model_name: "auto/anthropic/claude-sonnet-5",
+            constructor_name: auto_anthropic_claude_sonnet_5,
+            display_name: "Claude Sonnet 5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoAnthropicClaudeSonnet55 {
+            model_name: "auto/anthropic/claude-sonnet-5.5",
+            constructor_name: auto_anthropic_claude_sonnet_5_5,
+            display_name: "Claude Sonnet 5.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         AutoMistralaiCodestral2508 {
             model_name: "auto/mistralai/codestral-2508",
             constructor_name: auto_mistralai_codestral_2508,
@@ -164,6 +242,12 @@ model_capabilities! {
             model_name: "auto/openai/gpt-6.1-sol",
             constructor_name: auto_openai_gpt_6_1_sol,
             display_name: "GPT-6.1 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AutoOpenaiGpt61Terra {
+            model_name: "auto/openai/gpt-6.1-terra",
+            constructor_name: auto_openai_gpt_6_1_terra,
+            display_name: "GPT-6.1 Terra",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AutoOpenaiGptOss120b {

@@ -148,6 +148,12 @@ model_capabilities! {
             display_name: "Gemini 3 Flash Preview",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        Gemini4Argon {
+            model_name: "gemini-4-argon",
+            constructor_name: gemini_4_argon,
+            display_name: "Gemini 4 Argon",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         Gemma312b {
             model_name: "gemma-3-12b",
             constructor_name: gemma_3_12b,

@@ -28,12 +28,6 @@ model_capabilities! {
             display_name: "Kimi K2.5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Qwen35Plus {
-            model_name: "qwen3.5-plus",
-            constructor_name: qwen3_5_plus,
-            display_name: "Qwen3.5 Plus",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Qwen36Plus {
             model_name: "qwen3.6-plus",
             constructor_name: qwen3_6_plus,

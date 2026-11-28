@@ -46,6 +46,12 @@ model_capabilities! {
             display_name: "Claude Fable 5.1",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        AnthropicClaudeFable52 {
+            model_name: "anthropic.claude-fable-5-2",
+            constructor_name: anthropic_claude_fable_5_2,
+            display_name: "Claude Fable 5.2",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         AnthropicClaudeHaiku4520251001V10 {
             model_name: "anthropic.claude-haiku-4-5-20251001-v1:0",
             constructor_name: anthropic_claude_haiku_4_5_20251001_v1_0,
@@ -56,12 +62,6 @@ model_capabilities! {
             model_name: "anthropic.claude-haiku-5-5",
             constructor_name: anthropic_claude_haiku_5_5,
             display_name: "Claude Haiku 5.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        AnthropicClaudeOpus4520251101V10 {
-            model_name: "anthropic.claude-opus-4-5-20251101-v1:0",
-            constructor_name: anthropic_claude_opus_4_5_20251101_v1_0,
-            display_name: "Claude Opus 4.5",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AnthropicClaudeOpus46V1 {
@@ -184,11 +184,29 @@ model_capabilities! {
             display_name: "Claude Sonnet 5 (AU)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        AuAnthropicClaudeSonnet55 {
+            model_name: "au.anthropic.claude-sonnet-5-5",
+            constructor_name: au_anthropic_claude_sonnet_5_5,
+            display_name: "Claude Sonnet 5.5 (AU)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         CaAmazonNovaLiteV10 {
             model_name: "ca.amazon.nova-lite-v1:0",
             constructor_name: ca_amazon_nova_lite_v1_0,
             display_name: "Nova Lite (CA)",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        CaAnthropicClaudeHaiku55 {
+            model_name: "ca.anthropic.claude-haiku-5-5",
+            constructor_name: ca_anthropic_claude_haiku_5_5,
+            display_name: "Claude Haiku 5.5 (Canada)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        CaAnthropicClaudeSonnet55 {
+            model_name: "ca.anthropic.claude-sonnet-5-5",
+            constructor_name: ca_anthropic_claude_sonnet_5_5,
+            display_name: "Claude Sonnet 5.5 (Canada)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekV32 {
             model_name: "deepseek.v3.2",
@@ -220,12 +238,6 @@ model_capabilities! {
             display_name: "Nova Pro (EU)",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        EuAnthropicClaudeFable5 {
-            model_name: "eu.anthropic.claude-fable-5",
-            constructor_name: eu_anthropic_claude_fable_5,
-            display_name: "Claude Fable 5 (EU)",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         EuAnthropicClaudeHaiku4520251001V10 {
             model_name: "eu.anthropic.claude-haiku-4-5-20251001-v1:0",
             constructor_name: eu_anthropic_claude_haiku_4_5_20251001_v1_0,
@@ -236,12 +248,6 @@ model_capabilities! {
             model_name: "eu.anthropic.claude-haiku-5-5",
             constructor_name: eu_anthropic_claude_haiku_5_5,
             display_name: "Claude Haiku 5.5 (EU)",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        EuAnthropicClaudeOpus4520251101V10 {
-            model_name: "eu.anthropic.claude-opus-4-5-20251101-v1:0",
-            constructor_name: eu_anthropic_claude_opus_4_5_20251101_v1_0,
-            display_name: "Claude Opus 4.5 (EU)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         EuAnthropicClaudeOpus46V1 {
@@ -316,6 +322,12 @@ model_capabilities! {
             display_name: "Claude Fable 5.1 (Global)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        GlobalAnthropicClaudeFable52 {
+            model_name: "global.anthropic.claude-fable-5-2",
+            constructor_name: global_anthropic_claude_fable_5_2,
+            display_name: "Claude Fable 5.2 (Global)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         GlobalAnthropicClaudeHaiku4520251001V10 {
             model_name: "global.anthropic.claude-haiku-4-5-20251001-v1:0",
             constructor_name: global_anthropic_claude_haiku_4_5_20251001_v1_0,
@@ -326,12 +338,6 @@ model_capabilities! {
             model_name: "global.anthropic.claude-haiku-5-5",
             constructor_name: global_anthropic_claude_haiku_5_5,
             display_name: "Claude Haiku 5.5 (Global)",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        GlobalAnthropicClaudeOpus4520251101V10 {
-            model_name: "global.anthropic.claude-opus-4-5-20251101-v1:0",
-            constructor_name: global_anthropic_claude_opus_4_5_20251101_v1_0,
-            display_name: "Claude Opus 4.5 (Global)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GlobalAnthropicClaudeOpus46V1 {
@@ -388,6 +394,12 @@ model_capabilities! {
             display_name: "Kimi K3 (Global)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        GlobalMoonshotaiKimiK31 {
+            model_name: "global.moonshotai.kimi-k3.1",
+            constructor_name: global_moonshotai_kimi_k3_1,
+            display_name: "Kimi K3.1 Pro Highspeed (Global)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         GlobalOpenaiGpt56Luna {
             model_name: "global.openai.gpt-5.6-luna",
             constructor_name: global_openai_gpt_5_6_luna,
@@ -428,6 +440,24 @@ model_capabilities! {
             model_name: "global.openai.gpt-6.1-sol",
             constructor_name: global_openai_gpt_6_1_sol,
             display_name: "GPT-6.1 Sol (Global)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GlobalOpenaiGpt61Terra {
+            model_name: "global.openai.gpt-6.1-terra",
+            constructor_name: global_openai_gpt_6_1_terra,
+            display_name: "GPT-6.1 Terra (Global)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GlobalOpenaiGpt62Astra {
+            model_name: "global.openai.gpt-6.2-astra",
+            constructor_name: global_openai_gpt_6_2_astra,
+            display_name: "GPT-6.2 Astra (Global)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GlobalOpenaiGpt62Sol {
+            model_name: "global.openai.gpt-6.2-sol",
+            constructor_name: global_openai_gpt_6_2_sol,
+            display_name: "GPT-6.2 Sol (Global)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         GlobalXaiGrok46 {
@@ -484,6 +514,18 @@ model_capabilities! {
             display_name: "Claude Sonnet 5 (India)",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        InMoonshotaiKimiK3 {
+            model_name: "in.moonshotai.kimi-k3",
+            constructor_name: in_moonshotai_kimi_k3,
+            display_name: "Kimi K3 (India)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        InMoonshotaiKimiK31 {
+            model_name: "in.moonshotai.kimi-k3.1",
+            constructor_name: in_moonshotai_kimi_k3_1,
+            display_name: "Kimi K3.1 Pro Highspeed (India)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         InOpenaiGpt56Luna {
             model_name: "in.openai.gpt-5.6-luna",
             constructor_name: in_openai_gpt_5_6_luna,
@@ -526,12 +568,6 @@ model_capabilities! {
             display_name: "Claude Opus 4.8 (JP)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        JpAnthropicClaudeOpus5 {
-            model_name: "jp.anthropic.claude-opus-5",
-            constructor_name: jp_anthropic_claude_opus_5,
-            display_name: "Claude Opus 5 (JP)",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         JpAnthropicClaudeOpus55 {
             model_name: "jp.anthropic.claude-opus-5-5",
             constructor_name: jp_anthropic_claude_opus_5_5,
@@ -542,12 +578,6 @@ model_capabilities! {
             model_name: "jp.anthropic.claude-sonnet-4-6",
             constructor_name: jp_anthropic_claude_sonnet_4_6,
             display_name: "Claude Sonnet 4.6 (JP)",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        JpAnthropicClaudeSonnet5 {
-            model_name: "jp.anthropic.claude-sonnet-5",
-            constructor_name: jp_anthropic_claude_sonnet_5,
-            display_name: "Claude Sonnet 5 (JP)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MinimaxMinimaxM25 {
@@ -664,6 +694,24 @@ model_capabilities! {
             display_name: "GPT-6.1 Sol",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        OpenaiGpt61Terra {
+            model_name: "openai.gpt-6.1-terra",
+            constructor_name: openai_gpt_6_1_terra,
+            display_name: "GPT-6.1 Terra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt62Astra {
+            model_name: "openai.gpt-6.2-astra",
+            constructor_name: openai_gpt_6_2_astra,
+            display_name: "GPT-6.2 Astra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt62Sol {
+            model_name: "openai.gpt-6.2-sol",
+            constructor_name: openai_gpt_6_2_sol,
+            display_name: "GPT-6.2 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         OpenaiGptOss120b {
             model_name: "openai.gpt-oss-120b",
             constructor_name: openai_gpt_oss_120b,
@@ -778,6 +826,12 @@ model_capabilities! {
             display_name: "Claude Fable 5.1 (US)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        UsAnthropicClaudeFable52 {
+            model_name: "us.anthropic.claude-fable-5-2",
+            constructor_name: us_anthropic_claude_fable_5_2,
+            display_name: "Claude Fable 5.2 (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         UsAnthropicClaudeHaiku4520251001V10 {
             model_name: "us.anthropic.claude-haiku-4-5-20251001-v1:0",
             constructor_name: us_anthropic_claude_haiku_4_5_20251001_v1_0,
@@ -788,12 +842,6 @@ model_capabilities! {
             model_name: "us.anthropic.claude-haiku-5-5",
             constructor_name: us_anthropic_claude_haiku_5_5,
             display_name: "Claude Haiku 5.5 (US)",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        UsAnthropicClaudeOpus4520251101V10 {
-            model_name: "us.anthropic.claude-opus-4-5-20251101-v1:0",
-            constructor_name: us_anthropic_claude_opus_4_5_20251101_v1_0,
-            display_name: "Claude Opus 4.5 (US)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         UsAnthropicClaudeOpus46V1 {
@@ -856,6 +904,12 @@ model_capabilities! {
             display_name: "Kimi K3 (US)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        UsMoonshotaiKimiK31 {
+            model_name: "us.moonshotai.kimi-k3.1",
+            constructor_name: us_moonshotai_kimi_k3_1,
+            display_name: "Kimi K3.1 Pro Highspeed (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         UsOpenaiGpt56Luna {
             model_name: "us.openai.gpt-5.6-luna",
             constructor_name: us_openai_gpt_5_6_luna,
@@ -898,6 +952,24 @@ model_capabilities! {
             display_name: "GPT-6.1 Sol (US)",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        UsOpenaiGpt61Terra {
+            model_name: "us.openai.gpt-6.1-terra",
+            constructor_name: us_openai_gpt_6_1_terra,
+            display_name: "GPT-6.1 Terra (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsOpenaiGpt62Astra {
+            model_name: "us.openai.gpt-6.2-astra",
+            constructor_name: us_openai_gpt_6_2_astra,
+            display_name: "GPT-6.2 Astra (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        UsOpenaiGpt62Sol {
+            model_name: "us.openai.gpt-6.2-sol",
+            constructor_name: us_openai_gpt_6_2_sol,
+            display_name: "GPT-6.2 Sol (US)",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         UsXaiGrok46 {
             model_name: "us.xai.grok-4.6",
             constructor_name: us_xai_grok_4_6,
@@ -915,6 +987,12 @@ model_capabilities! {
             constructor_name: us_zai_glm_5_3,
             display_name: "GLM-5.3 (US)",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        WriterPalmyraVision7b {
+            model_name: "writer.palmyra-vision-7b",
+            constructor_name: writer_palmyra_vision_7b,
+            display_name: "Palmyra Vision 7B",
+            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
         },
         XaiGrok43 {
             model_name: "xai.grok-4.3",

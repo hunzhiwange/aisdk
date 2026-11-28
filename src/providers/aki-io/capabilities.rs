@@ -10,6 +10,12 @@ use crate::providers::aki_io::AkiIo;
 model_capabilities! {
     provider: AkiIo,
     models: {
+        DeepseekV41Flash1017Tl5 {
+            model_name: "deepseek-v4.1-flash-1017-tl5",
+            constructor_name: deepseek_v4_1_flash_1017_tl5,
+            display_name: "DeepSeek V4.1 Flash 1017",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         DeepseekV41Flash552b {
             model_name: "deepseek-v4.1-flash-552b",
             constructor_name: deepseek_v4_1_flash_552b,
@@ -32,6 +38,12 @@ model_capabilities! {
             model_name: "gpt-oss-120b",
             constructor_name: gpt_oss_120b,
             display_name: "GPT OSS 120B",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Kolibri1Tl5 {
+            model_name: "kolibri-1-tl5",
+            constructor_name: kolibri_1_tl5,
+            display_name: "Kolibri 1",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Mistral4119b {

@@ -38,13 +38,19 @@ model_capabilities! {
             model_name: "gpt-oss-safeguard-120b",
             constructor_name: gpt_oss_safeguard_120b,
             display_name: "gpt-oss-safeguard-120b",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        KimiK3 {
-            model_name: "kimi-k3",
-            constructor_name: kimi_k3,
-            display_name: "Kimi K3",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        Inkling2Small {
+            model_name: "inkling-2-small",
+            constructor_name: inkling_2_small,
+            display_name: "Inkling 2 Small",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        KimiK31Pro {
+            model_name: "kimi-k3-1-pro",
+            constructor_name: kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Llama3370b {
             model_name: "llama3-3-70b",

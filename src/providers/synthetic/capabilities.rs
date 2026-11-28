@@ -10,10 +10,10 @@ use crate::providers::synthetic::Synthetic;
 model_capabilities! {
     provider: Synthetic,
     models: {
-        HfDeepseekAiDeepseekV41Flash {
-            model_name: "hf:deepseek-ai/DeepSeek-V4.1-Flash",
-            constructor_name: hf_deepseek_ai_deepseek_v4_1_flash,
-            display_name: "DeepSeek V4.1 Flash",
+        HfQwenQwen3827b {
+            model_name: "hf:Qwen/Qwen3.8-27B",
+            constructor_name: hf_qwen_qwen3_8_27b,
+            display_name: "Qwen3.8 27B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         HfDeepseekAiDeepseekV41Flash1017 {
@@ -28,11 +28,11 @@ model_capabilities! {
             display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        HfNvidiaNvidiaNemotron3Super120bA12bNvfp4 {
-            model_name: "hf:nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
-            constructor_name: hf_nvidia_nvidia_nemotron_3_super_120b_a12b_nvfp4,
-            display_name: "Nemotron 3 Super 120B A12B",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        HfMoonshotaiKimiK31Pro {
+            model_name: "hf:moonshotai/Kimi-K3.1-Pro",
+            constructor_name: hf_moonshotai_kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         HfOpenaiGptOss120b {
             model_name: "hf:openai/gpt-oss-120b",

@@ -10,78 +10,6 @@ use crate::providers::openai::OpenAI;
 model_capabilities! {
     provider: OpenAI,
     models: {
-        ChatgptImageLatest {
-            model_name: "chatgpt-image-latest",
-            constructor_name: chatgpt_image_latest,
-            display_name: "chatgpt-image-latest",
-            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport, TextOutputSupport]
-        },
-        Gpt41 {
-            model_name: "gpt-4.1",
-            constructor_name: gpt_4_1,
-            display_name: "GPT-4.1",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt41Mini {
-            model_name: "gpt-4.1-mini",
-            constructor_name: gpt_4_1_mini,
-            display_name: "GPT-4.1 mini",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt4o {
-            model_name: "gpt-4o",
-            constructor_name: gpt_4o,
-            display_name: "GPT-4o",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt4o20240806 {
-            model_name: "gpt-4o-2024-08-06",
-            constructor_name: gpt_4o_2024_08_06,
-            display_name: "GPT-4o (2024-08-06)",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt4o20241120 {
-            model_name: "gpt-4o-2024-11-20",
-            constructor_name: gpt_4o_2024_11_20,
-            display_name: "GPT-4o (2024-11-20)",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt4oMini {
-            model_name: "gpt-4o-mini",
-            constructor_name: gpt_4o_mini,
-            display_name: "GPT-4o mini",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt5 {
-            model_name: "gpt-5",
-            constructor_name: gpt_5,
-            display_name: "GPT-5",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt5Mini {
-            model_name: "gpt-5-mini",
-            constructor_name: gpt_5_mini,
-            display_name: "GPT-5 Mini",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt5Nano {
-            model_name: "gpt-5-nano",
-            constructor_name: gpt_5_nano,
-            display_name: "GPT-5 Nano",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt5Pro {
-            model_name: "gpt-5-pro",
-            constructor_name: gpt_5_pro,
-            display_name: "GPT-5 Pro",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt51 {
-            model_name: "gpt-5.1",
-            constructor_name: gpt_5_1,
-            display_name: "GPT-5.1",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Gpt52 {
             model_name: "gpt-5.2",
             constructor_name: gpt_5_2,
@@ -94,18 +22,6 @@ model_capabilities! {
             display_name: "GPT-5.2 Pro",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Gpt53Codex {
-            model_name: "gpt-5.3-codex",
-            constructor_name: gpt_5_3_codex,
-            display_name: "GPT-5.3 Codex",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt53CodexSpark {
-            model_name: "gpt-5.3-codex-spark",
-            constructor_name: gpt_5_3_codex_spark,
-            display_name: "GPT-5.3 Codex Spark",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Gpt54 {
             model_name: "gpt-5.4",
             constructor_name: gpt_5_4,
@@ -116,12 +32,6 @@ model_capabilities! {
             model_name: "gpt-5.4-mini",
             constructor_name: gpt_5_4_mini,
             display_name: "GPT-5.4 mini",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gpt54Nano {
-            model_name: "gpt-5.4-nano",
-            constructor_name: gpt_5_4_nano,
-            display_name: "GPT-5.4 nano",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gpt54Pro {
@@ -172,6 +82,12 @@ model_capabilities! {
             display_name: "GPT-6 Astra",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Gpt6AstraHealthcare {
+            model_name: "gpt-6-astra-healthcare",
+            constructor_name: gpt_6_astra_healthcare,
+            display_name: "GPT-6 Astra Healthcare",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Gpt6Luna {
             model_name: "gpt-6-luna",
             constructor_name: gpt_6_luna,
@@ -190,6 +106,42 @@ model_capabilities! {
             display_name: "GPT-6.1 Sol",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Gpt61SolHealthcare {
+            model_name: "gpt-6.1-sol-healthcare",
+            constructor_name: gpt_6_1_sol_healthcare,
+            display_name: "GPT-6.1 Sol Healthcare",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt61Terra {
+            model_name: "gpt-6.1-terra",
+            constructor_name: gpt_6_1_terra,
+            display_name: "GPT-6.1 Terra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt62Astra {
+            model_name: "gpt-6.2-astra",
+            constructor_name: gpt_6_2_astra,
+            display_name: "GPT-6.2 Astra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt62AstraHealthcare {
+            model_name: "gpt-6.2-astra-healthcare",
+            constructor_name: gpt_6_2_astra_healthcare,
+            display_name: "GPT-6.2 Astra Healthcare",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt62Sol {
+            model_name: "gpt-6.2-sol",
+            constructor_name: gpt_6_2_sol,
+            display_name: "GPT-6.2 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt62SolHealthcare {
+            model_name: "gpt-6.2-sol-healthcare",
+            constructor_name: gpt_6_2_sol_healthcare,
+            display_name: "GPT-6.2 Sol Healthcare",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         GptDaybreakBlueLatest {
             model_name: "gpt-daybreak-blue-latest",
             constructor_name: gpt_daybreak_blue_latest,
@@ -200,42 +152,6 @@ model_capabilities! {
             model_name: "gpt-daybreak-red-latest",
             constructor_name: gpt_daybreak_red_latest,
             display_name: "Daybreak Red",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        GptImage1Mini {
-            model_name: "gpt-image-1-mini",
-            constructor_name: gpt_image_1_mini,
-            display_name: "gpt-image-1-mini",
-            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport, TextOutputSupport]
-        },
-        GptImage15 {
-            model_name: "gpt-image-1.5",
-            constructor_name: gpt_image_1_5,
-            display_name: "gpt-image-1.5",
-            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport, TextOutputSupport]
-        },
-        GptImage2 {
-            model_name: "gpt-image-2",
-            constructor_name: gpt_image_2,
-            display_name: "gpt-image-2",
-            capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
-        },
-        GptRealtime21 {
-            model_name: "gpt-realtime-2.1",
-            constructor_name: gpt_realtime_2_1,
-            display_name: "GPT-Realtime-2.1",
-            capabilities: [AudioInputSupport, AudioOutputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        O3 {
-            model_name: "o3",
-            constructor_name: o3,
-            display_name: "o3",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        O3Pro {
-            model_name: "o3-pro",
-            constructor_name: o3_pro,
-            display_name: "o3-pro",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         TextEmbedding3Large {

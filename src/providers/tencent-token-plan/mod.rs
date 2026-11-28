@@ -7,7 +7,7 @@ crate::openai_compatible_settings!(
     TencentTokenPlanProviderSettings,
     TencentTokenPlanProviderSettingsBuilder,
     "TencentTokenPlan",
-    "https://api.lkeap.cloud.tencent.com/plan/v3",
+    "https://tokenhub.tencentmaas.com/plan/v3",
     "TENCENT_TOKEN_PLAN_API_KEY"
 );
 

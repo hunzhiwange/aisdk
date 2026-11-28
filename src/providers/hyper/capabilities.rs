@@ -10,23 +10,11 @@ use crate::providers::hyper::Hyper;
 model_capabilities! {
     provider: Hyper,
     models: {
-        DeepseekV4Flash0731 {
-            model_name: "deepseek-v4-flash-0731",
-            constructor_name: deepseek_v4_flash_0731,
-            display_name: "DeepSeek V4 Flash 0731",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         DeepseekV4Pro0813 {
             model_name: "deepseek-v4-pro-0813",
             constructor_name: deepseek_v4_pro_0813,
             display_name: "DeepSeek V4 Pro 0813",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        DeepseekV41Flash {
-            model_name: "deepseek-v4.1-flash",
-            constructor_name: deepseek_v4_1_flash,
-            display_name: "DeepSeek V4.1 Flash",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekV41Flash1017 {
             model_name: "deepseek-v4.1-flash-1017",
@@ -34,16 +22,16 @@ model_capabilities! {
             display_name: "DeepSeek V4.1 Flash 1017",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        DeepseekV41Flash1017Economy {
+            model_name: "deepseek-v4.1-flash-1017-economy",
+            constructor_name: deepseek_v4_1_flash_1017_economy,
+            display_name: "DeepSeek V4.1 Flash 1017 (Economy)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Gemma426bA4bIt {
             model_name: "gemma-4-26b-a4b-it",
             constructor_name: gemma_4_26b_a4b_it,
             display_name: "Gemma 4 26B A4B IT",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Glm52 {
-            model_name: "glm-5.2",
-            constructor_name: glm_5_2,
-            display_name: "GLM-5.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Glm53 {
@@ -64,40 +52,28 @@ model_capabilities! {
             display_name: "GPT OSS 120B",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Inkling {
-            model_name: "inkling",
-            constructor_name: inkling,
-            display_name: "Inkling",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        KimiK2Thinking {
-            model_name: "kimi-k2-thinking",
-            constructor_name: kimi_k2_thinking,
-            display_name: "Kimi K2 Thinking",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        KimiK27Code {
-            model_name: "kimi-k2.7-code",
-            constructor_name: kimi_k2_7_code,
-            display_name: "Kimi K2.7 Code",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         KimiK3 {
             model_name: "kimi-k3",
             constructor_name: kimi_k3,
             display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MinimaxM27 {
-            model_name: "minimax-m2.7",
-            constructor_name: minimax_m2_7,
-            display_name: "MiniMax-M2.7",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        KimiK31Pro {
+            model_name: "kimi-k3.1-pro",
+            constructor_name: kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MinimaxM3 {
             model_name: "minimax-m3",
             constructor_name: minimax_m3,
             display_name: "MiniMax-M3",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MuseSparkOpen {
+            model_name: "muse-spark-open",
+            constructor_name: muse_spark_open,
+            display_name: "Muse Spark Open",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Prism {
@@ -106,23 +82,17 @@ model_capabilities! {
             display_name: "Prism",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Qwen37Flash {
-            model_name: "qwen3.7-flash",
-            constructor_name: qwen3_7_flash,
-            display_name: "Qwen3.7 Flash",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        PrismCore {
+            model_name: "prism-core",
+            constructor_name: prism_core,
+            display_name: "Prism Core",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Qwen37Max {
-            model_name: "qwen3.7-max",
-            constructor_name: qwen3_7_max,
-            display_name: "Qwen3.7 Max",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Qwen37Plus {
-            model_name: "qwen3.7-plus",
-            constructor_name: qwen3_7_plus,
-            display_name: "Qwen3.7 Plus",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        PrismFlash {
+            model_name: "prism-flash",
+            constructor_name: prism_flash,
+            display_name: "Prism Flash",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Qwen3824tA95b {
             model_name: "qwen3.8-2.4t-a95b",
@@ -146,6 +116,12 @@ model_capabilities! {
             model_name: "qwen3.8-max",
             constructor_name: qwen3_8_max,
             display_name: "Qwen3.8 Max Preview",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Qwen4Max {
+            model_name: "qwen4-max",
+            constructor_name: qwen4_max,
+            display_name: "Qwen4 Max",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

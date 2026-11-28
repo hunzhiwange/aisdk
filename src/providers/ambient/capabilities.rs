@@ -22,6 +22,18 @@ model_capabilities! {
             display_name: "Ambient Small",
             capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        DeepseekDeepseekV41Flash1017 {
+            model_name: "deepseek/deepseek-v4.1-flash-1017",
+            constructor_name: deepseek_deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        GoogleGemma426bA4bIt {
+            model_name: "google/gemma-4-26b-a4b-it",
+            constructor_name: google_gemma_4_26b_a4b_it,
+            display_name: "Gemma 4 26B A4B IT",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MinimaxMinimaxM3 {
             model_name: "minimax/minimax-m3",
             constructor_name: minimax_minimax_m3,
@@ -44,7 +56,7 @@ model_capabilities! {
             model_name: "qwen/qwen3.6-35b-a3b",
             constructor_name: qwen_qwen3_6_35b_a3b,
             display_name: "Qwen3.6 35B-A3B",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         QwenQwen3827b {
             model_name: "qwen/qwen3.8-27b",

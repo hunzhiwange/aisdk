@@ -7,7 +7,7 @@ crate::openai_compatible_settings!(
     AkiIoProviderSettings,
     AkiIoProviderSettingsBuilder,
     "AkiIo",
-    "https://aki.io/v1",
+    "https://aki.io/openai/v1",
     "AKI_IO_API_KEY"
 );
 

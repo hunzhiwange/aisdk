@@ -101,7 +101,7 @@ use aisdk::providers::OpenAI;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
-    let openai = OpenAI::gpt_5();
+    let openai = OpenAI::gpt_5_2();
 
     let result = LanguageModelRequest::builder()
         .model(openai)
@@ -128,7 +128,7 @@ use aisdk::providers::Google;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let response = LanguageModelRequest::builder()
-        .model(Google::gemini_2_5_pro())
+        .model(Google::gemini_3_1_pro_preview())
         .messages(vec![Message::User(
             UserMessage::new("Describe the storefront and list any visible text.")
                 .with_image_url("https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg"),
@@ -155,7 +155,7 @@ use aisdk::providers::Anthropic;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let response = LanguageModelRequest::builder()
-        .model(Anthropic::claude_sonnet_4_5())
+        .model(Anthropic::claude_sonnet_4_6())
         .messages(vec![Message::User(
             UserMessage::new("What objects stand out in this image? Reply with a short bullet list.")
                 .with_image_url("https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg"),
@@ -255,7 +255,7 @@ use aisdk::providers::OpenAI;
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let result = LanguageModelRequest::builder()
-        .model(OpenAI::gpt_4o())
+        .model(OpenAI::gpt_5_4_mini())
         .system("You are a helpful assistant.")
         .prompt("What is the weather in New York?")
         .with_tool(get_weather())

@@ -14,13 +14,13 @@ model_capabilities! {
             model_name: "doubao-seed-2.0-lite",
             constructor_name: doubao_seed_2_0_lite,
             display_name: "Doubao Seed 2.0 Lite",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         DoubaoSeed20Mini {
             model_name: "doubao-seed-2.0-mini",
             constructor_name: doubao_seed_2_0_mini,
             display_name: "Doubao Seed 2.0 Mini",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         KlingV26 {
             model_name: "kling-v2-6",

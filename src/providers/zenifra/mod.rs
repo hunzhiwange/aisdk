@@ -8,7 +8,7 @@ crate::openai_compatible_settings!(
     ZenifraProviderSettingsBuilder,
     "Zenifra",
     "https://ai.zenifra.com/v1",
-    "ZENIFRA_AI_KEY"
+    "ZENIFRA_AI_API_KEY"
 );
 
 // Generate the provider struct and builder

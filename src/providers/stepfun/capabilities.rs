@@ -10,6 +10,12 @@ use crate::providers::stepfun::Stepfun;
 model_capabilities! {
     provider: Stepfun,
     models: {
+        Step1oTurboVision {
+            model_name: "step-1o-turbo-vision",
+            constructor_name: step_1o_turbo_vision,
+            display_name: "Step-1o Turbo Vision",
+            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         Step35Flash {
             model_name: "step-3.5-flash",
             constructor_name: step_3_5_flash,
@@ -45,6 +51,12 @@ model_capabilities! {
             constructor_name: stepaudio_2_5_asr,
             display_name: "StepAudio 2.5 ASR",
             capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
+        },
+        Stepaudio25Chat {
+            model_name: "stepaudio-2.5-chat",
+            constructor_name: stepaudio_2_5_chat,
+            display_name: "StepAudio 2.5 Chat",
+            capabilities: [AudioInputSupport, ImageInputSupport, TextInputSupport, TextOutputSupport]
         },
         Stepaudio25Tts {
             model_name: "stepaudio-2.5-tts",

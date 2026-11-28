@@ -10,29 +10,17 @@ use crate::providers::sambanova::Sambanova;
 model_capabilities! {
     provider: Sambanova,
     models: {
-        DeepseekV31 {
-            model_name: "DeepSeek-V3.1",
-            constructor_name: deepseek_v3_1,
-            display_name: "DeepSeek-V3.1",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        DeepseekV32 {
-            model_name: "DeepSeek-V3.2",
-            constructor_name: deepseek_v3_2,
-            display_name: "DeepSeek V3.2",
+        Glm53 {
+            model_name: "GLM-5.3",
+            constructor_name: glm_5_3,
+            display_name: "GLM-5.3",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MetaLlama3370bInstruct {
-            model_name: "Meta-Llama-3.3-70B-Instruct",
-            constructor_name: meta_llama_3_3_70b_instruct,
-            display_name: "Llama-3.3-70B-Instruct",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MinimaxM3 {
-            model_name: "MiniMax-M3",
-            constructor_name: minimax_m3,
-            display_name: "MiniMax-M3",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        MinimaxM31Flash {
+            model_name: "MiniMax-M3.1-Flash",
+            constructor_name: minimax_m3_1_flash,
+            display_name: "MiniMax-M3.1-Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Gemma431bIt {
             model_name: "gemma-4-31B-it",

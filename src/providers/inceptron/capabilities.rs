@@ -16,6 +16,12 @@ model_capabilities! {
             display_name: "DeepSeek V4 Flash 0731",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        DeepseekAiDeepseekV41Flash1017 {
+            model_name: "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+            constructor_name: deepseek_ai_deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MoonshotaiKimiK26 {
             model_name: "moonshotai/Kimi-K2.6",
             constructor_name: moonshotai_kimi_k2_6,
@@ -27,12 +33,6 @@ model_capabilities! {
             constructor_name: moonshotai_kimi_k2_7_code,
             display_name: "Kimi K2.7 Code",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ZaiOrgGlm52 {
-            model_name: "zai-org/GLM-5.2",
-            constructor_name: zai_org_glm_5_2,
-            display_name: "GLM 5.2",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ZaiOrgGlm53 {
             model_name: "zai-org/GLM-5.3",

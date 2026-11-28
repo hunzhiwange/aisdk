@@ -40,6 +40,12 @@ model_capabilities! {
             display_name: "Qwen3.8 27B",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        QwenQwen3827bAbliterated {
+            model_name: "Qwen/Qwen3.8-27B-abliterated",
+            constructor_name: qwen_qwen3_8_27b_abliterated,
+            display_name: "Qwen3.8 27B Abliterated",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         AnthropicClaudeFable5 {
             model_name: "anthropic/claude-fable-5",
             constructor_name: anthropic_claude_fable_5,
@@ -50,6 +56,12 @@ model_capabilities! {
             model_name: "anthropic/claude-fable-5-1",
             constructor_name: anthropic_claude_fable_5_1,
             display_name: "Claude Fable 5.1",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AnthropicClaudeFable52 {
+            model_name: "anthropic/claude-fable-5-2",
+            constructor_name: anthropic_claude_fable_5_2,
+            display_name: "Claude Fable 5.2",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AnthropicClaudeHaiku45 {
@@ -124,6 +136,18 @@ model_capabilities! {
             display_name: "FLUX.2 Klein 4B",
             capabilities: [ImageInputSupport, ImageOutputSupport, TextInputSupport]
         },
+        DeepseekAiDeepseekV41Flash1017 {
+            model_name: "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+            constructor_name: deepseek_ai_deepseek_v4_1_flash_1017,
+            display_name: "DeepSeek V4.1 Flash 1017",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekAiDeepseekV41Flash1017Abliterated {
+            model_name: "deepseek-ai/DeepSeek-V4.1-Flash-1017-abliterated",
+            constructor_name: deepseek_ai_deepseek_v4_1_flash_1017_abliterated,
+            display_name: "DeepSeek V4.1 Flash 1017 Abliterated",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         DeepseekDeepseekV32 {
             model_name: "deepseek/deepseek-v3.2",
             constructor_name: deepseek_deepseek_v3_2,
@@ -184,6 +208,12 @@ model_capabilities! {
             display_name: "Kimi K3",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MoonshotaiKimiK31Pro {
+            model_name: "moonshotai/kimi-k3.1-pro",
+            constructor_name: moonshotai_kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         OpenaiGpt41 {
             model_name: "openai/gpt-4.1",
             constructor_name: openai_gpt_4_1,
@@ -194,12 +224,6 @@ model_capabilities! {
             model_name: "openai/gpt-4.1-mini",
             constructor_name: openai_gpt_4_1_mini,
             display_name: "GPT-4.1 mini",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        OpenaiGpt41Nano {
-            model_name: "openai/gpt-4.1-nano",
-            constructor_name: openai_gpt_4_1_nano,
-            display_name: "GPT-4.1 nano",
             capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGpt5 {
@@ -292,6 +316,18 @@ model_capabilities! {
             display_name: "GPT-6.1 Sol",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        OpenaiGpt62Astra {
+            model_name: "openai/gpt-6.2-astra",
+            constructor_name: openai_gpt_6_2_astra,
+            display_name: "GPT-6.2 Astra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt62Sol {
+            model_name: "openai/gpt-6.2-sol",
+            constructor_name: openai_gpt_6_2_sol,
+            display_name: "GPT-6.2 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         OpenaiO3 {
             model_name: "openai/o3",
             constructor_name: openai_o3,
@@ -315,18 +351,6 @@ model_capabilities! {
             constructor_name: openai_whisper_large_v3,
             display_name: "Whisper Large v3",
             capabilities: [AudioInputSupport, ImageInputSupport, TextOutputSupport]
-        },
-        QwenQwen35397bA17b {
-            model_name: "qwen/qwen3.5-397b-a17b",
-            constructor_name: qwen_qwen3_5_397b_a17b,
-            display_name: "Qwen3.5 397B-A17B",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        QwenQwen37Max {
-            model_name: "qwen/qwen3.7-max",
-            constructor_name: qwen_qwen3_7_max,
-            display_name: "Qwen3.7 Max",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         XAiGrok46 {
             model_name: "x-ai/grok-4.6",

@@ -34,6 +34,12 @@ model_capabilities! {
             display_name: "Claude Fable 5.1",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        ClaudeFable52 {
+            model_name: "claude-fable-5-2",
+            constructor_name: claude_fable_5_2,
+            display_name: "Claude Fable 5.2",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         ClaudeHaiku45 {
             model_name: "claude-haiku-4-5",
             constructor_name: claude_haiku_4_5,
@@ -106,12 +112,6 @@ model_capabilities! {
             display_name: "Claude Sonnet 5.5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        DeepseekV4Flash {
-            model_name: "deepseek-v4-flash",
-            constructor_name: deepseek_v4_flash,
-            display_name: "DeepSeek V4 Flash",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         DeepseekV4Pro {
             model_name: "deepseek-v4-pro",
             constructor_name: deepseek_v4_pro,
@@ -121,7 +121,7 @@ model_capabilities! {
         DeepseekV41Flash {
             model_name: "deepseek-v4.1-flash",
             constructor_name: deepseek_v4_1_flash,
-            display_name: "DeepSeek V4.1 Flash",
+            display_name: "DeepSeek V4.1 Flash 1017",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekV41FlashFree {
@@ -135,18 +135,6 @@ model_capabilities! {
             constructor_name: flint_40b_free,
             display_name: "Flint 40B Free",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Gemini3Flash {
-            model_name: "gemini-3-flash",
-            constructor_name: gemini_3_flash,
-            display_name: "Gemini 3 Flash",
-            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        Gemini31Pro {
-            model_name: "gemini-3.1-pro",
-            constructor_name: gemini_3_1_pro,
-            display_name: "Gemini 3.1 Pro Preview",
-            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Gemini35Flash {
             model_name: "gemini-3.5-flash",
@@ -184,23 +172,23 @@ model_capabilities! {
             display_name: "Gemini 4 Argon",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        Glm5 {
-            model_name: "glm-5",
-            constructor_name: glm_5,
-            display_name: "GLM-5",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Gemini4Carbon {
+            model_name: "gemini-4-carbon",
+            constructor_name: gemini_4_carbon,
+            display_name: "Gemini 4 Carbon",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        Glm51 {
-            model_name: "glm-5.1",
-            constructor_name: glm_5_1,
-            display_name: "GLM-5.1",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Gemini4Hydrogen {
+            model_name: "gemini-4-hydrogen",
+            constructor_name: gemini_4_hydrogen,
+            display_name: "Gemini 4 Hydrogen",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        Glm52 {
-            model_name: "glm-5.2",
-            constructor_name: glm_5_2,
-            display_name: "GLM-5.2",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Gemini4Neon {
+            model_name: "gemini-4-neon",
+            constructor_name: gemini_4_neon,
+            display_name: "Gemini 4 Neon",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Glm53 {
             model_name: "glm-5.3",
@@ -212,12 +200,6 @@ model_capabilities! {
             model_name: "glm-5.3-flash",
             constructor_name: glm_5_3_flash,
             display_name: "GLM-5.3-Flash",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        Glm53FlashFree {
-            model_name: "glm-5.3-flash-free",
-            constructor_name: glm_5_3_flash_free,
-            display_name: "GLM-5.3-Flash Free",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Gpt5 {
@@ -364,6 +346,18 @@ model_capabilities! {
             display_name: "GPT-6.1 Sol",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Gpt62Astra {
+            model_name: "gpt-6.2-astra",
+            constructor_name: gpt_6_2_astra,
+            display_name: "GPT-6.2 Astra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt62Sol {
+            model_name: "gpt-6.2-sol",
+            constructor_name: gpt_6_2_sol,
+            display_name: "GPT-6.2 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Grok45 {
             model_name: "grok-4.5",
             constructor_name: grok_4_5,
@@ -388,29 +382,17 @@ model_capabilities! {
             display_name: "Grok Build 0.1",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Jev113 {
-            model_name: "jev-1.13",
-            constructor_name: jev_1_13,
-            display_name: "Jev 1.13",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport]
+        Hy4FlashFree {
+            model_name: "hy4-flash-free",
+            constructor_name: hy4_flash_free,
+            display_name: "Hy4 flash Free",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Jev113Free {
-            model_name: "jev-1.13-free",
-            constructor_name: jev_1_13_free,
-            display_name: "Jev 1.13 Free",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport]
-        },
-        KimiK25 {
-            model_name: "kimi-k2.5",
-            constructor_name: kimi_k2_5,
-            display_name: "Kimi K2.5",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        KimiK26 {
-            model_name: "kimi-k2.6",
-            constructor_name: kimi_k2_6,
-            display_name: "Kimi K2.6",
-            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        IcemanFree {
+            model_name: "iceman-free",
+            constructor_name: iceman_free,
+            display_name: "Iceman Free",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         KimiK27Code {
             model_name: "kimi-k2.7-code",
@@ -422,6 +404,12 @@ model_capabilities! {
             model_name: "kimi-k3",
             constructor_name: kimi_k3,
             display_name: "Kimi K3",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        KimiK31Pro {
+            model_name: "kimi-k3.1-pro",
+            constructor_name: kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         MimoV26FlashFree {
@@ -454,6 +442,12 @@ model_capabilities! {
             display_name: "Mistral Large 4",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        MuseEmber10 {
+            model_name: "muse-ember-1.0",
+            constructor_name: muse_ember_1_0,
+            display_name: "Muse Ember 1.0",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         MuseSpark12 {
             model_name: "muse-spark-1.2",
             constructor_name: muse_spark_1_2,
@@ -471,12 +465,6 @@ model_capabilities! {
             constructor_name: muse_wonder_1_0,
             display_name: "Muse Wonder",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
-        },
-        Nemotron3UltraFree {
-            model_name: "nemotron-3-ultra-free",
-            constructor_name: nemotron_3_ultra_free,
-            display_name: "Nemotron 3 Ultra Free",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Nemotron35LightningFree {
             model_name: "nemotron-3.5-lightning-free",
@@ -513,6 +501,18 @@ model_capabilities! {
             constructor_name: qwen3_8_max,
             display_name: "Qwen3.8 Max",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        SeaglassAlphaFree {
+            model_name: "seaglass-alpha-free",
+            constructor_name: seaglass_alpha_free,
+            display_name: "Seaglass Alpha Free",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        TidepoolAlphaFree {
+            model_name: "tidepool-alpha-free",
+            constructor_name: tidepool_alpha_free,
+            display_name: "Tidepool Alpha Free",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

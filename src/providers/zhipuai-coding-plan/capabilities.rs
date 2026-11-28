@@ -22,11 +22,11 @@ model_capabilities! {
             display_name: "GLM-5.3-Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
-        Glm53Highspeed {
-            model_name: "glm-5.3-highspeed",
-            constructor_name: glm_5_3_highspeed,
-            display_name: "GLM-5.3 Highspeed",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        Glm54 {
+            model_name: "glm-5.4",
+            constructor_name: glm_5_4,
+            display_name: "GLM-5.4",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }
 }

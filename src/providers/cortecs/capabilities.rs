@@ -10,12 +10,6 @@ use crate::providers::cortecs::Cortecs;
 model_capabilities! {
     provider: Cortecs,
     models: {
-        Apertus70b {
-            model_name: "apertus-70b",
-            constructor_name: apertus_70b,
-            display_name: "Apertus 70B",
-            capabilities: [TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Claude45Sonnet {
             model_name: "claude-4-5-sonnet",
             constructor_name: claude_4_5_sonnet,
@@ -190,6 +184,24 @@ model_capabilities! {
             display_name: "Gemini 4 Argon",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Gemini4Carbon {
+            model_name: "gemini-4-carbon",
+            constructor_name: gemini_4_carbon,
+            display_name: "Gemini 4 Carbon",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gemini4Hydrogen {
+            model_name: "gemini-4-hydrogen",
+            constructor_name: gemini_4_hydrogen,
+            display_name: "Gemini 4 Hydrogen",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gemini4Neon {
+            model_name: "gemini-4-neon",
+            constructor_name: gemini_4_neon,
+            display_name: "Gemini 4 Neon",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Gemma327bIt {
             model_name: "gemma-3-27b-it",
             constructor_name: gemma_3_27b_it,
@@ -212,12 +224,6 @@ model_capabilities! {
             model_name: "glm-4.7-flash",
             constructor_name: glm_4_7_flash,
             display_name: "GLM-4.7-Flash",
-            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Glm51 {
-            model_name: "glm-5.1",
-            constructor_name: glm_5_1,
-            display_name: "GLM-5.1",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Glm52 {
@@ -340,6 +346,24 @@ model_capabilities! {
             display_name: "GPT-6.1 Sol",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Gpt61Terra {
+            model_name: "gpt-6.1-terra",
+            constructor_name: gpt_6_1_terra,
+            display_name: "GPT-6.1 Terra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt62Astra {
+            model_name: "gpt-6.2-astra",
+            constructor_name: gpt_6_2_astra,
+            display_name: "GPT-6.2 Astra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt62Sol {
+            model_name: "gpt-6.2-sol",
+            constructor_name: gpt_6_2_sol,
+            display_name: "GPT-6.2 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         GptOss120b {
             model_name: "gpt-oss-120b",
             constructor_name: gpt_oss_120b,
@@ -364,6 +388,12 @@ model_capabilities! {
             display_name: "Hermes 4 405B",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Inkling2Small {
+            model_name: "inkling-2-small",
+            constructor_name: inkling_2_small,
+            display_name: "Inkling 2 Small",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         KimiK26 {
             model_name: "kimi-k2.6",
             constructor_name: kimi_k2_6,
@@ -382,6 +412,12 @@ model_capabilities! {
             display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        KimiK31Pro {
+            model_name: "kimi-k3.1-pro",
+            constructor_name: kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Kolibri1 {
             model_name: "kolibri-1",
             constructor_name: kolibri_1,
@@ -392,12 +428,6 @@ model_capabilities! {
             model_name: "llama-3.3-70b-instruct",
             constructor_name: llama_3_3_70b_instruct,
             display_name: "Llama-3.3-70B-Instruct",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MinicpmV45 {
-            model_name: "minicpm-v-4.5",
-            constructor_name: minicpm_v_4_5,
-            display_name: "minicpm-v-4.5",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MinimaxM2 {
@@ -422,6 +452,12 @@ model_capabilities! {
             model_name: "minimax-m3",
             constructor_name: minimax_m3,
             display_name: "MiniMax-M3",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MinimaxM31Flash {
+            model_name: "minimax-m3.1-flash",
+            constructor_name: minimax_m3_1_flash,
+            display_name: "MiniMax-M3.1-Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Ministral14b2512 {
@@ -454,12 +490,6 @@ model_capabilities! {
             display_name: "mistral-large-2402",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        MistralLarge2512 {
-            model_name: "mistral-large-2512",
-            constructor_name: mistral_large_2512,
-            display_name: "Mistral Large 3",
-            capabilities: [ImageInputSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         MistralLarge40 {
             model_name: "mistral-large-4-0",
             constructor_name: mistral_large_4_0,
@@ -471,12 +501,6 @@ model_capabilities! {
             constructor_name: mistral_medium_3_5,
             display_name: "mistral-medium-3.5",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        MistralNemoInstruct2407 {
-            model_name: "mistral-nemo-instruct-2407",
-            constructor_name: mistral_nemo_instruct_2407,
-            display_name: "mistral-nemo-instruct-2407",
-            capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MistralSmall2503 {
             model_name: "mistral-small-2503",
@@ -501,6 +525,12 @@ model_capabilities! {
             constructor_name: mixtral_8x7b_instruct_v0_1,
             display_name: "Mixtral 8x7B Instruct v0.1",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport]
+        },
+        Nemotron35SuperVl {
+            model_name: "nemotron-3.5-super-vl",
+            constructor_name: nemotron_3_5_super_vl,
+            display_name: "Nemotron 3.5 Super VL 120B A12B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         NemotronNanoV212b {
             model_name: "nemotron-nano-v2-12b",
@@ -620,12 +650,6 @@ model_capabilities! {
             model_name: "qwen3.8-27b",
             constructor_name: qwen3_8_27b,
             display_name: "Qwen3.8 27B",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        Qwen38FlashNext {
-            model_name: "qwen3.8-flash-next",
-            constructor_name: qwen3_8_flash_next,
-            display_name: "Qwen3.8 Flash Next",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Qwen3guardGen06b {

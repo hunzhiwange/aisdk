@@ -158,7 +158,7 @@ async fn main() {
         .unwrap();
 
     let text = LanguageModelRequest::builder()
-        .model(OpenAI::gpt_5_nano())
+        .model(OpenAI::gpt_5_4_mini())
         .system(system_prompt)
         .prompt("What is the previous commit message and what changes does the most recent commit message do to it?") // TODO: add a prompt from cli input
         .with_tool(git_tools::diff())

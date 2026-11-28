@@ -22,6 +22,12 @@ model_capabilities! {
             display_name: "Claude Fable 5.1",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        ClaudeFable52 {
+            model_name: "claude-fable-5.2",
+            constructor_name: claude_fable_5_2,
+            display_name: "Claude Fable 5.2",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         ClaudeHaiku45 {
             model_name: "claude-haiku-4.5",
             constructor_name: claude_haiku_4_5,
@@ -38,12 +44,6 @@ model_capabilities! {
             model_name: "claude-opus-4.8",
             constructor_name: claude_opus_4_8,
             display_name: "Claude Opus 4.8",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ClaudeOpus5 {
-            model_name: "claude-opus-5",
-            constructor_name: claude_opus_5,
-            display_name: "Claude Opus 5",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ClaudeOpus55 {
@@ -82,6 +82,24 @@ model_capabilities! {
             display_name: "Gemini 4 Argon",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Gemini4Carbon {
+            model_name: "gemini-4-carbon",
+            constructor_name: gemini_4_carbon,
+            display_name: "Gemini 4 Carbon",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gemini4Hydrogen {
+            model_name: "gemini-4-hydrogen",
+            constructor_name: gemini_4_hydrogen,
+            display_name: "Gemini 4 Hydrogen",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gemini4Neon {
+            model_name: "gemini-4-neon",
+            constructor_name: gemini_4_neon,
+            display_name: "Gemini 4 Neon",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Gpt53Codex {
             model_name: "gpt-5.3-codex",
             constructor_name: gpt_5_3_codex,
@@ -106,12 +124,6 @@ model_capabilities! {
             display_name: "GPT-5.6 Sol",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Gpt56Terra {
-            model_name: "gpt-5.6-terra",
-            constructor_name: gpt_5_6_terra,
-            display_name: "GPT-5.6 Terra",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         Gpt6Astra {
             model_name: "gpt-6-astra",
             constructor_name: gpt_6_astra,
@@ -134,6 +146,24 @@ model_capabilities! {
             model_name: "gpt-6.1-sol",
             constructor_name: gpt_6_1_sol,
             display_name: "GPT-6.1 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt61Terra {
+            model_name: "gpt-6.1-terra",
+            constructor_name: gpt_6_1_terra,
+            display_name: "GPT-6.1 Terra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt62Astra {
+            model_name: "gpt-6.2-astra",
+            constructor_name: gpt_6_2_astra,
+            display_name: "GPT-6.2 Astra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Gpt62Sol {
+            model_name: "gpt-6.2-sol",
+            constructor_name: gpt_6_2_sol,
+            display_name: "GPT-6.2 Sol",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Grok45 {
@@ -164,6 +194,18 @@ model_capabilities! {
             model_name: "mai-code-1.1-flash",
             constructor_name: mai_code_1_1_flash,
             display_name: "MAI-Code-1.1-Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MaiCode2 {
+            model_name: "mai-code-2",
+            constructor_name: mai_code_2,
+            display_name: "MAI Code 2",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MaiCode2Flash {
+            model_name: "mai-code-2-flash",
+            constructor_name: mai_code_2_flash,
+            display_name: "MAI Code 2 Flash",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }

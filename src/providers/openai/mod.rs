@@ -69,7 +69,7 @@ impl OpenAI<DynamicModel> {
     /// Creates an OpenAI provider with a dynamic model name using default settings.
     ///
     /// This allows you to specify the model name as a string rather than
-    /// using mmethods like `OpenAI::gpt_4o()`, `Google::gemini_3_pro()`, etc.
+    /// using mmethods like `OpenAI::gpt_5_4_mini()`, `Google::gemini_3_1_pro_preview()`, etc.
     ///
     /// **WARNING**: when using `DynamicModel`, model capabilities are not validated.
     /// This means there is no compile-time guarantee that the model supports requested features.
@@ -125,7 +125,7 @@ impl OpenAIBuilder<DynamicModel> {
     /// This means there is no compile-time guarantee that the model supports requested features.
     /// Such as (e.g., tool calls, structured output, etc.).
     ///
-    /// For compile-time model validation, use the constructor methods like `OpenAI::gpt_4o()`.
+    /// For compile-time model validation, use the constructor methods like `OpenAI::gpt_5_4_mini()`.
     ///
     /// # Parameters
     ///

@@ -10,11 +10,23 @@ use crate::providers::fastrouter::Fastrouter;
 model_capabilities! {
     provider: Fastrouter,
     models: {
+        AnthropicClaudeFable5 {
+            model_name: "anthropic/claude-fable-5",
+            constructor_name: anthropic_claude_fable_5,
+            display_name: "Claude Fable 5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         AnthropicClaudeOpus41 {
             model_name: "anthropic/claude-opus-4.1",
             constructor_name: anthropic_claude_opus_4_1,
             display_name: "Claude Opus 4.1",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AnthropicClaudeOpus47 {
+            model_name: "anthropic/claude-opus-4.7",
+            constructor_name: anthropic_claude_opus_4_7,
+            display_name: "Claude Opus 4.7",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         AnthropicClaudeOpus48 {
             model_name: "anthropic/claude-opus-4.8",
@@ -22,11 +34,35 @@ model_capabilities! {
             display_name: "Claude Opus 4.8",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        AnthropicClaudeOpus5 {
+            model_name: "anthropic/claude-opus-5",
+            constructor_name: anthropic_claude_opus_5,
+            display_name: "Claude Opus 5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AnthropicClaudeOpus55 {
+            model_name: "anthropic/claude-opus-5.5",
+            constructor_name: anthropic_claude_opus_5_5,
+            display_name: "Claude Opus 5.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         AnthropicClaudeSonnet46 {
             model_name: "anthropic/claude-sonnet-4.6",
             constructor_name: anthropic_claude_sonnet_4_6,
             display_name: "Claude Sonnet 4.6",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AnthropicClaudeSonnet5 {
+            model_name: "anthropic/claude-sonnet-5",
+            constructor_name: anthropic_claude_sonnet_5,
+            display_name: "Claude Sonnet 5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        AnthropicClaudeSonnet55 {
+            model_name: "anthropic/claude-sonnet-5.5",
+            constructor_name: anthropic_claude_sonnet_5_5,
+            display_name: "Claude Sonnet 5.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         BytedanceSeedance2 {
             model_name: "bytedance/seedance-2",
@@ -154,10 +190,28 @@ model_capabilities! {
             display_name: "GPT-5 Nano",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        OpenaiGpt51 {
+            model_name: "openai/gpt-5.1",
+            constructor_name: openai_gpt_5_1,
+            display_name: "GPT-5.1",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt52 {
+            model_name: "openai/gpt-5.2",
+            constructor_name: openai_gpt_5_2,
+            display_name: "GPT-5.2",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         OpenaiGpt53Codex {
             model_name: "openai/gpt-5.3-codex",
             constructor_name: openai_gpt_5_3_codex,
             display_name: "GPT-5.3 Codex",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt54 {
+            model_name: "openai/gpt-5.4",
+            constructor_name: openai_gpt_5_4,
+            display_name: "GPT-5.4",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGpt54Mini {
@@ -182,6 +236,30 @@ model_capabilities! {
             model_name: "openai/gpt-5.5-pro",
             constructor_name: openai_gpt_5_5_pro,
             display_name: "GPT-5.5 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt56Sol {
+            model_name: "openai/gpt-5.6-sol",
+            constructor_name: openai_gpt_5_6_sol,
+            display_name: "GPT-5.6 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt6Astra {
+            model_name: "openai/gpt-6-astra",
+            constructor_name: openai_gpt_6_astra,
+            display_name: "GPT-6 Astra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt6Luna {
+            model_name: "openai/gpt-6-luna",
+            constructor_name: openai_gpt_6_luna,
+            display_name: "GPT-6 Luna",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt6Sol {
+            model_name: "openai/gpt-6-sol",
+            constructor_name: openai_gpt_6_sol,
+            display_name: "GPT-6 Sol",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGptImage2 {
@@ -220,6 +298,18 @@ model_capabilities! {
             display_name: "Grok 4.3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        XAiGrok46 {
+            model_name: "x-ai/grok-4.6",
+            constructor_name: x_ai_grok_4_6,
+            display_name: "Grok 4.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        XAiGrok47 {
+            model_name: "x-ai/grok-4.7",
+            constructor_name: x_ai_grok_4_7,
+            display_name: "Grok 4.7",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         XAiGrokBuild01 {
             model_name: "x-ai/grok-build-0.1",
             constructor_name: x_ai_grok_build_0_1,
@@ -237,6 +327,12 @@ model_capabilities! {
             constructor_name: z_ai_glm_5_1,
             display_name: "GLM-5.1",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZAiGlm53Flash {
+            model_name: "z-ai/glm-5.3-flash",
+            constructor_name: z_ai_glm_5_3_flash,
+            display_name: "GLM-5.3-Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }
 }

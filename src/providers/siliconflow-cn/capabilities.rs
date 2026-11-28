@@ -160,11 +160,23 @@ model_capabilities! {
             display_name: "Qwen/Qwen3.5-9B",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        QwenQwen3627b {
+            model_name: "Qwen/Qwen3.6-27B",
+            constructor_name: qwen_qwen3_6_27b,
+            display_name: "Qwen3.6 27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         QwenQwen3635bA3b {
             model_name: "Qwen/Qwen3.6-35B-A3B",
             constructor_name: qwen_qwen3_6_35b_a3b,
             display_name: "Qwen/Qwen3.6-35B-A3B",
             capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen3827b {
+            model_name: "Qwen/Qwen3.8-27B",
+            constructor_name: qwen_qwen3_8_27b,
+            display_name: "Qwen3.8 27B",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         DeepseekAiDeepseekOcr {
             model_name: "deepseek-ai/DeepSeek-OCR",
@@ -208,6 +220,12 @@ model_capabilities! {
             display_name: "deepseek-ai/DeepSeek-V4-Pro",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        DeepseekAiDeepseekV41Flash {
+            model_name: "deepseek-ai/DeepSeek-V4.1-Flash",
+            constructor_name: deepseek_ai_deepseek_v4_1_flash,
+            display_name: "DeepSeek V4.1 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         InclusionaiLingFlash20 {
             model_name: "inclusionAI/Ling-flash-2.0",
             constructor_name: inclusionai_ling_flash_2_0,
@@ -232,11 +250,29 @@ model_capabilities! {
             display_name: "zai-org/GLM-4.5-Air",
             capabilities: [StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        ZaiOrgGlm45v {
+            model_name: "zai-org/GLM-4.5V",
+            constructor_name: zai_org_glm_4_5v,
+            display_name: "GLM-4.5V",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         ZaiOrgGlm52 {
             model_name: "zai-org/GLM-5.2",
             constructor_name: zai_org_glm_5_2,
             display_name: "GLM-5.2",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm53 {
+            model_name: "zai-org/GLM-5.3",
+            constructor_name: zai_org_glm_5_3,
+            display_name: "GLM-5.3",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ZaiOrgGlm53Flash {
+            model_name: "zai-org/GLM-5.3-Flash",
+            constructor_name: zai_org_glm_5_3_flash,
+            display_name: "GLM-5.3-Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
     }
 }

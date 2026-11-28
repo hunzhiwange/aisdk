@@ -22,6 +22,12 @@ model_capabilities! {
             display_name: "Abliterated Model Large",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        AbliteratedModelLargeFlash {
+            model_name: "abliterated-model-large-flash",
+            constructor_name: abliterated_model_large_flash,
+            display_name: "Abliterated Model Large Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         AbliteratedModelLargeV2 {
             model_name: "abliterated-model-large-v2",
             constructor_name: abliterated_model_large_v2,

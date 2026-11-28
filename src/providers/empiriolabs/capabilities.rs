@@ -58,12 +58,6 @@ model_capabilities! {
             display_name: "Fugu Ultra v2.0",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        Gemma327b {
-            model_name: "gemma-3-27b",
-            constructor_name: gemma_3_27b,
-            display_name: "Gemma 3 27B",
-            capabilities: [ImageInputSupport, TextInputSupport, TextOutputSupport]
-        },
         Gemma426bA4b {
             model_name: "gemma-4-26b-a4b",
             constructor_name: gemma_4_26b_a4b,
@@ -86,6 +80,12 @@ model_capabilities! {
             model_name: "glm-4-7-flash",
             constructor_name: glm_4_7_flash,
             display_name: "GLM 4.7 Flash",
+            capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        Glm47Flashx {
+            model_name: "glm-4-7-flashx",
+            constructor_name: glm_4_7_flashx,
+            display_name: "GLM 4.7 FlashX",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Glm51 {
@@ -135,6 +135,12 @@ model_capabilities! {
             constructor_name: kimi_k3,
             display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        KimiK31Pro {
+            model_name: "kimi-k3-1-pro",
+            constructor_name: kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         MimoV26Flash {
             model_name: "mimo-v2-6-flash",
@@ -303,6 +309,12 @@ model_capabilities! {
             constructor_name: qwen3_8_omni_flash,
             display_name: "Qwen3.8 Omni Flash",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        Qwen4Max {
+            model_name: "qwen4-max",
+            constructor_name: qwen4_max,
+            display_name: "Qwen4 Max",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         Seed20Code {
             model_name: "seed-2-0-code",

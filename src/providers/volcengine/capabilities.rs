@@ -10,6 +10,24 @@ use crate::providers::volcengine::Volcengine;
 model_capabilities! {
     provider: Volcengine,
     models: {
+        DeepseekV41Flash260910 {
+            model_name: "deepseek-v4-1-flash-260910",
+            constructor_name: deepseek_v4_1_flash_260910,
+            display_name: "DeepSeek V4.1 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV41Flash261017 {
+            model_name: "deepseek-v4-1-flash-261017",
+            constructor_name: deepseek_v4_1_flash_261017,
+            display_name: "DeepSeek V4.1 Flash 1017",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        DeepseekV41FlashEconomy261017 {
+            model_name: "deepseek-v4-1-flash-economy-261017",
+            constructor_name: deepseek_v4_1_flash_economy_261017,
+            display_name: "DeepSeek V4.1 Flash 1017 Economy",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         DeepseekV4FlashGa260731 {
             model_name: "deepseek-v4-flash-ga-260731",
             constructor_name: deepseek_v4_flash_ga_260731,
@@ -26,17 +44,29 @@ model_capabilities! {
             model_name: "doubao-seed-2-0-lite-260428",
             constructor_name: doubao_seed_2_0_lite_260428,
             display_name: "Seed 2.0 Lite",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         DoubaoSeed20Mini260428 {
             model_name: "doubao-seed-2-0-mini-260428",
             constructor_name: doubao_seed_2_0_mini_260428,
             display_name: "Seed 2.0 Mini",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        DoubaoSeed21Lite260915 {
+            model_name: "doubao-seed-2-1-lite-260915",
+            constructor_name: doubao_seed_2_1_lite_260915,
+            display_name: "Seed 2.1 Lite",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         DoubaoSeed21Pro260628 {
             model_name: "doubao-seed-2-1-pro-260628",
             constructor_name: doubao_seed_2_1_pro_260628,
+            display_name: "Seed 2.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        DoubaoSeed21Pro260915 {
+            model_name: "doubao-seed-2-1-pro-260915",
+            constructor_name: doubao_seed_2_1_pro_260915,
             display_name: "Seed 2.1 Pro",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
@@ -68,6 +98,12 @@ model_capabilities! {
             model_name: "glm-5-3-flash-260828",
             constructor_name: glm_5_3_flash_260828,
             display_name: "GLM-5.3-Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        KimiK31Pro261024 {
+            model_name: "kimi-k3-1-pro-261024",
+            constructor_name: kimi_k3_1_pro_261024,
+            display_name: "Kimi K3.1 Pro",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
     }

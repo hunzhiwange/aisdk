@@ -52,6 +52,12 @@ model_capabilities! {
             display_name: "Anthropic Claude Fable 5.1",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        AnthropicClaudeFable52 {
+            model_name: "anthropic-claude-fable-5.2",
+            constructor_name: anthropic_claude_fable_5_2,
+            display_name: "Anthropic Claude Fable 5.2",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         AnthropicClaudeHaiku45 {
             model_name: "anthropic-claude-haiku-4.5",
             constructor_name: anthropic_claude_haiku_4_5,
@@ -99,12 +105,6 @@ model_capabilities! {
             constructor_name: anthropic_claude_sonnet_5_5,
             display_name: "Anthropic Claude Sonnet 5.5",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
-        ArceeTrinityLargeThinking {
-            model_name: "arcee-trinity-large-thinking",
-            constructor_name: arcee_trinity_large_thinking,
-            display_name: "Arcee Trinity Large Thinking (Public Preview)",
-            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         BgeM3 {
             model_name: "bge-m3",
@@ -232,6 +232,12 @@ model_capabilities! {
             display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        KimiK31Pro {
+            model_name: "kimi-k3.1-pro",
+            constructor_name: kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         Llama4Maverick {
             model_name: "llama-4-maverick",
             constructor_name: llama_4_maverick,
@@ -249,6 +255,12 @@ model_capabilities! {
             constructor_name: minimax_m2_5,
             display_name: "MiniMax M2.5 (Public Preview)",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MinimaxM31Flash {
+            model_name: "minimax-m3.1-flash",
+            constructor_name: minimax_m3_1_flash,
+            display_name: "MiniMax M3.1-Flash (Public Preview)",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         Mistral314b {
             model_name: "mistral-3-14B",
@@ -411,6 +423,24 @@ model_capabilities! {
             constructor_name: openai_gpt_6_sol,
             display_name: "OpenAI GPT-6 Sol",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt61Terra {
+            model_name: "openai-gpt-6.1-terra",
+            constructor_name: openai_gpt_6_1_terra,
+            display_name: "OpenAI GPT-6.1 Terra",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt62Astra {
+            model_name: "openai-gpt-6.2-astra",
+            constructor_name: openai_gpt_6_2_astra,
+            display_name: "OpenAI GPT-6.2 Astra",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        OpenaiGpt62Sol {
+            model_name: "openai-gpt-6.2-sol",
+            constructor_name: openai_gpt_6_2_sol,
+            display_name: "OpenAI GPT-6.2 Sol",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         OpenaiGptImage1 {
             model_name: "openai-gpt-image-1",

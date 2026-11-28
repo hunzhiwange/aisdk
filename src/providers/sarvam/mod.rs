@@ -7,7 +7,7 @@ crate::openai_compatible_settings!(
     SarvamProviderSettings,
     SarvamProviderSettingsBuilder,
     "Sarvam",
-    "https://api.sarvam.ai/v1",
+    "https://api.sarvam.ai/v2",
     "SARVAM_API_KEY"
 );
 

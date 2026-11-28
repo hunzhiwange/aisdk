@@ -28,6 +28,30 @@ model_capabilities! {
             display_name: "MiniMax-M3",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        QwenQwen36Plus {
+            model_name: "Qwen/Qwen3.6-Plus",
+            constructor_name: qwen_qwen3_6_plus,
+            display_name: "Qwen3.6 Plus",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen37Flash {
+            model_name: "Qwen/Qwen3.7-Flash",
+            constructor_name: qwen_qwen3_7_flash,
+            display_name: "Qwen3.7 Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen37Max {
+            model_name: "Qwen/Qwen3.7-Max",
+            constructor_name: qwen_qwen3_7_max,
+            display_name: "Qwen3.7 Max",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        QwenQwen37Plus {
+            model_name: "Qwen/Qwen3.7-Plus",
+            constructor_name: qwen_qwen3_7_plus,
+            display_name: "Qwen3.7 Plus",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         QwenQwen3827b {
             model_name: "Qwen/Qwen3.8-27B",
             constructor_name: qwen_qwen3_8_27b,
@@ -50,6 +74,12 @@ model_capabilities! {
             model_name: "Qwen/Qwen3.8-Max-0902",
             constructor_name: qwen_qwen3_8_max_0902,
             display_name: "Qwen3.8 Max 0902",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        QwenQwen38MaxPrime {
+            model_name: "Qwen/Qwen3.8-Max-Prime",
+            constructor_name: qwen_qwen3_8_max_prime,
+            display_name: "Qwen 3.8 Max Prime",
             capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         QwenQwen38OmniFlash {
@@ -268,11 +298,29 @@ model_capabilities! {
             display_name: "GPT-6.1 Sol",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        Gpt61Terra {
+            model_name: "gpt-6.1-terra",
+            constructor_name: gpt_6_1_terra,
+            display_name: "GPT-6.1 Terra",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        InclusionaiLing31Flash {
+            model_name: "inclusionai/ling-3.1-flash",
+            constructor_name: inclusionai_ling_3_1_flash,
+            display_name: "Ling 3.1 Flash",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MeituanLongcat20 {
+            model_name: "meituan/LongCat-2.0",
+            constructor_name: meituan_longcat_2_0,
+            display_name: "LongCat-2.0",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         MetaMuseSpark11 {
             model_name: "meta/muse-spark-1.1",
             constructor_name: meta_muse_spark_1_1,
             display_name: "Muse Spark 1.1",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         MetaMuseSpark12 {
             model_name: "meta/muse-spark-1.2",
@@ -298,17 +346,41 @@ model_capabilities! {
             display_name: "Muse Spark 1.3 (Contributor)",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        MetaMuseSparkOpen {
+            model_name: "meta/muse-spark-open",
+            constructor_name: meta_muse_spark_open,
+            display_name: "Muse Spark Open",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         MetaMuseWonder10 {
             model_name: "meta/muse-wonder-1.0",
             constructor_name: meta_muse_wonder_1_0,
             display_name: "Muse Wonder",
             capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        MinimaxMinimaxM31Flash {
+            model_name: "minimax/minimax-m3.1-flash",
+            constructor_name: minimax_minimax_m3_1_flash,
+            display_name: "MiniMax-M3.1-Flash",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         MistralMistralLarge4 {
             model_name: "mistral/mistral-large-4",
             constructor_name: mistral_mistral_large_4,
             display_name: "Mistral Large 4",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MoonshotaiKimiK25 {
+            model_name: "moonshotai/Kimi-K2.5",
+            constructor_name: moonshotai_kimi_k2_5,
+            display_name: "Kimi K2.5",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        MoonshotaiKimiK26 {
+            model_name: "moonshotai/Kimi-K2.6",
+            constructor_name: moonshotai_kimi_k2_6,
+            display_name: "Kimi K2.6",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
         MoonshotaiKimiK27Code {
             model_name: "moonshotai/Kimi-K2.7-Code",
@@ -328,10 +400,40 @@ model_capabilities! {
             display_name: "Kimi K3",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
         },
+        MoonshotaiKimiK31Pro {
+            model_name: "moonshotai/Kimi-K3.1-Pro",
+            constructor_name: moonshotai_kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         NvidiaNemotron3Ultra550bA55b {
             model_name: "nvidia/nemotron-3-ultra-550b-a55b",
             constructor_name: nvidia_nemotron_3_ultra_550b_a55b,
             display_name: "Nemotron 3 Ultra 550B A55B",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        NvidiaNemotron35SuperVl {
+            model_name: "nvidia/nemotron-3.5-super-vl",
+            constructor_name: nvidia_nemotron_3_5_super_vl,
+            display_name: "Nemotron 3.5 Super VL 120B A12B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        OrnithOrnith15122b {
+            model_name: "ornith/ornith-1.5-122b",
+            constructor_name: ornith_ornith_1_5_122b,
+            display_name: "Ornith 1.5 122B",
+            capabilities: [ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        PoolsideLagunaS21Free {
+            model_name: "poolside/laguna-s-2.1-free",
+            constructor_name: poolside_laguna_s_2_1_free,
+            display_name: "Laguna S 2.1",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        ReflectionBeamFree {
+            model_name: "reflection/beam:free",
+            constructor_name: reflection_beam_free,
+            display_name: "Beam 1.0",
             capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         SakanaFuguUltra {
@@ -339,6 +441,12 @@ model_capabilities! {
             constructor_name: sakana_fugu_ultra,
             display_name: "Fugu Ultra",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        StealthGlyphClusterFree {
+            model_name: "stealth/glyph-cluster:free",
+            constructor_name: stealth_glyph_cluster_free,
+            display_name: "Glyph Cluster",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         StepfunStep35Flash {
             model_name: "stepfun/Step-3.5-Flash",
@@ -400,6 +508,24 @@ model_capabilities! {
             display_name: "Grok 4.7",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        XiaomiMimoV26Flash {
+            model_name: "xiaomi/mimo-v2.6-flash",
+            constructor_name: xiaomi_mimo_v2_6_flash,
+            display_name: "MiMo-V2.6-Flash",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        XiaomiMimoV26Pro {
+            model_name: "xiaomi/mimo-v2.6-pro",
+            constructor_name: xiaomi_mimo_v2_6_pro,
+            display_name: "MiMo-V2.6-Pro",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        XiaomiMimoV26ProUltraspeed {
+            model_name: "xiaomi/mimo-v2.6-pro-ultraspeed",
+            constructor_name: xiaomi_mimo_v2_6_pro_ultraspeed,
+            display_name: "MiMo-V2.6-Pro-UltraSpeed",
+            capabilities: [AudioInputSupport, ImageInputSupport, ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
         ZAiGlm53Flash {
             model_name: "z-ai/glm-5.3-flash",
             constructor_name: z_ai_glm_5_3_flash,
@@ -411,6 +537,12 @@ model_capabilities! {
             constructor_name: z_ai_glm_5_3_flashx,
             display_name: "GLM-5.3-FlashX",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport, VideoInputSupport]
+        },
+        ZaiOrgGlm5 {
+            model_name: "zai-org/GLM-5",
+            constructor_name: zai_org_glm_5,
+            display_name: "GLM-5",
+            capabilities: [ReasoningSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         ZaiOrgGlm52 {
             model_name: "zai-org/GLM-5.2",

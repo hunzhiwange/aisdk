@@ -16,6 +16,12 @@ model_capabilities! {
             display_name: "Qwen3.8-Max",
             capabilities: [ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
+        QwenQwen38MaxVlThinking {
+            model_name: "Qwen/Qwen3.8-Max-VL-Thinking",
+            constructor_name: qwen_qwen3_8_max_vl_thinking,
+            display_name: "Qwen3.8-Max VL",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
         DeepseekAiDeepseekV41Flash {
             model_name: "deepseek-ai/DeepSeek-V4.1-Flash",
             constructor_name: deepseek_ai_deepseek_v4_1_flash,
@@ -32,6 +38,12 @@ model_capabilities! {
             model_name: "moonshotai/Kimi-K3",
             constructor_name: moonshotai_kimi_k3,
             display_name: "Kimi K3",
+            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
+        },
+        MoonshotaiKimiK31Pro {
+            model_name: "moonshotai/Kimi-K3.1-Pro",
+            constructor_name: moonshotai_kimi_k3_1_pro,
+            display_name: "Kimi K3.1 Pro",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
         NvidiaGlm53FlashNvfp4 {

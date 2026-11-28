@@ -52,12 +52,6 @@ model_capabilities! {
             display_name: "Grok 4.7",
             capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
         },
-        GrokBuild01 {
-            model_name: "grok-build-0.1",
-            constructor_name: grok_build_0_1,
-            display_name: "Grok Build 0.1",
-            capabilities: [ImageInputSupport, ReasoningSupport, StructuredOutputSupport, TextInputSupport, TextOutputSupport, ToolCallSupport]
-        },
         GrokImagineImage {
             model_name: "grok-imagine-image",
             constructor_name: grok_imagine_image,

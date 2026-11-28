@@ -7,7 +7,7 @@ crate::openai_compatible_settings!(
     HetznerProviderSettings,
     HetznerProviderSettingsBuilder,
     "Hetzner",
-    "https://inference.hetzner.com/api/v1",
+    "https://inference.hetzner.com/v1",
     "HETZNER_API_KEY"
 );
 

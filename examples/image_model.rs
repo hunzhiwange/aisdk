@@ -98,7 +98,7 @@ async fn run_openai_edit(image_url: String) -> Result<(), Box<dyn std::error::Er
 #[cfg(feature = "google")]
 async fn run_google_edit(image_url: String) -> Result<(), Box<dyn std::error::Error>> {
     let response = ImageModelRequest::builder()
-        .model(Google::gemini_2_5_flash_image())
+        .model(Google::gemini_3_1_flash_lite_image())
         .prompt("Turn this photo into a polished product poster")
         .file(UserImage::new(image_url))
         .aspect_ratio("1:1")
