@@ -106,7 +106,7 @@ class ProviderRegistryGenerationTests(unittest.TestCase):
             },
         }
 
-        content = provider_codegen.generate_provider_registry_rs(providers)
+        content = provider_codegen.generate_provider_registry_rs(providers, {"compatible"})
 
         self.assertIn('#[cfg(feature = "compatible")]', content)
         self.assertIn('id: "compatible"', content)
@@ -131,7 +131,7 @@ class ProviderRegistryGenerationTests(unittest.TestCase):
             },
         }
 
-        content = provider_codegen.generate_provider_registry_rs(providers)
+        content = provider_codegen.generate_provider_registry_rs(providers, {"a-provider", "z-provider"})
 
         self.assertLess(
             content.index('id: "a-provider"'),
@@ -143,6 +143,33 @@ class ProviderRegistryGenerationTests(unittest.TestCase):
             'env_names: &["Z_PRIMARY_API_KEY", "Z_SECONDARY_API_KEY"]',
             content,
         )
+
+    def test_new_providers_share_a_feature_in_modules_and_registry(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            manifest = root / "Cargo.toml"
+            features = '[features]\nexisting = []\nadditional-providers = []\n'
+            manifest.write_text(features, encoding="utf-8")
+            providers = root / "src/providers"
+            providers.mkdir(parents=True)
+            modules = providers / "mod.rs"
+            modules.write_text("// [codegen]\n// [end-codegen]\n", encoding="utf-8")
+            for name in ("existing", "new-provider"):
+                (providers / name).mkdir()
+
+            provider_codegen.update_providers_mod_rs(root)
+            registry = provider_codegen.prepare_provider_registry(
+                {name: compatible_provider_data() for name in ("existing", "new-provider")},
+                root,
+            ).content
+
+            self.assertEqual(manifest.read_text(encoding="utf-8"), features)
+            self.assertIn('#[cfg(feature = "existing")]\npub mod existing;', modules.read_text())
+            self.assertIn('#[cfg(feature = "additional-providers")]\npub use new_provider::', modules.read_text())
+            self.assertIn(
+                '#[cfg(feature = "additional-providers")]\n    ProviderDescriptor {\n        id: "new-provider",',
+                registry,
+            )
 
 
 class LocalCatalogTests(unittest.TestCase):

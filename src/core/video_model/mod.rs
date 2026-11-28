@@ -122,6 +122,8 @@ pub enum VideoModelError {
 }
 
 /// An explicitly configured video generation deployment.
+// async_trait adds #[must_use] to a future that is already must-use.
+#[allow(clippy::double_must_use)]
 #[async_trait]
 pub trait VideoModel: Send + Sync {
     /// Submit once. A submission with an unknown outcome may already have been accepted.

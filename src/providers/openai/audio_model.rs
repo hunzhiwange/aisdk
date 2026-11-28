@@ -391,7 +391,7 @@ fn matches_audio(format: AudioFormat, bytes: &[u8]) -> bool {
         AudioFormat::Pcm => {
             // PCM has no magic bytes. Refuse text resembling an error body and odd sample lengths.
             !bytes.is_empty()
-                && bytes.len() % 2 == 0
+                && bytes.len().is_multiple_of(2)
                 && !std::str::from_utf8(bytes).is_ok_and(|text| {
                     text.chars()
                         .all(|character| !character.is_control() || character.is_whitespace())

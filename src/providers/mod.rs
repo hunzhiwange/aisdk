@@ -87,9 +87,9 @@ pub mod abacus;
 #[cfg(feature = "abacus")]
 pub use abacus::Abacus;
 
-#[cfg(feature = "abliteratedllm")]
+#[cfg(feature = "additional-providers")]
 pub mod abliteratedllm;
-#[cfg(feature = "abliteratedllm")]
+#[cfg(feature = "additional-providers")]
 pub use abliteratedllm::Abliteratedllm;
 
 #[cfg(feature = "abliteration-ai")]
@@ -103,14 +103,14 @@ pub mod above;
 #[cfg(feature = "above")]
 pub use above::Above;
 
-#[cfg(feature = "adaption")]
+#[cfg(feature = "additional-providers")]
 pub mod adaption;
-#[cfg(feature = "adaption")]
+#[cfg(feature = "additional-providers")]
 pub use adaption::Adaption;
 
-#[cfg(feature = "adzuki")]
+#[cfg(feature = "additional-providers")]
 pub mod adzuki;
-#[cfg(feature = "adzuki")]
+#[cfg(feature = "additional-providers")]
 pub use adzuki::Adzuki;
 
 #[cfg(feature = "agentrouter")]
@@ -139,9 +139,9 @@ pub mod aiand;
 #[cfg(feature = "aiand")]
 pub use aiand::Aiand;
 
-#[cfg(feature = "aigrow")]
+#[cfg(feature = "additional-providers")]
 pub mod aigrow;
-#[cfg(feature = "aigrow")]
+#[cfg(feature = "additional-providers")]
 pub use aigrow::Aigrow;
 
 #[cfg(feature = "aihubmix")]
@@ -159,14 +159,14 @@ pub mod ainetcafe;
 #[cfg(feature = "ainetcafe")]
 pub use ainetcafe::Ainetcafe;
 
-#[cfg(feature = "aipg")]
+#[cfg(feature = "additional-providers")]
 pub mod aipg;
-#[cfg(feature = "aipg")]
+#[cfg(feature = "additional-providers")]
 pub use aipg::Aipg;
 
-#[cfg(feature = "aistupidlevel")]
+#[cfg(feature = "additional-providers")]
 pub mod aistupidlevel;
-#[cfg(feature = "aistupidlevel")]
+#[cfg(feature = "additional-providers")]
 pub use aistupidlevel::Aistupidlevel;
 
 #[cfg(feature = "aixy")]
@@ -225,9 +225,9 @@ pub mod amd;
 #[cfg(feature = "amd")]
 pub use amd::Amd;
 
-#[cfg(feature = "anonrouter")]
+#[cfg(feature = "additional-providers")]
 pub mod anonrouter;
-#[cfg(feature = "anonrouter")]
+#[cfg(feature = "additional-providers")]
 pub use anonrouter::Anonrouter;
 
 #[cfg(feature = "anyapi")]
@@ -235,9 +235,9 @@ pub mod anyapi;
 #[cfg(feature = "anyapi")]
 pub use anyapi::Anyapi;
 
-#[cfg(feature = "apiko")]
+#[cfg(feature = "additional-providers")]
 pub mod apiko;
-#[cfg(feature = "apiko")]
+#[cfg(feature = "additional-providers")]
 pub use apiko::Apiko;
 
 #[cfg(feature = "arcee")]
@@ -251,9 +251,9 @@ pub mod atomic_chat;
 #[cfg(feature = "atomic-chat")]
 pub use atomic_chat::AtomicChat;
 
-#[cfg(feature = "augure")]
+#[cfg(feature = "additional-providers")]
 pub mod augure;
-#[cfg(feature = "augure")]
+#[cfg(feature = "additional-providers")]
 pub use augure::Augure;
 
 #[cfg(feature = "auriko")]
@@ -261,9 +261,9 @@ pub mod auriko;
 #[cfg(feature = "auriko")]
 pub use auriko::Auriko;
 
-#[cfg(feature = "autarcho")]
+#[cfg(feature = "additional-providers")]
 pub mod autarcho;
-#[cfg(feature = "autarcho")]
+#[cfg(feature = "additional-providers")]
 pub use autarcho::Autarcho;
 
 #[cfg(feature = "bailing")]
@@ -301,35 +301,35 @@ pub mod boundless;
 #[cfg(feature = "boundless")]
 pub use boundless::Boundless;
 
-#[cfg(feature = "bumo")]
+#[cfg(feature = "additional-providers")]
 pub mod bumo;
-#[cfg(feature = "bumo")]
+#[cfg(feature = "additional-providers")]
 pub use bumo::Bumo;
 
-#[cfg(feature = "byteplus")]
+#[cfg(feature = "additional-providers")]
 pub mod byteplus;
-#[cfg(feature = "byteplus")]
+#[cfg(feature = "additional-providers")]
 pub use byteplus::Byteplus;
 
-#[cfg(feature = "cedarllm")]
+#[cfg(feature = "additional-providers")]
 pub mod cedarllm;
-#[cfg(feature = "cedarllm")]
+#[cfg(feature = "additional-providers")]
 pub use cedarllm::Cedarllm;
 
-#[cfg(feature = "cheapaimodel")]
+#[cfg(feature = "additional-providers")]
 pub mod cheapaimodel;
-#[cfg(feature = "cheapaimodel")]
+#[cfg(feature = "additional-providers")]
 pub use cheapaimodel::Cheapaimodel;
 
-#[cfg(feature = "cheapest-token")]
+#[cfg(feature = "additional-providers")]
 #[path = "cheapest-token/mod.rs"]
 pub mod cheapest_token;
-#[cfg(feature = "cheapest-token")]
+#[cfg(feature = "additional-providers")]
 pub use cheapest_token::CheapestToken;
 
-#[cfg(feature = "cheapllm")]
+#[cfg(feature = "additional-providers")]
 pub mod cheapllm;
-#[cfg(feature = "cheapllm")]
+#[cfg(feature = "additional-providers")]
 pub use cheapllm::Cheapllm;
 
 #[cfg(feature = "chutes")]
@@ -353,9 +353,9 @@ pub mod cline_pass;
 #[cfg(feature = "cline-pass")]
 pub use cline_pass::ClinePass;
 
-#[cfg(feature = "cloudcode")]
+#[cfg(feature = "additional-providers")]
 pub mod cloudcode;
-#[cfg(feature = "cloudcode")]
+#[cfg(feature = "additional-providers")]
 pub use cloudcode::Cloudcode;
 
 #[cfg(feature = "cloudferro-sherlock")]
@@ -381,10 +381,10 @@ pub mod commandcode;
 #[cfg(feature = "commandcode")]
 pub use commandcode::Commandcode;
 
-#[cfg(feature = "confidential-ai")]
+#[cfg(feature = "additional-providers")]
 #[path = "confidential-ai/mod.rs"]
 pub mod confidential_ai;
-#[cfg(feature = "confidential-ai")]
+#[cfg(feature = "additional-providers")]
 pub use confidential_ai::ConfidentialAi;
 
 #[cfg(feature = "coralbricks")]
@@ -437,14 +437,14 @@ pub mod dinference;
 #[cfg(feature = "dinference")]
 pub use dinference::Dinference;
 
-#[cfg(feature = "dothoosh")]
+#[cfg(feature = "additional-providers")]
 pub mod dothoosh;
-#[cfg(feature = "dothoosh")]
+#[cfg(feature = "additional-providers")]
 pub use dothoosh::Dothoosh;
 
-#[cfg(feature = "doubleword")]
+#[cfg(feature = "additional-providers")]
 pub mod doubleword;
-#[cfg(feature = "doubleword")]
+#[cfg(feature = "additional-providers")]
 pub use doubleword::Doubleword;
 
 #[cfg(feature = "drun")]
@@ -477,9 +477,9 @@ pub mod engy;
 #[cfg(feature = "engy")]
 pub use engy::Engy;
 
-#[cfg(feature = "entrim")]
+#[cfg(feature = "additional-providers")]
 pub mod entrim;
-#[cfg(feature = "entrim")]
+#[cfg(feature = "additional-providers")]
 pub use entrim::Entrim;
 
 #[cfg(feature = "evroc")]
@@ -487,9 +487,9 @@ pub mod evroc;
 #[cfg(feature = "evroc")]
 pub use evroc::Evroc;
 
-#[cfg(feature = "ezkielyna")]
+#[cfg(feature = "additional-providers")]
 pub mod ezkielyna;
-#[cfg(feature = "ezkielyna")]
+#[cfg(feature = "additional-providers")]
 pub use ezkielyna::Ezkielyna;
 
 #[cfg(feature = "fastrouter")]
@@ -497,9 +497,9 @@ pub mod fastrouter;
 #[cfg(feature = "fastrouter")]
 pub use fastrouter::Fastrouter;
 
-#[cfg(feature = "fiftyx")]
+#[cfg(feature = "additional-providers")]
 pub mod fiftyx;
-#[cfg(feature = "fiftyx")]
+#[cfg(feature = "additional-providers")]
 pub use fiftyx::Fiftyx;
 
 #[cfg(feature = "fireworks-ai")]
@@ -513,14 +513,14 @@ pub mod firmware;
 #[cfg(feature = "firmware")]
 pub use firmware::Firmware;
 
-#[cfg(feature = "fortytwo")]
+#[cfg(feature = "additional-providers")]
 pub mod fortytwo;
-#[cfg(feature = "fortytwo")]
+#[cfg(feature = "additional-providers")]
 pub use fortytwo::Fortytwo;
 
-#[cfg(feature = "frequency")]
+#[cfg(feature = "additional-providers")]
 pub mod frequency;
-#[cfg(feature = "frequency")]
+#[cfg(feature = "additional-providers")]
 pub use frequency::Frequency;
 
 #[cfg(feature = "friendli")]
@@ -533,9 +533,9 @@ pub mod frogbot;
 #[cfg(feature = "frogbot")]
 pub use frogbot::Frogbot;
 
-#[cfg(feature = "gisoo")]
+#[cfg(feature = "additional-providers")]
 pub mod gisoo;
-#[cfg(feature = "gisoo")]
+#[cfg(feature = "additional-providers")]
 pub use gisoo::Gisoo;
 
 #[cfg(feature = "github-copilot")]
@@ -555,9 +555,9 @@ pub mod gmicloud;
 #[cfg(feature = "gmicloud")]
 pub use gmicloud::Gmicloud;
 
-#[cfg(feature = "graphn")]
+#[cfg(feature = "additional-providers")]
 pub mod graphn;
-#[cfg(feature = "graphn")]
+#[cfg(feature = "additional-providers")]
 pub use graphn::Graphn;
 
 #[cfg(feature = "greenpt")]
@@ -575,15 +575,15 @@ pub mod hetzner;
 #[cfg(feature = "hetzner")]
 pub use hetzner::Hetzner;
 
-#[cfg(feature = "hopper")]
+#[cfg(feature = "additional-providers")]
 pub mod hopper;
-#[cfg(feature = "hopper")]
+#[cfg(feature = "additional-providers")]
 pub use hopper::Hopper;
 
-#[cfg(feature = "hostinger-router")]
+#[cfg(feature = "additional-providers")]
 #[path = "hostinger-router/mod.rs"]
 pub mod hostinger_router;
-#[cfg(feature = "hostinger-router")]
+#[cfg(feature = "additional-providers")]
 pub use hostinger_router::HostingerRouter;
 
 #[cfg(feature = "hpc-ai")]
@@ -592,15 +592,15 @@ pub mod hpc_ai;
 #[cfg(feature = "hpc-ai")]
 pub use hpc_ai::HpcAi;
 
-#[cfg(feature = "huawei-maas")]
+#[cfg(feature = "additional-providers")]
 #[path = "huawei-maas/mod.rs"]
 pub mod huawei_maas;
-#[cfg(feature = "huawei-maas")]
+#[cfg(feature = "additional-providers")]
 pub use huawei_maas::HuaweiMaas;
 
-#[cfg(feature = "hubris")]
+#[cfg(feature = "additional-providers")]
 pub mod hubris;
-#[cfg(feature = "hubris")]
+#[cfg(feature = "additional-providers")]
 pub use hubris::Hubris;
 
 #[cfg(feature = "huggingface")]
@@ -608,9 +608,9 @@ pub mod huggingface;
 #[cfg(feature = "huggingface")]
 pub use huggingface::Huggingface;
 
-#[cfg(feature = "humain")]
+#[cfg(feature = "additional-providers")]
 pub mod humain;
-#[cfg(feature = "humain")]
+#[cfg(feature = "additional-providers")]
 pub use humain::Humain;
 
 #[cfg(feature = "hyper")]
@@ -643,9 +643,9 @@ pub mod inco;
 #[cfg(feature = "inco")]
 pub use inco::Inco;
 
-#[cfg(feature = "inferall")]
+#[cfg(feature = "additional-providers")]
 pub mod inferall;
-#[cfg(feature = "inferall")]
+#[cfg(feature = "additional-providers")]
 pub use inferall::Inferall;
 
 #[cfg(feature = "inference")]
@@ -653,25 +653,25 @@ pub mod inference;
 #[cfg(feature = "inference")]
 pub use inference::Inference;
 
-#[cfg(feature = "inference-coop")]
+#[cfg(feature = "additional-providers")]
 #[path = "inference-coop/mod.rs"]
 pub mod inference_coop;
-#[cfg(feature = "inference-coop")]
+#[cfg(feature = "additional-providers")]
 pub use inference_coop::InferenceCoop;
 
-#[cfg(feature = "inferenceapis")]
+#[cfg(feature = "additional-providers")]
 pub mod inferenceapis;
-#[cfg(feature = "inferenceapis")]
+#[cfg(feature = "additional-providers")]
 pub use inferenceapis::Inferenceapis;
 
-#[cfg(feature = "inferris")]
+#[cfg(feature = "additional-providers")]
 pub mod inferris;
-#[cfg(feature = "inferris")]
+#[cfg(feature = "additional-providers")]
 pub use inferris::Inferris;
 
-#[cfg(feature = "infersia")]
+#[cfg(feature = "additional-providers")]
 pub mod infersia;
-#[cfg(feature = "infersia")]
+#[cfg(feature = "additional-providers")]
 pub use infersia::Infersia;
 
 #[cfg(feature = "inferx")]
@@ -690,9 +690,9 @@ pub mod io_net;
 #[cfg(feature = "io-net")]
 pub use io_net::IoNet;
 
-#[cfg(feature = "isoquant")]
+#[cfg(feature = "additional-providers")]
 pub mod isoquant;
-#[cfg(feature = "isoquant")]
+#[cfg(feature = "additional-providers")]
 pub use isoquant::Isoquant;
 
 #[cfg(feature = "iteracompute")]
@@ -700,10 +700,10 @@ pub mod iteracompute;
 #[cfg(feature = "iteracompute")]
 pub use iteracompute::Iteracompute;
 
-#[cfg(feature = "jad-ai")]
+#[cfg(feature = "additional-providers")]
 #[path = "jad-ai/mod.rs"]
 pub mod jad_ai;
-#[cfg(feature = "jad-ai")]
+#[cfg(feature = "additional-providers")]
 pub use jad_ai::JadAi;
 
 #[cfg(feature = "jalapeno")]
@@ -716,19 +716,19 @@ pub mod jiekou;
 #[cfg(feature = "jiekou")]
 pub use jiekou::Jiekou;
 
-#[cfg(feature = "joingonka")]
+#[cfg(feature = "additional-providers")]
 pub mod joingonka;
-#[cfg(feature = "joingonka")]
+#[cfg(feature = "additional-providers")]
 pub use joingonka::Joingonka;
 
-#[cfg(feature = "jzstoken")]
+#[cfg(feature = "additional-providers")]
 pub mod jzstoken;
-#[cfg(feature = "jzstoken")]
+#[cfg(feature = "additional-providers")]
 pub use jzstoken::Jzstoken;
 
-#[cfg(feature = "keln")]
+#[cfg(feature = "additional-providers")]
 pub mod keln;
-#[cfg(feature = "keln")]
+#[cfg(feature = "additional-providers")]
 pub use keln::Keln;
 
 #[cfg(feature = "kenari")]
@@ -753,14 +753,14 @@ pub mod kimi_code_plan_global;
 #[cfg(feature = "kimi-code-plan-global")]
 pub use kimi_code_plan_global::KimiCodePlanGlobal;
 
-#[cfg(feature = "kitani")]
+#[cfg(feature = "additional-providers")]
 pub mod kitani;
-#[cfg(feature = "kitani")]
+#[cfg(feature = "additional-providers")]
 pub use kitani::Kitani;
 
-#[cfg(feature = "klavo")]
+#[cfg(feature = "additional-providers")]
 pub mod klavo;
-#[cfg(feature = "klavo")]
+#[cfg(feature = "additional-providers")]
 pub use klavo::Klavo;
 
 #[cfg(feature = "klokintegration")]
@@ -768,9 +768,9 @@ pub mod klokintegration;
 #[cfg(feature = "klokintegration")]
 pub use klokintegration::Klokintegration;
 
-#[cfg(feature = "korouter")]
+#[cfg(feature = "additional-providers")]
 pub mod korouter;
-#[cfg(feature = "korouter")]
+#[cfg(feature = "additional-providers")]
 pub use korouter::Korouter;
 
 #[cfg(feature = "kosmik")]
@@ -784,9 +784,9 @@ pub mod kuae_cloud_coding_plan;
 #[cfg(feature = "kuae-cloud-coding-plan")]
 pub use kuae_cloud_coding_plan::KuaeCloudCodingPlan;
 
-#[cfg(feature = "kunavo")]
+#[cfg(feature = "additional-providers")]
 pub mod kunavo;
-#[cfg(feature = "kunavo")]
+#[cfg(feature = "additional-providers")]
 pub use kunavo::Kunavo;
 
 #[cfg(feature = "lilac")]
@@ -799,9 +799,9 @@ pub mod liquid;
 #[cfg(feature = "liquid")]
 pub use liquid::Liquid;
 
-#[cfg(feature = "lithosai")]
+#[cfg(feature = "additional-providers")]
 pub mod lithosai;
-#[cfg(feature = "lithosai")]
+#[cfg(feature = "additional-providers")]
 pub use lithosai::Lithosai;
 
 #[cfg(feature = "llama")]
@@ -835,9 +835,9 @@ pub mod lmstudio;
 #[cfg(feature = "lmstudio")]
 pub use lmstudio::Lmstudio;
 
-#[cfg(feature = "logits")]
+#[cfg(feature = "additional-providers")]
 pub mod logits;
-#[cfg(feature = "logits")]
+#[cfg(feature = "additional-providers")]
 pub use logits::Logits;
 
 #[cfg(feature = "longcat")]
@@ -855,9 +855,9 @@ pub mod lucidquery;
 #[cfg(feature = "lucidquery")]
 pub use lucidquery::Lucidquery;
 
-#[cfg(feature = "lyceum")]
+#[cfg(feature = "additional-providers")]
 pub mod lyceum;
-#[cfg(feature = "lyceum")]
+#[cfg(feature = "additional-providers")]
 pub use lyceum::Lyceum;
 
 #[cfg(feature = "lynkr")]
@@ -865,9 +865,9 @@ pub mod lynkr;
 #[cfg(feature = "lynkr")]
 pub use lynkr::Lynkr;
 
-#[cfg(feature = "mallard")]
+#[cfg(feature = "additional-providers")]
 pub mod mallard;
-#[cfg(feature = "mallard")]
+#[cfg(feature = "additional-providers")]
 pub use mallard::Mallard;
 
 #[cfg(feature = "meganova")]
@@ -880,9 +880,9 @@ pub mod melious;
 #[cfg(feature = "melious")]
 pub use melious::Melious;
 
-#[cfg(feature = "meragpt")]
+#[cfg(feature = "additional-providers")]
 pub mod meragpt;
-#[cfg(feature = "meragpt")]
+#[cfg(feature = "additional-providers")]
 pub use meragpt::Meragpt;
 
 #[cfg(feature = "mixlayer")]
@@ -916,14 +916,14 @@ pub mod modelscope;
 #[cfg(feature = "modelscope")]
 pub use modelscope::Modelscope;
 
-#[cfg(feature = "modular")]
+#[cfg(feature = "additional-providers")]
 pub mod modular;
-#[cfg(feature = "modular")]
+#[cfg(feature = "additional-providers")]
 pub use modular::Modular;
 
-#[cfg(feature = "moneo")]
+#[cfg(feature = "additional-providers")]
 pub mod moneo;
-#[cfg(feature = "moneo")]
+#[cfg(feature = "additional-providers")]
 pub use moneo::Moneo;
 
 #[cfg(feature = "moonshotai")]
@@ -942,15 +942,15 @@ pub mod morph;
 #[cfg(feature = "morph")]
 pub use morph::Morph;
 
-#[cfg(feature = "munito")]
+#[cfg(feature = "additional-providers")]
 pub mod munito;
-#[cfg(feature = "munito")]
+#[cfg(feature = "additional-providers")]
 pub use munito::Munito;
 
-#[cfg(feature = "munito-eu")]
+#[cfg(feature = "additional-providers")]
 #[path = "munito-eu/mod.rs"]
 pub mod munito_eu;
-#[cfg(feature = "munito-eu")]
+#[cfg(feature = "additional-providers")]
 pub use munito_eu::MunitoEu;
 
 #[cfg(feature = "nan")]
@@ -984,14 +984,14 @@ pub mod neuralwatt;
 #[cfg(feature = "neuralwatt")]
 pub use neuralwatt::Neuralwatt;
 
-#[cfg(feature = "nodecode")]
+#[cfg(feature = "additional-providers")]
 pub mod nodecode;
-#[cfg(feature = "nodecode")]
+#[cfg(feature = "additional-providers")]
 pub use nodecode::Nodecode;
 
-#[cfg(feature = "nokeep")]
+#[cfg(feature = "additional-providers")]
 pub mod nokeep;
-#[cfg(feature = "nokeep")]
+#[cfg(feature = "additional-providers")]
 pub use nokeep::Nokeep;
 
 #[cfg(feature = "nova")]
@@ -1010,14 +1010,14 @@ pub mod nvidia;
 #[cfg(feature = "nvidia")]
 pub use nvidia::Nvidia;
 
-#[cfg(feature = "oathbreaker")]
+#[cfg(feature = "additional-providers")]
 pub mod oathbreaker;
-#[cfg(feature = "oathbreaker")]
+#[cfg(feature = "additional-providers")]
 pub use oathbreaker::Oathbreaker;
 
-#[cfg(feature = "obscurify")]
+#[cfg(feature = "additional-providers")]
 pub mod obscurify;
-#[cfg(feature = "obscurify")]
+#[cfg(feature = "additional-providers")]
 pub use obscurify::Obscurify;
 
 #[cfg(feature = "oci")]
@@ -1062,9 +1062,9 @@ pub mod orcarouter;
 #[cfg(feature = "orcarouter")]
 pub use orcarouter::Orcarouter;
 
-#[cfg(feature = "outerlabs")]
+#[cfg(feature = "additional-providers")]
 pub mod outerlabs;
-#[cfg(feature = "outerlabs")]
+#[cfg(feature = "additional-providers")]
 pub use outerlabs::Outerlabs;
 
 #[cfg(feature = "ovhcloud")]
@@ -1072,9 +1072,9 @@ pub mod ovhcloud;
 #[cfg(feature = "ovhcloud")]
 pub use ovhcloud::Ovhcloud;
 
-#[cfg(feature = "paraloncloud")]
+#[cfg(feature = "additional-providers")]
 pub mod paraloncloud;
-#[cfg(feature = "paraloncloud")]
+#[cfg(feature = "additional-providers")]
 pub use paraloncloud::Paraloncloud;
 
 #[cfg(feature = "pareto")]
@@ -1087,14 +1087,14 @@ pub mod pendra;
 #[cfg(feature = "pendra")]
 pub use pendra::Pendra;
 
-#[cfg(feature = "phala")]
+#[cfg(feature = "additional-providers")]
 pub mod phala;
-#[cfg(feature = "phala")]
+#[cfg(feature = "additional-providers")]
 pub use phala::Phala;
 
-#[cfg(feature = "phase")]
+#[cfg(feature = "additional-providers")]
 pub mod phase;
-#[cfg(feature = "phase")]
+#[cfg(feature = "additional-providers")]
 pub use phase::Phase;
 
 #[cfg(feature = "pioneer")]
@@ -1112,14 +1112,14 @@ pub mod poolside;
 #[cfg(feature = "poolside")]
 pub use poolside::Poolside;
 
-#[cfg(feature = "powerspring")]
+#[cfg(feature = "additional-providers")]
 pub mod powerspring;
-#[cfg(feature = "powerspring")]
+#[cfg(feature = "additional-providers")]
 pub use powerspring::Powerspring;
 
-#[cfg(feature = "primalabs")]
+#[cfg(feature = "additional-providers")]
 pub mod primalabs;
-#[cfg(feature = "primalabs")]
+#[cfg(feature = "additional-providers")]
 pub use primalabs::Primalabs;
 
 #[cfg(feature = "prime")]
@@ -1127,9 +1127,9 @@ pub mod prime;
 #[cfg(feature = "prime")]
 pub use prime::Prime;
 
-#[cfg(feature = "proxystacks")]
+#[cfg(feature = "additional-providers")]
 pub mod proxystacks;
-#[cfg(feature = "proxystacks")]
+#[cfg(feature = "additional-providers")]
 pub use proxystacks::Proxystacks;
 
 #[cfg(feature = "qihang-ai")]
@@ -1149,9 +1149,9 @@ pub mod reflection;
 #[cfg(feature = "reflection")]
 pub use reflection::Reflection;
 
-#[cfg(feature = "refuseless")]
+#[cfg(feature = "additional-providers")]
 pub mod refuseless;
-#[cfg(feature = "refuseless")]
+#[cfg(feature = "additional-providers")]
 pub use refuseless::Refuseless;
 
 #[cfg(feature = "regolo-ai")]
@@ -1171,14 +1171,14 @@ pub mod routing_run;
 #[cfg(feature = "routing-run")]
 pub use routing_run::RoutingRun;
 
-#[cfg(feature = "ruapi")]
+#[cfg(feature = "additional-providers")]
 pub mod ruapi;
-#[cfg(feature = "ruapi")]
+#[cfg(feature = "additional-providers")]
 pub use ruapi::Ruapi;
 
-#[cfg(feature = "runcrate")]
+#[cfg(feature = "additional-providers")]
 pub mod runcrate;
-#[cfg(feature = "runcrate")]
+#[cfg(feature = "additional-providers")]
 pub use runcrate::Runcrate;
 
 #[cfg(feature = "runinfra")]
@@ -1186,9 +1186,9 @@ pub mod runinfra;
 #[cfg(feature = "runinfra")]
 pub use runinfra::Runinfra;
 
-#[cfg(feature = "sagg")]
+#[cfg(feature = "additional-providers")]
 pub mod sagg;
-#[cfg(feature = "sagg")]
+#[cfg(feature = "additional-providers")]
 pub use sagg::Sagg;
 
 #[cfg(feature = "sakana")]
@@ -1201,9 +1201,9 @@ pub mod sambanova;
 #[cfg(feature = "sambanova")]
 pub use sambanova::Sambanova;
 
-#[cfg(feature = "sandbase")]
+#[cfg(feature = "additional-providers")]
 pub mod sandbase;
-#[cfg(feature = "sandbase")]
+#[cfg(feature = "additional-providers")]
 pub use sandbase::Sandbase;
 
 #[cfg(feature = "sarvam")]
@@ -1250,14 +1250,14 @@ pub mod snowflake_cortex;
 #[cfg(feature = "snowflake-cortex")]
 pub use snowflake_cortex::SnowflakeCortex;
 
-#[cfg(feature = "sokkan")]
+#[cfg(feature = "additional-providers")]
 pub mod sokkan;
-#[cfg(feature = "sokkan")]
+#[cfg(feature = "additional-providers")]
 pub use sokkan::Sokkan;
 
-#[cfg(feature = "sparrowcodes")]
+#[cfg(feature = "additional-providers")]
 pub mod sparrowcodes;
-#[cfg(feature = "sparrowcodes")]
+#[cfg(feature = "additional-providers")]
 pub use sparrowcodes::Sparrowcodes;
 
 #[cfg(feature = "stackit")]
@@ -1270,9 +1270,9 @@ pub mod standardcompute;
 #[cfg(feature = "standardcompute")]
 pub use standardcompute::Standardcompute;
 
-#[cfg(feature = "steadyrouter")]
+#[cfg(feature = "additional-providers")]
 pub mod steadyrouter;
-#[cfg(feature = "steadyrouter")]
+#[cfg(feature = "additional-providers")]
 pub use steadyrouter::Steadyrouter;
 
 #[cfg(feature = "stepfun")]
@@ -1298,10 +1298,10 @@ pub mod stepfun_step_plan;
 #[cfg(feature = "stepfun-step-plan")]
 pub use stepfun_step_plan::StepfunStepPlan;
 
-#[cfg(feature = "stepping-stone")]
+#[cfg(feature = "additional-providers")]
 #[path = "stepping-stone/mod.rs"]
 pub mod stepping_stone;
-#[cfg(feature = "stepping-stone")]
+#[cfg(feature = "additional-providers")]
 pub use stepping_stone::SteppingStone;
 
 #[cfg(feature = "submodel")]
@@ -1309,10 +1309,10 @@ pub mod submodel;
 #[cfg(feature = "submodel")]
 pub use submodel::Submodel;
 
-#[cfg(feature = "superbot-gg")]
+#[cfg(feature = "additional-providers")]
 #[path = "superbot-gg/mod.rs"]
 pub mod superbot_gg;
-#[cfg(feature = "superbot-gg")]
+#[cfg(feature = "additional-providers")]
 pub use superbot_gg::SuperbotGg;
 
 #[cfg(feature = "synthetic")]
@@ -1320,20 +1320,20 @@ pub mod synthetic;
 #[cfg(feature = "synthetic")]
 pub use synthetic::Synthetic;
 
-#[cfg(feature = "synthorai")]
+#[cfg(feature = "additional-providers")]
 pub mod synthorai;
-#[cfg(feature = "synthorai")]
+#[cfg(feature = "additional-providers")]
 pub use synthorai::Synthorai;
 
-#[cfg(feature = "teamorouter")]
+#[cfg(feature = "additional-providers")]
 pub mod teamorouter;
-#[cfg(feature = "teamorouter")]
+#[cfg(feature = "additional-providers")]
 pub use teamorouter::Teamorouter;
 
-#[cfg(feature = "teapot-router")]
+#[cfg(feature = "additional-providers")]
 #[path = "teapot-router/mod.rs"]
 pub mod teapot_router;
-#[cfg(feature = "teapot-router")]
+#[cfg(feature = "additional-providers")]
 pub use teapot_router::TeapotRouter;
 
 #[cfg(feature = "tempr")]
@@ -1353,10 +1353,10 @@ pub mod tencent_token_plan;
 #[cfg(feature = "tencent-token-plan")]
 pub use tencent_token_plan::TencentTokenPlan;
 
-#[cfg(feature = "tencent-token-plan-intl")]
+#[cfg(feature = "additional-providers")]
 #[path = "tencent-token-plan-intl/mod.rs"]
 pub mod tencent_token_plan_intl;
-#[cfg(feature = "tencent-token-plan-intl")]
+#[cfg(feature = "additional-providers")]
 pub use tencent_token_plan_intl::TencentTokenPlanIntl;
 
 #[cfg(feature = "tencent-tokenhub")]
@@ -1370,9 +1370,9 @@ pub mod tensorx;
 #[cfg(feature = "tensorx")]
 pub use tensorx::Tensorx;
 
-#[cfg(feature = "tenstorrent")]
+#[cfg(feature = "additional-providers")]
 pub mod tenstorrent;
-#[cfg(feature = "tenstorrent")]
+#[cfg(feature = "additional-providers")]
 pub use tenstorrent::Tenstorrent;
 
 #[cfg(feature = "the-grid-ai")]
@@ -1381,9 +1381,9 @@ pub mod the_grid_ai;
 #[cfg(feature = "the-grid-ai")]
 pub use the_grid_ai::TheGridAi;
 
-#[cfg(feature = "therouter")]
+#[cfg(feature = "additional-providers")]
 pub mod therouter;
-#[cfg(feature = "therouter")]
+#[cfg(feature = "additional-providers")]
 pub use therouter::Therouter;
 
 #[cfg(feature = "tinfoil")]
@@ -1391,9 +1391,9 @@ pub mod tinfoil;
 #[cfg(feature = "tinfoil")]
 pub use tinfoil::Tinfoil;
 
-#[cfg(feature = "toapis")]
+#[cfg(feature = "additional-providers")]
 pub mod toapis;
-#[cfg(feature = "toapis")]
+#[cfg(feature = "additional-providers")]
 pub use toapis::Toapis;
 
 #[cfg(feature = "tokengo")]
@@ -1401,14 +1401,14 @@ pub mod tokengo;
 #[cfg(feature = "tokengo")]
 pub use tokengo::Tokengo;
 
-#[cfg(feature = "tokenify")]
+#[cfg(feature = "additional-providers")]
 pub mod tokenify;
-#[cfg(feature = "tokenify")]
+#[cfg(feature = "additional-providers")]
 pub use tokenify::Tokenify;
 
-#[cfg(feature = "tokenlab")]
+#[cfg(feature = "additional-providers")]
 pub mod tokenlab;
-#[cfg(feature = "tokenlab")]
+#[cfg(feature = "additional-providers")]
 pub use tokenlab::Tokenlab;
 
 #[cfg(feature = "tokenrouter")]
@@ -1416,9 +1416,9 @@ pub mod tokenrouter;
 #[cfg(feature = "tokenrouter")]
 pub use tokenrouter::Tokenrouter;
 
-#[cfg(feature = "tokenwatt")]
+#[cfg(feature = "additional-providers")]
 pub mod tokenwatt;
-#[cfg(feature = "tokenwatt")]
+#[cfg(feature = "additional-providers")]
 pub use tokenwatt::Tokenwatt;
 
 #[cfg(feature = "trustedrouter")]
@@ -1426,9 +1426,9 @@ pub mod trustedrouter;
 #[cfg(feature = "trustedrouter")]
 pub use trustedrouter::Trustedrouter;
 
-#[cfg(feature = "trustedtokens")]
+#[cfg(feature = "additional-providers")]
 pub mod trustedtokens;
-#[cfg(feature = "trustedtokens")]
+#[cfg(feature = "additional-providers")]
 pub use trustedtokens::Trustedtokens;
 
 #[cfg(feature = "umans-ai")]
@@ -1443,14 +1443,14 @@ pub mod umans_ai_coding_plan;
 #[cfg(feature = "umans-ai-coding-plan")]
 pub use umans_ai_coding_plan::UmansAiCodingPlan;
 
-#[cfg(feature = "unbiased")]
+#[cfg(feature = "additional-providers")]
 pub mod unbiased;
-#[cfg(feature = "unbiased")]
+#[cfg(feature = "additional-providers")]
 pub use unbiased::Unbiased;
 
-#[cfg(feature = "uncensuredai")]
+#[cfg(feature = "additional-providers")]
 pub mod uncensuredai;
-#[cfg(feature = "uncensuredai")]
+#[cfg(feature = "additional-providers")]
 pub use uncensuredai::Uncensuredai;
 
 #[cfg(feature = "unorouter")]
@@ -1458,14 +1458,14 @@ pub mod unorouter;
 #[cfg(feature = "unorouter")]
 pub use unorouter::Unorouter;
 
-#[cfg(feature = "unrestricted")]
+#[cfg(feature = "additional-providers")]
 pub mod unrestricted;
-#[cfg(feature = "unrestricted")]
+#[cfg(feature = "additional-providers")]
 pub use unrestricted::Unrestricted;
 
-#[cfg(feature = "uplinkswitch")]
+#[cfg(feature = "additional-providers")]
 pub mod uplinkswitch;
-#[cfg(feature = "uplinkswitch")]
+#[cfg(feature = "additional-providers")]
 pub use uplinkswitch::Uplinkswitch;
 
 #[cfg(feature = "upstage")]
@@ -1478,9 +1478,9 @@ pub mod vancine;
 #[cfg(feature = "vancine")]
 pub use vancine::Vancine;
 
-#[cfg(feature = "verda")]
+#[cfg(feature = "additional-providers")]
 pub mod verda;
-#[cfg(feature = "verda")]
+#[cfg(feature = "additional-providers")]
 pub use verda::Verda;
 
 #[cfg(feature = "vispark")]
@@ -1515,9 +1515,9 @@ pub mod wallaby;
 #[cfg(feature = "wallaby")]
 pub use wallaby::Wallaby;
 
-#[cfg(feature = "wally")]
+#[cfg(feature = "additional-providers")]
 pub mod wally;
-#[cfg(feature = "wally")]
+#[cfg(feature = "additional-providers")]
 pub use wally::Wally;
 
 #[cfg(feature = "wandb")]
@@ -1525,9 +1525,9 @@ pub mod wandb;
 #[cfg(feature = "wandb")]
 pub use wandb::Wandb;
 
-#[cfg(feature = "watt")]
+#[cfg(feature = "additional-providers")]
 pub mod watt;
-#[cfg(feature = "watt")]
+#[cfg(feature = "additional-providers")]
 pub use watt::Watt;
 
 #[cfg(feature = "xiaomi")]
@@ -1558,9 +1558,9 @@ pub mod xpersona;
 #[cfg(feature = "xpersona")]
 pub use xpersona::Xpersona;
 
-#[cfg(feature = "xxapi")]
+#[cfg(feature = "additional-providers")]
 pub mod xxapi;
-#[cfg(feature = "xxapi")]
+#[cfg(feature = "additional-providers")]
 pub use xxapi::Xxapi;
 
 #[cfg(feature = "zai")]
@@ -1589,9 +1589,9 @@ pub mod zenmux;
 #[cfg(feature = "zenmux")]
 pub use zenmux::Zenmux;
 
-#[cfg(feature = "zerogpu")]
+#[cfg(feature = "additional-providers")]
 pub mod zerogpu;
-#[cfg(feature = "zerogpu")]
+#[cfg(feature = "additional-providers")]
 pub use zerogpu::Zerogpu;
 
 #[cfg(feature = "zhipuai")]
@@ -1605,9 +1605,9 @@ pub mod zhipuai_coding_plan;
 #[cfg(feature = "zhipuai-coding-plan")]
 pub use zhipuai_coding_plan::ZhipuaiCodingPlan;
 
-#[cfg(feature = "zro")]
+#[cfg(feature = "additional-providers")]
 pub mod zro;
-#[cfg(feature = "zro")]
+#[cfg(feature = "additional-providers")]
 pub use zro::Zro;
 // [end-codegen]
 

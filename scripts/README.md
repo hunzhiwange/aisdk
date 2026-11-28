@@ -87,8 +87,9 @@ uv run --python 3.13 scripts/provider-codegen.py capabilities --input ../vibe-wi
 uv run --python 3.13 scripts/provider-codegen.py registry --input ../vibe-window/crates/vw-provider-resolver/assets/model/api.json
 ```
 
-This updates provider modules, model capability types, Cargo features and the
-provider registry. Formatting is limited to generated files. Native request
+This updates provider modules, model capability types, and the provider registry.
+Providers without an individual Cargo feature use `additional-providers`, which
+is included in `full`. Formatting is limited to generated files. Native request
 mapping code is preserved. VibeWindow's `shiju.json` overlay is separate from
 `api.json`; it is consumed by VibeWindow and is not part of this generation.
 

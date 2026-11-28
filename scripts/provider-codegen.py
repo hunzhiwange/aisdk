@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # /// script
-# dependencies = ["typer", "requests", "tomlkit"]
+# dependencies = ["typer", "requests"]
 # requires-python = ">=3.13"
 # ///
 
@@ -23,6 +23,8 @@ import json
 import re
 import subprocess
 import sys
+import tomllib
+from collections.abc import Collection
 from pathlib import Path
 from urllib.request import Request, urlopen
 from typing import Any, Optional, Literal, Annotated
@@ -32,11 +34,6 @@ try:
     import requests
 except ImportError:
     requests = None
-
-try:
-    import tomlkit
-except ImportError:
-    tomlkit = None
 
 try:
     import typer
@@ -407,7 +404,7 @@ def batch_write_files(
 
 
 # ============================================================================
-# CARGO.TOML AND MOD.RS UPDATES
+# PROVIDER MODULES AND FEATURE GATES
 # ============================================================================
 
 # Providers that are manually managed in src/providers/mod.rs
@@ -428,53 +425,15 @@ MANUALLY_MANAGED_MODULES = {
 }
 
 
-def update_cargo_toml(provider_ids: list[str], root: Optional[Path] = None):
-    """
-    Add feature entries for new providers to Cargo.toml (additive only).
+def read_cargo_features(root: Path) -> set[str]:
+    with (root / "Cargo.toml").open("rb") as manifest:
+        return set(tomllib.load(manifest)["features"])
 
-    For each provider_id, this ensures:
-    1. A feature entry `provider-id = ["openaichatcompletions"]` exists
-    2. The provider is listed in the `full` feature array
 
-    Uses tomlkit for style-preserving TOML manipulation.
-
-    Args:
-        provider_ids: List of provider identifiers (kebab-case from models.dev)
-        root: Optional project root (defaults to auto-detected root)
-    """
-    if tomlkit is None:
-        raise RuntimeError("tomlkit is required to update Cargo.toml")
-
-    if root is None:
-        root = get_project_root()
-
-    cargo_path = root / "Cargo.toml"
-    with open(cargo_path, "r", encoding="utf-8") as f:
-        doc = tomlkit.load(f)
-
-    features = doc["features"]
-    full_feature = features["full"]
-    modified = False
-
-    for provider_id in sorted(provider_ids):
-        # Add individual feature entry if not present
-        if provider_id not in features:
-            features[provider_id] = ["openaichatcompletions"]
-            log(f"Added feature '{provider_id}' to Cargo.toml")
-            modified = True
-
-        # Add to 'full' feature list if not present
-        if provider_id not in full_feature:
-            full_feature.append(provider_id)
-            log(f"Added '{provider_id}' to 'full' feature list")
-            modified = True
-
-    if modified:
-        with open(cargo_path, "w", encoding="utf-8") as f:
-            tomlkit.dump(doc, f)
-        log("Updated Cargo.toml")
-    else:
-        log("Cargo.toml already up to date")
+def provider_feature(provider_id: str, cargo_features: Collection[str]) -> str:
+    if provider_id in cargo_features:
+        return provider_id
+    return "additional-providers"
 
 
 def get_codegen_provider_dirs(root: Path) -> list[str]:
@@ -540,14 +499,14 @@ def update_providers_mod_rs(root: Optional[Path] = None):
 
     # Get all codegen-managed provider directories
     provider_dirs = get_codegen_provider_dirs(root)
+    cargo_features = read_cargo_features(root)
 
     # Generate the codegen block content
     lines = []
     for dir_name in provider_dirs:
         module_name = provider_id_to_snake_case(dir_name)
         struct_name = to_pascal_case(dir_name)
-        # Feature names use the provider ID as-is (kebab-case)
-        feature_name = dir_name
+        feature_name = provider_feature(dir_name, cargo_features)
         # Use #[path] when directory name differs from module name
         # (e.g., hyphens in dir name, or leading digits like "302ai" -> "ai_302")
         needs_path_attr = dir_name != module_name
@@ -856,12 +815,14 @@ def rust_string_literal(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
-def generate_provider_registry_rs(all_providers: dict[str, Any]) -> str:
+def generate_provider_registry_rs(
+    all_providers: dict[str, Any], cargo_features: Collection[str]
+) -> str:
     """
     Generate the OpenAI-compatible provider metadata registry.
 
-    Registry entries are sorted by provider ID and individually gated by the
-    provider's Cargo feature.
+    Registry entries are sorted by provider ID and use the same feature gates
+    as the generated modules.
     """
     compatible_providers = {
         provider_id: provider_data
@@ -887,7 +848,7 @@ def generate_provider_registry_rs(all_providers: dict[str, Any]) -> str:
 
         lines.extend(
             [
-                f'    #[cfg(feature = "{provider_id}")]',
+                f'    #[cfg(feature = "{provider_feature(provider_id, cargo_features)}")]',
                 "    ProviderDescriptor {",
                 f"        id: {rust_string_literal(provider_id)},",
                 f"        base_url: {rust_string_literal(base_url)},",
@@ -913,7 +874,7 @@ def prepare_provider_registry(
 
     return PendingWrite(
         path=root / "src" / "providers" / "generated_registry.rs",
-        content=generate_provider_registry_rs(all_providers),
+        content=generate_provider_registry_rs(all_providers, read_cargo_features(root)),
         file="generated_registry.rs",
     )
 
@@ -1129,16 +1090,7 @@ def openai_compatible_command(
         # PHASE 2: Write all files atomically
         written_files = batch_write_files(pending_writes)
 
-        # PHASE 3: Update Cargo.toml and mod.rs
-        # Collect provider IDs from written files
-        generated_provider_ids = []
-        if provider_id:
-            generated_provider_ids = [provider_id]
-        else:
-            generated_provider_ids = list(
-                filter_openai_compatible_providers(all_providers).keys()
-            )
-        update_cargo_toml(generated_provider_ids)
+        # PHASE 3: Update mod.rs
         update_providers_mod_rs()
 
         # PHASE 4: Format

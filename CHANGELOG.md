@@ -17,6 +17,21 @@ Changelog entries are grouped by type, with the following types:
 
 ## [Unreleased] - ReleaseDate
 
+## [0.7.3] - 2026-11-28
+
+### Added
+
+- Added image generation and editing, asynchronous video generation, speech synthesis, and file transcription.
+- Added audio and video inputs to supported language model requests.
+
+### Changed
+
+- Updated models.dev metadata and grouped newly added compatible providers under `additional-providers`.
+
+### Fixed
+
+- Fixed Clippy errors from async audio and video traits in the pre-push checks.
+
 ## [0.7.2] - 2026-11-24
 
 ### Added
@@ -196,7 +211,8 @@ Changelog entries are grouped by type, with the following types:
 - Rebranded to aisdk
 
 <!-- next-url -->
-[Unreleased]: https://github.com/hunzhiwange/aisdk/compare/v0.7.2...HEAD
+[Unreleased]: https://github.com/hunzhiwange/aisdk/compare/v0.7.3...HEAD
+[0.7.3]: https://github.com/hunzhiwange/aisdk/compare/v0.7.1...v0.7.3
 [0.7.2]: https://github.com/hunzhiwange/aisdk/compare/v0.7.1...v0.7.2
 [0.7.1]: https://github.com/hunzhiwange/aisdk/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/hunzhiwange/aisdk/compare/v0.6.2...v0.7.0

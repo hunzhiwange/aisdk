@@ -178,6 +178,8 @@ pub enum AudioModelError {
 ///
 /// Dropping the operation future stops local request processing. The upstream
 /// service may continue processing a request it already received.
+// async_trait adds #[must_use] to a future that is already must-use.
+#[allow(clippy::double_must_use)]
 #[async_trait]
 pub trait AudioModel: Send + Sync {
     /// Submit one speech synthesis request.
